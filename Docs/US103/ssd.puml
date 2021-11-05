@@ -1,0 +1,5 @@
+@startuml
+autonumber
+TrafficManager-> System: Asking for positional messages temporally organized and associated with each of the ships
+System --> TrafficManager: Shows the demanded information
+@enduml

@@ -1,0 +1,11 @@
+@startuml
+
+autonumber
+
+TrafficManager-> System: Asking for positional messages temporally organized and associated with each of the ships
+System --> TrafficManager: Authentication Response
+
+TrafficManager -> System: Another authentication Request
+TrafficManager <-- System: another authentication Response
+
+@enduml
