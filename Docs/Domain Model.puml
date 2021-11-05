@@ -128,16 +128,16 @@ class Company {
 
 'Inheritance connections
 
-Client <|-- User
-FleetManager <|-- User
-TrafficManager <|-- User
-WarehouseStaff <|-- User
-WarehouseManager <|-- User
-PortStaff <|-- User
-PortManager <|-- User
-ShipCaptain <|-- User
-EletricalEngineer <|-- User
-TruckDriver <|-- User
+Client <|-- UserRole
+FleetManager <|-- UserRole
+TrafficManager <|-- UserRole
+WarehouseStaff <|-- UserRole
+WarehouseManager <|-- UserRole
+PortStaff <|-- UserRole
+PortManager <|-- UserRole
+ShipCaptain <|-- UserRole
+EletricalEngineer <|-- UserRole
+TruckDriver <|-- UserRole
 
 
 'Aggregation connections

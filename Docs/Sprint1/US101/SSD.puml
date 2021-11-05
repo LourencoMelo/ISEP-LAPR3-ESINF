@@ -1,0 +1,20 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+skinparam sequenceMessageAlign center
+
+System -> TrafficManager: Authentication Request
+TrafficManager --> System: Authentication Response
+
+System -> TrafficManager: Operation Request
+System <-- TrafficManager: Import ships data into the system
+
+System -> TrafficManager: Insert the text file with data
+System <-- TrafficManager: Text file inserted
+
+System -> TrafficManager: Operation completed
+
+
+@enduml
