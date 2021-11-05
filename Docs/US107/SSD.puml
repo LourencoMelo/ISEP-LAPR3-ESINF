@@ -1,0 +1,8 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+User -> System : Asks for the pairs of ships with routes with \n close departure/arrival coordinates (no more than 5 Kms away) and with \n different Travelled Distance
+System --> User : Displays the pair of ships ordered by MMSI code of the 1st ship  \n and in descending order of the Travelled Distance difference
+@enduml
