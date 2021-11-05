@@ -17,6 +17,7 @@ class Ship {
 
 note left: <b>MMSI</b> : 9 digits unique number\n<b>IMO</b> : 7 digits unique number\n<b>callSign</b> : alphanumeric unique number
 
+
 class Container {
 
     -String containerID <<b>PK>

@@ -1,0 +1,12 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+User -> System : Get the top-N ships with the most kilometres travelled and their average speed
+System --> User: Requests the number of ships
+User -> System : Enters the requested data
+System --> User : Validates and displays the data , asking for confirmation
+User -> System : Confirms
+System --> User : Displays the top-N Ships grouped by Vessel Type
+@enduml
