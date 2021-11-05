@@ -54,75 +54,68 @@ class Warehouse {
 
 }
 
+class Truck{
+}
+
 class User{
-    String id;
-    String password;
-    UserRole role;
+    -String id <<b>PK>
+    -String password
+    -UserRole role
 }
 
 class UserRole{
-    String id;
-    String description;
+    -String id <<b>PK>
+    -String description
 }
 
 class Client{
-    User user;
 }
 
 class FleetManager{
-    User user;
 }
 
-class TraficManager{
-    User user;
+class TrafficManager{
 }
 
 class WarehouseStaff{
-    User user;
 }
 
 class WarehouseManager{
-    User user;
 }
 
 class PortStaff{
-    User user;
 }
 
 class PortManager{
-    User user;
 }
 
 class ShipCaptain{
-    User user;
 }
 
 class EletricalEngineer{
-    User user;
 }
 
 class TruckDriver{
-    User user;
 }
 
 class PositionData{
-    Date baseDateTime;
-    double latitude;
-    double longitude;
-    double sog;
-    double cog;
-    double heading;
-    int position;
+    -Date baseDateTime
+    -double latitude
+    -double longitude
+    -double sog
+    -double cog
+    -double heading
+    -int position
 
 }
 
 class TranceiverClass{
-    int id;
+    -int id;
 }
-note bottom: <b> id <b> liga -se ao position data
+'note bottom: <b> id <b> liga -se ao position data
 
 class CargoManifest{
-    HashMap<Conteiners, int position>
+    HashMap<Container, int>
 }
 
 class Country {
@@ -132,5 +125,43 @@ class Country {
 class Company {
 
 }
+
+'Inheritance connections
+
+Client <|-- User
+FleetManager <|-- User
+TrafficManager <|-- User
+WarehouseStaff <|-- User
+WarehouseManager <|-- User
+PortStaff <|-- User
+PortManager <|-- User
+ShipCaptain <|-- User
+EletricalEngineer <|-- User
+TruckDriver <|-- User
+
+
+'Aggregation connections
+
+User o-- UserRole
+Ship o-- Container
+Truck o-- Container
+Company o-- Ship
+Company o-- Truck
+Port o-- Ship : 0..*
+Port o-- Warehouse
+
+
+'Composition connections
+
+Company *-- User
+Company *-- UserRole
+Ship *-- CargoManifest : 1
+Ship *-- PositionData
+
+
+'Association connections
+
+CargoManifest --> Ship
+Ship <--> Country
 
 @enduml
