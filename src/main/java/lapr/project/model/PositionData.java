@@ -1,8 +1,9 @@
 package lapr.project.model;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
-public class PositionData {
+public class PositionData implements Comparable<PositionData> {
 
     /**
      * -------------------------------------------------------------------------------------------------------------
@@ -13,7 +14,7 @@ public class PositionData {
     /**
      * BaseDate Time of the Ship
      */
-    private Date baseDateTime;
+    private LocalDateTime baseDateTime;
     /**
      * Latitude of the Ship(Position)
      */
@@ -45,7 +46,7 @@ public class PositionData {
      * -------------------------------------------------------------------------------------------------------------
      */
 
-    public PositionData(Date baseDateTime, double latitude, double longitude, double sog, double cog, double heading, int position) {
+    public PositionData(LocalDateTime baseDateTime, double latitude, double longitude, double sog, double cog, double heading, int position) {
         setBaseDateTime(baseDateTime);
         setLatitude(latitude);
         setLongitude(longitude);
@@ -66,7 +67,7 @@ public class PositionData {
      * Returns the baseDatTime of the Ship
      * @return baseDateTime
      */
-    public Date getBaseDateTime() {
+    public LocalDateTime getBaseDateTime() {
         return baseDateTime;
     }
 
@@ -74,7 +75,7 @@ public class PositionData {
      * Set the baseDatTime of the Ship
      * @param baseDateTime
      */
-    public void setBaseDateTime(Date baseDateTime) {
+    public void setBaseDateTime(LocalDateTime baseDateTime) {
         this.baseDateTime = baseDateTime;
     }
 
@@ -173,4 +174,27 @@ public class PositionData {
     public void setPosition(int position) {
         this.position = position;
     }
+
+    @Override
+    public String toString() {
+        return "PositionData{" +
+                "baseDateTime=" + baseDateTime +
+                ", latitude=" + latitude +
+                ", longitude=" + longitude +
+                ", sog=" + sog +
+                ", cog=" + cog +
+                ", heading=" + heading +
+                ", position=" + position +
+                '}';
+    }
+
+    @Override
+    public int compareTo(PositionData positionData){
+        if(this.baseDateTime.compareTo(positionData.baseDateTime) > 0)
+            return 1;
+        if(this.baseDateTime.compareTo(positionData.baseDateTime) < 0)
+            return -1;
+        return 0;
+    }
+
 }
