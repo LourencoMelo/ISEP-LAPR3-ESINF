@@ -1,0 +1,64 @@
+@startuml
+
+class Ship {
+
+    -int MMSI <<b>PK>
+    -String name
+    -int IMO
+    -int numberEnergyGenerator
+    -int powerOutput
+    -String callSign
+    -int vesselType
+    -double length
+    -double width
+    -int maximumCapacity
+    -double draft
+}
+
+note left: <b>MMSI</b> : 9 digits unique number\n<b>IMO</b> : 7 digits unique number\n<b>callSign</b> : alphanumeric unique number
+
+class Container {
+
+    -String containerID <<b>PK>
+    -int checkDigit
+    -String ISO
+    -int gross
+    -int tare
+    -int payload
+    -int maxVolume
+    -int repairRecommendation
+
+}
+
+note bottom: <b>checkDigit</b> : last number in containerID\n<b>ISO</b> : 4 alphanumeric unique number
+
+
+class Port {
+    -int code <<b>PK>
+    -String continent
+    -String country
+    -String port
+    -double latitude
+    -double longitude
+
+}
+
+class Warehouse {
+    -int code <<b>PK>
+    -String continent
+    -String country
+    -String port
+    -double latitude
+    -double longitude
+
+}
+
+class Country {
+
+}
+
+class Company {
+
+}
+
+@enduml
