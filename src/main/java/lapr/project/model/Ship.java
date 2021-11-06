@@ -1,5 +1,7 @@
 package lapr.project.model;
 
+import java.util.Objects;
+
 public class Ship {
 
     /**
@@ -58,6 +60,22 @@ public class Ship {
      *                                               CONSTRUCTOR
      * -------------------------------------------------------------------------------------------------------------
      */
+
+
+    /**
+     * Constructor of the class Ship
+     * @param MMSI MMSI of the Ship
+     * @param name Name of the Ship
+     * @param IMO IMO of the Ship
+     * @param numberEnergyGenerator Number of Energy Generators present in the Ship
+     * @param powerOutput PowerOutput of the Ship
+     * @param callSign CallSign of the Ship
+     * @param vesselType Vessel Type of the Ship
+     * @param length Length of the ship
+     * @param width With of the ship
+     * @param maximumCapacity Maximum Capacity of the ship
+     * @param draft Draft of the Ship
+     */
     public Ship(int MMSI, String name, int IMO, int numberEnergyGenerator, int powerOutput, String callSign, int vesselType, double length, double width, int maximumCapacity, double draft) {
        setMMSI(MMSI);
        setName(name);
@@ -93,7 +111,11 @@ public class Ship {
      * @param MMSI
      */
     public void setMMSI(int MMSI) {
-        this.MMSI = MMSI;
+        if(MMSI >= 100000000 && MMSI <= 999999999){
+            this.MMSI = MMSI;
+        }else{
+            throw new IllegalArgumentException("MMSI needs to be a 9 digits unique number.");
+        }
     }
 
     /**
@@ -125,7 +147,11 @@ public class Ship {
      * @param IMO
      */
     public void setIMO(int IMO) {
-        this.IMO = IMO;
+        if(IMO >= 1000000 && IMO <= 9999999){
+            this.IMO = IMO;
+        }else{
+            throw new IllegalArgumentException("IMO needs to be a 7 digits unique number.");
+        }
     }
 
     /**
@@ -255,4 +281,51 @@ public class Ship {
     public void setDraft(double draft) {
         this.draft = draft;
     }
+
+    /**
+     * -------------------------------------------------------------------------------------------------------------
+     *                                              EQUALS
+     * -------------------------------------------------------------------------------------------------------------
+     */
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Ship ship = (Ship) o;
+        return MMSI == ship.MMSI && IMO == ship.IMO && vesselType == ship.vesselType && maximumCapacity == ship.maximumCapacity && Double.compare(ship.draft, draft) == 0 && Objects.equals(name, ship.name) && Objects.equals(callSign, ship.callSign);
+    }
+
+
+    /**
+     * -------------------------------------------------------------------------------------------------------------
+     *                                              TO STRING
+     * -------------------------------------------------------------------------------------------------------------
+     */
+
+    @Override
+    public String toString() {
+        return "Ship{" +
+                "MMSI=" + MMSI +
+                ", name='" + name + '\'' +
+                ", IMO=" + IMO +
+                ", numberEnergyGenerator=" + numberEnergyGenerator +
+                ", powerOutput=" + powerOutput +
+                ", callSign='" + callSign + '\'' +
+                ", vesselType=" + vesselType +
+                ", length=" + length +
+                ", width=" + width +
+                ", maximumCapacity=" + maximumCapacity +
+                ", draft=" + draft +
+                '}';
+    }
+
+    /**
+     * -------------------------------------------------------------------------------------------------------------
+     *                                              COMPARETO
+     * -------------------------------------------------------------------------------------------------------------
+     */
+
+
+
 }

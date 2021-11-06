@@ -2,6 +2,7 @@ package lapr.project.model;
 
 import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.Objects;
 
 public class PositionData implements Comparable<PositionData> {
 
@@ -46,6 +47,16 @@ public class PositionData implements Comparable<PositionData> {
      * -------------------------------------------------------------------------------------------------------------
      */
 
+    /**
+     * Contruct of the class PositionDate
+     * @param baseDateTime BaseDate Time of the Ship
+     * @param latitude Latitude of the Ship(Position)
+     * @param longitude Longitude of the Ship(Position)
+     * @param sog Sog of the Ship(Position)
+     * @param cog Cog of the Ship(Position)
+     * @param heading Heading of the Ship(Position)
+     * @param position Position of the Ship(Position)
+     */
     public PositionData(LocalDateTime baseDateTime, double latitude, double longitude, double sog, double cog, double heading, int position) {
         setBaseDateTime(baseDateTime);
         setLatitude(latitude);
@@ -175,6 +186,27 @@ public class PositionData implements Comparable<PositionData> {
         this.position = position;
     }
 
+    /**
+     * -------------------------------------------------------------------------------------------------------------
+     *                                              EQUALS
+     * -------------------------------------------------------------------------------------------------------------
+     */
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        PositionData that = (PositionData) o;
+        return Double.compare(that.latitude, latitude) == 0 && Double.compare(that.longitude, longitude) == 0 && Double.compare(that.sog, sog) == 0 && Double.compare(that.cog, cog) == 0 && Double.compare(that.heading, heading) == 0 && position == that.position && Objects.equals(baseDateTime, that.baseDateTime);
+    }
+
+
+    /**
+     * -------------------------------------------------------------------------------------------------------------
+     *                                              TO STRING
+     * -------------------------------------------------------------------------------------------------------------
+     */
+
     @Override
     public String toString() {
         return "PositionData{" +
@@ -187,6 +219,12 @@ public class PositionData implements Comparable<PositionData> {
                 ", position=" + position +
                 '}';
     }
+
+    /**
+     * -------------------------------------------------------------------------------------------------------------
+     *                                              COMPARETO
+     * -------------------------------------------------------------------------------------------------------------
+     */
 
     @Override
     public int compareTo(PositionData positionData){
