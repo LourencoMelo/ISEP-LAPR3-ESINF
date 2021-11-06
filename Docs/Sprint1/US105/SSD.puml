@@ -1,0 +1,18 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+skinparam sequenceMessageAlign center
+
+System -> TrafficManager: Authentication Request
+TrafficManager --> System: Authentication Response
+
+System -> TrafficManager: Operation Request
+System <-- TrafficManager: Ask to list the MMSI, the total number of movements, \nTravelled Distance and Delta Distance of all ships
+
+System -> TrafficManager: Shows the requested data
+System <-- TrafficManager: Confirms the operation
+
+System -> TrafficManager: Operation completed
+@enduml
