@@ -34,7 +34,7 @@ class Container {
 note bottom: <b>checkDigit</b> : last number in containerID\n<b>ISO</b> : 4 alphanumeric unique number
 
 
-class Port {
+class PortAndWarehouse {
     -int code <<b>PK>
     -String continent
     -String country
@@ -44,15 +44,6 @@ class Port {
 
 }
 
-class Warehouse {
-    -int code <<b>PK>
-    -String continent
-    -String country
-    -String port
-    -double latitude
-    -double longitude
-
-}
 
 class Truck{
 }
