@@ -42,6 +42,11 @@ public class PositionData implements Comparable<PositionData> {
     private int position;
 
     /**
+     * Class to transceiver used when sending data
+     */
+    private String transceiver;
+
+    /**
      * -------------------------------------------------------------------------------------------------------------
      *                                          CONSTRUCTOR
      * -------------------------------------------------------------------------------------------------------------
@@ -57,7 +62,7 @@ public class PositionData implements Comparable<PositionData> {
      * @param heading Heading of the Ship(Position)
      * @param position Position of the Ship(Position)
      */
-    public PositionData(LocalDateTime baseDateTime, double latitude, double longitude, double sog, double cog, double heading, int position) {
+    public PositionData(LocalDateTime baseDateTime, double latitude, double longitude, double sog, double cog, double heading, int position,String transceiver) {
         setBaseDateTime(baseDateTime);
         setLatitude(latitude);
         setLongitude(longitude);
@@ -65,6 +70,7 @@ public class PositionData implements Comparable<PositionData> {
         setCog(cog);
         setHeading(heading);
         setPosition(position);
+        setTransceiver(transceiver);
     }
 
     /**
@@ -184,6 +190,22 @@ public class PositionData implements Comparable<PositionData> {
      */
     public void setPosition(int position) {
         this.position = position;
+    }
+
+    /**
+     * Sets the transceiver class
+     * @param transceiver
+     */
+    public void setTransceiver(String transceiver) {
+        this.transceiver = transceiver;
+    }
+
+    /**
+     * Returns the transceiver class
+     * @return transceiver
+     */
+    public String getTransceiver() {
+        return transceiver;
     }
 
     /**
