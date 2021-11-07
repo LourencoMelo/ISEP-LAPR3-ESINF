@@ -1,23 +1,11 @@
 @startuml
+'https://plantuml.com/use-case-diagram
 
-class Ship {
+:System: as Syst
+:Traffic Manager: as TM
 
-    -int MMSI <<b>PK>
-    -String name
-    -int IMO
-    -int numberEnergyGenerator
-    -int powerOutput
-    -String callSign
-    -int vesselType
-    -double length
-    -double width
-    -int maximumCapacity
-    -double draft
-}
+TM -> (Start)
 
-class TrafficManager{
-}
 
-TrafficManager --> Ship
 
 @enduml

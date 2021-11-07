@@ -1,0 +1,60 @@
+@startuml
+
+autonumber
+
+actor       TrafficManager             as TM
+participant    ":importFileUI"         as UI
+participant    ":importFileController" as CTRL
+participant    ":Company"              as Company
+participant    "import: importFile"    as Model
+participant    "ship: Ship"            as Ship
+database       "DataBase"              as db
+
+TM -> UI : Import text file with ships
+activate UI
+UI --> TM: Request text file
+deactivate UI
+
+TM -> UI : Choose text file
+activate UI
+loop txt_size times
+    UI -> CTRL : newShip(........)
+    activate CTRL
+    CTRL -> Company : import = getImportFile()
+    activate Company
+    deactivate Company
+
+    CTRL -> Model : ship = newShip(......)
+    activate Model
+    Model -> Ship ** : create(......)
+    deactivate Model
+
+    CTRL -> Model : registShip(ship)
+    activate Model
+
+    deactivate CTRL
+
+    Model -> Model : validateShip(ship)
+    Model -> Model : addShip(ship)
+    deactivate Model
+
+    activate CTRL
+
+    CTRL -> db ** : save(ship)
+
+    deactivate CTRL
+
+
+end
+
+UI --> TM : Operation successful
+deactivate UI
+
+
+
+
+
+
+
+
+@enduml
