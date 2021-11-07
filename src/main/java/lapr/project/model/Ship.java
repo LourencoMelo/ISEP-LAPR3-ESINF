@@ -1,8 +1,11 @@
 package lapr.project.model;
 
+import lapr.project.utils.TREE;
+import lapr.project.utils.TreeOfPositionData;
+
 import java.util.Objects;
 
-public class Ship {
+public class Ship implements Comparable <Ship>{
 
     /**
      * -------------------------------------------------------------------------------------------------------------
@@ -25,11 +28,11 @@ public class Ship {
     /**
      * Number of Energy Generators present in the Ship
      */
-    private int numberEnergyGenerator;
+    //private int numberEnergyGenerator;
     /**
      * PowerOutput of the Ship
      */
-    private int powerOutput;
+    //private int powerOutput;
     /**
      * CallSign of the Ship
      */
@@ -49,11 +52,17 @@ public class Ship {
     /**
      * Maximum Capacity of the ship
      */
-    private int maximumCapacity;
+    //private int maximumCapacity;
     /**
      * Draft of the Ship
      */
     private double draft;
+
+    /**
+     * Tree of PositionData
+     */
+
+    private TreeOfPositionData treeOfPositionData;
 
     /**
      * -------------------------------------------------------------------------------------------------------------
@@ -67,27 +76,22 @@ public class Ship {
      * @param MMSI MMSI of the Ship
      * @param name Name of the Ship
      * @param IMO IMO of the Ship
-     * @param numberEnergyGenerator Number of Energy Generators present in the Ship
-     * @param powerOutput PowerOutput of the Ship
      * @param callSign CallSign of the Ship
      * @param vesselType Vessel Type of the Ship
      * @param length Length of the ship
      * @param width With of the ship
-     * @param maximumCapacity Maximum Capacity of the ship
      * @param draft Draft of the Ship
      */
-    public Ship(int MMSI, String name, int IMO, int numberEnergyGenerator, int powerOutput, String callSign, int vesselType, double length, double width, int maximumCapacity, double draft) {
+    public Ship(int MMSI, String name, int IMO, String callSign, int vesselType, double length, double width, double draft) {
        setMMSI(MMSI);
        setName(name);
        setIMO(IMO);
-       setNumberEnergyGenerator(numberEnergyGenerator);
-       setPowerOutput(powerOutput);
        setCallSign(callSign);
        setVesselType(vesselType);
        setLength(length);
        setWidth(width);
-       setMaximumCapacity(maximumCapacity);
        setDraft(draft);
+       treeOfPositionData = new TreeOfPositionData();
     }
 
     /**
@@ -96,6 +100,8 @@ public class Ship {
      * -------------------------------------------------------------------------------------------------------------
      */
 
+
+    //Method that adds to the tree when reading the file
 
     /**
      * Returns MMSI of the Ship
@@ -157,7 +163,7 @@ public class Ship {
     /**
      * Returns the Number of Energy Generators present in the Ship
      * @return numberEnergyGenerator
-     */
+
     public int getNumberEnergyGenerator() {
         return numberEnergyGenerator;
     }
@@ -165,7 +171,7 @@ public class Ship {
     /**
      * Sets the Number of Energy Generators present in the Ship
      * @param numberEnergyGenerator
-     */
+
     public void setNumberEnergyGenerator(int numberEnergyGenerator) {
         this.numberEnergyGenerator = numberEnergyGenerator;
     }
@@ -173,7 +179,7 @@ public class Ship {
     /**
      * Returns the PowerOutput of the Ship
      * @return powerOutput
-     */
+
     public int getPowerOutput() {
         return powerOutput;
     }
@@ -181,11 +187,11 @@ public class Ship {
     /**
      * Sets the PowerOutput of the Ship
      * @param powerOutput
-     */
+
     public void setPowerOutput(int powerOutput) {
         this.powerOutput = powerOutput;
     }
-
+    */
     /**
      * Returns the CallSign of the Ship
      * @return callSign
@@ -253,18 +259,11 @@ public class Ship {
     /**
      * Returns the MaximumCapacity of the Ship
      * @return maximumCapacity
-     */
+
     public int getMaximumCapacity() {
         return maximumCapacity;
     }
-
-    /**
-     * Sets the MaximumCapacity of the Ship
-     * @param maximumCapacity
-     */
-    public void setMaximumCapacity(int maximumCapacity) {
-        this.maximumCapacity = maximumCapacity;
-    }
+*/
 
     /**
      * Returns the Draft of the Ship
@@ -282,20 +281,6 @@ public class Ship {
         this.draft = draft;
     }
 
-    /**
-     * -------------------------------------------------------------------------------------------------------------
-     *                                              EQUALS
-     * -------------------------------------------------------------------------------------------------------------
-     */
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Ship ship = (Ship) o;
-        return MMSI == ship.MMSI && IMO == ship.IMO && vesselType == ship.vesselType && maximumCapacity == ship.maximumCapacity && Double.compare(ship.draft, draft) == 0 && Objects.equals(name, ship.name) && Objects.equals(callSign, ship.callSign);
-    }
-
 
     /**
      * -------------------------------------------------------------------------------------------------------------
@@ -309,22 +294,27 @@ public class Ship {
                 "MMSI=" + MMSI +
                 ", name='" + name + '\'' +
                 ", IMO=" + IMO +
-                ", numberEnergyGenerator=" + numberEnergyGenerator +
-                ", powerOutput=" + powerOutput +
                 ", callSign='" + callSign + '\'' +
                 ", vesselType=" + vesselType +
                 ", length=" + length +
                 ", width=" + width +
-                ", maximumCapacity=" + maximumCapacity +
                 ", draft=" + draft +
                 '}';
     }
 
+    @Override
+    public int compareTo(Ship o) {
+        return Integer.compare(this.MMSI, o.MMSI);
+    }
+
+
     /**
      * -------------------------------------------------------------------------------------------------------------
-     *                                              COMPARETO
+     *                                              COMPARE TO
      * -------------------------------------------------------------------------------------------------------------
      */
+
+
 
 
 
