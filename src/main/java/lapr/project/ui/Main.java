@@ -1,5 +1,6 @@
 package lapr.project.ui;
 
+import lapr.project.controller.ApplicationController;
 import lapr.project.controller.ImportFileController;
 import lapr.project.model.CalculatorExample;
 import lapr.project.model.Company;
@@ -8,6 +9,7 @@ import lapr.project.utils.TreeOfShips;
 import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -36,18 +38,29 @@ class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws IOException, SQLException {
-//        CalculatorExample calculatorExample = new CalculatorExample();
-//        int value = calculatorExample.sum(3, 5);
+
+        Scanner in = new Scanner(System.in);
+
+        System.out.println("What do you wanna run? Select one of the following options: ");
+        System.out.println("1 - Import Ships from CSV file into a BST.");
+
+        String answer = in.next();
+
+        if (answer.equalsIgnoreCase("1")){
+
+            ImportFileUI importFileUI = new ImportFileUI();
+
+            importFileUI.import_ships();
+        }
+
+
+
 
 //        if (LOGGER.isLoggable(Level.INFO)) {
 //            LOGGER.log(Level.INFO, String.valueOf(value));
 //        }
 
-        ImportFileController importFileController = new ImportFileController();
 
-        importFileController.import_ships(new File("Files/sships.csv"));
-
-        System.out.println(importFileController.getTreeOfShips());
 
     }
 
