@@ -28,8 +28,8 @@ public class AVLTest {
         System.out.println("insert");
 
         //test Simple right rotation 
-        AVL<Integer> instance = new AVL();
-        int arr[] = {8, 4, 10, 2, 6, 3};
+        AVL<Integer> instance = new AVL<Integer>();
+        int[] arr = {8, 4, 10, 2, 6, 3};
         Integer[] inorder1 = {2, 3, 4, 6, 8, 10};
         for (int i = 0; i < arr.length; i++)            //new elements
             instance.insert(arr[i]);
@@ -42,8 +42,8 @@ public class AVLTest {
         System.out.println("------------------------------------");
 
         //test Simple left rotation
-        AVL<Integer> instance2 = new AVL();
-        int arr2[] = {8, 4, 10, 9, 15, 12};
+        AVL<Integer> instance2 = new AVL<Integer>();
+        int[] arr2 = {8, 4, 10, 9, 15, 12};
         Integer[] inorder2 = {4, 8, 9, 10, 12, 15};
         for (int i = 0; i < arr2.length; i++)
             instance2.insert(arr2[i]);
@@ -56,8 +56,8 @@ public class AVLTest {
         System.out.println("------------------------------------");
 
         //test double rotation 
-        AVL<Integer> instance3 = new AVL();
-        int arr3[] = {8, 4, 10, 2, 6, 5};
+        AVL<Integer> instance3 = new AVL<Integer>();
+        int[] arr3 = {8, 4, 10, 2, 6, 5};
         Integer[] inorder3 = {2, 4, 5, 6, 8, 10};
         for (int i = 0; i < arr3.length; i++)
             instance3.insert(arr3[i]);
@@ -79,8 +79,8 @@ public class AVLTest {
         List<Integer> lExpected;
         AVL<Integer> instance;
 
-        instance = new AVL();
-        int arr[] = {8, 4, 10, 2, 6, 3};
+        instance = new AVL<Integer>();
+        int[] arr = {8, 4, 10, 2, 6, 3};
         for (int i = 0; i < arr.length; i++)
             instance.insert(arr[i]);
 
@@ -123,13 +123,13 @@ public class AVLTest {
     @Test
     public void testEquals() {
         System.out.println("equals");
-        AVL<Integer> instance = new AVL();
-        int arr[] = {1, 8};
+        AVL<Integer> instance = new AVL<Integer>();
+        int[] arr = {1, 8};
         for (int i = 0; i < arr.length; i++) {
             instance.insert(arr[i]);
         }
-        AVL<Integer> instance2 = new AVL();
-        int arr2[] = {1, 8};
+        AVL<Integer> instance2 = new AVL<Integer>();
+        int[] arr2 = {1, 8};
         for (int i = 0; i < arr2.length; i++) {
             instance2.insert(arr2[i]);
         }

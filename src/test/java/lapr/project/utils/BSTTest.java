@@ -30,7 +30,7 @@ public class BSTTest {
 
     @BeforeEach
     public void setUp() {
-        instance = new BST();
+        instance = new BST<Integer>();
         for (int i : arr)
             instance.insert(i);
     }
@@ -43,7 +43,7 @@ public class BSTTest {
         System.out.println("size");
         assertEquals("size should be = 10", instance.size(), arr.length);
 
-        BST<String> sInstance = new BST();
+        BST<String> sInstance = new BST<String>();
         assertEquals("size should be = 0", sInstance.size(), 0);
         sInstance.insert("A");
         assertEquals("size should be = 1", sInstance.size(), 1);
@@ -59,8 +59,8 @@ public class BSTTest {
     @Test
     public void testInsert() {
         System.out.println("insert");
-        int arr[] = {20, 15, 10, 13, 8, 17, 40, 50, 30, 20, 15, 10};
-        BST<Integer> instance = new BST();
+        int[] arr = {20, 15, 10, 13, 8, 17, 40, 50, 30, 20, 15, 10};
+        BST<Integer> instance = new BST<Integer>();
         for (int i = 0; i < 9; i++) {            //new elements
             instance.insert(arr[i]);
             assertEquals("size should be = " + (i + 1), instance.size(), i + 1);
@@ -117,7 +117,7 @@ public class BSTTest {
     public void testHeight() {
         System.out.println("height");
 
-        instance = new BST();
+        instance = new BST<Integer>();
         assertEquals("height should be = -1", instance.height(), -1);
         for (int idx = 0; idx < arr.length; idx++) {
             instance.insert(arr[idx]);
@@ -146,7 +146,7 @@ public class BSTTest {
     @Test
     public void testProcessBstByLevel() {
         System.out.println("processbstbylevel");
-        Map<Integer, List<Integer>> expResult = new HashMap();
+        Map<Integer, List<Integer>> expResult = new HashMap<Integer, List<Integer>>();
         expResult.put(0, Arrays.asList(new Integer[]{20}));
         expResult.put(1, Arrays.asList(new Integer[]{15, 40}));
         expResult.put(2, Arrays.asList(new Integer[]{10, 17, 30, 50}));
