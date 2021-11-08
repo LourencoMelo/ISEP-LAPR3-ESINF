@@ -1,16 +1,17 @@
 
 package lapr.project.utils;
 
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.junit.Test;
+import static org.testng.AssertJUnit.*;
 
-import static org.junit.Assert.*;
-
-import org.junit.Before;
 
 /**
  * @author DEI-ESINF
@@ -27,7 +28,7 @@ public class BSTTest {
     public BSTTest() {
     }
 
-    @Before
+    @BeforeEach
     public void setUp() {
         instance = new BST();
         for (int i : arr)

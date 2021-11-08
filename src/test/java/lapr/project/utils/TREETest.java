@@ -12,9 +12,13 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.NoSuchElementException;
-import org.junit.Before;
-import org.junit.Test;
-import static org.junit.Assert.*;
+
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  *
@@ -30,7 +34,7 @@ public class TREETest {
     public TREETest() {
     }
     
-    @Before
+    @BeforeEach
     public void setUp(){
         instance = new TREE();
         for(int i :arr)
@@ -63,7 +67,7 @@ public class TREETest {
         assertFalse(instance.isLeaf(20));
         assertFalse(instance.isLeaf(8));
         assertFalse(instance.isLeaf(999));
-    }    
+    }
 //    /**
 //     * Test of autumnTree method, of class TREE.
 //     */
