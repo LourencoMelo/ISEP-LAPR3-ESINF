@@ -5,7 +5,7 @@ autonumber
 
 actor       TrafficManager             as TM
 participant    ":importFileUI"         as UI
-participant    ":importFileController" as CTRL
+participant    ":ImportFileController" as CTRL
 participant    ":Company"              as Company
 participant    "import: importFile"    as Model
 participant    "ship: Ship"            as Ship

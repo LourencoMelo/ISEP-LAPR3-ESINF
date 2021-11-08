@@ -1,7 +1,9 @@
 package lapr.project.utils;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class TREE<E extends Comparable<E>> extends BST<E>{
 
@@ -71,6 +73,35 @@ public class TREE<E extends Comparable<E>> extends BST<E>{
         return new Node(node.getElement(),copyRec(node.getLeft()),copyRec(node.getRight()));
     }
 
+    /**
+     * @return the number of nodes by level.
+     */
+    public int[] numNodesByLevel(){
+
+        int[] result = new int[height() + 1];
+
+        numNodesByLevel(root,result,0);
+
+        return result;
+
+    }
+
+    private void numNodesByLevel(Node<E> node, int[] result, int level){
+
+        Map<Integer,List<E>> map = new HashMap<>();
+
+        map=nodesByLevel();
+        int num;
+
+        for(Integer i: map.keySet()){
+            level=i;
+
+            result[level] = map.get(i).size();
+
+
+        }
+
+    }
 
 
 }

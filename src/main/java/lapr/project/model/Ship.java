@@ -24,7 +24,7 @@ public class Ship implements Comparable <Ship>{
     /**
      * IMO of the Ship
      */
-    private int IMO;
+    private String IMO;
     /**
      * Number of Energy Generators present in the Ship
      */
@@ -82,7 +82,7 @@ public class Ship implements Comparable <Ship>{
      * @param width With of the ship
      * @param draft Draft of the Ship
      */
-    public Ship(int MMSI, String name, int IMO, String callSign, int vesselType, double length, double width, double draft) {
+    public Ship(int MMSI, String name, String IMO, String callSign, int vesselType, double length, double width, double draft) {
        setMMSI(MMSI);
        setName(name);
        setIMO(IMO);
@@ -144,7 +144,7 @@ public class Ship implements Comparable <Ship>{
      * Returns the IMO of the Ship
      * @return IMO
      */
-    public int getIMO() {
+    public String getIMO() {
         return IMO;
     }
 
@@ -152,8 +152,8 @@ public class Ship implements Comparable <Ship>{
      * Sets the IMO of the Ship
      * @param IMO
      */
-    public void setIMO(int IMO) {
-        if(IMO >= 1000000 && IMO <= 9999999){
+    public void setIMO(String IMO) {
+        if(IMO.length() == 10){
             this.IMO = IMO;
         }else{
             throw new IllegalArgumentException("IMO needs to be a 7 digits unique number.");
@@ -283,6 +283,15 @@ public class Ship implements Comparable <Ship>{
 
 
     /**
+     * Adds to the position data AVL tree a new position data
+     * @param positionData position data to add
+     */
+    public void addPositionData(PositionData positionData){
+        this.treeOfPositionData.insert(positionData);
+    }
+
+
+    /**
      * -------------------------------------------------------------------------------------------------------------
      *                                              TO STRING
      * -------------------------------------------------------------------------------------------------------------
@@ -299,7 +308,7 @@ public class Ship implements Comparable <Ship>{
                 ", length=" + length +
                 ", width=" + width +
                 ", draft=" + draft +
-                '}';
+                '}' +  treeOfPositionData;
     }
 
     @Override
