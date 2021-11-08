@@ -156,7 +156,7 @@ public class Ship implements Comparable <Ship>{
         if(IMO.length() == 10){
             this.IMO = IMO;
         }else{
-            throw new IllegalArgumentException("IMO needs to be a 7 digits unique number.");
+            throw new IllegalArgumentException("IMO needs to be a 10 digits unique number.");
         }
     }
 
