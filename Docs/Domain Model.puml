@@ -100,10 +100,6 @@ class PositionData{
 
 }
 
-class TranceiverClass{
-    -int id;
-}
-'note bottom: <b> id <b> liga -se ao position data
 
 class CargoManifest{
     HashMap<Container, int>

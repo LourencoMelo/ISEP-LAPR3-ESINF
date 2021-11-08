@@ -62,8 +62,8 @@ public class TreeOfPositionData extends AVL<PositionData> {
 
 
     /**
-     * Calculates the km travelled by the ship
-     * @return km travelled
+     * Calculates the travelled distance
+     * @return travelled distance
      */
     private double travelledDistance(){
         double distance = 0;
@@ -78,8 +78,15 @@ public class TreeOfPositionData extends AVL<PositionData> {
         return distance;
     }
 
+    /**
+     * Calculates the travelled distance between the two given dates
+     * @param date1 first date
+     * @param date2 second date
+     * @return travelled distance
+     */
     public double travelledDistanceBtDates(LocalDateTime date1,LocalDateTime date2){
         double distance = 0;
+        // In the start the Iterator doesn't point to anything
         Iterator<PositionData> iterator1 = inOrder().iterator();
         Iterator<PositionData> iterator2 = inOrder().iterator();
         iterator2.next();
@@ -94,14 +101,27 @@ public class TreeOfPositionData extends AVL<PositionData> {
     }
 
 
+    /**
+     * Gets the initial date of a ship's movement
+     * @return initial date
+     */
     public LocalDateTime initialDate(){
         return initialDate(root);
     }
 
+    /**
+     * Gets the last date of a ship's movement
+     * @return final date
+     */
     public LocalDateTime finalDate(){
         return finalDate(root);
     }
 
+    /**
+     * Gets the initial date of a ship's movement
+     * @param node node
+     * @return initial date
+     */
     private LocalDateTime initialDate(Node<PositionData> node){
         // If the root is null returns null
         if(root == null){
@@ -116,6 +136,11 @@ public class TreeOfPositionData extends AVL<PositionData> {
         }
     }
 
+    /**
+     * Gets the last date of a ship's movement
+     * @param node node
+     * @return final date
+     */
     private LocalDateTime finalDate(Node<PositionData> node){
         // If the root is null returns null
         if(root == null){
@@ -130,7 +155,12 @@ public class TreeOfPositionData extends AVL<PositionData> {
         }
     }
 
-
+    /**
+     * Calculates the average speed between two dates
+     * @param date1 first date
+     * @param date2 second date
+     * @return mean
+     */
     public double meanSOG(LocalDateTime date1,LocalDateTime date2){
         double mean = 0;
         int aux = 0;

@@ -39,9 +39,19 @@ public class Company {
         return treeOfShips.getShipByMMSI(MMSI);
     }
 
+    /**
+     * Returns a map of the TOP-N ships with the most kilometres travelled and their respective average speed for a specific vessel type
+     * @param date1 initial date
+     * @param date2 final date
+     * @param n N ships
+     * @param vType Vessel Type
+     * @return map of the TOP-N ships with the most kilometres travelled and their respective average speed
+     */
     public Map<Ship, Double> getTopShipsWithMostKmByVesselType(LocalDateTime date1, LocalDateTime date2, int n, int vType) {
 
+        // Creates a map where the Ship is the key and the average speed is the value
         Map<Ship, Double> topN = new HashMap<>();
+        //List of ships between the wanted dates and with the same vessel type
         List<Ship> totalShipsByTravelledDistance = new ArrayList<>();
 
         for (Ship ship : treeOfShips.inOrder()) {
@@ -50,6 +60,7 @@ public class Company {
             }
         }
 
+        // Comparator used to order the list by Travelled Distance
         Comparator<Ship> comparator = new Comparator<Ship>() {
             @Override
             public int compare(Ship s1, Ship s2) {
@@ -64,6 +75,7 @@ public class Company {
         };
         Collections.sort(totalShipsByTravelledDistance, comparator);
 
+        //Putting the top N ships and average speed into the map
         int j = 0;
         if (totalShipsByTravelledDistance.size() > n) {
             for (j = 0; j < n; j++) {
@@ -74,6 +86,7 @@ public class Company {
                 topN.put(totalShipsByTravelledDistance.get(j), totalShipsByTravelledDistance.get(j).getTreeOfPositionData().meanSOG(date1, date2));
             }
         }
+        //returns the map
         return topN;
     }
 
