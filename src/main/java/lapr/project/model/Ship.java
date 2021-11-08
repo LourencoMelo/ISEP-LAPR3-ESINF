@@ -281,7 +281,6 @@ public class Ship implements Comparable <Ship>{
         this.draft = draft;
     }
 
-
     /**
      * Adds to the position data AVL tree a new position data
      * @param positionData position data to add
@@ -321,6 +320,7 @@ public class Ship implements Comparable <Ship>{
     public int compareTo(Ship o) {
         return Integer.compare(this.MMSI, o.MMSI);
     }
+
 
 
     /**

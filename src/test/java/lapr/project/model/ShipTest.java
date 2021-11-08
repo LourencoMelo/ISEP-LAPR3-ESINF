@@ -3,14 +3,20 @@ package lapr.project.model;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDateTime;
+
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class ShipTest {
-
+    /**
+     * Ship instance
+     */
     Ship shipTest = new Ship(123456788, "WarCraft", "1023456787","Roger",2, 5.0, 3.0, 20.9);
-    Ship shipTest2 = new Ship(123456000, "WarCraft", "1023456787","Roger",2, 5.0, 3.0, 20.9);
 
+    /**
+     * Testing Get MMSI
+     */
     @Test
     void getMMSI() {
         int expected = 123456788;
@@ -18,6 +24,9 @@ class ShipTest {
         assertEquals(expected, actual);
     }
 
+    /**
+     * Testing SET MMSI
+     */
     @Test
     void setMMSI() {
         int expected = 881234567;
@@ -26,6 +35,9 @@ class ShipTest {
         assertEquals(expected, actual);
     }
 
+    /**
+     * Testing GET NAME
+     */
     @Test
     void getName() {
         String expected = "WarCraft";
@@ -33,6 +45,9 @@ class ShipTest {
         assertEquals(expected,actual);
     }
 
+    /**
+     * Testing SET Name
+     */
     @Test
     void setName() {
         String excepted = "SpaceCraft";
@@ -40,14 +55,18 @@ class ShipTest {
         String actual = shipTest.getName();
         assertEquals(excepted, actual);
     }
-
+    /**
+     * Testing GET IMO
+     */
     @Test
     void getIMO() {
         String expected = "1023456787";
         String actual = shipTest.getIMO();
         assertEquals(expected, actual);
     }
-
+    /**
+     * Testing SET IMO
+     */
     @Test
     void setIMO() {
         String expected = "1234102345";
@@ -56,6 +75,9 @@ class ShipTest {
         assertEquals(expected, actual);
     }
 
+    /**
+     * Testing GET CallSign
+     */
     @Test
     void getCallSign() {
         String expected = "Roger";
@@ -63,6 +85,9 @@ class ShipTest {
         assertEquals(expected, actual);
     }
 
+    /**
+     * Testing SET CallSign
+     */
     @Test
     void setCallSign() {
         String expected = "Copy";
@@ -71,6 +96,9 @@ class ShipTest {
         assertEquals(expected, actual);
     }
 
+    /**
+     * Testing GET VesselType
+     */
     @Test
     void getVesselType() {
         int expected = 2;
@@ -78,6 +106,9 @@ class ShipTest {
         assertEquals(expected, actual);
     }
 
+    /**
+     * Testing SET VesselType
+     */
     @Test
     void setVesselType() {
         int expected = 3;
@@ -86,6 +117,9 @@ class ShipTest {
         assertEquals(expected,actual);
     }
 
+    /**
+     * Testing GET Length
+     */
     @Test
     void getLength() {
         double expeceted = 5.0;
@@ -93,6 +127,9 @@ class ShipTest {
         assertEquals(expeceted,actual);
     }
 
+    /**
+     * Testing SET Length
+     */
     @Test
     void setLength() {
         double expected = 20.0;
@@ -101,6 +138,9 @@ class ShipTest {
         assertEquals(expected, actual);
     }
 
+    /**
+     * Testing GET Width
+     */
     @Test
     void getWidth() {
         double expected = 3.0;
@@ -108,6 +148,9 @@ class ShipTest {
         assertEquals(expected, actual);
     }
 
+    /**
+     * Testing SET Width
+     */
     @Test
     void setWidth() {
         double expected = 66.0;
@@ -116,6 +159,9 @@ class ShipTest {
         assertEquals(expected, actual);
     }
 
+    /**
+     * Testing GET Draft
+     */
     @Test
     void getDraft() {
         double expected = 20.9;
@@ -123,6 +169,9 @@ class ShipTest {
         assertEquals(expected, actual);
     }
 
+    /**
+     * Testing SET Draft
+     */
     @Test
     void setDraft() {
         double expected = 20.0;
@@ -137,10 +186,12 @@ class ShipTest {
     }
 
     /**
-     * Error because how can we get the treeOfPositionData ????
-
+     * Testing toString() of the Ship
+     */
     @Test
     void testToString() {
+        PositionData positionDataTest2 = new PositionData(LocalDateTime.of(2011, 11,8,13,39),10,10,3,4,5,1,"Sopa");
+        shipTest.addPositionData(positionDataTest2);
         String expected = "Ship{" +
                 "MMSI=" + shipTest.getMMSI() +
                 ", name='" + shipTest.getName() + '\'' +
@@ -150,31 +201,42 @@ class ShipTest {
                 ", length=" + shipTest.getLength() +
                 ", width=" + shipTest.getWidth() +
                 ", draft=" + shipTest.getDraft() +
-                '}' ;
+                '}' + positionDataTest2;
         String actual = shipTest.toString();
         assertEquals(expected, actual);
     }
-    */
 
+    /**
+     * Comparing ships when they have the same MMSI
+     */
     @Test
-    void compareToBigger() {
-        assertEquals(shipTest.compareTo(shipTest2), 1);
-    }
-
-    @Test
-    void compareToAllPossibilities() {
+    void compareToEqual() {
         /**
          * When they are equal
          */
-        Ship shipTestCompare1 = new Ship(123000788, "WarCraft", "1023456787","Roger",2, 5.0, 3.0, 20.9);
-        Ship shipTestCompare2 = new Ship(123000788, "Soup", "1023456782","Roger123",3, 5.0, 3.3, 20.9);
+        Ship shipTestCompare1 = new Ship(123000788, "WarCraft", "1023456787", "Roger", 2, 5.0, 3.0, 20.9);
+        Ship shipTestCompare2 = new Ship(123000788, "Soup", "1023456782", "Roger123", 3, 5.0, 3.3, 20.9);
         assertEquals(0, shipTestCompare1.compareTo(shipTestCompare2));
+    }
+
+    /**
+     * Comparing ships when the Ship 3 is smaller than Ship 4 in MMSI perspective
+     */
+    @Test
+    void compareToSmaller() {
         /**
          * Ship 3 is smaller than Ship 4
          */
-        Ship shipTestCompare3 = new Ship(123000782, "WarCraft", "1023456787","Roger",2, 5.0, 3.0, 20.9);
-        Ship shipTestCompare4 = new Ship(123000788, "Soup", "1023456782","Roger123",3, 5.0, 3.3, 20.9);
+        Ship shipTestCompare3 = new Ship(123000782, "WarCraft", "1023456787", "Roger", 2, 5.0, 3.0, 20.9);
+        Ship shipTestCompare4 = new Ship(123000788, "Soup", "1023456782", "Roger123", 3, 5.0, 3.3, 20.9);
         assertEquals(-1, shipTestCompare3.compareTo(shipTestCompare4));
+    }
+
+    /**
+     * Comparing ships when the Ship 5 is bigger than Ship 6 in MMSI perspective
+     */
+    @Test
+    void compareToBigger(){
         /**
          * Ship 5 is bigger than Ship 6
          */
