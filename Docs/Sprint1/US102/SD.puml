@@ -1,0 +1,30 @@
+@startuml
+
+autonumber
+
+actor       TrafficManager             as TM
+participant    ":getShipDetailUI"         as UI
+participant    ":getShipDetailController" as CTRL
+participant    ":TreeOfShips"              as tOS
+
+TM -> UI : Search details of a ship
+activate UI
+UI --> TM: Request any of ship code (MMSI, IMO or Call Sign)
+deactivate UI
+
+TM -> UI : Insert ship code
+activate UI
+
+    UI -> CTRL : getShipByCode(code)
+    activate CTRL
+    CTRL -> tOS : ship = getShipByCode(code)
+    activate tOS
+
+    deactivate tOS
+
+    deactivate CTRL
+
+UI --> TM : ship
+deactivate UI
+
+@enduml

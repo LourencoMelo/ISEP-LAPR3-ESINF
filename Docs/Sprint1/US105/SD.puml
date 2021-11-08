@@ -1,0 +1,28 @@
+@startuml
+
+autonumber
+
+actor       TrafficManager             as TM
+participant    ":getShipDetailUI"         as UI
+participant    ":getShipDetailController" as CTRL
+participant    ":TreeOfShips"              as tOS
+
+TM -> UI : List the MMSI, the total number of movements,\n Travelled Distance and Delta Distance
+activate UI
+
+
+activate UI
+
+
+    activate CTRL
+
+    activate tOS
+
+    deactivate tOS
+
+    deactivate CTRL
+
+UI --> TM : list
+deactivate UI
+
+@enduml
