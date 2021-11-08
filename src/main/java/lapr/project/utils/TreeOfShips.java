@@ -31,7 +31,7 @@ public class TreeOfShips extends AVL<Ship> {
 
                     insert(ship);
 
-                    PositionData positionData = new PositionData(formatter(ship_info[1].trim()), Double.parseDouble(ship_info[2].trim()), Double.parseDouble(ship_info[3].trim()),Double.parseDouble(ship_info[4].trim()), Double.parseDouble(ship_info[5].trim()), Double.parseDouble(ship_info[6].trim()), Integer.parseInt(ship_info[14].trim()), ship_info[15].trim());
+                    PositionData positionData = new PositionData(formatter(ship_info[1].trim()), Double.parseDouble(ship_info[2].trim()), Double.parseDouble(ship_info[3].trim()),Double.parseDouble(ship_info[4].trim()), Double.parseDouble(ship_info[5].trim()), Double.parseDouble(ship_info[6].trim()), ship_info[14].trim(), ship_info[15].trim());
 
                     ship.addPositionData(positionData);
 

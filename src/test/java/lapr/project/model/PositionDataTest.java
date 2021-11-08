@@ -10,7 +10,7 @@ class PositionDataTest {
     /**
      * PositionData instance
      */
-    PositionData positionDataTest = new PositionData(LocalDateTime.of(2021, 11,8,13,39),10,10,3,4,5,1,"Sopa");
+    PositionData positionDataTest = new PositionData(LocalDateTime.of(2021, 11,8,13,39),10,10,3,4,5,"1","Sopa");
 
     /**
      * Testing GET BaseDateTime
@@ -131,7 +131,7 @@ class PositionDataTest {
      */
     @Test
     void getPosition() {
-        int expected = 1;
+        String expected = "1";
         assertEquals(expected, positionDataTest.getPosition());
     }
 
@@ -140,9 +140,9 @@ class PositionDataTest {
      */
     @Test
     void setPosition() {
-        int expected = 2;
+        String expected = "2";
         positionDataTest.setPosition(expected);
-        assertEquals(true, positionDataTest.getPosition() == expected);
+        assertEquals(true, positionDataTest.getPosition().equalsIgnoreCase(expected));
     }
 
     /**
@@ -152,7 +152,7 @@ class PositionDataTest {
     void setTransceiver() {
         String expected = "Bebida";
         positionDataTest.setTransceiver(expected);
-        assertEquals(true, positionDataTest.getTransceiver() == expected);
+        assertEquals(true, positionDataTest.getTransceiver().equalsIgnoreCase(expected));
     }
 
     /**
@@ -194,8 +194,8 @@ class PositionDataTest {
      */
     @Test
     void notEqualsDifferentValues(){
-        PositionData positionDataTestCompare3 = new PositionData(LocalDateTime.of(2020, 11, 8, 13, 39), 11, 10, 5, 4, 2, 1, "Sopa");
-        PositionData positionDataTestCompare4 = new PositionData(LocalDateTime.of(2019, 11, 8, 13, 39), 10, 3, 3, 4, 5, 1, "Sopa");
+        PositionData positionDataTestCompare3 = new PositionData(LocalDateTime.of(2020, 11, 8, 13, 39), 11, 10, 5, 4, 2, "1", "Sopa");
+        PositionData positionDataTestCompare4 = new PositionData(LocalDateTime.of(2019, 11, 8, 13, 39), 10, 3, 3, 4, 5, "1", "Sopa");
         assertEquals(false, positionDataTestCompare3.equals(positionDataTestCompare4));
     }
 
@@ -224,8 +224,8 @@ class PositionDataTest {
         /**
          * When the positions are at the sime time
          */
-        PositionData positionDataTestCompare1 = new PositionData(LocalDateTime.of(2019, 11, 8, 13, 39), 10, 10, 3, 4, 5, 1, "Sopa");
-        PositionData positionDataTestCompare2 = new PositionData(LocalDateTime.of(2019, 11, 8, 13, 39), 10, 10, 3, 4, 5, 1, "Sopa");
+        PositionData positionDataTestCompare1 = new PositionData(LocalDateTime.of(2019, 11, 8, 13, 39), 10, 10, 3, 4, 5, "1", "Sopa");
+        PositionData positionDataTestCompare2 = new PositionData(LocalDateTime.of(2019, 11, 8, 13, 39), 10, 10, 3, 4, 5, "1", "Sopa");
         assertEquals(0, positionDataTestCompare1.compareTo(positionDataTestCompare2));
     }
 
@@ -237,8 +237,8 @@ class PositionDataTest {
         /**
          * Position 3 is after in time Postion 4
          */
-        PositionData positionDataTestCompare3 = new PositionData(LocalDateTime.of(2020, 11, 8, 13, 39), 10, 10, 3, 4, 5, 1, "Sopa");
-        PositionData positionDataTestCompare4 = new PositionData(LocalDateTime.of(2019, 11, 8, 13, 39), 10, 10, 3, 4, 5, 1, "Sopa");
+        PositionData positionDataTestCompare3 = new PositionData(LocalDateTime.of(2020, 11, 8, 13, 39), 10, 10, 3, 4, 5, "1", "Sopa");
+        PositionData positionDataTestCompare4 = new PositionData(LocalDateTime.of(2019, 11, 8, 13, 39), 10, 10, 3, 4, 5, "1", "Sopa");
         assertEquals(1, positionDataTestCompare3.compareTo(positionDataTestCompare4));
     }
 
@@ -250,8 +250,8 @@ class PositionDataTest {
         /**
          * Position 5 is before in time than Position 6
          */
-        PositionData positionDataTestCompare5 = new PositionData(LocalDateTime.of(2018, 11,8,13,39),10,10,3,4,5,1,"Sopa");
-        PositionData positionDataTestCompare6 = new PositionData(LocalDateTime.of(2019, 11,8,13,39),10,10,3,4,5,1,"Sopa");
+        PositionData positionDataTestCompare5 = new PositionData(LocalDateTime.of(2018, 11,8,13,39),10,10,3,4,5,"1","Sopa");
+        PositionData positionDataTestCompare6 = new PositionData(LocalDateTime.of(2019, 11,8,13,39),10,10,3,4,5,"1","Sopa");
         assertEquals(-1, positionDataTestCompare5.compareTo(positionDataTestCompare6));
     }
 }
