@@ -290,7 +290,13 @@ public class Ship implements Comparable <Ship>{
         this.treeOfPositionData.insert(positionData);
     }
 
-
+    /**
+     * Returns total of movements of a ship
+     * @return total of movements
+     */
+    public Integer getTotalMovements() {
+        return treeOfPositionData.getTotalMovements();
+    }
     /**
      * -------------------------------------------------------------------------------------------------------------
      *                                              TO STRING

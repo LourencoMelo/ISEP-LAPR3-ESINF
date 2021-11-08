@@ -49,5 +49,57 @@ public class TreeOfShips extends AVL<Ship> {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
         return LocalDateTime.parse(str, formatter);
     }
+
+    public Ship getShipByMMSI(int mMSI) {
+
+        return getShipByMMSI(root, mMSI);
+
+    }
+
+    public Ship getShipByMMSI(Node<Ship> node, int mMSI) {
+
+        if(root == null) {
+            return null;
+        }
+
+        if(mMSI == node.getElement().getMMSI()) return node.getElement();
+
+        /**
+         * If mMSI searched is higher than the current element's mmsi then we need to go to the right node that has higher.
+         */
+        if(mMSI > node.getElement().getMMSI()) return getShipByMMSI(node.getRight(), mMSI);
+        /**
+         * If mMSI searched is lower than the current element's mmsi then we need to go to the right node that has lower.
+         */
+        if(mMSI < node.getElement().getMMSI()) return getShipByMMSI(node.getLeft(), mMSI);
+
+        return null;
+
+    }
+
+    public Ship getShipByImo(String iMO) {
+        return getShipByImo(root, iMO);
+    }
+
+    public Ship getShipByImo(Node<Ship> node, String iMO) {
+
+        for(Ship s : super.inOrder()) {
+            if (s.getIMO().compareTo(iMO) == 0) return s;
+        }
+
+        return null;
+    }
+
+    public Ship getShipByCallSign(String callSign) {
+        return getShipByCallSign(root, callSign);
+    }
+
+    public Ship getShipByCallSign(Node<Ship> node,String callSign) {
+
+        return null;
+
+    }
+
+
 }
 
