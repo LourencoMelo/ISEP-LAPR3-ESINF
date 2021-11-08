@@ -291,6 +291,14 @@ public class Ship implements  Comparable<Ship> {
     }
 
     /**
+     * Returns the tree of Position Data
+     * @return tree of position Data
+     */
+    public TreeOfPositionData getTreeOfPositionData() {
+        return treeOfPositionData;
+    }
+
+    /**
      * Returns total of movements of a ship
      * @return total of movements
      */
