@@ -62,7 +62,6 @@ public class Ship implements  Comparable<Ship> {
     /**
      * Tree of PositionData
      */
-
     private TreeOfPositionData treeOfPositionData;
 
     /**
@@ -322,7 +321,7 @@ public class Ship implements  Comparable<Ship> {
                 ", length=" + length +
                 ", width=" + width +
                 ", draft=" + draft +
-                '}' +  treeOfPositionData;
+                '}' +  '\n' + treeOfPositionData;
     }
 
     @Override

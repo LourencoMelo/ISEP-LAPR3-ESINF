@@ -7,6 +7,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class TreeOfShips extends AVL<Ship> {
@@ -22,6 +24,8 @@ public class TreeOfShips extends AVL<Ship> {
 
             in.nextLine();
 
+            List<Ship> list_of_existent_ships = new ArrayList<>();
+
             while (in.hasNextLine()) {
                 try {
 
@@ -29,12 +33,18 @@ public class TreeOfShips extends AVL<Ship> {
 
                     Ship ship = new Ship(Integer.parseInt(ship_info[0].trim()), ship_info[7].trim(), ship_info[8].trim(), ship_info[9].trim(), Integer.parseInt(ship_info[10].trim()), Double.parseDouble(ship_info[11].trim()), Double.parseDouble(ship_info[12].trim()), Double.parseDouble(ship_info[13].trim()));
 
-                    insert(ship);
-
                     PositionData positionData = new PositionData(formatter(ship_info[1].trim()), Double.parseDouble(ship_info[2].trim()), Double.parseDouble(ship_info[3].trim()),Double.parseDouble(ship_info[4].trim()), Double.parseDouble(ship_info[5].trim()), Double.parseDouble(ship_info[6].trim()), ship_info[14].trim(), ship_info[15].trim());
 
-                    ship.addPositionData(positionData);
+                    for (Ship ship1:
+                         list_of_existent_ships) {
+                        if (ship1.getMMSI() == ship.getMMSI()){
+                            ship1.addPositionData(positionData);
+                        }
+                    }
 
+                    insert(ship);
+                    list_of_existent_ships.add(ship);
+                    ship.addPositionData(positionData);
 
                 } catch (NumberFormatException e) {
                 }
