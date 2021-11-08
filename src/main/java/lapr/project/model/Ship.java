@@ -3,6 +3,7 @@ package lapr.project.model;
 import lapr.project.utils.TREE;
 import lapr.project.utils.TreeOfPositionData;
 
+import java.time.LocalDateTime;
 import java.util.Comparator;
 import java.util.Objects;
 
@@ -309,6 +310,21 @@ public abstract class Ship implements  Comparable<Ship> {
         return treeOfPositionData.getTotalMovements();
     }
 
+    /**
+     * Methods of Tree Of Position Data
+     */
+    public double travelledDistanceBtDates(LocalDateTime date1, LocalDateTime date2){
+        return treeOfPositionData.travelledDistanceBtDates(date1,date2);
+    }
+
+    public LocalDateTime initialDate(){
+        return treeOfPositionData.initialDate();
+    }
+
+    public LocalDateTime finalDate(){
+        return treeOfPositionData.finalDate();
+    }
+
 
     /**
      * -------------------------------------------------------------------------------------------------------------
@@ -329,7 +345,6 @@ public abstract class Ship implements  Comparable<Ship> {
                 ", draft=" + draft +
                 '}' +  '\n' + treeOfPositionData;
     }
-
 
     @Override
     /**

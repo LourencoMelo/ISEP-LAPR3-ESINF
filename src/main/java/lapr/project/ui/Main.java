@@ -1,16 +1,13 @@
 package lapr.project.ui;
 
-import lapr.project.controller.ApplicationController;
 import lapr.project.controller.ImportFileController;
-import lapr.project.model.CalculatorExample;
+import lapr.project.controller.TopNController;
 import lapr.project.model.Company;
-import lapr.project.utils.TreeOfShips;
 
-import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
 import java.util.Scanner;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
@@ -39,6 +36,7 @@ class Main {
      */
     public static void main(String[] args) throws IOException, SQLException {
 
+        TopNController topNController = new TopNController();
         Scanner in = new Scanner(System.in);
 
         System.out.println("What do you wanna run? Select one of the following options: ");
@@ -60,7 +58,6 @@ class Main {
 
 
         }
-
 
 
 
