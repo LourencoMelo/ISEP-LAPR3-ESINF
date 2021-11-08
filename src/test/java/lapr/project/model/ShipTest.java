@@ -12,7 +12,7 @@ class ShipTest {
     /**
      * Ship instance
      */
-    Ship shipTest = new Ship(123456788, "WarCraft", "1023456787","Roger",2, 5.0, 3.0, 20.9);
+    Ship shipTest = new ShipByMMSI(123456788, "WarCraft", "1023456787","Roger",2, 5.0, 3.0, 20.9);
 
     /**
      * Testing Get MMSI
@@ -214,9 +214,18 @@ class ShipTest {
         /**
          * When they are equal
          */
-        Ship shipTestCompare1 = new Ship(123000788, "WarCraft", "1023456787", "Roger", 2, 5.0, 3.0, 20.9);
-        Ship shipTestCompare2 = new Ship(123000788, "Soup", "1023456782", "Roger123", 3, 5.0, 3.3, 20.9);
+        Ship shipTestCompare1 = new ShipByMMSI(123000788, "WarCraft", "1023456787", "Roger", 2, 5.0, 3.0, 20.9);
+        Ship shipTestCompare2 = new ShipByMMSI(123000788, "Soup", "1023456782", "Roger123", 3, 5.0, 3.3, 20.9);
+
+        Ship shipTestCompare3 = new ShipByIMO(123000788, "WarCraft", "1023456787", "Roger", 2, 5.0, 3.0, 20.9);
+        Ship shipTestCompare4 = new ShipByIMO(123000788, "Soup", "1023456787", "Roger123", 3, 5.0, 3.3, 20.9);
+
+        Ship shipTestCompare5 = new ShipByCallSign(123000788, "WarCraft", "1023456787", "Roger", 2, 5.0, 3.0, 20.9);
+        Ship shipTestCompare6 = new ShipByCallSign(123000788, "Soup", "1023456782", "Roger", 3, 5.0, 3.3, 20.9);
+
         assertEquals(0, shipTestCompare1.compareTo(shipTestCompare2));
+        assertEquals(0, shipTestCompare3.compareTo(shipTestCompare4));
+        assertEquals(0, shipTestCompare5.compareTo(shipTestCompare6));
     }
 
     /**
@@ -227,9 +236,19 @@ class ShipTest {
         /**
          * Ship 3 is smaller than Ship 4
          */
-        Ship shipTestCompare3 = new Ship(123000782, "WarCraft", "1023456787", "Roger", 2, 5.0, 3.0, 20.9);
-        Ship shipTestCompare4 = new Ship(123000788, "Soup", "1023456782", "Roger123", 3, 5.0, 3.3, 20.9);
+        Ship shipTestCompare1 = new ShipByMMSI(123000787, "WarCraft", "1023456787", "Roger", 2, 5.0, 3.0, 20.9);
+        Ship shipTestCompare2 = new ShipByMMSI(123000788, "Soup", "1023456782", "Roger123", 3, 5.0, 3.3, 20.9);
+
+        Ship shipTestCompare3 = new ShipByIMO(123000782, "WarCraft", "1023456787", "Roger", 2, 5.0, 3.0, 20.9);
+        Ship shipTestCompare4 = new ShipByIMO(123000788, "Soup", "1023456788", "Roger123", 3, 5.0, 3.3, 20.9);
+
+        Ship shipTestCompare5 = new ShipByCallSign(123000782, "WarCraft", "1023456787", "Roger", 2, 5.0, 3.0, 20.9);
+        Ship shipTestCompare6 = new ShipByCallSign(123000788, "Soup", "1023456782", "Roger1", 3, 5.0, 3.3, 20.9);
+
+
+        assertEquals(-1, shipTestCompare1.compareTo(shipTestCompare2));
         assertEquals(-1, shipTestCompare3.compareTo(shipTestCompare4));
+        assertEquals(-1, shipTestCompare5.compareTo(shipTestCompare6));
     }
 
     /**
@@ -240,8 +259,19 @@ class ShipTest {
         /**
          * Ship 5 is bigger than Ship 6
          */
-        Ship shipTestCompare5 = new Ship(123000789, "WarCraft", "1023456787","Roger",2, 5.0, 3.0, 20.9);
-        Ship shipTestCompare6 = new Ship(123000788, "Soup", "1023456782","Roger123",3, 5.0, 3.3, 20.9);
+        Ship shipTestCompare1 = new ShipByMMSI(123000787, "WarCraft", "1023456787", "Roger", 2, 5.0, 3.0, 20.9);
+        Ship shipTestCompare2 = new ShipByMMSI(123000786, "Soup", "1023456782", "Roger123", 3, 5.0, 3.3, 20.9);
+
+        Ship shipTestCompare3 = new ShipByIMO(123000782, "WarCraft", "1023456787", "Roger", 2, 5.0, 3.0, 20.9);
+        Ship shipTestCompare4 = new ShipByIMO(123000788, "Soup", "1023456786", "Roger123", 3, 5.0, 3.3, 20.9);
+
+        Ship shipTestCompare5 = new ShipByCallSign(123000782, "WarCraft", "1023456787", "Roger1", 2, 5.0, 3.0, 20.9);
+        Ship shipTestCompare6 = new ShipByCallSign(123000788, "Soup", "1023456782", "Roger", 3, 5.0, 3.3, 20.9);
+
+
+        assertEquals(1, shipTestCompare1.compareTo(shipTestCompare2));
+        assertEquals(1, shipTestCompare3.compareTo(shipTestCompare4));
         assertEquals(1, shipTestCompare5.compareTo(shipTestCompare6));
+
     }
 }

@@ -50,7 +50,15 @@ class Main {
 
             ImportFileUI importFileUI = new ImportFileUI();
 
+            ImportFileController importFileController = new ImportFileController();
+
             importFileUI.import_ships();
+
+            System.out.println("\n\n\n\n\n\n\n\n");
+
+            //System.out.println(importFileController.getShipByMMSI(210950000));
+
+
         }
 
 

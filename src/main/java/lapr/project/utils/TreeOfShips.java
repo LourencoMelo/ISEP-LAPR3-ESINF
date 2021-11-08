@@ -1,7 +1,6 @@
 package lapr.project.utils;
 
-import lapr.project.model.PositionData;
-import lapr.project.model.Ship;
+import lapr.project.model.*;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -18,7 +17,7 @@ public class TreeOfShips extends AVL<Ship> {
      *
      * @param file file with ships info
      */
-    public void createTree(File file) {
+    public void createTreeMMSI(File file) {
         try {
             Scanner in = new Scanner(file);
 
@@ -31,12 +30,96 @@ public class TreeOfShips extends AVL<Ship> {
 
                     String[] ship_info = in.nextLine().trim().split(",");
 
-                    Ship ship = new Ship(Integer.parseInt(ship_info[0].trim()), ship_info[7].trim(), ship_info[8].trim(), ship_info[9].trim(), Integer.parseInt(ship_info[10].trim()), Double.parseDouble(ship_info[11].trim()), Double.parseDouble(ship_info[12].trim()), Double.parseDouble(ship_info[13].trim()));
+                    ShipByMMSI ship = new ShipByMMSI(Integer.parseInt(ship_info[0].trim()), ship_info[7].trim(), ship_info[8].trim(), ship_info[9].trim(), Integer.parseInt(ship_info[10].trim()), Double.parseDouble(ship_info[11].trim()), Double.parseDouble(ship_info[12].trim()), Double.parseDouble(ship_info[13].trim()));
 
                     PositionData positionData = new PositionData(formatter(ship_info[1].trim()), Double.parseDouble(ship_info[2].trim()), Double.parseDouble(ship_info[3].trim()),Double.parseDouble(ship_info[4].trim()), Double.parseDouble(ship_info[5].trim()), Double.parseDouble(ship_info[6].trim()), ship_info[14].trim(), ship_info[15].trim());
 
                     for (Ship ship1:
                          list_of_existent_ships) {
+                        if (ship1.getMMSI() == ship.getMMSI()){
+                            ship1.addPositionData(positionData);
+                        }
+                    }
+
+                    insert(ship);
+                    list_of_existent_ships.add(ship);
+                    ship.addPositionData(positionData);
+
+                } catch (NumberFormatException e) {
+                }
+            }
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Imports ships from txt file
+     *
+     * @param file file with ships info
+     */
+    public void createTreeIMO(File file) {
+        try {
+            Scanner in = new Scanner(file);
+
+            in.nextLine();
+
+            List<Ship> list_of_existent_ships = new ArrayList<>();
+
+            while (in.hasNextLine()) {
+                try {
+
+                    String[] ship_info = in.nextLine().trim().split(",");
+
+                    ShipByIMO ship = new ShipByIMO(Integer.parseInt(ship_info[0].trim()), ship_info[7].trim(), ship_info[8].trim(), ship_info[9].trim(), Integer.parseInt(ship_info[10].trim()), Double.parseDouble(ship_info[11].trim()), Double.parseDouble(ship_info[12].trim()), Double.parseDouble(ship_info[13].trim()));
+
+                    PositionData positionData = new PositionData(formatter(ship_info[1].trim()), Double.parseDouble(ship_info[2].trim()), Double.parseDouble(ship_info[3].trim()),Double.parseDouble(ship_info[4].trim()), Double.parseDouble(ship_info[5].trim()), Double.parseDouble(ship_info[6].trim()), ship_info[14].trim(), ship_info[15].trim());
+
+                    for (Ship ship1:
+                            list_of_existent_ships) {
+                        if (ship1.getMMSI() == ship.getMMSI()){
+                            ship1.addPositionData(positionData);
+                        }
+                    }
+
+                    insert(ship);
+                    list_of_existent_ships.add(ship);
+                    ship.addPositionData(positionData);
+
+                } catch (NumberFormatException e) {
+                }
+            }
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Imports ships from txt file
+     *
+     * @param file file with ships info
+     */
+    public void createTreeCallSign(File file) {
+        try {
+            Scanner in = new Scanner(file);
+
+            in.nextLine();
+
+            List<Ship> list_of_existent_ships = new ArrayList<>();
+
+            while (in.hasNextLine()) {
+                try {
+
+                    String[] ship_info = in.nextLine().trim().split(",");
+
+                    ShipByCallSign ship = new ShipByCallSign(Integer.parseInt(ship_info[0].trim()), ship_info[7].trim(), ship_info[8].trim(), ship_info[9].trim(), Integer.parseInt(ship_info[10].trim()), Double.parseDouble(ship_info[11].trim()), Double.parseDouble(ship_info[12].trim()), Double.parseDouble(ship_info[13].trim()));
+
+                    PositionData positionData = new PositionData(formatter(ship_info[1].trim()), Double.parseDouble(ship_info[2].trim()), Double.parseDouble(ship_info[3].trim()),Double.parseDouble(ship_info[4].trim()), Double.parseDouble(ship_info[5].trim()), Double.parseDouble(ship_info[6].trim()), ship_info[14].trim(), ship_info[15].trim());
+
+                    for (Ship ship1:
+                            list_of_existent_ships) {
                         if (ship1.getMMSI() == ship.getMMSI()){
                             ship1.addPositionData(positionData);
                         }
