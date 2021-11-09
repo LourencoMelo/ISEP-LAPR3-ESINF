@@ -116,6 +116,7 @@ public class AVL <E extends Comparable<E>> extends BST<E> {
         if (otherObj == null || this.getClass() != otherObj.getClass())
             return false;
 
+        @SuppressWarnings("unchecked")
         AVL<E> second = (AVL<E>) otherObj;
         return equals(root, second.root);
     }

@@ -20,6 +20,8 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@SuppressWarnings("unchecked")
+
 /**
  *
  * @author DEI-ESINF
@@ -35,6 +37,7 @@ public class TREETest {
     }
     
     @BeforeEach
+
     public void setUp(){
         instance = new TREE();
         for(int i :arr)
