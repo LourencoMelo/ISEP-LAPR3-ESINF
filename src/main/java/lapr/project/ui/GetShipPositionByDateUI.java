@@ -27,6 +27,6 @@ public class GetShipPositionByDateUI {
 
         String answer = in.next();
 
-        this.getShipPositionByDateController.getShipPositionMessagesOrderByDateController(getShipByCodeController.getShipByCode(answer));
+        System.out.println(this.getShipPositionByDateController.getShipPositionMessagesOrderByDateController(getShipByCodeController.getShipByCode(answer)));
     }
 }
