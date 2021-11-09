@@ -1,6 +1,5 @@
 package lapr.project.model;
 
-import lapr.project.utils.TREE;
 import lapr.project.utils.TreeOfPositionData;
 
 import java.time.LocalDateTime;
