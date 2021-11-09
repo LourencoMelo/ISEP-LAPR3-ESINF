@@ -1,0 +1,34 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+actor       TrafficManager             as TM
+participant    ":topnUI"         as UI
+participant    ":TopNController" as CTRL
+participant    ":Company"              as Company
+participant    "treeOfShips: Ship"            as TreeOfShips
+participant    "treeOfPositionData: PositionData"            as TreeOfPosition
+
+
+TM -> UI : Get the top-N ships with the most kilometres \n travelled and their average speed
+activate UI
+UI --> TM: Requests the number of ships and the dates
+deactivate UI
+
+TM -> UI : Enters the requested data
+activate UI
+
+    UI-> CTRL : getTopShipsWithMostKm(....)
+    activate CTRL
+loop vessel Types
+    CTRL -> Company : getTopShipsWithMostKm(....)
+    activate Company
+    Company -> Company : getTopShipsWithMostKmByVesselType(...)
+    Company -> CTRL : return Map<Ship, Double>
+    deactivate Company
+    CTRL -> UI : return Map<Ship, Double>
+    deactivate CTRL
+end
+UI -> TM : Shows the Top-N ships with the most kilometres \n travelled and their average \n speed grouped by Vessel Type
+@enduml

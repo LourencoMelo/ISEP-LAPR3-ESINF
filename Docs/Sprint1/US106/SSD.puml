@@ -4,7 +4,7 @@
 autonumber
 
 TrafficManager -> System : Get the top-N ships with the most kilometres travelled and their average speed
-System --> TrafficManager: Requests the number of ships
+System --> TrafficManager: Requests the number of ships and the dates
 TrafficManager -> System : Enters the requested data
 System --> TrafficManager : Validates and displays the data , asking for confirmation
 TrafficManager -> System : Confirms

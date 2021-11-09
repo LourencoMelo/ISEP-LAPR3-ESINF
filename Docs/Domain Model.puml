@@ -97,6 +97,7 @@ class PositionData{
     -double cog
     -double heading
     -int position
+    -String transceiver
 
 }
 

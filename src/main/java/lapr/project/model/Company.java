@@ -62,9 +62,10 @@ public class Company {
 
     /**
      * Returns a map of the TOP-N ships with the most kilometres travelled and their respective average speed for a specific vessel type
+     *
      * @param date1 initial date
      * @param date2 final date
-     * @param n N ships
+     * @param n     N ships
      * @param vType Vessel Type
      * @return map of the TOP-N ships with the most kilometres travelled and their respective average speed
      */
@@ -102,8 +103,8 @@ public class Company {
             for (j = 0; j < n; j++) {
                 topN.put(totalShipsByTravelledDistance.get(j), totalShipsByTravelledDistance.get(j).getTreeOfPositionData().meanSOG(date1, date2));
             }
-        }else{
-            for(j = 0; j < totalShipsByTravelledDistance.size() - 1; j ++){
+        } else {
+            for (j = 0; j < totalShipsByTravelledDistance.size() - 1; j++) {
                 topN.put(totalShipsByTravelledDistance.get(j), totalShipsByTravelledDistance.get(j).getTreeOfPositionData().meanSOG(date1, date2));
             }
         }
@@ -111,4 +112,27 @@ public class Company {
         return topN;
     }
 
+    /**
+     * For each Vessel Type this method will give the TOP-N ships with the most kilometres travelled and their respective average speed
+     *
+     * @param date1 initial date
+     * @param date2 final date
+     * @param n     N ships
+     */
+    public void getTopShipsWithMostKm(LocalDateTime date1, LocalDateTime date2, int n) {
+        //Creates a list of vessel types
+        List<Integer> allVesselTypes = new ArrayList<>();
+        for (Ship ship : treeOfShips.inOrder()) {
+            if (!allVesselTypes.contains(ship.getVesselType())) {
+                allVesselTypes.add(ship.getVesselType());
+            }
+        }
+        //For each Vessel Type , creates the respective map
+        for (Integer vTypes : allVesselTypes) {
+            Map<Ship, Double> topN = getTopShipsWithMostKmByVesselType(date1, date2, n, vTypes);
+            for (Map.Entry<Ship, Double> topiN : topN.entrySet()) {
+                System.out.println(topiN);
+            }
+        }
+    }
 }

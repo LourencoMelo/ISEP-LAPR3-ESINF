@@ -24,20 +24,7 @@ public class TopNController extends AVL<Ship> {
      * @param n N ships
      */
     public void getTopShipsWithMostKm(LocalDateTime date1, LocalDateTime date2, int n){
-        //Creates a list of vessel types
-        List<Integer> allVesselTypes = new ArrayList<>();
-        for(Ship ship : inOrder()){
-            if(!allVesselTypes.contains(ship.getVesselType())){
-                allVesselTypes.add(ship.getVesselType());
-            }
-        }
-         //For each Vessel Type , creates the respective map
-        for(Integer vTypes : allVesselTypes){
-            Map<Ship, Double> topN = company.getTopShipsWithMostKmByVesselType(date1,date2,n,vTypes);
-            for(Map.Entry<Ship, Double> topiN : topN.entrySet()){
-                System.out.println(topiN);
-            }
-        }
+        company.getTopShipsWithMostKm(date1,date2,n);
     }
 
 
