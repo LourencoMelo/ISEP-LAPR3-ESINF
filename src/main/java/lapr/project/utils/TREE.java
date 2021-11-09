@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@SuppressWarnings("unchecked")
 public class TREE<E extends Comparable<E>> extends BST<E>{
 
     /*
@@ -63,19 +62,19 @@ public class TREE<E extends Comparable<E>> extends BST<E>{
         list.add(node.getElement());
         LeftSideAsc(node.getRight(),list);
     }
-
-    @SuppressWarnings("unchecked")
-    private Node copyRec(Node<E> node){
-        if(node == null){
-            return null;
-        }
-        if(node.getLeft() == null && node.getRight() == null){
-            return null;
-        }
-
-
-        return new Node(node.getElement(),copyRec(node.getLeft()),copyRec(node.getRight()));
-    }
+//
+//    @SuppressWarnings("unchecked")
+//    private Node copyRec(Node<E> node){
+//        if(node == null){
+//            return null;
+//        }
+//        if(node.getLeft() == null && node.getRight() == null){
+//            return null;
+//        }
+//
+//
+//        return new Node(node.getElement(),copyRec(node.getLeft()),copyRec(node.getRight()));
+//    }
 
     /**
      * @return the number of nodes by level.

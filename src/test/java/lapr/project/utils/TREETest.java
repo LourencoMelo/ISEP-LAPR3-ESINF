@@ -20,7 +20,6 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@SuppressWarnings("unchecked")
 
 /**
  *
@@ -36,13 +35,13 @@ public class TREETest {
     public TREETest() {
     }
     
-    @BeforeEach
-
-    public void setUp(){
-        instance = new TREE();
-        for(int i :arr)
-            instance.insert(i);        
-    }
+//    @BeforeEach
+//
+//    public void setUp(){
+//        instance = new TREE();
+//        for(int i :arr)
+//            instance.insert(i);
+//    }
     /**
      * Test of isLeaf method, of class TREE.
      */
