@@ -25,6 +25,9 @@ loop vessel Types
     CTRL -> Company : getTopShipsWithMostKm(....)
     activate Company
     Company -> Company : getTopShipsWithMostKmByVesselType(...)
+    Company -> TreeOfShips : getListOfShipsByVesselType()
+    Company -> TreeOfPosition : travelledDistanceBtDates(...)
+    Company -> TreeOfPosition : meanSOG(..)
     Company -> CTRL : return Map<Ship, Double>
     deactivate Company
     CTRL -> UI : return Map<Ship, Double>
