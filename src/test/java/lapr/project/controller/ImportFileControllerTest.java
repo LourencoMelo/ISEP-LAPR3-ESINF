@@ -4,6 +4,7 @@ import lapr.project.model.Company;
 import lapr.project.model.PositionData;
 import lapr.project.model.Ship;
 import lapr.project.model.ShipByMMSI;
+import lapr.project.utils.App;
 import org.junit.jupiter.api.Test;
 
 
@@ -16,17 +17,21 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ImportFileControllerTest {
 
-    Company company = new Company();
+    Company company = App.getInstance().getCompany();
     ImportFileController importFileController = new ImportFileController(company);
+
+    @Test
+    void company_Object() {
+        assertEquals(App.getInstance().getCompany().getTreeOfShips(), company.getTreeOfShips());
+    }
 
     @Test
     void import_ships() {
 
+        importFileController.import_ships(new File("Files/testImport.csv"));
+
         Boolean result = false;
 
-        company.getTreeOfShips().createTreeMMSI(new File("Files/testImport.csv"));
-        company.getTreeOfShips().createTreeIMO(new File("Files/testImport.csv"));
-        company.getTreeOfShips().createTreeCallSign(new File("Files/testImport.csv"));
         if (company.getTreeOfShips().size() == 2) result = true;
         if (company.getTreeOfShipsIMO().size() == 2) result = true;
         if (company.getTreeOfShipsCallSign().size() == 2) result = true;
@@ -116,7 +121,7 @@ class ImportFileControllerTest {
     void getTreeOfShips3() {
 
         String actualCallSign = importFileController.getTreeOfShips3();
-        String expectedCallSign = company.getTreeOfShips().toString();
+        String expectedCallSign = company.getTreeOfShipsCallSign().toString();
 
         assertEquals(actualCallSign, expectedCallSign);
     }
