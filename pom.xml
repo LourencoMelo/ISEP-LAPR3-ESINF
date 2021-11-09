@@ -84,7 +84,7 @@
                     <showWarnings>false</showWarnings>   <!-- Needs this -->
 
                     <compilerArgs>
-
+                        -Xlint:unchecked
                     </compilerArgs>
 
                     <encoding>${project.build.sourceEncoding}</encoding>

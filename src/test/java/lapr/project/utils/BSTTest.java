@@ -1,6 +1,7 @@
 
 package lapr.project.utils;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -12,6 +13,8 @@ import java.util.Map;
 
 import static org.testng.AssertJUnit.*;
 
+
+@SuppressWarnings("unchecked")
 
 /**
  * @author DEI-ESINF
@@ -41,16 +44,16 @@ public class BSTTest {
     @Test
     public void testSize() {
         System.out.println("size");
-        assertEquals("size should be = 10", instance.size(), arr.length);
+        Assertions.assertEquals(instance.size(), arr.length, "size should be = 10");
 
         BST<String> sInstance = new BST<String>();
-        assertEquals("size should be = 0", sInstance.size(), 0);
+        Assertions.assertEquals(sInstance.size(), 0, "size should be = 0");
         sInstance.insert("A");
-        assertEquals("size should be = 1", sInstance.size(), 1);
+        Assertions.assertEquals(sInstance.size(), 1, "size should be = 1");
         sInstance.insert("B");
-        assertEquals("size should be = 2", sInstance.size(), 2);
+        Assertions.assertEquals(sInstance.size(), 2, "size should be = 2");
         sInstance.insert("A");
-        assertEquals("size should be = 2", sInstance.size(), 2);
+        Assertions.assertEquals(sInstance.size(), 2, "size should be = 2");
     }
 
     /**
@@ -63,11 +66,11 @@ public class BSTTest {
         BST<Integer> instance = new BST<Integer>();
         for (int i = 0; i < 9; i++) {            //new elements
             instance.insert(arr[i]);
-            assertEquals("size should be = " + (i + 1), instance.size(), i + 1);
+            Assertions.assertEquals(instance.size(), i + 1, "size should be = " + (i + 1));
         }
         for (int i = 9; i < arr.length; i++) {    //duplicated elements => same size
             instance.insert(arr[i]);
-            assertEquals("size should be = 9", instance.size(), 9);
+            Assertions.assertEquals(instance.size(), 9, "size should be = 9");
         }
     }
 
@@ -81,15 +84,15 @@ public class BSTTest {
         int qtd = arr.length;
         instance.remove(999);
 
-        assertEquals("size should be = " + qtd, instance.size(), qtd);
+        Assertions.assertEquals(instance.size(), qtd, "size should be = " + qtd);
         for (int i = 0; i < arr.length; i++) {
             instance.remove(arr[i]);
             qtd--;
-            assertEquals("size should be = " + qtd, qtd, instance.size());
+            Assertions.assertEquals(qtd, instance.size(), "size should be = " + qtd);
         }
 
         instance.remove(999);
-        assertEquals("size should be = 0", 0, instance.size());
+        Assertions.assertEquals(0, instance.size(), "size should be = 0");
     }
 
     /**
@@ -99,15 +102,15 @@ public class BSTTest {
     public void testIsEmpty() {
         System.out.println("isempty");
 
-        assertFalse("the BST should be NOT empty", instance.isEmpty());
-        instance = new BST();
-        assertTrue("the BST should be empty", instance.isEmpty());
+        Assertions.assertFalse(instance.isEmpty(), "the BST should be NOT empty");
+        instance = new BST<Integer>();
+        Assertions.assertTrue(instance.isEmpty(), "the BST should be empty");
 
         instance.insert(11);
-        assertFalse("the BST should be NOT empty", instance.isEmpty());
+        Assertions.assertFalse(instance.isEmpty(), "the BST should be NOT empty");
 
         instance.remove(11);
-        assertTrue("the BST should be empty", instance.isEmpty());
+        Assertions.assertTrue(instance.isEmpty(), "the BST should be empty");
     }
 
     /**
@@ -118,13 +121,13 @@ public class BSTTest {
         System.out.println("height");
 
         instance = new BST<Integer>();
-        assertEquals("height should be = -1", instance.height(), -1);
+        Assertions.assertEquals(instance.height(), -1, "height should be = -1");
         for (int idx = 0; idx < arr.length; idx++) {
             instance.insert(arr[idx]);
-            assertEquals("height should be = " + height[idx], instance.height(), height[idx]);
+            Assertions.assertEquals(instance.height(), height[idx], "height should be = " + height[idx]);
         }
-        instance = new BST();
-        assertEquals("height should be = -1", instance.height(), -1);
+        instance = new BST<Integer>();
+        Assertions.assertEquals(instance.height(), -1, "height should be = -1");
     }
 
     /**
@@ -133,11 +136,11 @@ public class BSTTest {
     @Test
     public void testSmallestElement() {
         System.out.println("smallestElement");
-        assertEquals(new Integer(7), instance.smallestElement());
+        Assertions.assertEquals(new Integer(7), instance.smallestElement());
         instance.remove(7);
-        assertEquals(new Integer(8), instance.smallestElement());
+        Assertions.assertEquals(new Integer(8), instance.smallestElement());
         instance.remove(8);
-        assertEquals(new Integer(10), instance.smallestElement());
+        Assertions.assertEquals(new Integer(10), instance.smallestElement());
     }
 
     /**
@@ -156,7 +159,7 @@ public class BSTTest {
         Map<Integer, List<Integer>> result = instance.nodesByLevel();
 
         for (Map.Entry<Integer, List<Integer>> e : result.entrySet())
-            assertEquals(expResult.get(e.getKey()), e.getValue());
+            Assertions.assertEquals(expResult.get(e.getKey()), e.getValue());
     }
 
 
@@ -167,7 +170,7 @@ public class BSTTest {
     public void testInOrder() {
         System.out.println("inOrder");
         List<Integer> lExpected = Arrays.asList(inorderT);
-        assertEquals("inOrder should be " + lExpected.toString(), lExpected, instance.inOrder());
+        Assertions.assertEquals(lExpected, instance.inOrder(), "inOrder should be " + lExpected.toString());
     }
 
     /**
@@ -177,7 +180,7 @@ public class BSTTest {
     public void testpreOrder() {
         System.out.println("preOrder");
         List<Integer> lExpected = Arrays.asList(preorderT);
-        assertEquals("preOrder should be " + lExpected.toString(), lExpected, instance.preOrder());
+        Assertions.assertEquals(lExpected, instance.preOrder(), "preOrder should be " + lExpected.toString());
     }
 
     /**
@@ -187,6 +190,6 @@ public class BSTTest {
     public void testposOrder() {
         System.out.println("posOrder");
         List<Integer> lExpected = Arrays.asList(posorderT);
-        assertEquals("posOrder should be " + lExpected.toString(), lExpected, instance.posOrder());
+        Assertions.assertEquals(lExpected, instance.posOrder(), "posOrder should be " + lExpected.toString());
     }
 }
