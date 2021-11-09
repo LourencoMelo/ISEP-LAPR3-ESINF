@@ -25,28 +25,50 @@ public class Company {
 
     }
 
+    public void printMovementsTravelledAndDeltaDistance() {
+        Comparator<Ship> comparator = new Comparator<Ship>() {
+            @Override
+            public int compare(Ship s1, Ship s2) {
+                if (s1.getTreeOfPositionData().travelledDistance() > s2.getTreeOfPositionData().travelledDistance()) {
+                    return -1;
+                }
+                if (s1.getTreeOfPositionData().travelledDistance() < s2.getTreeOfPositionData().travelledDistance()) {
+                    return 1;
+                }
+
+                if(s1.getTreeOfPositionData().getTotalMovements() > s2.getTreeOfPositionData().getTotalMovements()) {
+                    return 1;
+                }
+                if(s1.getTreeOfPositionData().getTotalMovements() < s2.getTreeOfPositionData().getTotalMovements()) {
+                    return -1;
+                }
+                return 0;
+            }
+        };
+        List<Ship> list = listMovementsTravelledAndDeltaDistance();
+
+        Collections.sort(list, comparator);
+
+        for(Ship s : list) {
+            System.out.println(s.toStringMMSIMovementsTravelledDistanceDeltaDistance());
+        }
+    }
+
+    private List<Ship> listMovementsTravelledAndDeltaDistance() {
+
+        List<Ship> list = new ArrayList<>();
+
+        for( Ship s : treeOfShips.inOrder()) {
+            list.add(s);
+        }
+
+        return list;
+
+    }
+
     public TreeOfShips getTreeOfShips() {
         return treeOfShips;
     }
-
-    public String getShipByIMO(String iMO) {
-
-
-        return null;
-    }
-
-    public String getShipByCallSign(String callSign) {
-
-
-        return null;
-    }
-
-    public List<Ship> listMovementsTravelledAndDeltaDistance() {
-
-
-        return null;
-    }
-
 
     public TreeOfShips getTreeOfShipsIMO() {
         return treeOfShipsIMO;
@@ -54,10 +76,6 @@ public class Company {
 
     public TreeOfShips getTreeOfShipsCallSign() {
         return treeOfShipsCallSign;
-    }
-
-    public Ship getShipByMMSI(int MMSI) {
-        return treeOfShips.getShipByMMSI(MMSI);
     }
 
     /**

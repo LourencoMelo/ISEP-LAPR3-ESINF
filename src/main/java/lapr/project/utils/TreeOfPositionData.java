@@ -14,6 +14,7 @@ public class TreeOfPositionData extends AVL<PositionData> {
 
     /**
      * Returns total of movements of a ship
+     *
      * @return total of movements
      */
     public Integer getTotalMovements() {
@@ -22,6 +23,7 @@ public class TreeOfPositionData extends AVL<PositionData> {
 
     /**
      * Returns total of movements of a ship
+     *
      * @return total of movements
      */
     private Integer getTotalMovements(Node<PositionData> node) {
@@ -36,6 +38,11 @@ public class TreeOfPositionData extends AVL<PositionData> {
         Iterator<PositionData> iterator = inOrder().iterator();
         PositionData initialPoint = iterator.next();
         PositionData finalPoint = null;
+
+        if (!iterator.hasNext()) {
+            return 0;
+        }
+
         while (iterator.hasNext()) {
             finalPoint = iterator.next();
         }
@@ -46,14 +53,15 @@ public class TreeOfPositionData extends AVL<PositionData> {
 
     /**
      * Calculates the distance in km that the ship travelled between two points
-     * @param latitudeA latitude first point
+     *
+     * @param latitudeA  latitude first point
      * @param longitudeA longitude first point
-     * @param latitudeB latitude second point
+     * @param latitudeB  latitude second point
      * @param longitudeB latitude second point
-     * @param unit unit
+     * @param unit       unit
      * @return distance travelled in function of the latitude and longitude of two points
      */
-    public static double distance(double latitudeA, double longitudeA, double latitudeB, double longitudeB, String unit){
+    public static double distance(double latitudeA, double longitudeA, double latitudeB, double longitudeB, String unit) {
         //The ship hasn't travelled any distance yet
         if ((latitudeA == latitudeB) && (longitudeA == longitudeB)) {
             return 0;
@@ -75,9 +83,10 @@ public class TreeOfPositionData extends AVL<PositionData> {
 
     /**
      * Calculates the travelled distance
+     *
      * @return travelled distance
      */
-    public double travelledDistance(){
+    public double travelledDistance() {
         double distance = 0;
         Iterator<PositionData> iterator1 = inOrder().iterator();
         Iterator<PositionData> iterator2 = inOrder().iterator();
@@ -92,11 +101,12 @@ public class TreeOfPositionData extends AVL<PositionData> {
 
     /**
      * Calculates the travelled distance between the two given dates
+     *
      * @param date1 first date
      * @param date2 second date
      * @return travelled distance
      */
-    public double travelledDistanceBtDates(LocalDateTime date1,LocalDateTime date2){
+    public double travelledDistanceBtDates(LocalDateTime date1, LocalDateTime date2) {
         double distance = 0;
         // In the start the Iterator doesn't point to anything
         Iterator<PositionData> iterator1 = inOrder().iterator();
@@ -105,7 +115,7 @@ public class TreeOfPositionData extends AVL<PositionData> {
         while (iterator2.hasNext()) {
             PositionData s1 = iterator1.next();
             PositionData s2 = iterator2.next();
-            if(s1.getBaseDateTime().compareTo(date1) > 0 && s2.getBaseDateTime().compareTo(date2) < 0) {
+            if (s1.getBaseDateTime().compareTo(date1) > 0 && s2.getBaseDateTime().compareTo(date2) < 0) {
                 distance += distance(s1.getLatitude(), s1.getLongitude(), s2.getLatitude(), s2.getLatitude(), "K");
             }
         }
@@ -115,34 +125,37 @@ public class TreeOfPositionData extends AVL<PositionData> {
 
     /**
      * Gets the initial date of a ship's movement
+     *
      * @return initial date
      */
-    public LocalDateTime initialDate(){
+    public LocalDateTime initialDate() {
         return initialDate(root);
     }
 
     /**
      * Gets the last date of a ship's movement
+     *
      * @return final date
      */
-    public LocalDateTime finalDate(){
+    public LocalDateTime finalDate() {
         return finalDate(root);
     }
 
     /**
      * Gets the initial date of a ship's movement
+     *
      * @param node node
      * @return initial date
      */
-    private LocalDateTime initialDate(Node<PositionData> node){
+    private LocalDateTime initialDate(Node<PositionData> node) {
         // If the root is null returns null
-        if(root == null){
+        if (root == null) {
             return null;
         }
         //The initial date is the node more to the left, because the tree is ordered by BaseDateTime, so if the node has a left we call the method again (recursion)
-        if(node.getLeft() != null){
+        if (node.getLeft() != null) {
             return initialDate(node.getLeft());
-        }else{
+        } else {
             //If the node doesn't have a left we can confirm that it is the initial date
             return node.getElement().getBaseDateTime();
         }
@@ -150,18 +163,19 @@ public class TreeOfPositionData extends AVL<PositionData> {
 
     /**
      * Gets the last date of a ship's movement
+     *
      * @param node node
      * @return final date
      */
-    private LocalDateTime finalDate(Node<PositionData> node){
+    private LocalDateTime finalDate(Node<PositionData> node) {
         // If the root is null returns null
-        if(root == null){
+        if (root == null) {
             return null;
         }
         //The final date is the node more to the right, because the tree is ordered by BaseDateTime, so if the node has a right we call the method again
-        if(node.getRight() != null){
+        if (node.getRight() != null) {
             return finalDate(node.getRight());
-        }else{
+        } else {
             //If the node doesn't have a right we can confirm that it is the final date
             return node.getElement().getBaseDateTime();
         }
@@ -169,29 +183,22 @@ public class TreeOfPositionData extends AVL<PositionData> {
 
     /**
      * Calculates the average speed between two dates
+     *
      * @param date1 first date
      * @param date2 second date
      * @return mean
      */
-    public double meanSOG(LocalDateTime date1,LocalDateTime date2){
+    public double meanSOG(LocalDateTime date1, LocalDateTime date2) {
         double mean = 0;
         int aux = 0;
-        for(PositionData positionData : inOrder()){
-            if(positionData.getBaseDateTime().compareTo(date1) > 0 && positionData.getBaseDateTime().compareTo(date2) < 0) {
+        for (PositionData positionData : inOrder()) {
+            if (positionData.getBaseDateTime().compareTo(date1) > 0 && positionData.getBaseDateTime().compareTo(date2) < 0) {
                 mean += positionData.getSog();
                 aux++;
             }
         }
-        return mean/aux;
+        return mean / aux;
     }
-
-
-
-
-
-
-
-
 
 
 }

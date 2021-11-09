@@ -42,6 +42,7 @@ class Main {
         System.out.println("What do you wanna run? Select one of the following options: ");
         System.out.println("1 - Import Ships from CSV file into a BST.");
         System.out.println("2 - Request ship detail by code (MMSI, IMO or Call Sign)");
+        System.out.println("5 - List for all ships the MMSI, the total number of movements, Travelled Distance and Delta Distance");
 
         String answer = "";
 
@@ -49,24 +50,34 @@ class Main {
 
             answer = in.next();
 
-            if (answer.equalsIgnoreCase("1")) {
+            switch (answer) {
+                case "1" :
+                    ImportFileUI importFileUI = new ImportFileUI();
 
-                ImportFileUI importFileUI = new ImportFileUI();
+                    ImportFileController importFileController = new ImportFileController();
 
-                ImportFileController importFileController = new ImportFileController();
+                    importFileUI.import_ships();
 
-                importFileUI.import_ships();
+                    System.out.println("\n\n\n\n\n\n\n\n");
 
-                System.out.println("\n\n\n\n\n\n\n\n");
+                    //System.out.println(importFileController.getShipByMMSI(210950000));
 
-                //System.out.println(importFileController.getShipByMMSI(210950000));
+                    break;
+                case "2" :
+                    GetShipByCodeUI getShipByCodeUI = new GetShipByCodeUI();
 
+                    getShipByCodeUI.getShipByCode();
 
-            } else if (answer.equalsIgnoreCase("2")) {
+                    break;
+                case "5" :
+                    MovementsTravelledAndDeltaDistanceUI movementsTravelledAndDeltaDistanceUI = new MovementsTravelledAndDeltaDistanceUI();
 
-                GetShipByCodeUI getShipByCodeUI = new GetShipByCodeUI();
+                    movementsTravelledAndDeltaDistanceUI.listMovementsTravelledAndDeltaDistance();
 
-                getShipByCodeUI.getShipByCode();
+                    break;
+
+                default:
+
             }
 
         }

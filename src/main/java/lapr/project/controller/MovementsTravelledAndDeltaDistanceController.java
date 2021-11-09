@@ -18,5 +18,10 @@ public class MovementsTravelledAndDeltaDistanceController {
         this.company = company;
     }
 
-    //public List<Ship> get
+    public void listMovementsTravelledAndDeltaDistance() {
+        this.company.printMovementsTravelledAndDeltaDistance();
+    }
+
+
+
 }

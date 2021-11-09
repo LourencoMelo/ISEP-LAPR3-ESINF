@@ -355,6 +355,15 @@ public abstract class Ship implements  Comparable<Ship> {
                 '}' +  '\n' + treeOfPositionData;
     }
 
+    public String toStringMMSIMovementsTravelledDistanceDeltaDistance() {
+        return "Ship{" +
+                "MMSI=" + MMSI +
+                ", Total number of movements='" + this.getTotalMovements() + '\'' +
+                ", Travelled Distance=" + this.travelledDistance() +
+                ", Delta Distance='" + this.getDeltaDistance() + '\'' +
+                '}' +  '\n';
+    }
+
     @Override
     /**
      * -------------------------------------------------------------------------------------------------------------
