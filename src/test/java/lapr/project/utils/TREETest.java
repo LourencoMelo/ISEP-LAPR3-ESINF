@@ -35,13 +35,13 @@ public class TREETest {
     public TREETest() {
     }
     
-//    @BeforeEach
-//
-//    public void setUp(){
-//        instance = new TREE();
-//        for(int i :arr)
-//            instance.insert(i);
-//    }
+    @BeforeEach
+    @SuppressWarnings("unchecked")
+    public void setUp(){
+        instance = new TREE();
+        for(int i :arr)
+            instance.insert(i);
+    }
     /**
      * Test of isLeaf method, of class TREE.
      */
