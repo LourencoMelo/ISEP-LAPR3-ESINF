@@ -112,6 +112,19 @@ public class Company {
         return topN;
     }
 
+    public HashMap<Ship, Set<PositionData>> getShipPositionMessagesOrderByDate(int code){
+        HashMap<Ship, Set<PositionData>> mapShipPositionMessagesOrderedByDate = new HashMap<>();
+        for(Ship ship: treeOfShips.inOrder()){
+            Set<PositionData> positionDataSet = new HashSet<>();
+            for(PositionData positionData: ship.getTreeOfPositionData().inOrder()){
+                positionDataSet.add(positionData);
+            }
+            mapShipPositionMessagesOrderedByDate.put(ship, positionDataSet);
+        }
+        return mapShipPositionMessagesOrderedByDate;
+    }
+
+
     /**
      * For each Vessel Type this method will give the TOP-N ships with the most kilometres travelled and their respective average speed
      *
