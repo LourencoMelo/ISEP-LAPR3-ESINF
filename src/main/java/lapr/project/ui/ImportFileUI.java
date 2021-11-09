@@ -30,11 +30,14 @@ public class ImportFileUI {
 
         importFileController.import_ships(new File("Files/sships.csv"));
 
-        System.out.println(importFileController.getTreeOfShips());
-        System.out.println("\n\n\n");
-        System.out.println(importFileController.getTreeOfShips2());
-        System.out.println("\n\n\n");
-        System.out.println(importFileController.getTreeOfShips3());
+
+        System.out.println(importFileController.getShipByMMSI(210950000));
+
+//        System.out.println(importFileController.getTreeOfShips());
+//        System.out.println("\n\n\n");
+//        System.out.println(importFileController.getTreeOfShips2());
+//        System.out.println("\n\n\n");
+//        System.out.println(importFileController.getTreeOfShips3());
     }
 
 
