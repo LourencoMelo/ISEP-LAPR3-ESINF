@@ -3,6 +3,8 @@ package lapr.project.model;
 import lapr.project.utils.AVL;
 import lapr.project.utils.TreeOfShips;
 
+import java.util.List;
+
 import java.io.File;
 import java.time.LocalDateTime;
 import java.util.*;
@@ -26,6 +28,25 @@ public class Company {
     public TreeOfShips getTreeOfShips() {
         return treeOfShips;
     }
+
+    public String getShipByIMO(String iMO) {
+
+
+        return null;
+    }
+
+    public String getShipByCallSign(String callSign) {
+
+
+        return null;
+    }
+
+    public List<Ship> listMovementsTravelledAndDeltaDistance() {
+
+
+        return null;
+    }
+
 
     public TreeOfShips getTreeOfShipsIMO() {
         return treeOfShipsIMO;

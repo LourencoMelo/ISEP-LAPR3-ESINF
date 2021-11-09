@@ -310,6 +310,15 @@ public abstract class Ship implements  Comparable<Ship> {
         return treeOfPositionData.getTotalMovements();
     }
 
+    public double getDeltaDistance() {
+        return treeOfPositionData.getDeltaDistance();
+    }
+
+    public double travelledDistance(){
+        return treeOfPositionData.travelledDistance();
+
+    }
+
     /**
      * Methods of Tree Of Position Data
      */

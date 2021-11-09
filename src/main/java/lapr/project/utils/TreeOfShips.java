@@ -32,11 +32,11 @@ public class TreeOfShips extends AVL<Ship> {
 
                     ShipByMMSI ship = new ShipByMMSI(Integer.parseInt(ship_info[0].trim()), ship_info[7].trim(), ship_info[8].trim(), ship_info[9].trim(), Integer.parseInt(ship_info[10].trim()), Double.parseDouble(ship_info[11].trim()), Double.parseDouble(ship_info[12].trim()), Double.parseDouble(ship_info[13].trim()));
 
-                    PositionData positionData = new PositionData(formatter(ship_info[1].trim()), Double.parseDouble(ship_info[2].trim()), Double.parseDouble(ship_info[3].trim()),Double.parseDouble(ship_info[4].trim()), Double.parseDouble(ship_info[5].trim()), Double.parseDouble(ship_info[6].trim()), ship_info[14].trim(), ship_info[15].trim());
+                    PositionData positionData = new PositionData(formatter(ship_info[1].trim()), Double.parseDouble(ship_info[2].trim()), Double.parseDouble(ship_info[3].trim()), Double.parseDouble(ship_info[4].trim()), Double.parseDouble(ship_info[5].trim()), Double.parseDouble(ship_info[6].trim()), ship_info[14].trim(), ship_info[15].trim());
 
-                    for (Ship ship1:
-                         list_of_existent_ships) {
-                        if (ship1.getMMSI() == ship.getMMSI()){
+                    for (Ship ship1 :
+                            list_of_existent_ships) {
+                        if (ship1.getMMSI() == ship.getMMSI()) {
                             ship1.addPositionData(positionData);
                         }
                     }
@@ -74,11 +74,11 @@ public class TreeOfShips extends AVL<Ship> {
 
                     ShipByIMO ship = new ShipByIMO(Integer.parseInt(ship_info[0].trim()), ship_info[7].trim(), ship_info[8].trim(), ship_info[9].trim(), Integer.parseInt(ship_info[10].trim()), Double.parseDouble(ship_info[11].trim()), Double.parseDouble(ship_info[12].trim()), Double.parseDouble(ship_info[13].trim()));
 
-                    PositionData positionData = new PositionData(formatter(ship_info[1].trim()), Double.parseDouble(ship_info[2].trim()), Double.parseDouble(ship_info[3].trim()),Double.parseDouble(ship_info[4].trim()), Double.parseDouble(ship_info[5].trim()), Double.parseDouble(ship_info[6].trim()), ship_info[14].trim(), ship_info[15].trim());
+                    PositionData positionData = new PositionData(formatter(ship_info[1].trim()), Double.parseDouble(ship_info[2].trim()), Double.parseDouble(ship_info[3].trim()), Double.parseDouble(ship_info[4].trim()), Double.parseDouble(ship_info[5].trim()), Double.parseDouble(ship_info[6].trim()), ship_info[14].trim(), ship_info[15].trim());
 
-                    for (Ship ship1:
+                    for (Ship ship1 :
                             list_of_existent_ships) {
-                        if (ship1.getMMSI() == ship.getMMSI()){
+                        if (ship1.getMMSI() == ship.getMMSI()) {
                             ship1.addPositionData(positionData);
                         }
                     }
@@ -116,11 +116,11 @@ public class TreeOfShips extends AVL<Ship> {
 
                     ShipByCallSign ship = new ShipByCallSign(Integer.parseInt(ship_info[0].trim()), ship_info[7].trim(), ship_info[8].trim(), ship_info[9].trim(), Integer.parseInt(ship_info[10].trim()), Double.parseDouble(ship_info[11].trim()), Double.parseDouble(ship_info[12].trim()), Double.parseDouble(ship_info[13].trim()));
 
-                    PositionData positionData = new PositionData(formatter(ship_info[1].trim()), Double.parseDouble(ship_info[2].trim()), Double.parseDouble(ship_info[3].trim()),Double.parseDouble(ship_info[4].trim()), Double.parseDouble(ship_info[5].trim()), Double.parseDouble(ship_info[6].trim()), ship_info[14].trim(), ship_info[15].trim());
+                    PositionData positionData = new PositionData(formatter(ship_info[1].trim()), Double.parseDouble(ship_info[2].trim()), Double.parseDouble(ship_info[3].trim()), Double.parseDouble(ship_info[4].trim()), Double.parseDouble(ship_info[5].trim()), Double.parseDouble(ship_info[6].trim()), ship_info[14].trim(), ship_info[15].trim());
 
-                    for (Ship ship1:
+                    for (Ship ship1 :
                             list_of_existent_ships) {
-                        if (ship1.getMMSI() == ship.getMMSI()){
+                        if (ship1.getMMSI() == ship.getMMSI()) {
                             ship1.addPositionData(positionData);
                         }
                     }
@@ -151,20 +151,20 @@ public class TreeOfShips extends AVL<Ship> {
 
     public Ship getShipByMMSI(Node<Ship> node, int mMSI) {
 
-        if(root == null) {
+        if (root == null) {
             return null;
         }
 
-        if(mMSI == node.getElement().getMMSI()) return node.getElement();
+        if (mMSI == node.getElement().getMMSI()) return node.getElement();
 
         /**
          * If mMSI searched is higher than the current element's mmsi then we need to go to the right node that has higher.
          */
-        if(mMSI > node.getElement().getMMSI()) return getShipByMMSI(node.getRight(), mMSI);
+        if (mMSI > node.getElement().getMMSI()) return getShipByMMSI(node.getRight(), mMSI);
         /**
          * If mMSI searched is lower than the current element's mmsi then we need to go to the right node that has lower.
          */
-        if(mMSI < node.getElement().getMMSI()) return getShipByMMSI(node.getLeft(), mMSI);
+        if (mMSI < node.getElement().getMMSI()) return getShipByMMSI(node.getLeft(), mMSI);
 
         return null;
 
@@ -176,9 +176,20 @@ public class TreeOfShips extends AVL<Ship> {
 
     public Ship getShipByImo(Node<Ship> node, String iMO) {
 
-        for(Ship s : super.inOrder()) {
-            if (s.getIMO().compareTo(iMO) == 0) return s;
+        if (root == null) {
+            return null;
         }
+
+        if (iMO.compareTo(node.getElement().getIMO()) == 0) return node.getElement();
+
+        /**
+         * If iMO searched is higher than the current element's mmsi then we need to go to the right node that has higher.
+         */
+        if (iMO.compareTo(node.getElement().getIMO()) > 0) return getShipByImo(node.getRight(), iMO);
+        /**
+         * If iMO searched is lower than the current element's mmsi then we need to go to the right node that has lower.
+         */
+        if (iMO.compareTo(node.getElement().getIMO()) < 0) return getShipByImo(node.getLeft(), iMO);
 
         return null;
     }
@@ -187,13 +198,26 @@ public class TreeOfShips extends AVL<Ship> {
         return getShipByCallSign(root, callSign);
     }
 
-    public Ship getShipByCallSign(Node<Ship> node,String callSign) {
+    public Ship getShipByCallSign(Node<Ship> node, String callSign) {
+
+        if (root == null) {
+            return null;
+        }
+
+        if (callSign.compareTo(node.getElement().getCallSign()) == 0) return node.getElement();
+
+        /**
+         * If iMO searched is higher than the current element's mmsi then we need to go to the right node that has higher.
+         */
+        if (callSign.compareTo(node.getElement().getCallSign()) > 0) return getShipByCallSign(node.getRight(), callSign);
+        /**
+         * If iMO searched is lower than the current element's mmsi then we need to go to the right node that has lower.
+         */
+        if (callSign.compareTo(node.getElement().getCallSign()) < 0) return getShipByCallSign(node.getLeft(), callSign);
 
         return null;
 
     }
-
-
 
 
 }

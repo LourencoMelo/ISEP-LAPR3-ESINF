@@ -41,21 +41,33 @@ class Main {
 
         System.out.println("What do you wanna run? Select one of the following options: ");
         System.out.println("1 - Import Ships from CSV file into a BST.");
+        System.out.println("2 - Request ship detail by code (MMSI, IMO or Call Sign)");
 
-        String answer = in.next();
+        String answer = "";
 
-        if (answer.equalsIgnoreCase("1")){
+        while (!answer.equalsIgnoreCase("0")) {
 
-            ImportFileUI importFileUI = new ImportFileUI();
+            answer = in.next();
 
-            ImportFileController importFileController = new ImportFileController();
+            if (answer.equalsIgnoreCase("1")) {
 
-            importFileUI.import_ships();
+                ImportFileUI importFileUI = new ImportFileUI();
 
-            System.out.println("\n\n\n\n\n\n\n\n");
+                ImportFileController importFileController = new ImportFileController();
 
-            //System.out.println(importFileController.getShipByMMSI(210950000));
+                importFileUI.import_ships();
 
+                System.out.println("\n\n\n\n\n\n\n\n");
+
+                //System.out.println(importFileController.getShipByMMSI(210950000));
+
+
+            } else if (answer.equalsIgnoreCase("2")) {
+
+                GetShipByCodeUI getShipByCodeUI = new GetShipByCodeUI();
+
+                getShipByCodeUI.getShipByCode();
+            }
 
         }
 

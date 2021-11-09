@@ -1,32 +1,38 @@
 package lapr.project.controller;
 
+import lapr.project.model.Company;
+import lapr.project.model.Ship;
+import lapr.project.utils.App;
 import lapr.project.utils.TreeOfShips;
 
 import java.io.File;
 
 public class GetShipByCodeController {
 
-    TreeOfShips treeOfShips = new TreeOfShips();
+    private Company company;
 
     public GetShipByCodeController() {
-        treeOfShips.createTreeMMSI(new File("Files/sships.csv"));
+        this(App.getInstance().getCompany());
     }
 
-    public void getShipByMMSI(int mMSI) {
-
-
-
+    public GetShipByCodeController(Company company) {
+        this.company = company;
     }
 
-    public void getShipByImo(String iMO) {
+    public Ship getShipByCode(String code) {
+        if ((code).charAt(0) == 'I' && (code).charAt(1) == 'M' && (code).charAt(2) == 'O') {
+            return this.company.getTreeOfShipsIMO().getShipByImo(code);
+        }
 
+        try {
 
+            return this.company.getTreeOfShips().getShipByMMSI(Integer.parseInt(code));
 
-    }
+        } catch (NumberFormatException exception) {
 
-    public void getShipByCallSign(String callSign) {
+            return this.company.getTreeOfShipsCallSign().getShipByCallSign(code);
 
-
+        }
 
     }
 }

@@ -2,10 +2,15 @@
 
 autonumber
 
-actor       TrafficManager             as TM
+actor       TrafficManager                as TM
 participant    ":getShipDetailUI"         as UI
 participant    ":getShipDetailController" as CTRL
-participant    ":TreeOfShips"              as tOS
+participant    ":Company"                 as company
+box "Optional (it depends of the code used as parameter)" #LightBlue
+participant    ":TreeOfShips_MMSI"        as mmsi
+participant    ":TreeOfShips_IMO"         as imo
+participant    ":TreeOfShips_CallSign"    as callSign
+end box
 
 TM -> UI : Search details of a ship
 activate UI
@@ -17,10 +22,25 @@ activate UI
 
     UI -> CTRL : getShipByCode(code)
     activate CTRL
-    CTRL -> tOS : ship = getShipByCode(code)
-    activate tOS
+    CTRL -> company : ship = getShipByCode(code)
+    activate company
 
-    deactivate tOS
+
+
+    company -> mmsi : ship = getShipByMMSI(code)
+    activate mmsi
+    deactivate mmsi
+
+    company -> imo : ship = getShipByIMO(code)
+    activate imo
+    deactivate imo
+
+    company -> callSign : ship = getShipByCallSign(code)
+    activate callSign
+    deactivate callSign
+
+
+    deactivate company
 
     deactivate CTRL
 

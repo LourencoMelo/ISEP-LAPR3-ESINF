@@ -32,6 +32,18 @@ public class TreeOfPositionData extends AVL<PositionData> {
         return 1 + getTotalMovements(node.getLeft()) + getTotalMovements(node.getRight());
     }
 
+    public double getDeltaDistance() {
+        Iterator<PositionData> iterator = inOrder().iterator();
+        PositionData initialPoint = iterator.next();
+        PositionData finalPoint = null;
+        while (iterator.hasNext()) {
+            finalPoint = iterator.next();
+        }
+        assert finalPoint != null;
+
+        return distance(initialPoint.getLatitude(), initialPoint.getLongitude(), finalPoint.getLatitude(), finalPoint.getLongitude(), "K");
+    }
+
     /**
      * Calculates the distance in km that the ship travelled between two points
      * @param latitudeA latitude first point
@@ -65,7 +77,7 @@ public class TreeOfPositionData extends AVL<PositionData> {
      * Calculates the travelled distance
      * @return travelled distance
      */
-    private double travelledDistance(){
+    public double travelledDistance(){
         double distance = 0;
         Iterator<PositionData> iterator1 = inOrder().iterator();
         Iterator<PositionData> iterator2 = inOrder().iterator();
@@ -172,6 +184,8 @@ public class TreeOfPositionData extends AVL<PositionData> {
         }
         return mean/aux;
     }
+
+
 
 
 
