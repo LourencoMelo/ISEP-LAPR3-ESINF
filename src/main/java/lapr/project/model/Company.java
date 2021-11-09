@@ -130,15 +130,20 @@ public class Company {
         return topN;
     }
 
-    public HashMap<Ship, Set<PositionData>> getShipPositionMessagesOrderByDate(int code){
+    /**
+     * Searches the ship by the code introduced and returns an hashmap with the positions ordered by date
+     * @param ship
+     * @return mapShipPositionMessagesOrderedByDate
+     */
+    public HashMap<Ship, Set<PositionData>> getShipPositionMessagesOrderByDate(Ship ship) {
         HashMap<Ship, Set<PositionData>> mapShipPositionMessagesOrderedByDate = new HashMap<>();
-        for(Ship ship: treeOfShips.inOrder()){
-            Set<PositionData> positionDataSet = new HashSet<>();
-            for(PositionData positionData: ship.getTreeOfPositionData().inOrder()){
-                positionDataSet.add(positionData);
-            }
-            mapShipPositionMessagesOrderedByDate.put(ship, positionDataSet);
+        Set<PositionData> positionDataSet = new HashSet<>();
+
+        for (PositionData positionData : ship.getTreeOfPositionData().inOrder()) {
+            positionDataSet.add(positionData);
         }
+        mapShipPositionMessagesOrderedByDate.put(ship, positionDataSet);
+
         return mapShipPositionMessagesOrderedByDate;
     }
 

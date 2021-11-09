@@ -42,6 +42,7 @@ class Main {
         System.out.println("What do you wanna run? Select one of the following options: ");
         System.out.println("1 - Import Ships from CSV file into a BST.");
         System.out.println("2 - Request ship detail by code (MMSI, IMO or Call Sign)");
+        System.out.println("3 - Request ship position messages ordered by date(Please introduce a code)");
         System.out.println("5 - List for all ships the MMSI, the total number of movements, Travelled Distance and Delta Distance");
 
         String answer = "";
@@ -67,6 +68,11 @@ class Main {
                     GetShipByCodeUI getShipByCodeUI = new GetShipByCodeUI();
 
                     getShipByCodeUI.getShipByCode();
+                    break;
+                case "3" :
+                    GetShipPositionByDateUI getShipPositionByDateUI = new GetShipPositionByDateUI();
+
+                    getShipPositionByDateUI.getShipPositionMessagesOrderByDate();
 
                     break;
                 case "5" :
