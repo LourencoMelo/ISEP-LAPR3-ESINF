@@ -185,26 +185,27 @@ class ShipTest {
 
     }
 
-//    /**
-//     * Testing toString() of the Ship
-//     */
-//    @Test
-//    void testToString() {
-//        PositionData positionDataTest2 = new PositionData(LocalDateTime.of(2011, 11,8,13,39),10,10,3,4,5,1,"Sopa");
-//        shipTest.addPositionData(positionDataTest2);
-//        String expected = "Ship{" +
-//                "MMSI=" + shipTest.getMMSI() +
-//                ", name='" + shipTest.getName() + '\'' +
-//                ", IMO=" + shipTest.getIMO() +
-//                ", callSign='" + shipTest.getCallSign() + '\'' +
-//                ", vesselType=" + shipTest.getVesselType() +
-//                ", length=" + shipTest.getLength() +
-//                ", width=" + shipTest.getWidth() +
-//                ", draft=" + shipTest.getDraft() +
-//                '}' + positionDataTest2;
-//        String actual = shipTest.toString();
-//        assertEquals(expected, actual);
-//    }
+    /**
+     * Testing toString() of the Ship
+     */
+    @Test
+    void testToString() {
+        PositionData positionDataTest2 = new PositionData(LocalDateTime.of(2011, 11,8,13,39),10,10,3,4,5,"1","Sopa");
+        shipTest.addPositionData(positionDataTest2);
+        String expected = "Ship{" +
+                "MMSI=" + shipTest.getMMSI() +
+                ", name='" + shipTest.getName() + '\'' +
+                ", IMO=" + shipTest.getIMO() +
+                ", callSign='" + shipTest.getCallSign() + '\'' +
+                ", vesselType=" + shipTest.getVesselType() +
+                ", length=" + shipTest.getLength() +
+                ", width=" + shipTest.getWidth() +
+                ", draft=" + shipTest.getDraft() +
+                '}' + "\nPositionData{"+"baseDateTime="+ positionDataTest2.getBaseDateTime()+ ", latitude="+ positionDataTest2.getLatitude() + ", longitude="+ positionDataTest2.getLongitude()+", sog="+positionDataTest2.getSog()+", cog="+ positionDataTest2.getCog()+", heading=" + positionDataTest2.getHeading()+", position="+ positionDataTest2.getPosition()+"}\n";
+        String actual = shipTest.toString();
+        assertEquals(true, shipTest.toString().equalsIgnoreCase(expected));
+    }
+
 
     /**
      * Comparing ships when they have the same MMSI
