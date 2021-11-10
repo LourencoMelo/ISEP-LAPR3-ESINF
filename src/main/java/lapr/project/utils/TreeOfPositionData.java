@@ -5,6 +5,7 @@ import lapr.project.model.Ship;
 import oracle.security.crypto.core.SHA;
 
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.*;
 
 /**
@@ -104,7 +105,6 @@ public class TreeOfPositionData extends AVL<PositionData> {
                 km += distance(list.get(j).getLatitude(), list.get(j).getLongitude(), list.get(i).getLatitude(), list.get(i).getLongitude());
             }
         }
-
         return km;
     }
 
@@ -186,10 +186,26 @@ public class TreeOfPositionData extends AVL<PositionData> {
         return mean / aux;
     }
 
+
     /**
-     * Calculates the average speed between two dates
+     * Calculates the max SOG
      *
-     * @return mean
+     * @return max SOG
+     */
+    public double maxSOG() {
+        double max = 0;
+
+        for (PositionData positionData : inOrder()) {
+            if (positionData.getSog() > max) max = positionData.getSog();
+        }
+        return max;
+    }
+
+
+    /**
+     * Calculates the mean SOG
+     *
+     * @return mean SOG
      */
     public double meanSOG() {
         double mean = 0;
@@ -201,5 +217,96 @@ public class TreeOfPositionData extends AVL<PositionData> {
         return mean / aux;
     }
 
+
+    /**
+     * Calculates the max COG
+     *
+     * @return max COG
+     */
+    public double maxCOG() {
+        double max = 0;
+
+        for (PositionData positionData : inOrder()) {
+            if (positionData.getCog() > max) max = positionData.getCog();
+        }
+        return max;
+    }
+
+    /**
+     * Calculates the mean COG
+     *
+     * @return mean COG
+     */
+    public double meanCOG() {
+        double mean = 0;
+        int aux = 0;
+        for (PositionData positionData : inOrder()) {
+            mean += positionData.getCog();
+            aux++;
+        }
+        return mean / aux;
+    }
+
+
+    /**
+     * Calculates the total time travelled
+     *
+     * @return total movement time in Seconds
+     */
+    public long getTotalMovementTime() {
+        return ChronoUnit.SECONDS.between(initialDate(), finalDate());
+    }
+
+
+    /**
+     * Calculates the departure latitude of a vessel
+     *
+     * @return double departure latitude
+     */
+    public double departureLatitude() {
+        return inOrder().iterator().next().getLatitude();
+    }
+
+
+    /**
+     * Calculates the departure longitude of a vessel
+     *
+     * @return double departure longitude
+     */
+    public double departureLongitude() {
+        return inOrder().iterator().next().getLongitude();
+    }
+
+    /**
+     * Calculates the arrival latitude of a vessel
+     *
+     * @return double arrival latitude
+     */
+    public double arrivalLatitude() {
+
+        Iterator<PositionData> iterator = inOrder().iterator();
+
+        PositionData last = inOrder().iterator().next();
+
+        while (iterator.hasNext()) last = iterator.next();
+
+        return last.getLatitude();
+    }
+
+    /**
+     * Calculates the arrival longitude of a vessel
+     *
+     * @return double arrival longitude
+     */
+    public double arrivalLongitude() {
+
+        Iterator<PositionData> iterator = inOrder().iterator();
+
+        PositionData last_longitude = inOrder().iterator().next();
+
+        while (iterator.hasNext()) last_longitude = iterator.next();
+
+        return last_longitude.getLongitude();
+    }
 
 }

@@ -36,10 +36,10 @@ public class Company {
                     return 1;
                 }
 
-                if(s1.getTreeOfPositionData().getTotalMovements() > s2.getTreeOfPositionData().getTotalMovements()) {
+                if (s1.getTreeOfPositionData().getTotalMovements() > s2.getTreeOfPositionData().getTotalMovements()) {
                     return 1;
                 }
-                if(s1.getTreeOfPositionData().getTotalMovements() < s2.getTreeOfPositionData().getTotalMovements()) {
+                if (s1.getTreeOfPositionData().getTotalMovements() < s2.getTreeOfPositionData().getTotalMovements()) {
                     return -1;
                 }
                 return 0;
@@ -49,7 +49,7 @@ public class Company {
 
         Collections.sort(list, comparator);
 
-        for(Ship s : list) {
+        for (Ship s : list) {
             System.out.println(s.toStringMMSIMovementsTravelledDistanceDeltaDistance());
         }
     }
@@ -58,7 +58,7 @@ public class Company {
 
         List<Ship> list = new ArrayList<>();
 
-        for( Ship s : treeOfShips.inOrder()) {
+        for (Ship s : treeOfShips.inOrder()) {
             list.add(s);
         }
 
@@ -132,7 +132,7 @@ public class Company {
                 topN.put(totalShipsByTravelledDistance.get(j), totalShipsByTravelledDistance.get(j).getTreeOfPositionData().meanSOG(date1, date2));
             }
         } else {
-            for (j = 0; j < totalShipsByTravelledDistance.size() ; j++) {
+            for (j = 0; j < totalShipsByTravelledDistance.size(); j++) {
                 topN.put(totalShipsByTravelledDistance.get(j), totalShipsByTravelledDistance.get(j).getTreeOfPositionData().meanSOG(date1, date2));
             }
         }
@@ -142,6 +142,7 @@ public class Company {
 
     /**
      * Searches the ship by the code introduced and returns an hashmap with the positions ordered by date
+     *
      * @param ship
      * @return mapShipPositionMessagesOrderedByDate
      */
@@ -178,7 +179,7 @@ public class Company {
             Map<Ship, Double> topN = getTopShipsWithMostKmByVesselType(date1, date2, n, vTypes);
             for (Map.Entry<Ship, Double> topiN : topN.entrySet()) {
                 System.out.println(topiN);
-                System.out.println(topiN.getKey().getTreeOfPositionData().travelledDistanceBtDates(date1,date2));
+                System.out.println(topiN.getKey().getTreeOfPositionData().travelledDistanceBtDates(date1, date2));
             }
         }
     }
