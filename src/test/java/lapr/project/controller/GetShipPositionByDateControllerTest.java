@@ -46,8 +46,8 @@ class GetShipPositionByDateControllerTest {
         PositionData positionDataTestCompare2 = new PositionData(LocalDateTime.of(2013, 11, 8, 13, 39), 12, 3, 3, 4, 5, "2", "S2");
         PositionData positionDataTestCompare3 = new PositionData(LocalDateTime.of(2024, 11, 8, 13, 39), 13, 5, 1, 2, 5, "3", "S3");
         PositionData positionDataTestCompare4 = new PositionData(LocalDateTime.of(2025, 11, 8, 13, 39), 14, 6, 1, 4, 5, "4", "S4");
-        PositionData positionDataTestCompare5 = new PositionData(LocalDateTime.of(2016, 11,8,13,39),15,7,3,4,3,"5","S5");
-        PositionData positionDataTestCompare6 = new PositionData(LocalDateTime.of(2017, 11,8,13,39),16,8,3,4,5,"6","S6");
+        PositionData positionDataTestCompare5 = new PositionData(LocalDateTime.of(2026, 11,8,13,39),15,7,3,4,3,"5","S5");
+        PositionData positionDataTestCompare6 = new PositionData(LocalDateTime.of(2027, 11,8,13,39),16,8,3,4,5,"6","S6");
 
         shipTest.addPositionData(positionDataTestCompare1);
         shipTest.addPositionData(positionDataTestCompare2);
