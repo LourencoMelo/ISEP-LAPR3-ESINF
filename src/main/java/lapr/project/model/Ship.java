@@ -351,8 +351,8 @@ public abstract class Ship implements  Comparable<Ship> {
                 ", vesselType=" + vesselType +
                 ", length=" + length +
                 ", width=" + width +
-                ", draft=" + draft;// +
-                //'}' +  '\n' + treeOfPositionData;
+                ", draft=" + draft +
+                '}' +  '\n' + treeOfPositionData;
     }
 
     public String toStringMMSIMovementsTravelledDistanceDeltaDistance() {
@@ -361,7 +361,6 @@ public abstract class Ship implements  Comparable<Ship> {
                 ", Total number of movements='" + this.getTotalMovements() + '\'' +
                 ", Travelled Distance=" + this.travelledDistance() +
                 ", Delta Distance='" + this.getDeltaDistance() + '\'' +
-                ", Vessel Type=" + this.getVesselType() + '\'' +
                 '}' +  '\n';
     }
 
