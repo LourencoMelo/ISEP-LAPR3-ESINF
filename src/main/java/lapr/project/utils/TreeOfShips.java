@@ -49,6 +49,8 @@ public class TreeOfShips extends AVL<Ship> {
                 }
             }
 
+            in.close();
+
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -91,6 +93,8 @@ public class TreeOfShips extends AVL<Ship> {
                 }
             }
 
+            in.close();
+
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -132,6 +136,8 @@ public class TreeOfShips extends AVL<Ship> {
                 } catch (NumberFormatException e) {
                 }
             }
+
+            in.close();
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
