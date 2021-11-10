@@ -18,8 +18,8 @@ public class TreeOfShips extends AVL<Ship> {
      * @param file file with ships info
      */
     public void createTreeMMSI(File file) {
-        try {
-            Scanner in = new Scanner(file);
+
+        try (Scanner in = new Scanner(file)) {
 
             in.nextLine();
 
@@ -48,12 +48,10 @@ public class TreeOfShips extends AVL<Ship> {
                 } catch (NumberFormatException e) {
                 }
             }
-
-            in.close();
-
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
+
     }
 
     /**
@@ -62,8 +60,8 @@ public class TreeOfShips extends AVL<Ship> {
      * @param file file with ships info
      */
     public void createTreeIMO(File file) {
-        try {
-            Scanner in = new Scanner(file);
+
+        try (Scanner in = new Scanner(file)) {
 
             in.nextLine();
 
@@ -93,8 +91,6 @@ public class TreeOfShips extends AVL<Ship> {
                 }
             }
 
-            in.close();
-
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -106,8 +102,8 @@ public class TreeOfShips extends AVL<Ship> {
      * @param file file with ships info
      */
     public void createTreeCallSign(File file) {
-        try {
-            Scanner in = new Scanner(file);
+
+        try (Scanner in = new Scanner(file)) {
 
             in.nextLine();
 
@@ -136,8 +132,6 @@ public class TreeOfShips extends AVL<Ship> {
                 } catch (NumberFormatException e) {
                 }
             }
-
-            in.close();
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -215,7 +209,8 @@ public class TreeOfShips extends AVL<Ship> {
         /**
          * If iMO searched is higher than the current element's mmsi then we need to go to the right node that has higher.
          */
-        if (callSign.compareTo(node.getElement().getCallSign()) > 0) return getShipByCallSign(node.getRight(), callSign);
+        if (callSign.compareTo(node.getElement().getCallSign()) > 0)
+            return getShipByCallSign(node.getRight(), callSign);
         /**
          * If iMO searched is lower than the current element's mmsi then we need to go to the right node that has lower.
          */
