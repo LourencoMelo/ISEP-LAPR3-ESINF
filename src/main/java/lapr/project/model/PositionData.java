@@ -229,7 +229,7 @@ public class PositionData implements Comparable<PositionData> {
      * -------------------------------------------------------------------------------------------------------------
      */
 
-    /*@Override
+    @Override
     public String toString() {
         return "PositionData{" +
                 "baseDateTime=" + baseDateTime +
@@ -240,7 +240,7 @@ public class PositionData implements Comparable<PositionData> {
                 ", heading=" + heading +
                 ", position=" + position +
                 '}';
-    }*/
+    }
 
     /**
      * -------------------------------------------------------------------------------------------------------------
