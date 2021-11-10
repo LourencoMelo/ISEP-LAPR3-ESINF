@@ -11,7 +11,7 @@ import java.util.*;
 
 public class TopNController extends AVL<Ship> {
 
-    Company company;
+    public Company company;
 
     public TopNController() {
         this(App.getInstance().getCompany());

@@ -19,8 +19,8 @@ public class TreeOfPositionData extends AVL<PositionData> {
      */
     public Integer getTotalMovements() {
         int cont = 0;
-        for(PositionData positionData : inOrder()){
-            cont ++;
+        for (PositionData positionData : inOrder()) {
+            cont++;
         }
         return cont;
     }
@@ -76,11 +76,11 @@ public class TreeOfPositionData extends AVL<PositionData> {
         double km = 0;
         int j = 0;
         List<PositionData> list = new ArrayList<>();
-        inOrder().forEach(list :: add);
+        inOrder().forEach(list::add);
 
-        for(int i = 1;i < list.size() - 1;i ++){
+        for (int i = 1; i < list.size() - 1; i++) {
             j = i - 1;
-            km += distance(list.get(j).getLatitude(),list.get(j).getLongitude(),list.get(i).getLatitude(),list.get(i).getLongitude());
+            km += distance(list.get(j).getLatitude(), list.get(j).getLongitude(), list.get(i).getLatitude(), list.get(i).getLongitude());
         }
         return km;
     }
@@ -94,16 +94,17 @@ public class TreeOfPositionData extends AVL<PositionData> {
      */
     public double travelledDistanceBtDates(LocalDateTime date1, LocalDateTime date2) {
         double km = 0;
-        int j = 0;
+        int j;
         List<PositionData> list = new ArrayList<>();
-        inOrder().forEach(list :: add);
+        inOrder().forEach(list::add);
 
-        for(int i = 1;i < list.size() - 1;i ++){
+        for (int i = 1; i < list.size() ; i++) {
             j = i - 1;
-            if(list.get(j).getBaseDateTime().compareTo(date1) >= 0 && list.get(i).getBaseDateTime().compareTo(date2) <= 0) {
+            if (list.get(j).getBaseDateTime().compareTo(date1) >= 0 && list.get(i).getBaseDateTime().compareTo(date2) <= 0) {
                 km += distance(list.get(j).getLatitude(), list.get(j).getLongitude(), list.get(i).getLatitude(), list.get(i).getLongitude());
             }
         }
+
         return km;
     }
 
@@ -194,7 +195,8 @@ public class TreeOfPositionData extends AVL<PositionData> {
         double mean = 0;
         int aux = 0;
         for (PositionData positionData : inOrder()) {
-                mean += positionData.getSog();
+            mean += positionData.getSog();
+            aux++;
         }
         return mean / aux;
     }

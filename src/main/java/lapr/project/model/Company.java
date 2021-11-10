@@ -90,13 +90,22 @@ public class Company {
     public Map<Ship, Double> getTopShipsWithMostKmByVesselType(LocalDateTime date1, LocalDateTime date2, int n, int vType) {
 
         // Creates a map where the Ship is the key and the average speed is the value
-        Map<Ship, Double> topN = new HashMap<>();
+        Map<Ship, Double> topN = new LinkedHashMap<>();
         //List of ships between the wanted dates and with the same vessel type
         List<Ship> totalShipsByTravelledDistance = new ArrayList<>();
-
+        //Auxiliary list
+        List<PositionData> aux = new ArrayList<>();
         for (Ship ship : treeOfShips.inOrder()) {
-            if (ship.getVesselType() == vType && ship.finalDate().isAfter(date1) && ship.initialDate().isBefore(date2)) {
-                totalShipsByTravelledDistance.add(ship);
+            aux.clear();
+            if(ship.getVesselType() == vType) {
+                for (PositionData positionData : ship.getTreeOfPositionData().inOrder()) {
+                    if (positionData.getBaseDateTime().compareTo(date1) >= 0 && positionData.getBaseDateTime().compareTo(date2) <= 0) {
+                        aux.add(positionData);
+                    }
+                }
+                if(aux.size() >= 2){
+                    totalShipsByTravelledDistance.add(ship);
+                }
             }
         }
 
@@ -104,16 +113,17 @@ public class Company {
         Comparator<Ship> comparator = new Comparator<Ship>() {
             @Override
             public int compare(Ship a, Ship b) {
-                if (a.getTreeOfPositionData().travelledDistanceBtDates(date1, date2) < b.getTreeOfPositionData().travelledDistanceBtDates(date1, date2)) {
+                if (a.getTreeOfPositionData().travelledDistanceBtDates(date1, date2) > b.getTreeOfPositionData().travelledDistanceBtDates(date1, date2)) {
                     return -1;
                 }
-                if (a.getTreeOfPositionData().travelledDistanceBtDates(date1, date2) > b.getTreeOfPositionData().travelledDistanceBtDates(date1, date2)) {
+                if (a.getTreeOfPositionData().travelledDistanceBtDates(date1, date2) < b.getTreeOfPositionData().travelledDistanceBtDates(date1, date2)) {
                     return 1;
                 }
                 return 0;
             }
         };
         Collections.sort(totalShipsByTravelledDistance, comparator);
+        //System.out.println(totalShipsByTravelledDistance);
 
         //Putting the top N ships and average speed into the map
         int j = 0;

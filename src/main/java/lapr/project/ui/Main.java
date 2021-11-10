@@ -4,8 +4,10 @@ import lapr.project.controller.ImportFileController;
 import lapr.project.controller.TopNController;
 import lapr.project.model.Company;
 
+import javax.swing.*;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.sql.SQLOutput;
 import java.time.LocalDateTime;
 import java.util.Scanner;
 import java.util.logging.Logger;
@@ -78,8 +80,10 @@ class Main {
                 case "4" :
                     TopNController topNController = new TopNController();
 
-                    topNController.getTopShipsWithMostKm(LocalDateTime.of(2020, 12,31, 16, 04)
-                            , LocalDateTime.of(2020, 12, 31, 16, 15),3);
+                    topNController.getTopShipsWithMostKm(LocalDateTime.of(2020, 12,31, 9, 5)
+                            , LocalDateTime.of(2020, 12, 31, 23, 41),3);
+                    //System.out.println(topNController.company.getTreeOfShips().getShipByMMSI(257881000).getTreeOfPositionData().travelledDistanceBtDates(LocalDateTime.of(2020, 12,31, 9, 5)
+                          //  , LocalDateTime.of(2020, 12, 31, 23, 41)));
                     break;
                 case "5" :
                     MovementsTravelledAndDeltaDistanceUI movementsTravelledAndDeltaDistanceUI = new MovementsTravelledAndDeltaDistanceUI();
