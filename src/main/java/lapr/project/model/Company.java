@@ -59,6 +59,7 @@ public class Company {
         List<Ship> list = new ArrayList<>();
 
         for (Ship s : treeOfShips.inOrder()) {
+
             list.add(s);
         }
 
