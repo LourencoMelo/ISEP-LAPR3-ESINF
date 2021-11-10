@@ -318,6 +318,7 @@ public abstract class Ship implements  Comparable<Ship> {
 
     }
 
+
     /**
      * Methods of Tree Of Position Data
      */
@@ -360,6 +361,7 @@ public abstract class Ship implements  Comparable<Ship> {
                 ", Total number of movements='" + this.getTotalMovements() + '\'' +
                 ", Travelled Distance=" + this.travelledDistance() +
                 ", Delta Distance='" + this.getDeltaDistance() + '\'' +
+                ", Vessel Type=" + this.getVesselType() + '\'' +
                 '}' +  '\n';
     }
 

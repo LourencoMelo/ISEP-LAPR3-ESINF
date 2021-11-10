@@ -36,7 +36,7 @@ class Main {
      */
     public static void main(String[] args) throws IOException, SQLException {
 
-        TopNController topNController = new TopNController();
+
         Scanner in = new Scanner(System.in);
 
         System.out.println("What do you wanna run? Select one of the following options: ");
@@ -74,6 +74,12 @@ class Main {
 
                     getShipPositionByDateUI.getShipPositionMessagesOrderByDate();
 
+                    break;
+                case "4" :
+                    TopNController topNController = new TopNController();
+
+                    topNController.getTopShipsWithMostKm(LocalDateTime.of(2020, 12,31, 16, 04)
+                            , LocalDateTime.of(2020, 12, 31, 16, 15),3);
                     break;
                 case "5" :
                     MovementsTravelledAndDeltaDistanceUI movementsTravelledAndDeltaDistanceUI = new MovementsTravelledAndDeltaDistanceUI();

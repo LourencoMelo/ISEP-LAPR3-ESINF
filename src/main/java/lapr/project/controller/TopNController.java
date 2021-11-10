@@ -3,6 +3,7 @@ package lapr.project.controller;
 import lapr.project.model.Company;
 import lapr.project.model.Ship;
 import lapr.project.utils.AVL;
+import lapr.project.utils.App;
 import lapr.project.utils.TreeOfShips;
 
 import java.time.LocalDateTime;
@@ -11,10 +12,13 @@ import java.util.*;
 public class TopNController extends AVL<Ship> {
 
     Company company;
-    TreeOfShips treeOfShips;
 
-    public TopNController(){
-        treeOfShips = new TreeOfShips();
+    public TopNController() {
+        this(App.getInstance().getCompany());
+    }
+
+    public TopNController(Company company){
+        this.company = company;
     }
 
     /**

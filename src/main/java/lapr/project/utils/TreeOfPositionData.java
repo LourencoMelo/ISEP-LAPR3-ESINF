@@ -18,20 +18,11 @@ public class TreeOfPositionData extends AVL<PositionData> {
      * @return total of movements
      */
     public Integer getTotalMovements() {
-        return getTotalMovements(root);
-    }
-
-    /**
-     * Returns total of movements of a ship
-     *
-     * @return total of movements
-     */
-    private Integer getTotalMovements(Node<PositionData> node) {
-        if (root == null) return null;
-
-        if (node == null) return 0;
-
-        return 1 + getTotalMovements(node.getLeft()) + getTotalMovements(node.getRight());
+        int cont = 0;
+        for(PositionData positionData : inOrder()){
+            cont ++;
+        }
+        return cont;
     }
 
     public double getDeltaDistance() {
@@ -48,7 +39,7 @@ public class TreeOfPositionData extends AVL<PositionData> {
         }
         assert finalPoint != null;
 
-        return distance(initialPoint.getLatitude(), initialPoint.getLongitude(), finalPoint.getLatitude(), finalPoint.getLongitude(), "K");
+        return distance(initialPoint.getLatitude(), initialPoint.getLongitude(), finalPoint.getLatitude(), finalPoint.getLongitude());
     }
 
     /**
@@ -58,28 +49,23 @@ public class TreeOfPositionData extends AVL<PositionData> {
      * @param longitudeA longitude first point
      * @param latitudeB  latitude second point
      * @param longitudeB latitude second point
-     * @param unit       unit
      * @return distance travelled in function of the latitude and longitude of two points
      */
-    public static double distance(double latitudeA, double longitudeA, double latitudeB, double longitudeB, String unit) {
+    public double distance(double latitudeA, double longitudeA, double latitudeB, double longitudeB) {
         //The ship hasn't travelled any distance yet
         if ((latitudeA == latitudeB) && (longitudeA == longitudeB)) {
             return 0;
         } else {
             double aux = longitudeA - longitudeB;
-            double distance = Math.sin(Math.toRadians(latitudeA)) * Math.sin(Math.toRadians(latitudeB)) + Math.cos(Math.toRadians(latitudeA)) * Math.cos((latitudeB)) * Math.cos(Math.toRadians(aux));
+            double distance = Math.sin(Math.toRadians(latitudeA)) * Math.sin(Math.toRadians(latitudeB)) + Math.cos(Math.toRadians(latitudeA))
+                    * Math.cos(Math.toRadians(latitudeB)) * Math.cos(Math.toRadians(aux));
             distance = Math.acos(distance);
             distance = Math.toDegrees(distance);
             distance = distance * 60 * 1.1515;
-            if (unit.equals("K")) {
-                distance = distance * 1.609344;
-            } else if (unit.equals("N")) {
-                distance = distance * 0.8684;
-            }
+            distance = distance * 1.609344;
             return (distance);
         }
     }
-
 
     /**
      * Calculates the travelled distance
@@ -87,16 +73,16 @@ public class TreeOfPositionData extends AVL<PositionData> {
      * @return travelled distance
      */
     public double travelledDistance() {
-        double distance = 0;
-        Iterator<PositionData> iterator1 = inOrder().iterator();
-        Iterator<PositionData> iterator2 = inOrder().iterator();
-        iterator2.next();
-        while (iterator2.hasNext()) {
-            PositionData s1 = iterator1.next();
-            PositionData s2 = iterator2.next();
-            distance += distance(s1.getLatitude(), s1.getLongitude(), s2.getLatitude(), s2.getLatitude(), "K");
+        double km = 0;
+        int j = 0;
+        List<PositionData> list = new ArrayList<>();
+        inOrder().forEach(list :: add);
+
+        for(int i = 1;i < list.size() - 1;i ++){
+            j = i - 1;
+            km += distance(list.get(j).getLatitude(),list.get(j).getLongitude(),list.get(i).getLatitude(),list.get(i).getLongitude());
         }
-        return distance;
+        return km;
     }
 
     /**
@@ -107,19 +93,18 @@ public class TreeOfPositionData extends AVL<PositionData> {
      * @return travelled distance
      */
     public double travelledDistanceBtDates(LocalDateTime date1, LocalDateTime date2) {
-        double distance = 0;
-        // In the start the Iterator doesn't point to anything
-        Iterator<PositionData> iterator1 = inOrder().iterator();
-        Iterator<PositionData> iterator2 = inOrder().iterator();
-        iterator2.next();
-        while (iterator2.hasNext()) {
-            PositionData s1 = iterator1.next();
-            PositionData s2 = iterator2.next();
-            if (s1.getBaseDateTime().compareTo(date1) > 0 && s2.getBaseDateTime().compareTo(date2) < 0) {
-                distance += distance(s1.getLatitude(), s1.getLongitude(), s2.getLatitude(), s2.getLatitude(), "K");
+        double km = 0;
+        int j = 0;
+        List<PositionData> list = new ArrayList<>();
+        inOrder().forEach(list :: add);
+
+        for(int i = 1;i < list.size() - 1;i ++){
+            j = i - 1;
+            if(list.get(j).getBaseDateTime().compareTo(date1) == 0 && list.get(i).getBaseDateTime().compareTo(date2) == 0) {
+                km += distance(list.get(j).getLatitude(), list.get(j).getLongitude(), list.get(i).getLatitude(), list.get(i).getLongitude());
             }
         }
-        return distance;
+        return km;
     }
 
 

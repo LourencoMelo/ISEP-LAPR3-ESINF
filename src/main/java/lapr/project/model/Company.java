@@ -103,11 +103,11 @@ public class Company {
         // Comparator used to order the list by Travelled Distance
         Comparator<Ship> comparator = new Comparator<Ship>() {
             @Override
-            public int compare(Ship s1, Ship s2) {
-                if (s1.getTreeOfPositionData().travelledDistanceBtDates(date1, date2) > s2.getTreeOfPositionData().travelledDistanceBtDates(date1, date2)) {
+            public int compare(Ship a, Ship b) {
+                if (a.getTreeOfPositionData().travelledDistanceBtDates(date1, date2) > b.getTreeOfPositionData().travelledDistanceBtDates(date1, date2)) {
                     return -1;
                 }
-                if (s1.getTreeOfPositionData().travelledDistanceBtDates(date1, date2) < s2.getTreeOfPositionData().travelledDistanceBtDates(date1, date2)) {
+                if (a.getTreeOfPositionData().travelledDistanceBtDates(date1, date2) < b.getTreeOfPositionData().travelledDistanceBtDates(date1, date2)) {
                     return 1;
                 }
                 return 0;
@@ -122,7 +122,7 @@ public class Company {
                 topN.put(totalShipsByTravelledDistance.get(j), totalShipsByTravelledDistance.get(j).getTreeOfPositionData().meanSOG(date1, date2));
             }
         } else {
-            for (j = 0; j < totalShipsByTravelledDistance.size() - 1; j++) {
+            for (j = 0; j < totalShipsByTravelledDistance.size() ; j++) {
                 topN.put(totalShipsByTravelledDistance.get(j), totalShipsByTravelledDistance.get(j).getTreeOfPositionData().meanSOG(date1, date2));
             }
         }
@@ -168,6 +168,7 @@ public class Company {
             Map<Ship, Double> topN = getTopShipsWithMostKmByVesselType(date1, date2, n, vTypes);
             for (Map.Entry<Ship, Double> topiN : topN.entrySet()) {
                 System.out.println(topiN);
+                System.out.println(topiN.getKey().getTreeOfPositionData().travelledDistanceBtDates(date1,date2));
             }
         }
     }
