@@ -100,7 +100,7 @@ public class TreeOfPositionData extends AVL<PositionData> {
 
         for(int i = 1;i < list.size() - 1;i ++){
             j = i - 1;
-            if(list.get(j).getBaseDateTime().compareTo(date1) == 0 && list.get(i).getBaseDateTime().compareTo(date2) == 0) {
+            if(list.get(j).getBaseDateTime().compareTo(date1) >= 0 && list.get(i).getBaseDateTime().compareTo(date2) <= 0) {
                 km += distance(list.get(j).getLatitude(), list.get(j).getLongitude(), list.get(i).getLatitude(), list.get(i).getLongitude());
             }
         }
@@ -177,10 +177,24 @@ public class TreeOfPositionData extends AVL<PositionData> {
         double mean = 0;
         int aux = 0;
         for (PositionData positionData : inOrder()) {
-            if (positionData.getBaseDateTime().compareTo(date1) > 0 && positionData.getBaseDateTime().compareTo(date2) < 0) {
+            if (positionData.getBaseDateTime().compareTo(date1) >= 0 && positionData.getBaseDateTime().compareTo(date2) <= 0) {
                 mean += positionData.getSog();
                 aux++;
             }
+        }
+        return mean / aux;
+    }
+
+    /**
+     * Calculates the average speed between two dates
+     *
+     * @return mean
+     */
+    public double meanSOG() {
+        double mean = 0;
+        int aux = 0;
+        for (PositionData positionData : inOrder()) {
+                mean += positionData.getSog();
         }
         return mean / aux;
     }

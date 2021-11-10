@@ -104,10 +104,10 @@ public class Company {
         Comparator<Ship> comparator = new Comparator<Ship>() {
             @Override
             public int compare(Ship a, Ship b) {
-                if (a.getTreeOfPositionData().travelledDistanceBtDates(date1, date2) > b.getTreeOfPositionData().travelledDistanceBtDates(date1, date2)) {
+                if (a.getTreeOfPositionData().travelledDistanceBtDates(date1, date2) < b.getTreeOfPositionData().travelledDistanceBtDates(date1, date2)) {
                     return -1;
                 }
-                if (a.getTreeOfPositionData().travelledDistanceBtDates(date1, date2) < b.getTreeOfPositionData().travelledDistanceBtDates(date1, date2)) {
+                if (a.getTreeOfPositionData().travelledDistanceBtDates(date1, date2) > b.getTreeOfPositionData().travelledDistanceBtDates(date1, date2)) {
                     return 1;
                 }
                 return 0;
