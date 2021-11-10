@@ -23,4 +23,6 @@ public class GetShipPositionByDateController {
     public HashMap<Ship, Set<PositionData>> getShipPositionMessagesOrderByDateController(Ship ship){
         return this.company.getShipPositionMessagesOrderByDate(ship);
     }
+
+
 }
