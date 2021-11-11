@@ -1,6 +1,7 @@
 package lapr.project.controller;
 
 import lapr.project.model.Company;
+import lapr.project.model.Distance;
 import lapr.project.model.Ship;
 import lapr.project.model.ShipByMMSI;
 import lapr.project.utils.App;
@@ -84,6 +85,19 @@ class MovementsTravelledAndDeltaDistanceControllerTest {
         Collections.sort(list, comparator);
 
         assertEquals(list, movementsTravelledAndDeltaDistanceController.listMovementsTravelledAndDeltaDistance());
+
+    }
+
+    /**
+     * Tests if delta distance gives the distance between the last position and first
+     */
+    @Test
+    void getDeltaDistance() {
+        company.getTreeOfShips().createTreeMMSI(new File("Files/sships.csv"));
+
+        Ship shipTest = company.getTreeOfShips().inOrder().iterator().next();
+
+        assertEquals(Distance.distance(43.22513, -66.96725,42.69577, -66.97808), shipTest.getDeltaDistance());
 
     }
 
