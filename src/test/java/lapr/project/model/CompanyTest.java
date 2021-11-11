@@ -181,7 +181,7 @@ class CompanyTest {
         shipTest2.addPositionData(positionDataTestCompare4);
 
         Pair<Ship, Ship> test = Pair.of(shipTest1,shipTest2);
-        double expected = 144.72761769407856;
+        double expected = 144.7276176940785;
         double result = company.travelDistanceDifference(test);
         assertEquals(expected,result);
     }
