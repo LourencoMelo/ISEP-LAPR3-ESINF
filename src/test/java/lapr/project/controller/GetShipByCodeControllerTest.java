@@ -27,6 +27,9 @@ class GetShipByCodeControllerTest {
      */
     GetShipByCodeController getShipByCodeController = new GetShipByCodeController(company);
 
+    /**
+     * Test the constructor and company association
+     */
     @Test
     void GetShipByCodeController() {
         Company company = App.getInstance().getCompany();
@@ -45,7 +48,9 @@ class GetShipByCodeControllerTest {
         assertEquals(App.getInstance().getCompany().getShipPositionMessagesOrderByDate(shipTest), company.getShipPositionMessagesOrderByDate(shipTest));
     }
 
-
+    /**
+     * Test for MMSI, IMO and Call Sign if the SHIP is being well returned associated to the code received
+     */
     @Test
     void getShipByCode() {
 
@@ -68,6 +73,11 @@ class GetShipByCodeControllerTest {
         assertEquals(shipTest3, getShipByCodeController.getShipByCode("C4SQ2"));
     }
 
+    /**
+     * Formats the date to what the method ask and is coded for
+     * @param str the date as a string
+     * @return LocalDateTime formated
+     */
     LocalDateTime formatter(String str) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
         return LocalDateTime.parse(str, formatter);

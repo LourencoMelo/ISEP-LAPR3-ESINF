@@ -11,6 +11,9 @@ import java.util.*;
 
 public class Company {
 
+    /**
+     * Tree of ships instance ordered by MMSI
+     */
     TreeOfShips treeOfShips;
 
     TreeOfShips treeOfShipsIMO;
@@ -25,6 +28,10 @@ public class Company {
 
     }
 
+    /**
+     * Return the list of Ships ordered by travelled distance and number of movements (descending/ascending)
+     * @return list of ships
+     */
     public List<Ship> printMovementsTravelledAndDeltaDistance() {
         Comparator<Ship> comparator = new Comparator<Ship>() {
             @Override
@@ -52,6 +59,10 @@ public class Company {
         return list;
     }
 
+    /**
+     * Returns the list of ships that are in the TreeOfShips
+     * @return list of ships
+     */
     private List<Ship> listMovementsTravelledAndDeltaDistance() {
 
         List<Ship> list = new ArrayList<>();
@@ -65,14 +76,26 @@ public class Company {
 
     }
 
+    /**
+     * Returns tree of ships ordered by MMSI
+     * @return tree of ships
+     */
     public TreeOfShips getTreeOfShips() {
         return treeOfShips;
     }
 
+    /**
+     * Returns tree of ships ordered by IMO
+     * @return tree of ships
+     */
     public TreeOfShips getTreeOfShipsIMO() {
         return treeOfShipsIMO;
     }
 
+    /**
+     * Returns tree of ships ordered by Call Sign
+     * @return tree of ships
+     */
     public TreeOfShips getTreeOfShipsCallSign() {
         return treeOfShipsCallSign;
     }

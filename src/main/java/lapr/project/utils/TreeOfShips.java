@@ -143,12 +143,23 @@ public class TreeOfShips extends AVL<Ship> {
         return LocalDateTime.parse(str, formatter);
     }
 
+    /**
+     * Returns the ship with that MMSI
+     * @param mMSI ship's MMSI
+     * @return Ship with that MMSI or null if not found
+     */
     public Ship getShipByMMSI(int mMSI) {
 
         return getShipByMMSI(root, mMSI);
 
     }
 
+    /**
+     * Returns the ship with that MMSI
+     * @param node of the tree of ships
+     * @param mMSI ship's MMSI
+     * @return Ship with that MMSI or null if not found
+     */
     public Ship getShipByMMSI(Node<Ship> node, int mMSI) {
 
         if (root == null) {
@@ -170,10 +181,21 @@ public class TreeOfShips extends AVL<Ship> {
 
     }
 
+    /**
+     * Returns the ship with that IMO
+     * @param iMO ship's IMO
+     * @return Ship with that IMO or null if not found
+     */
     public Ship getShipByImo(String iMO) {
         return getShipByImo(root, iMO);
     }
 
+    /**
+     * Returns the ship with that IMO
+     * @param node of the tree of ships
+     * @param iMO ship's IMO
+     * @return Ship with that IMO or null if not found
+     */
     public Ship getShipByImo(Node<Ship> node, String iMO) {
 
         if (root == null) {
@@ -183,21 +205,32 @@ public class TreeOfShips extends AVL<Ship> {
         if (iMO.compareTo(node.getElement().getIMO()) == 0) return node.getElement();
 
         /**
-         * If iMO searched is higher than the current element's mmsi then we need to go to the right node that has higher.
+         * If iMO searched is higher than the current element's iMO then we need to go to the right node that has higher.
          */
         if (iMO.compareTo(node.getElement().getIMO()) > 0) return getShipByImo(node.getRight(), iMO);
         /**
-         * If iMO searched is lower than the current element's mmsi then we need to go to the right node that has lower.
+         * If iMO searched is lower than the current element's iMO then we need to go to the right node that has lower.
          */
         if (iMO.compareTo(node.getElement().getIMO()) < 0) return getShipByImo(node.getLeft(), iMO);
 
         return null;
     }
 
+    /**
+     * Returns the ship with that Call Sign
+     * @param callSign ship's Call Sign
+     * @return Ship with that Call Sign or null if not found
+     */
     public Ship getShipByCallSign(String callSign) {
         return getShipByCallSign(root, callSign);
     }
 
+    /**
+     * Returns the ship with that Call Sign
+     * @param node of the tree of ships
+     * @param callSign ship's Call Sign
+     * @return Ship with that Call Sign or null if not found
+     */
     public Ship getShipByCallSign(Node<Ship> node, String callSign) {
 
         if (root == null) {
@@ -207,12 +240,12 @@ public class TreeOfShips extends AVL<Ship> {
         if (callSign.compareTo(node.getElement().getCallSign()) == 0) return node.getElement();
 
         /**
-         * If iMO searched is higher than the current element's mmsi then we need to go to the right node that has higher.
+         * If call sign searched is higher than the current element's call sign then we need to go to the right node that has higher.
          */
         if (callSign.compareTo(node.getElement().getCallSign()) > 0)
             return getShipByCallSign(node.getRight(), callSign);
         /**
-         * If iMO searched is lower than the current element's mmsi then we need to go to the right node that has lower.
+         * If call sign searched is lower than the current element's call sign then we need to go to the right node that has lower.
          */
         if (callSign.compareTo(node.getElement().getCallSign()) < 0) return getShipByCallSign(node.getLeft(), callSign);
 

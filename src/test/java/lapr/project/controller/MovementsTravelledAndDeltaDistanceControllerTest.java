@@ -7,8 +7,6 @@ import lapr.project.utils.App;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -28,6 +26,9 @@ class MovementsTravelledAndDeltaDistanceControllerTest {
      */
     MovementsTravelledAndDeltaDistanceController movementsTravelledAndDeltaDistanceController = new MovementsTravelledAndDeltaDistanceController(company);
 
+    /**
+     * Test the constructor and company association
+     */
     @Test
     void MovementsTravelledAndDeltaDistanceController() {
         Company company = App.getInstance().getCompany();
@@ -46,6 +47,9 @@ class MovementsTravelledAndDeltaDistanceControllerTest {
         assertEquals(App.getInstance().getCompany().getShipPositionMessagesOrderByDate(shipTest), company.getShipPositionMessagesOrderByDate(shipTest));
     }
 
+    /**
+     * Test if the list returned is well ordered by travelled distance and number of movements (descending/ascending)
+     */
     @Test
     void listMovementsTravelledAndDeltaDistance() {
 
@@ -81,14 +85,6 @@ class MovementsTravelledAndDeltaDistanceControllerTest {
 
         assertEquals(list, movementsTravelledAndDeltaDistanceController.listMovementsTravelledAndDeltaDistance());
 
-    }
-
-
-
-
-    LocalDateTime formatter(String str) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
-        return LocalDateTime.parse(str, formatter);
     }
 
 }
