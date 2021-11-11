@@ -1,6 +1,7 @@
 package lapr.project.ui;
 
 import lapr.project.controller.ImportFileController;
+import lapr.project.controller.PairOfShipsController;
 import lapr.project.controller.TopNController;
 import lapr.project.model.Company;
 
@@ -77,14 +78,17 @@ class Main {
                     getShipPositionByDateUI.getShipPositionMessagesOrderByDate();
 
                     break;
-                //case "4" :
+                case "4" :
                     //TopNController topNController = new TopNController();
 
                     //topNController.getTopShipsWithMostKm(LocalDateTime.of(2020, 12,31, 9, 5)
                            // , LocalDateTime.of(2020, 12, 31, 23, 41),3);
                     //System.out.println(topNController.company.getTreeOfShips().getShipByMMSI(257881000).getTreeOfPositionData().travelledDistanceBtDates(LocalDateTime.of(2020, 12,31, 9, 5)
                           //  , LocalDateTime.of(2020, 12, 31, 23, 41)));
-                   // break;
+                    PairOfShipsController pairOfShipsController = new PairOfShipsController();
+
+                    pairOfShipsController.getPairShips();
+                    break;
                 case "5" :
                     MovementsTravelledAndDeltaDistanceUI movementsTravelledAndDeltaDistanceUI = new MovementsTravelledAndDeltaDistanceUI();
 

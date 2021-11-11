@@ -196,11 +196,11 @@ public class Company {
     }
 
 
-    public boolean closeDepartureArrival(Pair<Ship, Ship> pairOfShips){
-        double distanceArrival, dintanceDeparture = 0;
-        distanceArrival = Distance.distance(pairOfShips.getFirst().arrivalLatitude(),pairOfShips.getFirst().arrivalLongitude(),pairOfShips.getSecond().arrivalLatitude(),pairOfShips.getSecond().arrivalLongitude());
-        dintanceDeparture = Distance.distance(pairOfShips.getFirst().departureLatitude(),pairOfShips.getFirst().departureLongitude(),pairOfShips.getSecond().departureLatitude(),pairOfShips.getSecond().departureLongitude());
-        return distanceArrival <= 5 && dintanceDeparture <= 5 && pairOfShips.getFirst().travelledDistance() >= 10 && pairOfShips.getSecond().travelledDistance() >= 10 && pairOfShips.getFirst().travelledDistance() != pairOfShips.getSecond().travelledDistance();
+    public boolean closeDepartureArrival(Ship a, Ship b){
+        double distanceArrival = 0, dintanceDeparture = 0;
+        distanceArrival = Distance.distance(a.arrivalLatitude(),a.arrivalLongitude(),b.arrivalLatitude(),b.arrivalLongitude());
+        dintanceDeparture = Distance.distance(a.departureLatitude(),a.departureLongitude(),b.departureLatitude(),b.departureLongitude());
+        return distanceArrival <= 5 && dintanceDeparture <= 5 && a.travelledDistance() >= 10 && b.travelledDistance() >= 10 && a.travelledDistance() != b.travelledDistance();
     }
 
     public double travelDistanceDifference(Pair<Ship, Ship> pairOfShips){
@@ -209,7 +209,44 @@ public class Company {
         return diff;
     }
 
-    //while(it1.hasNext)
+
+    public void getPairShips(){
+        List<Ship> ls = new ArrayList<>();
+        List<Pair<Ship, Ship>> pairs = new ArrayList<>();
+        for(Ship ship : treeOfShips.inOrder()){
+            ls.add(ship);
+        }
+        Pair<Ship, Ship> newPair;
+        for(int i = 0; i < ls.size() - 1; i ++){
+            for(int j = i + 1; j < ls.size(); j ++ ){
+                if(closeDepartureArrival(ls.get(i),ls.get(j))){
+                    newPair = Pair.of(ls.get(i),ls.get(j));
+                    pairs.add(newPair);
+                }
+            }
+        }
+        System.out.println(pairs);
+        Comparator<Pair<Ship, Ship>> comparator = new Comparator<Pair<Ship, Ship>>() {
+            @Override
+            public int compare(Pair<Ship, Ship> o1, Pair<Ship, Ship> o2) {
+                if (o1.getFirst().getMMSI() > o2.getFirst().getMMSI()) {
+                    return -1;
+                }
+                if (o1.getFirst().getMMSI() < o2.getFirst().getMMSI()) {
+                    return 1;
+                }
+                if (travelDistanceDifference(o1) > travelDistanceDifference(o2)){
+                    return -1;
+                }
+                if (travelDistanceDifference(o1) < travelDistanceDifference(o2)){
+                    return 1;
+                }
+                return 0;
+            }
+        };
+        Collections.sort(pairs, comparator);
+
+    }
 
 
 }
