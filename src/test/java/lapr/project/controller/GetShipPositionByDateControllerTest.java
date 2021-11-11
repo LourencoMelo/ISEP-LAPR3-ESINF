@@ -19,7 +19,7 @@ class GetShipPositionByDateControllerTest {
     /**
      * Create an instance of Company
      */
-    Company company = App.getInstance().getCompany();
+    Company company = new Company();
 
     /**
      * Creates an instance of GetShipPositionByDateController

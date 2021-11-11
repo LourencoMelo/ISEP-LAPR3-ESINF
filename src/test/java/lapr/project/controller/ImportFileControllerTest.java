@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ImportFileControllerTest {
 
-    Company company = App.getInstance().getCompany();
+    Company company = new Company();
     ImportFileController importFileController = new ImportFileController(company);
 
     @Test
