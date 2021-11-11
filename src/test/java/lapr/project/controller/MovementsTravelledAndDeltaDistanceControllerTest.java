@@ -28,6 +28,15 @@ class MovementsTravelledAndDeltaDistanceControllerTest {
      */
     MovementsTravelledAndDeltaDistanceController movementsTravelledAndDeltaDistanceController = new MovementsTravelledAndDeltaDistanceController(company);
 
+    @Test
+    void MovementsTravelledAndDeltaDistanceController() {
+        Company company = App.getInstance().getCompany();
+
+        MovementsTravelledAndDeltaDistanceController movementsTravelledAndDeltaDistanceController = new MovementsTravelledAndDeltaDistanceController();
+
+        assertEquals(company, movementsTravelledAndDeltaDistanceController.getCompany());
+    }
+
     /**
      * Tests if the Company object gives the same result as the App
      */

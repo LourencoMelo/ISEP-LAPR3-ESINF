@@ -22,4 +22,7 @@ public class MovementsTravelledAndDeltaDistanceController {
         return this.company.printMovementsTravelledAndDeltaDistance();
     }
 
+    public Company getCompany() {
+        return company;
+    }
 }
