@@ -21,12 +21,12 @@ class MovementsTravelledAndDeltaDistanceControllerTest {
     /**
      * Create an instance of Company
      */
-    Company company = App.getInstance().getCompany();
+    Company company = new Company();
 
     /**
      * Creates an instance of GetShipByCodeController
      */
-    GetShipByCodeController getShipByCodeController = new GetShipByCodeController(company);
+    MovementsTravelledAndDeltaDistanceController movementsTravelledAndDeltaDistanceController = new MovementsTravelledAndDeltaDistanceController(company);
 
     /**
      * Tests if the Company object gives the same result as the App
@@ -70,7 +70,7 @@ class MovementsTravelledAndDeltaDistanceControllerTest {
 
         Collections.sort(list, comparator);
 
-        assertEquals(list, company.printMovementsTravelledAndDeltaDistance());
+        assertEquals(list, movementsTravelledAndDeltaDistanceController.listMovementsTravelledAndDeltaDistance());
 
     }
 
