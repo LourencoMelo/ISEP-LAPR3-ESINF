@@ -1,6 +1,5 @@
 package lapr.project.ui;
 
-import lapr.project.controller.ApplicationController;
 import lapr.project.controller.GetShipByCodeController;
 import lapr.project.controller.GetShipPositionByDateController;
 
@@ -10,14 +9,11 @@ public class GetShipPositionByDateUI {
 
     Scanner in = new Scanner(System.in);
 
-    private ApplicationController applicationController;
-
     private GetShipPositionByDateController getShipPositionByDateController;
 
     private GetShipByCodeController getShipByCodeController;
 
     public GetShipPositionByDateUI(){
-        this.applicationController = new ApplicationController();
         this.getShipPositionByDateController = new GetShipPositionByDateController();
         this.getShipByCodeController = new GetShipByCodeController();
     }

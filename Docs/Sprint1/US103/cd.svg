@@ -24,7 +24,6 @@ class GetShipPositionByDateController{
 }
 
 class GetShipPositionByDateUI{
-    -ApplicationController applicationController
     -GetShipPositionByDateController getShipPositionByDateController
     -GetShipByCodeController getShipByCodeController
     +GetShipPositionByDateUI()
