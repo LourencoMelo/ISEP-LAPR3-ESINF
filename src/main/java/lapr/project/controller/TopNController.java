@@ -21,17 +21,14 @@ public class TopNController extends AVL<Ship> {
         this.company = company;
     }
 
-    /**
-     * For each Vessel Type this method will give the TOP-N ships with the most kilometres travelled and their respective average speed
-     * @param date1 initial date
-     * @param date2 final date
-     * @param n N ships
-     */
-    public void getTopShipsWithMostKm(LocalDateTime date1, LocalDateTime date2, int n){
-        company.getTopShipsWithMostKm(date1,date2,n);
+
+    public Map<Ship, Double> getTopShipsWithMostKmByVesselType(LocalDateTime date1, LocalDateTime date2, int n, int vType){
+        return company.getTopShipsWithMostKmByVesselType(date1,date2,n,vType);
     }
 
-
+    public List<Integer> getVesselTypes(){
+        return company.getVesselTypes();
+    }
 
 
 

@@ -150,21 +150,7 @@ public class Company {
     }
 
 
-    /**
-     * For each Vessel Type this method will give the TOP-N ships with the most kilometres travelled and their respective average speed
-     *
-     * @param date1 initial date
-     * @param date2 final date
-     * @param n     N ships
-     */
-    public void getTopShipsWithMostKm(LocalDateTime date1, LocalDateTime date2, int n) {
-        //Creates a list of vessel types
-        List<Integer> allVesselTypes = new ArrayList<>();
-        for (Ship ship : treeOfShips.inOrder()) {
-            if (!allVesselTypes.contains(ship.getVesselType())) {
-                allVesselTypes.add(ship.getVesselType());
-            }
-        }
+    /*public void getTopShipsWithMostKm(LocalDateTime date1, LocalDateTime date2, int n,List<Integer> allVesselTypes) {
         //For each Vessel Type , creates the respective map
         for (Integer vTypes : allVesselTypes) {
             Map<Ship, Double> topN = getTopShipsWithMostKmByVesselType(date1, date2, n, vTypes);
@@ -173,6 +159,17 @@ public class Company {
                 System.out.println(topiN.getKey().travelledDistanceBtDates(date1, date2));
             }
         }
+    }**/
+
+    public List<Integer> getVesselTypes(){
+        //Creates a list of vessel types
+        List<Integer> allVesselTypes = new ArrayList<>();
+        for (Ship ship : treeOfShips.inOrder()) {
+            if (!allVesselTypes.contains(ship.getVesselType())) {
+                allVesselTypes.add(ship.getVesselType());
+            }
+        }
+        return allVesselTypes;
     }
 
 
@@ -188,5 +185,8 @@ public class Company {
         diff = Math.abs(pairOfShips.getFirst().travelledDistance() - pairOfShips.getSecond().travelledDistance());
         return diff;
     }
+
+    //while(it1.hasNext)
+
 
 }

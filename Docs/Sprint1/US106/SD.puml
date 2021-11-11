@@ -7,9 +7,10 @@ actor       TrafficManager             as TM
 participant    ":topnUI"         as UI
 participant    ":TopNController" as CTRL
 participant    ":Company"              as Company
-participant    ":Ship" as Ship
 participant    "treeOfShips: Ship"            as TreeOfShips
 participant    "treeOfPositionData: PositionData"            as TreeOfPosition
+participant    ":Ship" as Ship
+
 
 
 TM -> UI : Get the top-N ships with the most kilometres \n travelled and their average speed
@@ -22,14 +23,27 @@ activate UI
 
     UI-> CTRL : getTopShipsWithMostKm(....)
     activate CTRL
-loop vessel Types
-    CTRL -> Company : getTopShipsWithMostKm(....)
+    CTRL -> Company : getVesselTypes(....)
     activate Company
-    Company -> Company : getTopShipsWithMostKmByVesselType(...)
-    Company -> TreeOfShips : getListOfShipsByVesselType()
+    Company -> CTRL : ListAllVesselTypes
+    deactivate Company
+    CTRL -> UI : ListAllVesselTypes
+    deactivate CTRL
+loop vessel Types
+    UI -> CTRL : getTopShipsWithMostKmByVesselType(...)
+    activate CTRL
+    CTRL -> Company : getTopShipsWithMostKmByVesselType(...)
+    activate Company
     Company -> Ship : travelledDistanceBtDates(...)
+    activate Ship
+    Ship -> Company : distance
+    deactivate Ship
     Company -> Ship : meanSOG(..)
+    activate Ship
+    Ship -> Company : mean
+    deactivate Ship
     Company -> CTRL : return Map<Ship, Double>
+
     deactivate Company
     CTRL -> UI : return Map<Ship, Double>
     deactivate CTRL
