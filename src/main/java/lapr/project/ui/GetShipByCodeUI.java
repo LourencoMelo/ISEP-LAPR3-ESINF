@@ -18,9 +18,9 @@ public class GetShipByCodeUI<E> {
 
         System.out.println("Write MMSI, IMO or Call Sign of the ship you want to get the details: ");
 
-        String aanswer = in.next();
+        String answer = in.next();
 
-        System.out.println(getShipByCodeController.getShipByCode(aanswer));
+        System.out.println(getShipByCodeController.getShipByCode(answer));
     }
 
 }

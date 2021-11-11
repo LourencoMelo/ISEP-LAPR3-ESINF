@@ -7,7 +7,7 @@ import java.util.Comparator;
 import java.util.Iterator;
 import java.util.Objects;
 
-public abstract class Ship implements  Comparable<Ship> {
+public abstract class Ship implements Comparable<Ship> {
 
     /**
      * -------------------------------------------------------------------------------------------------------------
@@ -74,27 +74,31 @@ public abstract class Ship implements  Comparable<Ship> {
 
     /**
      * Constructor of the class Ship
-     * @param MMSI MMSI of the Ship
-     * @param name Name of the Ship
-     * @param IMO IMO of the Ship
-     * @param callSign CallSign of the Ship
+     *
+     * @param MMSI       MMSI of the Ship
+     * @param name       Name of the Ship
+     * @param IMO        IMO of the Ship
+     * @param callSign   CallSign of the Ship
      * @param vesselType Vessel Type of the Ship
-     * @param length Length of the ship
-     * @param width With of the ship
-     * @param draft Draft of the Ship
+     * @param length     Length of the ship
+     * @param width      With of the ship
+     * @param draft      Draft of the Ship
      */
     public Ship(int MMSI, String name, String IMO, String callSign, int vesselType, double length, double width, double draft) {
-       setMMSI(MMSI);
-       setName(name);
-       setIMO(IMO);
-       setCallSign(callSign);
-       setVesselType(vesselType);
-       setLength(length);
-       setWidth(width);
-       setDraft(draft);
-       treeOfPositionData = new TreeOfPositionData();
+        setMMSI(MMSI);
+        setName(name);
+        setIMO(IMO);
+        setCallSign(callSign);
+        setVesselType(vesselType);
+        setLength(length);
+        setWidth(width);
+        setDraft(draft);
+        treeOfPositionData = new TreeOfPositionData();
     }
 
+    /**
+     * Empty constructor
+     */
     public Ship() {
 
     }
@@ -106,10 +110,9 @@ public abstract class Ship implements  Comparable<Ship> {
      */
 
 
-    //Method that adds to the tree when reading the file
-
     /**
      * Returns MMSI of the Ship
+     *
      * @return MMSI
      */
 
@@ -119,18 +122,20 @@ public abstract class Ship implements  Comparable<Ship> {
 
     /**
      * Sets the MMSI of the Ship
+     *
      * @param MMSI
      */
     public void setMMSI(int MMSI) {
-        if(MMSI >= 100000000 && MMSI <= 999999999){
+        if (MMSI >= 100000000 && MMSI <= 999999999) {
             this.MMSI = MMSI;
-        }else{
+        } else {
             throw new IllegalArgumentException("MMSI needs to be a 9 digits unique number.");
         }
     }
 
     /**
      * Returns the Name of the Ship
+     *
      * @return name
      */
     public String getName() {
@@ -139,6 +144,7 @@ public abstract class Ship implements  Comparable<Ship> {
 
     /**
      * Sets the Name of the Ship
+     *
      * @param name
      */
     public void setName(String name) {
@@ -147,6 +153,7 @@ public abstract class Ship implements  Comparable<Ship> {
 
     /**
      * Returns the IMO of the Ship
+     *
      * @return IMO
      */
     public String getIMO() {
@@ -155,50 +162,53 @@ public abstract class Ship implements  Comparable<Ship> {
 
     /**
      * Sets the IMO of the Ship
+     *
      * @param IMO
      */
     public void setIMO(String IMO) {
-        if(IMO.length() == 10){
+        if (IMO.length() == 10) {
             this.IMO = IMO;
-        }else{
+        } else {
             throw new IllegalArgumentException("IMO needs to be a 10 digits unique number.");
         }
     }
 
-    /**
-     * Returns the Number of Energy Generators present in the Ship
-     * @return numberEnergyGenerator
 
-    public int getNumberEnergyGenerator() {
-        return numberEnergyGenerator;
-    }
+//     * Returns the Number of Energy Generators present in the Ship
+//     * @return numberEnergyGenerator
+//
+//    public int getNumberEnergyGenerator() {
+//        return numberEnergyGenerator;
+//    }
+//
+//    /**
+//     * Sets the Number of Energy Generators present in the Ship
+//     * @param numberEnergyGenerator
+//
+//    public void setNumberEnergyGenerator(int numberEnergyGenerator) {
+//        this.numberEnergyGenerator = numberEnergyGenerator;
+//    }
+//
+//    /**
+//     * Returns the PowerOutput of the Ship
+//     * @return powerOutput
+//
+//    public int getPowerOutput() {
+//        return powerOutput;
+//    }
+//
+//    /**
+//     * Sets the PowerOutput of the Ship
+//     * @param powerOutput
+//
+//    public void setPowerOutput(int powerOutput) {
+//        this.powerOutput = powerOutput;
+//    }
 
-    /**
-     * Sets the Number of Energy Generators present in the Ship
-     * @param numberEnergyGenerator
 
-    public void setNumberEnergyGenerator(int numberEnergyGenerator) {
-        this.numberEnergyGenerator = numberEnergyGenerator;
-    }
-
-    /**
-     * Returns the PowerOutput of the Ship
-     * @return powerOutput
-
-    public int getPowerOutput() {
-        return powerOutput;
-    }
-
-    /**
-     * Sets the PowerOutput of the Ship
-     * @param powerOutput
-
-    public void setPowerOutput(int powerOutput) {
-        this.powerOutput = powerOutput;
-    }
-    */
     /**
      * Returns the CallSign of the Ship
+     *
      * @return callSign
      */
     public String getCallSign() {
@@ -207,6 +217,7 @@ public abstract class Ship implements  Comparable<Ship> {
 
     /**
      * Sets the CallSign of the Ship
+     *
      * @param callSign
      */
     public void setCallSign(String callSign) {
@@ -215,6 +226,7 @@ public abstract class Ship implements  Comparable<Ship> {
 
     /**
      * Returns the VesselType of the Ship
+     *
      * @return vesselType
      */
     public int getVesselType() {
@@ -223,6 +235,7 @@ public abstract class Ship implements  Comparable<Ship> {
 
     /**
      * Sets the VesselType of the Ship
+     *
      * @param vesselType
      */
     public void setVesselType(int vesselType) {
@@ -231,6 +244,7 @@ public abstract class Ship implements  Comparable<Ship> {
 
     /**
      * Returns the Length of the Ship
+     *
      * @return length
      */
     public double getLength() {
@@ -239,6 +253,7 @@ public abstract class Ship implements  Comparable<Ship> {
 
     /**
      * Sets the Length of the Ship
+     *
      * @param length
      */
     public void setLength(double length) {
@@ -247,6 +262,7 @@ public abstract class Ship implements  Comparable<Ship> {
 
     /**
      * Returns the Width of the Ship
+     *
      * @return width
      */
     public double getWidth() {
@@ -255,23 +271,25 @@ public abstract class Ship implements  Comparable<Ship> {
 
     /**
      * Sets the Width of the Ship
+     *
      * @param width
      */
     public void setWidth(double width) {
         this.width = width;
     }
 
-    /**
-     * Returns the MaximumCapacity of the Ship
-     * @return maximumCapacity
 
-    public int getMaximumCapacity() {
-        return maximumCapacity;
-    }
-*/
+//     * Returns the MaximumCapacity of the Ship
+//     * @return maximumCapacity
+//
+//    public int getMaximumCapacity() {
+//        return maximumCapacity;
+//    }
+
 
     /**
      * Returns the Draft of the Ship
+     *
      * @return draft
      */
     public double getDraft() {
@@ -280,7 +298,8 @@ public abstract class Ship implements  Comparable<Ship> {
 
     /**
      * Sets the Draft of the Ship
-     * @param draft
+     *
+     * @param draft draft of the ship
      */
     public void setDraft(double draft) {
         this.draft = draft;
@@ -288,57 +307,96 @@ public abstract class Ship implements  Comparable<Ship> {
 
     /**
      * Adds to the position data AVL tree a new position data
+     *
      * @param positionData position data to add
      */
-    public void addPositionData(PositionData positionData){
+    public void addPositionData(PositionData positionData) {
         this.treeOfPositionData.insert(positionData);
     }
 
     /**
      * Returns the tree of Position Data
+     *
      * @return tree of position Data
      */
     public TreeOfPositionData getTreeOfPositionData() {
         return treeOfPositionData;
     }
 
+
+    //////////////////////////////////////////////////////////// SHIP INFO ///////////////////////////////////////////////////////////////////////
+
+
     /**
-     * Returns total of movements of a ship
-     * @return total of movements
+     * Getter for the Start Base Date Time
+     *
+     * @return initial time
+     */
+    public LocalDateTime initialDate() {
+        return treeOfPositionData.initialDate();
+    }
+
+    /**
+     * Getter for the End Base Date Time
+     *
+     * @return end time
+     */
+    public LocalDateTime finalDate() {
+        return treeOfPositionData.finalDate();
+    }
+
+    /**
+     * Getter for the total movement time
+     *
+     * @return total movement time in seconds
+     */
+    public long totalMovementTime() {
+        return treeOfPositionData.getTotalMovementTime();
+    }
+
+    /**
+     * Getter for total Number of movements of a ship
+     *
+     * @return total Number of movements
      */
     public Integer getTotalMovements() {
         return treeOfPositionData.getTotalMovements();
     }
 
-    public double getDeltaDistance() {
-        return treeOfPositionData.getDeltaDistance();
+    /**
+     * Getter for maximum SOG
+     *
+     * @return maximum SOG
+     */
+    public double getMaxSOG() {
+        return treeOfPositionData.maxSOG();
     }
-
-    public double travelledDistance(){
-        return treeOfPositionData.travelledDistance();
-    }
-
 
     /**
-     * Methods of Tree Of Position Data
+     * Getter for mean SOG
+     *
+     * @return mean SOG
      */
-    public double travelledDistanceBtDates(LocalDateTime date1, LocalDateTime date2){
-        return treeOfPositionData.travelledDistanceBtDates(date1,date2);
+    public double getMeanSOG() {
+        return treeOfPositionData.meanSOG();
     }
 
-    public boolean atLeastTwo(LocalDateTime date1, LocalDateTime date2){
-        return treeOfPositionData.atLeastTwo(date1,date2);
+    /**
+     * Getter for the max COG
+     *
+     * @return max COG
+     */
+    public double getMaxCOG() {
+        return treeOfPositionData.maxCOG();
     }
 
-    public LocalDateTime initialDate(){
-        return treeOfPositionData.initialDate();
-    }
-
-    public LocalDateTime finalDate(){
-        return treeOfPositionData.finalDate();
-    }
-    public double meanSOG(LocalDateTime date1, LocalDateTime date2){
-        return treeOfPositionData.meanSOG(date1,date2);
+    /**
+     * Getter for the mean COG
+     *
+     * @return mean COG
+     */
+    public double getMeanCOG() {
+        return treeOfPositionData.meanCOG();
     }
 
     /**
@@ -349,7 +407,6 @@ public abstract class Ship implements  Comparable<Ship> {
     public double departureLatitude() {
         return treeOfPositionData.departureLatitude();
     }
-
 
     /**
      * Calculates the departure longitude of a vessel
@@ -366,7 +423,6 @@ public abstract class Ship implements  Comparable<Ship> {
      * @return double arrival latitude
      */
     public double arrivalLatitude() {
-
         return treeOfPositionData.arrivalLatitude();
     }
 
@@ -376,14 +432,45 @@ public abstract class Ship implements  Comparable<Ship> {
      * @return double arrival longitude
      */
     public double arrivalLongitude() {
-
-       return treeOfPositionData.arrivalLongitude();
+        return treeOfPositionData.arrivalLongitude();
     }
+
+    /**
+     * Getter for the travelled distance
+     * @return travelled distance
+     */
+    public double travelledDistance() {
+        return treeOfPositionData.travelledDistance();
+    }
+
+    /**
+     * Getter for the delta distance
+     * @return delta distance
+     */
+    public double getDeltaDistance() {
+        return treeOfPositionData.getDeltaDistance();
+    }
+
+    public double meanSOG(LocalDateTime date1, LocalDateTime date2) {
+        return treeOfPositionData.meanSOG(date1, date2);
+    }
+
+    /**
+     * Methods of Tree Of Position Data
+     */
+    public double travelledDistanceBtDates(LocalDateTime date1, LocalDateTime date2) {
+        return treeOfPositionData.travelledDistanceBtDates(date1, date2);
+    }
+
+    public boolean atLeastTwo(LocalDateTime date1, LocalDateTime date2) {
+        return treeOfPositionData.atLeastTwo(date1, date2);
+    }
+
 
 
     /**
      * -------------------------------------------------------------------------------------------------------------
-     *                                              TO STRING
+     * TO STRING
      * -------------------------------------------------------------------------------------------------------------
      */
 
@@ -398,7 +485,7 @@ public abstract class Ship implements  Comparable<Ship> {
                 ", length=" + length +
                 ", width=" + width +
                 ", draft=" + draft +
-                '}' +  '\n' + treeOfPositionData;
+                '}' + '\n' + treeOfPositionData;
     }
 
     public String toStringMMSIMovementsTravelledDistanceDeltaDistance() {
@@ -407,7 +494,7 @@ public abstract class Ship implements  Comparable<Ship> {
                 ", Total number of movements='" + this.getTotalMovements() + '\'' +
                 ", Travelled Distance=" + this.travelledDistance() +
                 ", Delta Distance='" + this.getDeltaDistance() + '\'' +
-                '}' +  '\n';
+                '}' + '\n';
     }
 
     @Override
@@ -417,11 +504,6 @@ public abstract class Ship implements  Comparable<Ship> {
      * -------------------------------------------------------------------------------------------------------------
      */
     public abstract int compareTo(Ship o);
-
-
-
-
-
 
 
 }
