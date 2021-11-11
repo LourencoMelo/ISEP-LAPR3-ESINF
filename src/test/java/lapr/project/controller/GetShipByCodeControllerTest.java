@@ -30,7 +30,6 @@ class GetShipByCodeControllerTest {
     /**
      * Tests if the Company object gives the same result as the App
      */
-
     @Test
     void companyObjectVerifier() {
         Ship shipTest = new ShipByMMSI(123456788, "WarCraft", "1023456787","Roger",2, 5.0, 3.0, 20.9);
