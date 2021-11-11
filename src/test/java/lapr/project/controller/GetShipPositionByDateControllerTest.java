@@ -27,6 +27,18 @@ class GetShipPositionByDateControllerTest {
     GetShipPositionByDateController getShipPositionByDateController = new GetShipPositionByDateController(company);
 
     /**
+     * Test the constructor and company association
+     */
+    @Test
+    void GetShipPositionByDateController() {
+        Company company = App.getInstance().getCompany();
+
+        GetShipPositionByDateController getShipPositionByDateController = new GetShipPositionByDateController();
+
+        assertEquals(company, getShipPositionByDateController.getCompany());
+    }
+
+    /**
      * Tests if the Company object gives the same result as the App
      */
     @Test

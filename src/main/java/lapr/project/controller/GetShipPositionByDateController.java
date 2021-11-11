@@ -24,5 +24,11 @@ public class GetShipPositionByDateController {
         return this.company.getShipPositionMessagesOrderByDate(ship);
     }
 
-
+    /**
+     * Returns the company instace
+     * @return company
+     */
+    public Company getCompany() {
+        return company;
+    }
 }

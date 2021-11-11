@@ -20,6 +20,18 @@ class ImportFileControllerTest {
     Company company = new Company();
     ImportFileController importFileController = new ImportFileController(company);
 
+    /**
+     * Test the constructor and company association
+     */
+    @Test
+    void ImportFileController() {
+        Company company = App.getInstance().getCompany();
+
+        ImportFileController importFileController = new ImportFileController();
+
+        assertEquals(company, importFileController.getCompany());
+    }
+
     @Test
     void company_Object() {
         assertEquals(App.getInstance().getCompany().getTreeOfShips(), company.getTreeOfShips());

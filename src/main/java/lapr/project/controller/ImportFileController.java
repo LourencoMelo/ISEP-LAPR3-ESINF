@@ -40,4 +40,11 @@ public class ImportFileController {
         return company.getTreeOfShips().getShipByMMSI(MMSI);
     }
 
+    /**
+     * Returns the company instace
+     * @return company
+     */
+    public Company getCompany() {
+        return company;
+    }
 }
