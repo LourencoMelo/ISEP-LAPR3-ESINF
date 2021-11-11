@@ -27,6 +27,15 @@ class GetShipByCodeControllerTest {
      */
     GetShipByCodeController getShipByCodeController = new GetShipByCodeController(company);
 
+    @Test
+    void GetShipByCodeController() {
+        Company company = App.getInstance().getCompany();
+
+        GetShipByCodeController getShipByCodeController = new GetShipByCodeController();
+
+        assertEquals(company, getShipByCodeController.getCompany());
+    }
+
     /**
      * Tests if the Company object gives the same result as the App
      */

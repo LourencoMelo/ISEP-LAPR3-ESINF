@@ -33,4 +33,7 @@ public class GetShipByCodeController {
 
     }
 
+    public Company getCompany() {
+        return company;
+    }
 }
