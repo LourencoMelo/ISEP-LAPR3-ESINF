@@ -3,6 +3,7 @@ package lapr.project.ui;
 import lapr.project.controller.ApplicationController;
 import lapr.project.controller.GetShipByCodeController;
 import lapr.project.controller.MovementsTravelledAndDeltaDistanceController;
+import lapr.project.model.Ship;
 
 import java.util.Scanner;
 
@@ -20,7 +21,9 @@ public class MovementsTravelledAndDeltaDistanceUI {
     }
 
     public void listMovementsTravelledAndDeltaDistance() {
-        movementsTravelledAndDeltaDistanceController.listMovementsTravelledAndDeltaDistance();
+        for(Ship s : movementsTravelledAndDeltaDistanceController.listMovementsTravelledAndDeltaDistance()) {
+            System.out.println(s.toStringMMSIMovementsTravelledDistanceDeltaDistance());
+        }
     }
 
 }

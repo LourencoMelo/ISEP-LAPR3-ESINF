@@ -3,9 +3,6 @@ package lapr.project.controller;
 import lapr.project.model.Company;
 import lapr.project.model.Ship;
 import lapr.project.utils.App;
-import lapr.project.utils.TreeOfShips;
-
-import java.io.File;
 
 public class GetShipByCodeController {
 

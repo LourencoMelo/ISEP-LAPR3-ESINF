@@ -25,7 +25,7 @@ public class Company {
 
     }
 
-    public void printMovementsTravelledAndDeltaDistance() {
+    public List<Ship> printMovementsTravelledAndDeltaDistance() {
         Comparator<Ship> comparator = new Comparator<Ship>() {
             @Override
             public int compare(Ship s1, Ship s2) {
@@ -49,9 +49,7 @@ public class Company {
 
         Collections.sort(list, comparator);
 
-        for (Ship s : list) {
-            System.out.println(s.toStringMMSIMovementsTravelledDistanceDeltaDistance());
-        }
+        return list;
     }
 
     private List<Ship> listMovementsTravelledAndDeltaDistance() {
