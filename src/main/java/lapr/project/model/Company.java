@@ -197,10 +197,10 @@ public class Company {
 
 
     public boolean closeDepartureArrival(Ship a, Ship b){
-        double distanceArrival = 0, dintanceDeparture = 0;
+        double distanceArrival = 0, distanceDeparture = 0;
         distanceArrival = Distance.distance(a.arrivalLatitude(),a.arrivalLongitude(),b.arrivalLatitude(),b.arrivalLongitude());
-        dintanceDeparture = Distance.distance(a.departureLatitude(),a.departureLongitude(),b.departureLatitude(),b.departureLongitude());
-        return distanceArrival <= 5 && dintanceDeparture <= 5 && a.travelledDistance() >= 10 && b.travelledDistance() >= 10 && a.travelledDistance() != b.travelledDistance();
+        distanceDeparture = Distance.distance(a.departureLatitude(),a.departureLongitude(),b.departureLatitude(),b.departureLongitude());
+        return distanceArrival <= 5 && distanceDeparture <= 5 && a.travelledDistance() >= 10 && b.travelledDistance() >= 10 && a.travelledDistance() != b.travelledDistance();
     }
 
     public double travelDistanceDifference(Pair<Ship, Ship> pairOfShips){

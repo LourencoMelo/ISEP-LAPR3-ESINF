@@ -66,6 +66,128 @@ class CompanyTest {
         assertEquals(mapTest, company.getShipPositionMessagesOrderByDate(shipTest));
     }
 
+    //A pair of ships that passes all the requirements
+    @Test
+    void closeDepartureArrivalTest(){
+        Ship shipTest1 = new ShipByMMSI(123456788, "WarCraft", "1023456787","Roger",2, 5.0, 3.0, 20.9);
+        Ship shipTest2 = new ShipByMMSI(123456789, "Carlos", "1023456788","Pedro",2, 5.0, 3.0, 20.9);
+
+        //Partida ship 1
+        PositionData positionDataTestCompare1 = new PositionData(LocalDateTime.of(2021, 11, 8, 13, 39), 27.86118, -78.01013, 2, 2, 4, "1", "S1");
+        //Partida Ship 2
+        PositionData positionDataTestCompare2 = new PositionData(LocalDateTime.of(2021, 11, 8, 13, 38), 27.86100, -78.01016, 2, 2, 4, "1", "S1");
+        // Chegada Ship 1
+        PositionData positionDataTestCompare3 = new PositionData(LocalDateTime.of(2021, 11, 8, 16, 39), 30.52141, -80.54852, 3, 4, 5, "2", "S2");
+        // Chegada Ship 2
+        PositionData positionDataTestCompare4 = new PositionData(LocalDateTime.of(2021, 11, 8, 16, 38), 30.52143, -80.54854, 3, 4, 5, "2", "S2");
+
+        shipTest1.addPositionData(positionDataTestCompare1);
+        shipTest1.addPositionData(positionDataTestCompare3);
+        shipTest2.addPositionData(positionDataTestCompare2);
+        shipTest2.addPositionData(positionDataTestCompare4);
+
+        //company.closeDepartureArrival(shipTest1,shipTest2);
+        assertEquals(true, company.closeDepartureArrival(shipTest1,shipTest2));
+    }
+
+    // Dont have close departure/arrival coordinates
+    @Test
+    void closeDepartureArrivalTest2(){
+        Ship shipTest1 = new ShipByMMSI(123456788, "WarCraft", "1023456787","Roger",2, 5.0, 3.0, 20.9);
+        Ship shipTest2 = new ShipByMMSI(123456789, "Carlos", "1023456788","Pedro",2, 5.0, 3.0, 20.9);
+
+        //Partida ship 1
+        PositionData positionDataTestCompare1 = new PositionData(LocalDateTime.of(2021, 11, 8, 13, 39), 40.86118, -80.01013, 2, 2, 4, "1", "S1");
+        //Partida Ship 2
+        PositionData positionDataTestCompare2 = new PositionData(LocalDateTime.of(2021, 11, 8, 13, 38), 27.86100, -78.01016, 2, 2, 4, "1", "S1");
+        // Chegada Ship 1
+        PositionData positionDataTestCompare3 = new PositionData(LocalDateTime.of(2021, 11, 8, 16, 39), 30.52141, -80.54852, 3, 4, 5, "2", "S2");
+        // Chegada Ship 2
+        PositionData positionDataTestCompare4 = new PositionData(LocalDateTime.of(2021, 11, 8, 16, 38), 30.52143, -80.54854, 3, 4, 5, "2", "S2");
+
+        shipTest1.addPositionData(positionDataTestCompare1);
+        shipTest1.addPositionData(positionDataTestCompare3);
+        shipTest2.addPositionData(positionDataTestCompare2);
+        shipTest2.addPositionData(positionDataTestCompare4);
+
+        assertEquals(false, company.closeDepartureArrival(shipTest1,shipTest2));
+    }
+
+    // The ships aren't eligible because both have the same travelled distance
+    @Test
+    void closeDepartureArrivalTest3(){
+        Ship shipTest1 = new ShipByMMSI(123456788, "WarCraft", "1023456787","Roger",2, 5.0, 3.0, 20.9);
+        Ship shipTest2 = new ShipByMMSI(123456789, "Carlos", "1023456788","Pedro",2, 5.0, 3.0, 20.9);
+
+        //Partida ship 1
+        PositionData positionDataTestCompare1 = new PositionData(LocalDateTime.of(2021, 11, 8, 13, 39), 27.86118, -78.01013, 2, 2, 4, "1", "S1");
+        //Partida Ship 2
+        PositionData positionDataTestCompare2 = new PositionData(LocalDateTime.of(2021, 11, 8, 13, 38), 27.86118, -78.01013, 2, 2, 4, "1", "S1");
+        // Chegada Ship 1
+        PositionData positionDataTestCompare3 = new PositionData(LocalDateTime.of(2021, 11, 8, 16, 39), 30.52141, -80.54852, 3, 4, 5, "2", "S2");
+        // Chegada Ship 2
+        PositionData positionDataTestCompare4 = new PositionData(LocalDateTime.of(2021, 11, 8, 16, 38), 30.52141, -80.54852, 3, 4, 5, "2", "S2");
+
+        shipTest1.addPositionData(positionDataTestCompare1);
+        shipTest1.addPositionData(positionDataTestCompare3);
+        shipTest2.addPositionData(positionDataTestCompare2);
+        shipTest2.addPositionData(positionDataTestCompare4);
+
+        //company.closeDepartureArrival(shipTest1,shipTest2);
+        assertEquals(false, company.closeDepartureArrival(shipTest1,shipTest2));
+    }
+
+    // The ships aren't eligible because they don´t have at least 10km travelled
+    @Test
+    void closeDepartureArrivalTest4(){
+        Ship shipTest1 = new ShipByMMSI(123456788, "WarCraft", "1023456787","Roger",2, 5.0, 3.0, 20.9);
+        Ship shipTest2 = new ShipByMMSI(123456789, "Carlos", "1023456788","Pedro",2, 5.0, 3.0, 20.9);
+
+        //Partida ship 1
+        PositionData positionDataTestCompare1 = new PositionData(LocalDateTime.of(2021, 11, 8, 13, 39), 27.86118, -78.01013, 2, 2, 4, "1", "S1");
+        //Partida Ship 2
+        PositionData positionDataTestCompare2 = new PositionData(LocalDateTime.of(2021, 11, 8, 13, 38), 27.86100, -78.01016, 2, 2, 4, "1", "S1");
+        // Chegada Ship 1
+        PositionData positionDataTestCompare3 = new PositionData(LocalDateTime.of(2021, 11, 8, 16, 39), 27.86120, -78.01015, 3, 4, 5, "2", "S2");
+        // Chegada Ship 2
+        PositionData positionDataTestCompare4 = new PositionData(LocalDateTime.of(2021, 11, 8, 16, 38), 27.86102, -78.01020, 3, 4, 5, "2", "S2");
+
+        shipTest1.addPositionData(positionDataTestCompare1);
+        shipTest1.addPositionData(positionDataTestCompare3);
+        shipTest2.addPositionData(positionDataTestCompare2);
+        shipTest2.addPositionData(positionDataTestCompare4);
+
+        //company.closeDepartureArrival(shipTest1,shipTest2);
+        assertEquals(false, company.closeDepartureArrival(shipTest1,shipTest2));
+    }
+
+    @Test
+    void travelDistanceDifferenceTest(){
+        Ship shipTest1 = new ShipByMMSI(123456788, "WarCraft", "1023456787","Roger",2, 5.0, 3.0, 20.9);
+        Ship shipTest2 = new ShipByMMSI(123456789, "Carlos", "1023456788","Pedro",2, 5.0, 3.0, 20.9);
+
+        //Partida ship 1
+        PositionData positionDataTestCompare1 = new PositionData(LocalDateTime.of(2021, 11, 8, 13, 39), 27.86118, -78.01013, 2, 2, 4, "1", "S1");
+        //Partida Ship 2
+        PositionData positionDataTestCompare2 = new PositionData(LocalDateTime.of(2021, 11, 8, 13, 38), 27.86118, -78.01013, 2, 2, 4, "1", "S1");
+        // Chegada Ship 1
+        PositionData positionDataTestCompare3 = new PositionData(LocalDateTime.of(2021, 11, 8, 16, 39), 30.86120, -80.01015, 3, 4, 5, "2", "S2");
+        // Chegada Ship 2
+        PositionData positionDataTestCompare4 = new PositionData(LocalDateTime.of(2021, 11, 8, 16, 38), 31.86120, -81.01015, 3, 4, 5, "2", "S2");
+
+        shipTest1.addPositionData(positionDataTestCompare1);
+        shipTest1.addPositionData(positionDataTestCompare3);
+        shipTest2.addPositionData(positionDataTestCompare2);
+        shipTest2.addPositionData(positionDataTestCompare4);
+
+        Pair<Ship, Ship> test = Pair.of(shipTest1,shipTest2);
+        double expected = 144.72761769407856;
+        double result = company.travelDistanceDifference(test);
+        assertEquals(expected,result);
+    }
+
+
+
     @Test
     void getTopShipsWithMostKm() {
     }
