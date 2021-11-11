@@ -30,7 +30,12 @@ public class TopNController extends AVL<Ship> {
         return company.getVesselTypes();
     }
 
-
-
+    /**
+     * Returns the company instace
+     * @return company
+     */
+    public Company getCompany() {
+        return company;
+    }
 
 }
