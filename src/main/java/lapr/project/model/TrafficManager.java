@@ -1,4 +1,4 @@
 package lapr.project.model;
 
-public class TraficManager {
+public class TrafficManager {
 }
