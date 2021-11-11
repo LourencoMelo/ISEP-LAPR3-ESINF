@@ -32,19 +32,6 @@ class GetShipByCodeControllerTest {
      */
 
     @Test
-    void GetShipByCodeController() {
-        Company company = new Company();
-
-        company.getTreeOfShips().createTreeMMSI(new File("Files/sships.csv"));
-
-        TreeOfShips treeOfShips = new TreeOfShips();
-
-        treeOfShips.createTreeMMSI(new File("Files/sships.csv"));
-
-        assertEquals(treeOfShips, company.getTreeOfShips());
-    }
-
-    @Test
     void companyObjectVerifier() {
         Ship shipTest = new ShipByMMSI(123456788, "WarCraft", "1023456787","Roger",2, 5.0, 3.0, 20.9);
         assertEquals(App.getInstance().getCompany().getShipPositionMessagesOrderByDate(shipTest), company.getShipPositionMessagesOrderByDate(shipTest));
