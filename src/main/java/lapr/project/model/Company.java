@@ -77,6 +77,7 @@ public class Company {
         return treeOfShipsCallSign;
     }
 
+
     /**
      * Returns a map of the TOP-N ships with the most kilometres travelled and their respective average speed for a specific vessel type
      *
@@ -92,19 +93,9 @@ public class Company {
         Map<Ship, Double> topN = new LinkedHashMap<>();
         //List of ships between the wanted dates and with the same vessel type
         List<Ship> totalShipsByTravelledDistance = new ArrayList<>();
-        //Auxiliary list
-        List<PositionData> aux = new ArrayList<>();
         for (Ship ship : treeOfShips.inOrder()) {
-            aux.clear();
-            if(ship.getVesselType() == vType) {
-                for (PositionData positionData : ship.getTreeOfPositionData().inOrder()) {
-                    if (positionData.getBaseDateTime().compareTo(date1) >= 0 && positionData.getBaseDateTime().compareTo(date2) <= 0) {
-                        aux.add(positionData);
-                    }
-                }
-                if(aux.size() >= 2){
+            if(ship.getVesselType() == vType && ship.atLeastTwo(date1,date2)) {
                     totalShipsByTravelledDistance.add(ship);
-                }
             }
         }
 
@@ -112,10 +103,10 @@ public class Company {
         Comparator<Ship> comparator = new Comparator<Ship>() {
             @Override
             public int compare(Ship a, Ship b) {
-                if (a.getTreeOfPositionData().travelledDistanceBtDates(date1, date2) > b.getTreeOfPositionData().travelledDistanceBtDates(date1, date2)) {
+                if (a.travelledDistanceBtDates(date1, date2) > b.travelledDistanceBtDates(date1, date2)) {
                     return -1;
                 }
-                if (a.getTreeOfPositionData().travelledDistanceBtDates(date1, date2) < b.getTreeOfPositionData().travelledDistanceBtDates(date1, date2)) {
+                if (a.travelledDistanceBtDates(date1, date2) < b.travelledDistanceBtDates(date1, date2)) {
                     return 1;
                 }
                 return 0;
@@ -128,16 +119,17 @@ public class Company {
         int j = 0;
         if (totalShipsByTravelledDistance.size() > n) {
             for (j = 0; j < n; j++) {
-                topN.put(totalShipsByTravelledDistance.get(j), totalShipsByTravelledDistance.get(j).getTreeOfPositionData().meanSOG(date1, date2));
+                topN.put(totalShipsByTravelledDistance.get(j), totalShipsByTravelledDistance.get(j).meanSOG(date1, date2));
             }
         } else {
             for (j = 0; j < totalShipsByTravelledDistance.size(); j++) {
-                topN.put(totalShipsByTravelledDistance.get(j), totalShipsByTravelledDistance.get(j).getTreeOfPositionData().meanSOG(date1, date2));
+                topN.put(totalShipsByTravelledDistance.get(j), totalShipsByTravelledDistance.get(j).meanSOG(date1, date2));
             }
         }
         //returns the map
         return topN;
     }
+
 
     /**
      * Searches the ship by the code introduced and returns an hashmap with the positions ordered by date
@@ -178,9 +170,23 @@ public class Company {
             Map<Ship, Double> topN = getTopShipsWithMostKmByVesselType(date1, date2, n, vTypes);
             for (Map.Entry<Ship, Double> topiN : topN.entrySet()) {
                 System.out.println(topiN);
-                System.out.println(topiN.getKey().getTreeOfPositionData().travelledDistanceBtDates(date1, date2));
+                System.out.println(topiN.getKey().travelledDistanceBtDates(date1, date2));
             }
         }
+    }
+
+
+    public boolean closeDepartureArrival(Pair<Ship, Ship> pairOfShips){
+        double distanceArrival, dintanceDeparture = 0;
+        distanceArrival = Distance.distance(pairOfShips.getFirst().arrivalLatitude(),pairOfShips.getFirst().arrivalLongitude(),pairOfShips.getSecond().arrivalLatitude(),pairOfShips.getSecond().arrivalLongitude());
+        dintanceDeparture = Distance.distance(pairOfShips.getFirst().departureLatitude(),pairOfShips.getFirst().departureLongitude(),pairOfShips.getSecond().departureLatitude(),pairOfShips.getSecond().departureLongitude());
+        return distanceArrival <= 5 && dintanceDeparture <= 5 && pairOfShips.getFirst().travelledDistance() >= 10 && pairOfShips.getSecond().travelledDistance() >= 10 && pairOfShips.getFirst().travelledDistance() != pairOfShips.getSecond().travelledDistance();
+    }
+
+    public double travelDistanceDifference(Pair<Ship, Ship> pairOfShips){
+        double diff = 0;
+        diff = Math.abs(pairOfShips.getFirst().travelledDistance() - pairOfShips.getSecond().travelledDistance());
+        return diff;
     }
 
 }

@@ -36,7 +36,6 @@ class Company {
 
 TrafficManager --> Company
 Company --> Ship
-Company --> PositionData
 Ship --> PositionData
 
 @enduml

@@ -4,6 +4,7 @@ import lapr.project.utils.TreeOfPositionData;
 
 import java.time.LocalDateTime;
 import java.util.Comparator;
+import java.util.Iterator;
 import java.util.Objects;
 
 public abstract class Ship implements  Comparable<Ship> {
@@ -315,7 +316,6 @@ public abstract class Ship implements  Comparable<Ship> {
 
     public double travelledDistance(){
         return treeOfPositionData.travelledDistance();
-
     }
 
 
@@ -326,12 +326,58 @@ public abstract class Ship implements  Comparable<Ship> {
         return treeOfPositionData.travelledDistanceBtDates(date1,date2);
     }
 
+    public boolean atLeastTwo(LocalDateTime date1, LocalDateTime date2){
+        return treeOfPositionData.atLeastTwo(date1,date2);
+    }
+
     public LocalDateTime initialDate(){
         return treeOfPositionData.initialDate();
     }
 
     public LocalDateTime finalDate(){
         return treeOfPositionData.finalDate();
+    }
+    public double meanSOG(LocalDateTime date1, LocalDateTime date2){
+        return treeOfPositionData.meanSOG(date1,date2);
+    }
+
+    /**
+     * Calculates the departure latitude of a vessel
+     *
+     * @return double departure latitude
+     */
+    public double departureLatitude() {
+        return treeOfPositionData.departureLatitude();
+    }
+
+
+    /**
+     * Calculates the departure longitude of a vessel
+     *
+     * @return double departure longitude
+     */
+    public double departureLongitude() {
+        return treeOfPositionData.departureLongitude();
+    }
+
+    /**
+     * Calculates the arrival latitude of a vessel
+     *
+     * @return double arrival latitude
+     */
+    public double arrivalLatitude() {
+
+        return treeOfPositionData.arrivalLatitude();
+    }
+
+    /**
+     * Calculates the arrival longitude of a vessel
+     *
+     * @return double arrival longitude
+     */
+    public double arrivalLongitude() {
+
+       return treeOfPositionData.arrivalLongitude();
     }
 
 

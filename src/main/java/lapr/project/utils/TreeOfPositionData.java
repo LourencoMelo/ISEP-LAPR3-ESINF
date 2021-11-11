@@ -1,8 +1,8 @@
 package lapr.project.utils;
 
+import lapr.project.model.Distance;
 import lapr.project.model.PositionData;
 import lapr.project.model.Ship;
-import oracle.security.crypto.core.SHA;
 
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
@@ -26,6 +26,10 @@ public class TreeOfPositionData extends AVL<PositionData> {
         return cont;
     }
 
+    /**
+     * Returns the delta distance of a ship
+     * @return delta distance
+     */
     public double getDeltaDistance() {
         Iterator<PositionData> iterator = inOrder().iterator();
         PositionData initialPoint = iterator.next();
@@ -40,33 +44,9 @@ public class TreeOfPositionData extends AVL<PositionData> {
         }
         assert finalPoint != null;
 
-        return distance(initialPoint.getLatitude(), initialPoint.getLongitude(), finalPoint.getLatitude(), finalPoint.getLongitude());
+        return Distance.distance(initialPoint.getLatitude(), initialPoint.getLongitude(), finalPoint.getLatitude(), finalPoint.getLongitude());
     }
 
-    /**
-     * Calculates the distance in km that the ship travelled between two points
-     *
-     * @param latitudeA  latitude first point
-     * @param longitudeA longitude first point
-     * @param latitudeB  latitude second point
-     * @param longitudeB latitude second point
-     * @return distance travelled in function of the latitude and longitude of two points
-     */
-    public double distance(double latitudeA, double longitudeA, double latitudeB, double longitudeB) {
-        //The ship hasn't travelled any distance yet
-        if ((latitudeA == latitudeB) && (longitudeA == longitudeB)) {
-            return 0;
-        } else {
-            double aux = longitudeA - longitudeB;
-            double distance = Math.sin(Math.toRadians(latitudeA)) * Math.sin(Math.toRadians(latitudeB)) + Math.cos(Math.toRadians(latitudeA))
-                    * Math.cos(Math.toRadians(latitudeB)) * Math.cos(Math.toRadians(aux));
-            distance = Math.acos(distance);
-            distance = Math.toDegrees(distance);
-            distance = distance * 60 * 1.1515;
-            distance = distance * 1.609344;
-            return (distance);
-        }
-    }
 
     /**
      * Calculates the travelled distance
@@ -79,9 +59,9 @@ public class TreeOfPositionData extends AVL<PositionData> {
         List<PositionData> list = new ArrayList<>();
         inOrder().forEach(list::add);
 
-        for (int i = 1; i < list.size() - 1; i++) {
+        for (int i = 1; i < list.size(); i++) {
             j = i - 1;
-            km += distance(list.get(j).getLatitude(), list.get(j).getLongitude(), list.get(i).getLatitude(), list.get(i).getLongitude());
+            km += Distance.distance(list.get(j).getLatitude(), list.get(j).getLongitude(), list.get(i).getLatitude(), list.get(i).getLongitude());
         }
         return km;
     }
@@ -95,14 +75,14 @@ public class TreeOfPositionData extends AVL<PositionData> {
      */
     public double travelledDistanceBtDates(LocalDateTime date1, LocalDateTime date2) {
         double km = 0;
-        int j;
+        int j = 0;
         List<PositionData> list = new ArrayList<>();
         inOrder().forEach(list::add);
 
         for (int i = 1; i < list.size() ; i++) {
             j = i - 1;
             if (list.get(j).getBaseDateTime().compareTo(date1) >= 0 && list.get(i).getBaseDateTime().compareTo(date2) <= 0) {
-                km += distance(list.get(j).getLatitude(), list.get(j).getLongitude(), list.get(i).getLatitude(), list.get(i).getLongitude());
+                km += Distance.distance(list.get(j).getLatitude(), list.get(j).getLongitude(), list.get(i).getLatitude(), list.get(i).getLongitude());
             }
         }
         return km;
@@ -166,6 +146,8 @@ public class TreeOfPositionData extends AVL<PositionData> {
             return node.getElement().getBaseDateTime();
         }
     }
+
+
 
     /**
      * Calculates the average speed between two dates
@@ -308,5 +290,24 @@ public class TreeOfPositionData extends AVL<PositionData> {
 
         return last_longitude.getLongitude();
     }
+
+    /**
+     * Returns true if the ships has at least 2 messages send in the wanted period of time
+     * @param date1 date 1
+     * @param date2 date 2
+     * @return true or false
+     */
+    public boolean atLeastTwo(LocalDateTime date1, LocalDateTime date2){
+        int aux = 0;
+        for (PositionData positionData : inOrder()) {
+            if (positionData.getBaseDateTime().compareTo(date1) >= 0 && positionData.getBaseDateTime().compareTo(date2) <= 0) {
+                aux++;
+            }
+        }
+        return aux >= 2;
+    }
+
+
+
 
 }

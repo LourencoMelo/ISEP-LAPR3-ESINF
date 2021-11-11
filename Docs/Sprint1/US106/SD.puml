@@ -7,6 +7,7 @@ actor       TrafficManager             as TM
 participant    ":topnUI"         as UI
 participant    ":TopNController" as CTRL
 participant    ":Company"              as Company
+participant    ":Ship" as Ship
 participant    "treeOfShips: Ship"            as TreeOfShips
 participant    "treeOfPositionData: PositionData"            as TreeOfPosition
 
@@ -26,8 +27,8 @@ loop vessel Types
     activate Company
     Company -> Company : getTopShipsWithMostKmByVesselType(...)
     Company -> TreeOfShips : getListOfShipsByVesselType()
-    Company -> TreeOfPosition : travelledDistanceBtDates(...)
-    Company -> TreeOfPosition : meanSOG(..)
+    Company -> Ship : travelledDistanceBtDates(...)
+    Company -> Ship : meanSOG(..)
     Company -> CTRL : return Map<Ship, Double>
     deactivate Company
     CTRL -> UI : return Map<Ship, Double>
