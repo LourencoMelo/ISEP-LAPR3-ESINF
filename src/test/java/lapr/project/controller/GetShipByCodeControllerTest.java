@@ -5,7 +5,6 @@ import lapr.project.model.PositionData;
 import lapr.project.model.Ship;
 import lapr.project.model.ShipByMMSI;
 import lapr.project.utils.App;
-import lapr.project.utils.TreeOfShips;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
@@ -13,7 +12,6 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Iterator;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class GetShipByCodeControllerTest {

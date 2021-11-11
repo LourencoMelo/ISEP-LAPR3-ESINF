@@ -1,6 +1,5 @@
 package lapr.project.controller;
 
-import com.sun.javafx.binding.StringFormatter;
 import lapr.project.model.Company;
 import lapr.project.model.Ship;
 import lapr.project.model.ShipByMMSI;
