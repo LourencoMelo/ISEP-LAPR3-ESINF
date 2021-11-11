@@ -5,6 +5,7 @@ import lapr.project.model.PositionData;
 import lapr.project.model.Ship;
 import lapr.project.model.ShipByMMSI;
 import lapr.project.utils.App;
+import lapr.project.utils.TreeOfShips;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
@@ -29,6 +30,20 @@ class GetShipByCodeControllerTest {
     /**
      * Tests if the Company object gives the same result as the App
      */
+
+    @Test
+    void GetShipByCodeController() {
+        Company company = new Company();
+
+        company.getTreeOfShips().createTreeMMSI(new File("Files/sships.csv"));
+
+        TreeOfShips treeOfShips = new TreeOfShips();
+
+        treeOfShips.createTreeMMSI(new File("Files/sships.csv"));
+
+        assertEquals(treeOfShips, company.getTreeOfShips());
+    }
+
     @Test
     void companyObjectVerifier() {
         Ship shipTest = new ShipByMMSI(123456788, "WarCraft", "1023456787","Roger",2, 5.0, 3.0, 20.9);
