@@ -5,20 +5,37 @@ autonumber
 actor       TrafficManager             as TM
 participant    ":getShipDetailUI"         as UI
 participant    ":getShipDetailController" as CTRL
+participant    ":Company"                  as company
+participant    ":Ship"                     as ship
 participant    ":TreeOfShips"              as tOS
 
 TM -> UI : List the MMSI, the total number of movements,\n Travelled Distance and Delta Distance
 activate UI
 
-
-activate UI
-
+    UI -> CTRL : listMovementsTravelledAndDeltaDistance()
 
     activate CTRL
 
+    CTRL -> company : List<Ship> list = printMovementsTravelledAndDeltaDistance()
+
+    activate company
+
+    company -> ship : getTreeOfPositionData()
+
+    activate ship
+
+
+    ship -> tOS : travelledDistance()
+
     activate tOS
 
+    ship -> tOS : getTotalMovements()
+
     deactivate tOS
+
+    deactivate ship
+
+    deactivate company
 
     deactivate CTRL
 
