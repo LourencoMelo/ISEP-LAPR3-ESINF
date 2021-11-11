@@ -17,7 +17,7 @@ public class GetShipByCodeController {
     }
 
     public Ship getShipByCode(String code) {
-        if ((code).charAt(0) == 'I' && (code).charAt(1) == 'M' && (code).charAt(2) == 'O') {
+        if (code.startsWith("IMO")) {
             return this.company.getTreeOfShipsIMO().getShipByImo(code);
         }
 
