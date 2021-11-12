@@ -215,6 +215,13 @@ class TreeOfPositionDataTest {
         assertEquals(expected, shipTestCompare1.getTreeOfPositionData().meanSOG());
     }
 
+    @Test
+    void meanSOGInEmptyList() {
+        double expected = 0;
+
+        assertEquals(expected,shipTestCompare1.getTreeOfPositionData().meanSOG());
+    }
+
     /**
      *---------------------------------------------------------------------------------------
      *
@@ -705,6 +712,13 @@ class TreeOfPositionDataTest {
         shipTestCompare1.addPositionData(positionDataTestCompare3);
 
         assertEquals(expected, shipTestCompare1.getTreeOfPositionData().meanCOG());
+    }
+
+    @Test
+    void meanCOGInEmptyList() {
+        double expected = 0;
+
+        assertEquals(expected,shipTestCompare1.getMeanCOG());
     }
 
     /**
