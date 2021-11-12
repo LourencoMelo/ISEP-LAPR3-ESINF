@@ -68,7 +68,7 @@ public class PortAndWareHouse {
 
     /**
      * Sets the code of the port
-     * @param code
+     * @param code new code
      */
     public void setCode(int code) {
         this.code = code;
@@ -76,7 +76,7 @@ public class PortAndWareHouse {
 
     /**
      * Sets the continent of the port
-     * @param continent
+     * @param continent new continent
      */
     public void setContinent(String continent) {
         this.continent = continent;
@@ -84,7 +84,7 @@ public class PortAndWareHouse {
 
     /**
      * Sets the country of the port
-     * @param country
+     * @param country new country
      */
     public void setCountry(String country) {
         this.country = country;
@@ -92,7 +92,7 @@ public class PortAndWareHouse {
 
     /**
      * Sets the latitude of the port
-     * @param lat
+     * @param lat new latitude
      */
     public void setLat(double lat) {
         this.lat = lat;
@@ -100,7 +100,7 @@ public class PortAndWareHouse {
 
     /**
      * Sets the longitude of the port
-     * @param log
+     * @param log new longitude
      */
     public void setLog(double log) {
         this.log = log;
@@ -108,7 +108,7 @@ public class PortAndWareHouse {
 
     /**
      * Sets the name of the port
-     * @param port
+     * @param port new port
      */
     public void setPort(String port) {
         this.port = port;
@@ -161,14 +161,6 @@ public class PortAndWareHouse {
     public String getPort() {
         return port;
     }
-
-    /*@Override
-    public boolean equal(Object o) {
-        if(this == o) return true;
-        if(o == null || getClass() != o.getClass()) return false;
-        PortAndWareHouse portAndWareHouse = (PortAndWareHouse) o;
-        return code == portAndWareHouse.code;
-    }*/
 
     /**
      * Tos String
