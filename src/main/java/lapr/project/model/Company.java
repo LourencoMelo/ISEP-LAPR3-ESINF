@@ -1,11 +1,9 @@
 package lapr.project.model;
 
-import lapr.project.utils.AVL;
 import lapr.project.utils.TreeOfShips;
 
 import java.util.List;
 
-import java.io.File;
 import java.time.LocalDateTime;
 import java.util.*;
 
@@ -172,18 +170,6 @@ public class Company {
         return mapShipPositionMessagesOrderedByDate;
     }
 
-
-    /*public void getTopShipsWithMostKm(LocalDateTime date1, LocalDateTime date2, int n,List<Integer> allVesselTypes) {
-        //For each Vessel Type , creates the respective map
-        for (Integer vTypes : allVesselTypes) {
-            Map<Ship, Double> topN = getTopShipsWithMostKmByVesselType(date1, date2, n, vTypes);
-            for (Map.Entry<Ship, Double> topiN : topN.entrySet()) {
-                System.out.println(topiN);
-                System.out.println(topiN.getKey().travelledDistanceBtDates(date1, date2));
-            }
-        }
-    }**/
-
     public List<Integer> getVesselTypes(){
         //Creates a list of vessel types
         List<Integer> allVesselTypes = new ArrayList<>();
@@ -200,7 +186,11 @@ public class Company {
         double distanceArrival = 0, distanceDeparture = 0;
         distanceArrival = Distance.distance(a.arrivalLatitude(),a.arrivalLongitude(),b.arrivalLatitude(),b.arrivalLongitude());
         distanceDeparture = Distance.distance(a.departureLatitude(),a.departureLongitude(),b.departureLatitude(),b.departureLongitude());
-        return distanceArrival <= 5 && distanceDeparture <= 5 && a.travelledDistance() >= 10 && b.travelledDistance() >= 10 && a.travelledDistance() != b.travelledDistance();
+        if(distanceArrival <= 5 && distanceDeparture <= 5 && a.travelledDistance() >= 10 && b.travelledDistance() >= 10 && a.travelledDistance() != b.travelledDistance()){
+            return true;
+        }else{
+            return false;
+        }
     }
 
     public double travelDistanceDifference(Pair<Ship, Ship> pairOfShips){
@@ -216,12 +206,10 @@ public class Company {
         for(Ship ship : treeOfShips.inOrder()){
             ls.add(ship);
         }
-        Pair<Ship, Ship> newPair;
         for(int i = 0; i < ls.size() - 1; i ++){
             for(int j = i + 1; j < ls.size(); j ++ ){
                 if(closeDepartureArrival(ls.get(i),ls.get(j))){
-                    newPair = Pair.of(ls.get(i),ls.get(j));
-                    pairs.add(newPair);
+                    pairs.add(Pair.of(ls.get(i),ls.get(j)));
                 }
             }
         }
