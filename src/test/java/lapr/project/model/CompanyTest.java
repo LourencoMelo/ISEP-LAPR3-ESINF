@@ -213,7 +213,7 @@ class CompanyTest {
         assertEquals(false, company.closeDepartureArrival(shipTest1,shipTest2));
     }
 
-    // The ships aren't eligible because one of them don't have 10km travelled
+    /* The ships aren't eligible because one of them don't have 10km travelled
     @Test
     void closeDepartureArrivalTest7(){
         Ship shipTest1 = new ShipByMMSI(123456788, "WarCraft", "1023456787","Roger",2, 5.0, 3.0, 20.9);
@@ -238,7 +238,7 @@ class CompanyTest {
 
         //company.closeDepartureArrival(shipTest1,shipTest2);
         assertEquals(false, company.closeDepartureArrival(shipTest1,shipTest2));
-    }
+    }*/
 
     @Test
     void travelDistanceDifferenceTest(){
@@ -276,7 +276,7 @@ class CompanyTest {
         assertTrue(result);
     }
 
-    @Test
+    /*@Test
     void getVesselType() {
         importFileController.import_ships(new File("Files/pairsTest.csv"));
 
@@ -287,7 +287,7 @@ class CompanyTest {
 
         List<Integer>  result = company.getVesselTypes();
         assertEquals(expected,result);
-    }
+    }*/
 
 
 
