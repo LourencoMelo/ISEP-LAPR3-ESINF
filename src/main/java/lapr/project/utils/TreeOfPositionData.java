@@ -165,7 +165,10 @@ public class TreeOfPositionData extends AVL<PositionData> {
                 aux++;
             }
         }
-        return mean / aux;
+        if(aux != 0){
+            return mean / aux;
+        }
+        return 0;
     }
 
 
@@ -196,7 +199,10 @@ public class TreeOfPositionData extends AVL<PositionData> {
             mean += positionData.getSog();
             aux++;
         }
-        return mean / aux;
+        if(aux !=0){
+            return mean / aux;
+        }
+        return 0;
     }
 
 
@@ -226,7 +232,10 @@ public class TreeOfPositionData extends AVL<PositionData> {
             mean += positionData.getCog();
             aux++;
         }
-        return mean / aux;
+        if(aux !=0){
+            return mean / aux;
+        }
+        return 0;
     }
 
 
@@ -304,7 +313,10 @@ public class TreeOfPositionData extends AVL<PositionData> {
                 aux++;
             }
         }
-        return aux >= 2;
+        if(aux>= 2){
+            return true;
+        }
+        return  false;
     }
 
 
