@@ -89,7 +89,6 @@ class CompanyTest {
         shipTest2.addPositionData(positionDataTestCompare2);
         shipTest2.addPositionData(positionDataTestCompare4);
 
-        //company.closeDepartureArrival(shipTest1,shipTest2);
         assertEquals(true, company.closeDepartureArrival(shipTest1,shipTest2));
     }
 
@@ -137,7 +136,6 @@ class CompanyTest {
         shipTest2.addPositionData(positionDataTestCompare2);
         shipTest2.addPositionData(positionDataTestCompare4);
 
-        //company.closeDepartureArrival(shipTest1,shipTest2);
         assertEquals(false, company.closeDepartureArrival(shipTest1,shipTest2));
     }
 
@@ -161,7 +159,6 @@ class CompanyTest {
         shipTest2.addPositionData(positionDataTestCompare2);
         shipTest2.addPositionData(positionDataTestCompare4);
 
-        //company.closeDepartureArrival(shipTest1,shipTest2);
         assertEquals(false, company.closeDepartureArrival(shipTest1,shipTest2));
     }
 
@@ -185,7 +182,6 @@ class CompanyTest {
         shipTest2.addPositionData(positionDataTestCompare2);
         shipTest2.addPositionData(positionDataTestCompare4);
 
-        //company.closeDepartureArrival(shipTest1,shipTest2);
         assertEquals(false, company.closeDepartureArrival(shipTest1,shipTest2));
     }
 
@@ -209,11 +205,10 @@ class CompanyTest {
         shipTest2.addPositionData(positionDataTestCompare2);
         shipTest2.addPositionData(positionDataTestCompare4);
 
-        //company.closeDepartureArrival(shipTest1,shipTest2);
         assertEquals(false, company.closeDepartureArrival(shipTest1,shipTest2));
     }
 
-    /* The ships aren't eligible because one of them don't have 10km travelled
+    // The ships aren't eligible because one of them don't have 10km travelled
     @Test
     void closeDepartureArrivalTest7(){
         Ship shipTest1 = new ShipByMMSI(123456788, "WarCraft", "1023456787","Roger",2, 5.0, 3.0, 20.9);
@@ -231,14 +226,13 @@ class CompanyTest {
         PositionData positionDataTestCompare5 = new PositionData(LocalDateTime.of(2021, 11, 8, 14, 38), 30.86102, -75.01020, 3, 4, 5, "2", "S2");
 
         shipTest1.addPositionData(positionDataTestCompare1);
+        shipTest1.addPositionData(positionDataTestCompare5);
         shipTest1.addPositionData(positionDataTestCompare3);
         shipTest2.addPositionData(positionDataTestCompare2);
         shipTest2.addPositionData(positionDataTestCompare4);
-        shipTest1.addPositionData(positionDataTestCompare5);
 
-        //company.closeDepartureArrival(shipTest1,shipTest2);
         assertEquals(false, company.closeDepartureArrival(shipTest1,shipTest2));
-    }*/
+    }
 
     @Test
     void travelDistanceDifferenceTest(){
