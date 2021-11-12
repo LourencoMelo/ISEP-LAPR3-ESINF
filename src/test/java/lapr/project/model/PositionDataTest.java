@@ -173,13 +173,30 @@ class PositionDataTest {
     }
 
     /**
-     * Testing Equals when they have the same values but different objects
+     * Testing Different Class
      */
-//    @Test
-//    void testEqualsSameValues() {
-//        PositionData positionDataTest2 = new PositionData(LocalDateTime.of(2011, 11,8,13,39),10,10,3,4,5,1,"Sopa");
-//        assertEquals(true, positionDataTest.equals(positionDataTest2));
-//    }
+    @Test
+    void notEqualsDifferentClass(){
+        Company company = new Company();
+        assertEquals(false, positionDataTest.equals(company));
+    }
+
+    /**
+     * Testing Equals with Parameters
+     */
+    @Test
+    void notEqualsParameters(){
+        PositionData position1 = new PositionData(LocalDateTime.of(2021, 11,8,13,39),10,10,3,4,5,"1","Sopa");
+        PositionData position2 = new PositionData(LocalDateTime.of(2021, 11,8,13,39),11,10,3,4,5,"1","Sopa");
+        PositionData position3 = new PositionData(LocalDateTime.of(2021, 11,8,13,39),10,11,3,4,5,"1","Sopa");
+        PositionData position4 = new PositionData(LocalDateTime.of(2021, 12,8,13,39),10,11,3,4,5,"1","Sopa");
+
+        assertFalse(position1.equals(position2));
+        assertFalse(position1.equals(position3));
+        assertFalse(position1.equals(position4));
+
+    }
+
 
     /**
      * Testing Equals when passes a null parameter
@@ -254,4 +271,5 @@ class PositionDataTest {
         PositionData positionDataTestCompare6 = new PositionData(LocalDateTime.of(2019, 11,8,13,39),10,10,3,4,5,"1","Sopa");
         assertEquals(-1, positionDataTestCompare5.compareTo(positionDataTestCompare6));
     }
+
 }
