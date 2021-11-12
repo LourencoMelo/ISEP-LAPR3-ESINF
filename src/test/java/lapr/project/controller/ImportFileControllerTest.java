@@ -42,13 +42,14 @@ class ImportFileControllerTest {
 
         importFileController.import_ships(new File("Files/testImport.csv"));
 
-        Boolean result = false;
+        if (company.getTreeOfShips() != null && company.getTreeOfShipsIMO() != null && company.getTreeOfShipsCallSign() != null) {
 
-        if (company.getTreeOfShips().size() == 2) result = true;
-        if (company.getTreeOfShipsIMO().size() == 2) result = true;
-        if (company.getTreeOfShipsCallSign().size() == 2) result = true;
+            int size1 = company.getTreeOfShips().size();
+            int size2 = company.getTreeOfShipsIMO().size();
+            int size3 = company.getTreeOfShipsCallSign().size();
 
-        assertTrue(result);
+            assertTrue(size1 == 2 && size2 == 2 && size3 == 2);
+        }
 
     }
 
