@@ -187,7 +187,11 @@ public class Company {
         double distanceDeparture = 0;
         distanceArrival = Distance.distance(a.arrivalLatitude(),a.arrivalLongitude(),b.arrivalLatitude(),b.arrivalLongitude());
         distanceDeparture = Distance.distance(a.departureLatitude(),a.departureLongitude(),b.departureLatitude(),b.departureLongitude());
-        return distanceArrival <= 5 && distanceDeparture <= 5 && a.travelledDistance() >= 10 && b.travelledDistance() >= 10 && a.travelledDistance() != b.travelledDistance();
+        if(distanceArrival <= 5 && distanceDeparture <= 5 && a.travelledDistance() >= 10 && b.travelledDistance() >= 10 && a.travelledDistance() != b.travelledDistance()){
+            return true;
+        }else{
+            return false;
+        }
     }
 
     public double travelDistanceDifference(Pair<Ship, Ship> pairOfShips){
