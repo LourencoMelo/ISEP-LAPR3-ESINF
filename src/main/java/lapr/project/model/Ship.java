@@ -24,34 +24,27 @@ public abstract class Ship implements Comparable<Ship> {
      * IMO of the Ship
      */
     private String IMO;
-    /**
-     * Number of Energy Generators present in the Ship
-     */
-    //private int numberEnergyGenerator;
-    /**
-     * PowerOutput of the Ship
-     */
-    //private int powerOutput;
+
     /**
      * CallSign of the Ship
      */
     private String callSign;
+
     /**
      * Vessel Type of the Ship
      */
     private int vesselType;
+
     /**
      * Length of the ship
      */
     private double length;
+
     /**
      * With of the ship
      */
     private double width;
-    /**
-     * Maximum Capacity of the ship
-     */
-    //private int maximumCapacity;
+
     /**
      * Draft of the Ship
      */
