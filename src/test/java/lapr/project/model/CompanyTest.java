@@ -3,6 +3,7 @@ package lapr.project.model;
 import lapr.project.controller.ImportFileController;
 import org.junit.jupiter.api.Test;
 
+
 import java.io.File;
 import java.time.LocalDateTime;
 import java.util.*;
@@ -88,7 +89,7 @@ class CompanyTest {
         shipTest2.addPositionData(positionDataTestCompare2);
         shipTest2.addPositionData(positionDataTestCompare4);
 
-        assertEquals(true, company.closeDepartureArrival(shipTest1,shipTest2));
+        assertTrue(company.closeDepartureArrival(shipTest1, shipTest2));
     }
 
     // Dont have close departure/arrival coordinates
@@ -112,7 +113,7 @@ class CompanyTest {
         shipTest2.addPositionData(positionDataTestCompare4);
 
 
-        assertEquals(false, company.closeDepartureArrival(shipTest1,shipTest2));
+        assertFalse(company.closeDepartureArrival(shipTest1, shipTest2));
     }
 
     // The ships aren't eligible because both have the same travelled distance
@@ -135,7 +136,7 @@ class CompanyTest {
         shipTest2.addPositionData(positionDataTestCompare2);
         shipTest2.addPositionData(positionDataTestCompare4);
 
-        assertEquals(false, company.closeDepartureArrival(shipTest1,shipTest2));
+        assertFalse(company.closeDepartureArrival(shipTest1, shipTest2));
     }
 
     // The ships aren't eligible because they don´t have at least 10km travelled
@@ -158,7 +159,7 @@ class CompanyTest {
         shipTest2.addPositionData(positionDataTestCompare2);
         shipTest2.addPositionData(positionDataTestCompare4);
 
-        assertEquals(false, company.closeDepartureArrival(shipTest1,shipTest2));
+        assertFalse(company.closeDepartureArrival(shipTest1, shipTest2));
     }
 
     //The ships have close departure but not arrival
@@ -181,7 +182,7 @@ class CompanyTest {
         shipTest2.addPositionData(positionDataTestCompare2);
         shipTest2.addPositionData(positionDataTestCompare4);
 
-        assertEquals(false, company.closeDepartureArrival(shipTest1,shipTest2));
+        assertFalse(company.closeDepartureArrival(shipTest1, shipTest2));
     }
 
     //The pair has close arrival but not departure
@@ -204,7 +205,7 @@ class CompanyTest {
         shipTest2.addPositionData(positionDataTestCompare2);
         shipTest2.addPositionData(positionDataTestCompare4);
 
-        assertEquals(false, company.closeDepartureArrival(shipTest1,shipTest2));
+        assertFalse(company.closeDepartureArrival(shipTest1, shipTest2));
     }
 
     // The ships aren't eligible because one of them don't have 10km travelled
@@ -230,29 +231,7 @@ class CompanyTest {
         shipTest2.addPositionData(positionDataTestCompare2);
         shipTest2.addPositionData(positionDataTestCompare4);
 
-        assertEquals(false, company.closeDepartureArrival(shipTest1,shipTest2));
-    }
-
-    @Test
-    void closeDepartureArrivalTest8(){
-        Ship shipTest1 = new ShipByMMSI(123456788, "WarCraft", "1023456787","Roger",2, 5.0, 3.0, 20.9);
-        Ship shipTest2 = new ShipByMMSI(123456789, "Carlos", "1023456788","Pedro",2, 5.0, 3.0, 20.9);
-
-        //Partida ship 1
-        PositionData positionDataTestCompare1 = new PositionData(LocalDateTime.of(2021, 11, 8, 13, 39), 27.80000, -78.00000, 2, 2, 4, "1", "S1");
-        //Partida ship 2
-        PositionData positionDataTestCompare2 = new PositionData(LocalDateTime.of(2021, 11, 8, 13, 38), 27.84497, -78.00000, 2, 2, 4, "1", "S1");
-        //Arrival ship 2
-        PositionData positionDataTestCompare3 = new PositionData(LocalDateTime.of(2021, 11, 8, 16, 39), 27.88997, -78.00000, 3, 4, 5, "2", "S2");
-        // Chegada Ship 2
-        PositionData positionDataTestCompare4 = new PositionData(LocalDateTime.of(2021, 11, 8, 16, 38), 27.93490, -78.00000, 3, 4, 5, "2", "S2");
-
-        shipTest1.addPositionData(positionDataTestCompare1);
-        shipTest1.addPositionData(positionDataTestCompare3);
-        shipTest2.addPositionData(positionDataTestCompare2);
-        shipTest2.addPositionData(positionDataTestCompare4);
-
-        assertEquals(false, company.closeDepartureArrival(shipTest1,shipTest2));
+        assertFalse(company.closeDepartureArrival(shipTest1, shipTest2));
     }
 
     @Test
@@ -292,6 +271,19 @@ class CompanyTest {
     }
 
     @Test
+    void getPairOfShipsTestOrder(){
+        importFileController.importShips(new File("Files/pairsTest.csv"));
+        List<Pair<Ship, Ship>> test = company.getPairShips();
+        Boolean result = false;
+
+        if(test.get(0).getFirst().getMMSI() > test.get(1).getFirst().getMMSI()){
+            result = true;
+        }
+
+        assertTrue(result);
+    }
+
+    @Test
     void getVesselType() {
         importFileController.importShips(new File("Files/pairsTest.csv"));
 
@@ -305,8 +297,24 @@ class CompanyTest {
     }
 
 
-
     @Test
     void getTopShipsWithMostKm() {
+        LocalDateTime date1 = LocalDateTime.of(2020,12,31,10,0);
+        LocalDateTime date2 = LocalDateTime.of(2020,12,31,22,30);
+
+        importFileController.importShips(new File("Files/sships.csv"));
+
+        Map<Ship, Double> expected = new LinkedHashMap<>();
+        Ship shipTest1 = company.getTreeOfShips().getShipByMMSI(257881000);
+        Ship shipTest2 = company.getTreeOfShips().getShipByMMSI(210950000);
+
+        double mean1 = shipTest1.meanSOG(date1,date2);
+        double mean2 = shipTest2.meanSOG(date1,date2);
+
+        expected.put(shipTest1, mean1);
+        expected.put(shipTest2, mean2);
+
+        Map<Ship, Double> result = company.getTopShipsWithMostKmByVesselType(date1,date2,2,70);
+        assertEquals(expected, result);
     }
 }

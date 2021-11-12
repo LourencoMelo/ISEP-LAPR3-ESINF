@@ -92,8 +92,8 @@ class Main {
                 case "6" :
                     //TopNController topNController = new TopNController();
 
-                    //topNController.getTopShipsWithMostKm(LocalDateTime.of(2020, 12,31, 9, 5)
-                           // , LocalDateTime.of(2020, 12, 31, 23, 41),3);
+                    //topNController.getTopShipsWithMostKmByVesselType(LocalDateTime.of(2020, 12,31, 10, 0)
+                            //, LocalDateTime.of(2020, 12, 31, 22, 30),2,70);
                     //System.out.println(topNController.company.getTreeOfShips().getShipByMMSI(257881000).getTreeOfPositionData().travelledDistanceBtDates(LocalDateTime.of(2020, 12,31, 9, 5)
                           //  , LocalDateTime.of(2020, 12, 31, 23, 41)));
                     //PairOfShipsController pairOfShipsController = new PairOfShipsController();
