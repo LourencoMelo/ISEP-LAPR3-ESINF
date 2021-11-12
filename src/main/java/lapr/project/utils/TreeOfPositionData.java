@@ -2,7 +2,6 @@ package lapr.project.utils;
 
 import lapr.project.model.Distance;
 import lapr.project.model.PositionData;
-import lapr.project.model.Ship;
 
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;

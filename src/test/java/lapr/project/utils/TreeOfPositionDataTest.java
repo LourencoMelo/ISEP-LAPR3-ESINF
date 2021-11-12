@@ -84,7 +84,7 @@ class TreeOfPositionDataTest {
         shipTestCompare1.addPositionData(positionDataTestCompare2);
         shipTestCompare1.addPositionData(positionDataTestCompare3);
 
-        assertEquals(true, shipTestCompare1.atLeastTwo(mainDateTest1,mainDateTest2));
+        assertTrue(shipTestCompare1.atLeastTwo(mainDateTest1, mainDateTest2));
     }
 
     @Test
@@ -98,13 +98,13 @@ class TreeOfPositionDataTest {
         shipTestCompare1.addPositionData(positionDataTestCompare1);
 
 
-        assertEquals(false, shipTestCompare1.atLeastTwo(mainDateTest1,mainDateTest2));
+        assertFalse(shipTestCompare1.atLeastTwo(mainDateTest1, mainDateTest2));
     }
 
     @Test
     void atLeastTwoFalse0Positions(){
 
-        assertEquals(false, shipTestCompare1.atLeastTwo(mainDateTest1,mainDateTest2));
+        assertFalse(shipTestCompare1.atLeastTwo(mainDateTest1, mainDateTest2));
     }
 
     @Test
@@ -129,7 +129,7 @@ class TreeOfPositionDataTest {
         shipTestCompare1.addPositionData(positionDataTestCompare2);
         shipTestCompare1.addPositionData(positionDataTestCompare3);
 
-        assertEquals(false, shipTestCompare1.atLeastTwo(dateTest1,dateTest2));
+        assertFalse(shipTestCompare1.atLeastTwo(dateTest1, dateTest2));
     }
 
     @Test
@@ -154,7 +154,7 @@ class TreeOfPositionDataTest {
         shipTestCompare1.addPositionData(positionDataTestCompare2);
         shipTestCompare1.addPositionData(positionDataTestCompare3);
 
-        assertEquals(false, shipTestCompare1.atLeastTwo(dateTest1,date));
+        assertFalse(shipTestCompare1.atLeastTwo(dateTest1, date));
     }
 
 
@@ -508,12 +508,12 @@ class TreeOfPositionDataTest {
         shipTestCompare1.addPositionData(positionDataTestCompare3);
 
 
-        assertEquals(false, dateTravelDistance2 == shipTestCompare1.getTreeOfPositionData().initialDate());
+        assertNotSame(dateTravelDistance2, shipTestCompare1.getTreeOfPositionData().initialDate());
     }
 
     @Test
     void initialPublicNoRoot(){
-        assertEquals(null, shipTestCompare1.getTreeOfPositionData().initialDate());
+        assertNull(shipTestCompare1.getTreeOfPositionData().initialDate());
     }
 
     /**
@@ -554,12 +554,12 @@ class TreeOfPositionDataTest {
         shipTestCompare1.addPositionData(positionDataTestCompare3);
 
 
-        assertEquals(false, dateTravelDistance2 == shipTestCompare1.getTreeOfPositionData().finalDate());
+        assertNotSame(dateTravelDistance2, shipTestCompare1.getTreeOfPositionData().finalDate());
     }
 
     @Test
     void finalPublic(){
-        assertEquals(null, shipTestCompare1.getTreeOfPositionData().finalDate());
+        assertNull(shipTestCompare1.getTreeOfPositionData().finalDate());
     }
 
     /**
@@ -628,7 +628,7 @@ class TreeOfPositionDataTest {
          */
         PositionData positionDataTestCompare1 = new PositionData(dateTravelDistance1,53.88,45.5,2,4,5,"1","Sopa");
         PositionData positionDataTestCompare2 = new PositionData(dateTravelDistance2,33.22,99.2,10,4,5,"1","Sopa");
-        PositionData positionDataTestCompare3 = new PositionData(dateTravelDistance3,88.92,13.2,3,4,5,"1","Sopa");
+        PositionData positionDataTestCompare3 = new PositionData(dateTravelDistance3,88.92,13.2,10,4,5,"1","Sopa");
 
         shipTestCompare1.addPositionData(positionDataTestCompare1);
         shipTestCompare1.addPositionData(positionDataTestCompare2);
