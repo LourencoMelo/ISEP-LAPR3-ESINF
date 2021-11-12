@@ -276,7 +276,7 @@ class CompanyTest {
         assertTrue(result);
     }
 
-    /*@Test
+    @Test
     void getVesselType() {
         importFileController.import_ships(new File("Files/pairsTest.csv"));
 
@@ -287,7 +287,7 @@ class CompanyTest {
 
         List<Integer>  result = company.getVesselTypes();
         assertEquals(expected,result);
-    }*/
+    }
 
 
 
