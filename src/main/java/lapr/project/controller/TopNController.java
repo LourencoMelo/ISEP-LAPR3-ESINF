@@ -9,7 +9,7 @@ import java.util.*;
 
 public class TopNController {
 
-    public Company company;
+    Company company;
 
     public TopNController() {
         this(App.getInstance().getCompany());

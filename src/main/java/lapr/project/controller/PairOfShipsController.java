@@ -10,7 +10,7 @@ import java.util.List;
 
 public class PairOfShipsController {
 
-    public Company company;
+    Company company;
 
     public PairOfShipsController() {
         this(App.getInstance().getCompany());
