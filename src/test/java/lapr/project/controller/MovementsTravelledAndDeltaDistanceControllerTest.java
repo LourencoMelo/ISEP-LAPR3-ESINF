@@ -97,7 +97,7 @@ class MovementsTravelledAndDeltaDistanceControllerTest {
 
         Ship shipTest = company.getTreeOfShips().inOrder().iterator().next();
 
-        assertEquals(Distance.distance(43.22513, -66.96725,42.69577, -66.97808), shipTest.getDeltaDistance());
+        assertEquals(Distance.distance(43.22513, -66.96725,42.71055, -66.97776), shipTest.getDeltaDistance());
 
     }
 

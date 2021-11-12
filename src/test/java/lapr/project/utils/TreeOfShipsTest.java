@@ -40,7 +40,7 @@ class TreeOfShipsTest {
 
         treeOfShips.createTreeIMO(new File("Files/sships.csv"));
 
-        assertEquals(25,treeOfShips.getShipByImo("IMO9395044").getTreeOfPositionData().size());
+        assertEquals(16,treeOfShips.getShipByImo("IMO9395044").getTreeOfPositionData().size());
     }
 
     @Test

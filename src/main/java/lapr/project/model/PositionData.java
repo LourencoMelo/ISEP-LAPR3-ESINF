@@ -90,7 +90,7 @@ public class PositionData implements Comparable<PositionData> {
 
     /**
      * Set the baseDatTime of the Ship
-     * @param baseDateTime
+     * @param baseDateTime new base date time
      */
     public void setBaseDateTime(LocalDateTime baseDateTime) {
         this.baseDateTime = baseDateTime;
@@ -106,10 +106,14 @@ public class PositionData implements Comparable<PositionData> {
 
     /**
      * Sets the Latitude of the Ship
-     * @param latitude
+     * @param latitude new latitude
      */
     public void setLatitude(double latitude) {
-        this.latitude = latitude;
+        if (latitude >= -90 && latitude <= 90){
+            this.latitude = latitude;
+        }else {
+            throw new IllegalArgumentException("latitude must be contained on the following interval [-90;90]");
+        }
     }
 
     /**
@@ -122,10 +126,14 @@ public class PositionData implements Comparable<PositionData> {
 
     /**
      * Sets the Longitude of the Ship
-     * @param longitude
+     * @param longitude new longitude
      */
     public void setLongitude(double longitude) {
-        this.longitude = longitude;
+        if (longitude >= -180 && longitude <= 180){
+            this.longitude = longitude;
+        }else {
+            throw new IllegalArgumentException("longitude must be contained on the following interval [-180;180]");
+        }
     }
 
     /**
@@ -154,10 +162,14 @@ public class PositionData implements Comparable<PositionData> {
 
     /**
      * Sets the Cog of the Ship
-     * @param cog
+     * @param cog new cog
      */
     public void setCog(double cog) {
-        this.cog = cog;
+        if (cog >= 0 && cog <= 359){
+            this.cog = cog;
+        }else {
+            throw new IllegalArgumentException("Cog must be contained on the following interval [0;359]");
+        }
     }
 
     /**
@@ -173,7 +185,11 @@ public class PositionData implements Comparable<PositionData> {
      * @param heading
      */
     public void setHeading(double heading) {
-        this.heading = heading;
+        if (heading >= 0 && heading <= 359){
+            this.heading = heading;
+        }else {
+            throw new IllegalArgumentException("heading must be contained on the following interval [0;359]");
+        }
     }
 
     /**
