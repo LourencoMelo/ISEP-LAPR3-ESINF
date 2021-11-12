@@ -219,10 +219,7 @@ public class PositionData implements Comparable<PositionData> {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         PositionData that = (PositionData) o;
-        if(Double.compare(that.latitude, latitude) == 0 && Double.compare(that.longitude, longitude) == 0  && Objects.equals(baseDateTime, that.baseDateTime)){
-            return true;
-        }
-        return false;
+        return Double.compare(that.latitude, latitude) == 0 && Double.compare(that.longitude, longitude) == 0  && Objects.equals(baseDateTime, that.baseDateTime);
     }
 
 
