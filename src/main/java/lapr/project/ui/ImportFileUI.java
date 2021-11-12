@@ -14,7 +14,7 @@ public class ImportFileUI {
 
     public void import_ships(){
 
-        importFileController.import_ships(new File("Files/sships.csv"));
+        importFileController.importShips(new File("Files/sships.csv"));
         System.out.println("File imported!\n");
 
     }

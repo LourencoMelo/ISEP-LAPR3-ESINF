@@ -18,7 +18,7 @@ public class ImportFileController {
         this.company = company;
     }
 
-    public void import_ships(File file){
+    public void importShips(File file){
         this.company.getTreeOfShips().createTreeMMSI(file);
         this.company.getTreeOfShipsIMO().createTreeIMO(file);
         this.company.getTreeOfShipsCallSign().createTreeCallSign(file);
@@ -36,8 +36,8 @@ public class ImportFileController {
         return this.company.getTreeOfShipsCallSign().toString();
     }
 
-    public Ship getShipByMMSI(int MMSI) {
-        return company.getTreeOfShips().getShipByMMSI(MMSI);
+    public Ship getShipByMMSI(int mmsi) {
+        return company.getTreeOfShips().getShipByMMSI(mmsi);
     }
 
     /**

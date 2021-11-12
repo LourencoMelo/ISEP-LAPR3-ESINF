@@ -40,7 +40,7 @@ class ImportFileControllerTest {
     @Test
     void import_ships() {
 
-        importFileController.import_ships(new File("Files/testImport.csv"));
+        importFileController.importShips(new File("Files/testImport.csv"));
 
         if (company.getTreeOfShips() != null && company.getTreeOfShipsIMO() != null && company.getTreeOfShipsCallSign() != null) {
 

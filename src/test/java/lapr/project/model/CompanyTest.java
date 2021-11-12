@@ -1,7 +1,6 @@
 package lapr.project.model;
 
 import lapr.project.controller.ImportFileController;
-import lapr.project.utils.App;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
@@ -283,7 +282,7 @@ class CompanyTest {
 
     @Test
     void getPairShips(){
-        importFileController.import_ships(new File("Files/pairsTest.csv"));
+        importFileController.importShips(new File("Files/pairsTest.csv"));
 
         Boolean result = false;
 
@@ -294,7 +293,7 @@ class CompanyTest {
 
     @Test
     void getVesselType() {
-        importFileController.import_ships(new File("Files/pairsTest.csv"));
+        importFileController.importShips(new File("Files/pairsTest.csv"));
 
         List<Integer> expected = new ArrayList<>();
         expected.add(70);
