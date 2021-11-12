@@ -2,7 +2,6 @@ package lapr.project.utils;
 
 import lapr.project.model.*;
 import org.junit.jupiter.api.Test;
-
 import java.time.LocalDateTime;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -393,5 +392,228 @@ class TreeOfPositionDataTest {
 
         assertEquals(expected, shipTestCompare1.getTreeOfPositionData().getTotalMovements());
     }
+
+    /**
+     *---------------------------------------------------------------------------------------
+     *
+     *                         INITIAL DATE TESTS
+     *
+     * ---------------------------------------------------------------------------------------
+     */
+    @Test
+    void initialPublicRight(){
+        /**
+         * Objects Needed For testing
+         */
+        PositionData positionDataTestCompare1 = new PositionData(dateTravelDistance1,53.88,45.5,0,4,5,"1","Sopa");
+        PositionData positionDataTestCompare2 = new PositionData(dateTravelDistance2,33.22,99.2,0,4,5,"1","Sopa");
+        PositionData positionDataTestCompare3 = new PositionData(dateTravelDistance3,88.92,13.2,0,4,5,"1","Sopa");
+
+        shipTestCompare1.addPositionData(positionDataTestCompare1);
+        shipTestCompare1.addPositionData(positionDataTestCompare2);
+        shipTestCompare1.addPositionData(positionDataTestCompare3);
+
+
+        assertEquals(dateTravelDistance1, shipTestCompare1.getTreeOfPositionData().initialDate());
+    }
+
+    @Test
+    void initialPublicWrong(){
+        /**
+         * Objects Needed For testing
+         */
+        PositionData positionDataTestCompare1 = new PositionData(dateTravelDistance1,53.88,45.5,0,4,5,"1","Sopa");
+        PositionData positionDataTestCompare2 = new PositionData(dateTravelDistance2,33.22,99.2,0,4,5,"1","Sopa");
+        PositionData positionDataTestCompare3 = new PositionData(dateTravelDistance3,88.92,13.2,0,4,5,"1","Sopa");
+
+        shipTestCompare1.addPositionData(positionDataTestCompare1);
+        shipTestCompare1.addPositionData(positionDataTestCompare2);
+        shipTestCompare1.addPositionData(positionDataTestCompare3);
+
+
+        assertEquals(false, dateTravelDistance2 == shipTestCompare1.getTreeOfPositionData().initialDate());
+    }
+
+    /**
+     *---------------------------------------------------------------------------------------
+     *
+     *                         FINAL DATE TESTS
+     *
+     * ---------------------------------------------------------------------------------------
+     */
+    @Test
+    void finalPublicRight(){
+        /**
+         * Objects Needed For testing
+         */
+        PositionData positionDataTestCompare1 = new PositionData(dateTravelDistance1,53.88,45.5,0,4,5,"1","Sopa");
+        PositionData positionDataTestCompare2 = new PositionData(dateTravelDistance2,33.22,99.2,0,4,5,"1","Sopa");
+        PositionData positionDataTestCompare3 = new PositionData(dateTravelDistance3,88.92,13.2,0,4,5,"1","Sopa");
+
+        shipTestCompare1.addPositionData(positionDataTestCompare1);
+        shipTestCompare1.addPositionData(positionDataTestCompare2);
+        shipTestCompare1.addPositionData(positionDataTestCompare3);
+
+
+        assertEquals(dateTravelDistance3, shipTestCompare1.getTreeOfPositionData().finalDate());
+    }
+
+    @Test
+    void finalPublicWrong(){
+        /**
+         * Objects Needed For testing
+         */
+        PositionData positionDataTestCompare1 = new PositionData(dateTravelDistance1,53.88,45.5,0,4,5,"1","Sopa");
+        PositionData positionDataTestCompare2 = new PositionData(dateTravelDistance2,33.22,99.2,0,4,5,"1","Sopa");
+        PositionData positionDataTestCompare3 = new PositionData(dateTravelDistance3,88.92,13.2,0,4,5,"1","Sopa");
+
+        shipTestCompare1.addPositionData(positionDataTestCompare1);
+        shipTestCompare1.addPositionData(positionDataTestCompare2);
+        shipTestCompare1.addPositionData(positionDataTestCompare3);
+
+
+        assertEquals(false, dateTravelDistance2 == shipTestCompare1.getTreeOfPositionData().finalDate());
+    }
+    /**
+     *---------------------------------------------------------------------------------------
+     *
+     *                         DELTA DISTANCE TESTS
+     *
+     * ---------------------------------------------------------------------------------------
+     */
+
+    @Test
+    void getDeltaDistance(){
+        /**
+         * Expected result
+         */
+        double expected = 3915.1189561031474;
+
+        /**
+         * Objects Needed For testing
+         */
+        PositionData positionDataTestCompare1 = new PositionData(dateTravelDistance1,53.88,45.5,0,4,5,"1","Sopa");
+        PositionData positionDataTestCompare2 = new PositionData(dateTravelDistance2,33.22,99.2,0,4,5,"1","Sopa");
+        PositionData positionDataTestCompare3 = new PositionData(dateTravelDistance3,88.92,13.2,0,4,5,"1","Sopa");
+
+        shipTestCompare1.addPositionData(positionDataTestCompare1);
+        shipTestCompare1.addPositionData(positionDataTestCompare2);
+        shipTestCompare1.addPositionData(positionDataTestCompare3);
+
+        assertEquals(expected, shipTestCompare1.getTreeOfPositionData().getDeltaDistance());
+    }
+
+    /**
+     *---------------------------------------------------------------------------------------
+     *
+     *                         MAX SOG TESTS
+     *
+     * ---------------------------------------------------------------------------------------
+     */
+    @Test
+    void maxSOG(){
+        /**
+         * Expected result
+         */
+        double expected = 10;
+
+        /**
+         * Objects Needed For testing
+         */
+        PositionData positionDataTestCompare1 = new PositionData(dateTravelDistance1,53.88,45.5,2,4,5,"1","Sopa");
+        PositionData positionDataTestCompare2 = new PositionData(dateTravelDistance2,33.22,99.2,10,4,5,"1","Sopa");
+        PositionData positionDataTestCompare3 = new PositionData(dateTravelDistance3,88.92,13.2,3,4,5,"1","Sopa");
+
+        shipTestCompare1.addPositionData(positionDataTestCompare1);
+        shipTestCompare1.addPositionData(positionDataTestCompare2);
+        shipTestCompare1.addPositionData(positionDataTestCompare3);
+
+        assertEquals(expected, shipTestCompare1.getTreeOfPositionData().maxSOG());
+    }
+
+    /**
+     *---------------------------------------------------------------------------------------
+     *
+     *                         MAX & MEAN COG TESTS
+     *
+     * ---------------------------------------------------------------------------------------
+     */
+    @Test
+    void maxCOG(){
+        /**
+         * Expected result
+         */
+        double expected = 7;
+
+        /**
+         * Objects Needed For testing
+         */
+        PositionData positionDataTestCompare1 = new PositionData(dateTravelDistance1,53.88,45.5,2,1,5,"1","Sopa");
+        PositionData positionDataTestCompare2 = new PositionData(dateTravelDistance2,33.22,99.2,10,4,5,"1","Sopa");
+        PositionData positionDataTestCompare3 = new PositionData(dateTravelDistance3,88.92,13.2,3,7,5,"1","Sopa");
+
+        shipTestCompare1.addPositionData(positionDataTestCompare1);
+        shipTestCompare1.addPositionData(positionDataTestCompare2);
+        shipTestCompare1.addPositionData(positionDataTestCompare3);
+
+        assertEquals(expected, shipTestCompare1.getTreeOfPositionData().maxCOG());
+    }
+
+    @Test
+    void meanCOG(){
+        /**
+         * Expected result
+         */
+        double expected = 4;
+
+        /**
+         * Objects Needed For testing
+         */
+        PositionData positionDataTestCompare1 = new PositionData(dateTravelDistance1,53.88,45.5,2,1,5,"1","Sopa");
+        PositionData positionDataTestCompare2 = new PositionData(dateTravelDistance2,33.22,99.2,10,4,5,"1","Sopa");
+        PositionData positionDataTestCompare3 = new PositionData(dateTravelDistance3,88.92,13.2,3,7,5,"1","Sopa");
+
+        shipTestCompare1.addPositionData(positionDataTestCompare1);
+        shipTestCompare1.addPositionData(positionDataTestCompare2);
+        shipTestCompare1.addPositionData(positionDataTestCompare3);
+
+        assertEquals(expected, shipTestCompare1.getTreeOfPositionData().meanCOG());
+    }
+
+    /**
+     *---------------------------------------------------------------------------------------
+     *
+     *                         TOTAL MOVEMENT TIME
+     *
+     * ---------------------------------------------------------------------------------------
+     */
+    @Test
+    void getTotalMovementTime(){
+        /**
+         * Expected result
+         */
+        long expected = 7200;
+
+        /**
+         * Objects Needed For testing
+         */
+        PositionData positionDataTestCompare1 = new PositionData(dateTravelDistance1,53.88,45.5,2,1,5,"1","Sopa");
+        PositionData positionDataTestCompare2 = new PositionData(dateTravelDistance2,33.22,99.2,10,4,5,"1","Sopa");
+        PositionData positionDataTestCompare3 = new PositionData(dateTravelDistance3,88.92,13.2,3,7,5,"1","Sopa");
+
+        shipTestCompare1.addPositionData(positionDataTestCompare1);
+        shipTestCompare1.addPositionData(positionDataTestCompare2);
+        shipTestCompare1.addPositionData(positionDataTestCompare3);
+
+        assertEquals(expected, shipTestCompare1.getTreeOfPositionData().getTotalMovementTime());
+
+    }
+    /**
+     *---------------------------------------------------------------------------------------
+     *
+     *                         DEPARTURE/ARRIVAL OF LATITUDE/LONGITUDE
+     *
+     * ---------------------------------------------------------------------------------------
+     */
 
 }
