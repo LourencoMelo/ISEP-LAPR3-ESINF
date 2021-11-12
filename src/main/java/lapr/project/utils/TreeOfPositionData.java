@@ -180,7 +180,7 @@ public class TreeOfPositionData extends AVL<PositionData> {
         double max = 0;
 
         for (PositionData positionData : inOrder()) {
-            if (positionData.getSog() > max) max = positionData.getSog();
+            if (positionData.getSog() >= max) max = positionData.getSog();
         }
         return max;
     }
