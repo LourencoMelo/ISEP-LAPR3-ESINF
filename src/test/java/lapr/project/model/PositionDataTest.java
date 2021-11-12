@@ -187,14 +187,21 @@ class PositionDataTest {
     @Test
     void notEqualsParameters(){
         PositionData position1 = new PositionData(LocalDateTime.of(2021, 11,8,13,39),10,10,3,4,5,"1","Sopa");
-        PositionData position2 = new PositionData(LocalDateTime.of(2021, 11,8,13,39),11,10,3,4,5,"1","Sopa");
-        PositionData position3 = new PositionData(LocalDateTime.of(2021, 11,8,13,39),10,11,3,4,5,"1","Sopa");
-        PositionData position4 = new PositionData(LocalDateTime.of(2021, 12,8,13,39),10,11,3,4,5,"1","Sopa");
+        PositionData position2 = new PositionData(LocalDateTime.of(2021, 11,8,13,39),11,10,3,4,5,"1","Sopa"); //latitude
+        PositionData position3 = new PositionData(LocalDateTime.of(2021, 11,8,13,39),10,11,3,4,5,"1","Sopa"); //longitude
+        PositionData position4 = new PositionData(LocalDateTime.of(2021, 2,8,13,39),10,11,3,4,5,"1","Sopa"); //Data
+        PositionData position5 = new PositionData(LocalDateTime.of(2020, 2,9,12,40),12,13,3,4,5,"1","Sopa"); //Data e latidude e longitude
+        PositionData position6 = new PositionData(LocalDateTime.of(2020, 2,9,12,40),11,10,3,4,5,"1","Sopa"); //Data e latitude
+        PositionData position7 = new PositionData(LocalDateTime.of(2021, 11,9,12,40),10,11,3,4,5,"1","Sopa"); //Data e longitude
+        PositionData position8 = new PositionData(LocalDateTime.of(2021, 11,8,13,39),11,11,3,4,5,"1","Sopa"); //latitude longitude
 
         assertFalse(position1.equals(position2));
         assertFalse(position1.equals(position3));
         assertFalse(position1.equals(position4));
-
+        assertFalse(position1.equals(position5));
+        assertFalse(position1.equals(position6));
+        assertFalse(position1.equals(position7));
+        assertFalse(position1.equals(position8));
     }
 
 
