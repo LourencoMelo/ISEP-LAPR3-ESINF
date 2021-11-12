@@ -23,4 +23,9 @@ public class PairOfShipsController {
     public List<Pair<Ship, Ship>> getPairShips(){
         return company.getPairShips();
     }
+
+    public Company getCompany(){
+        return company;
+    }
+
 }
