@@ -13,57 +13,47 @@ class PortAndWareHouseTest {
 
     PortAndWareHouse portAndWareHouse = new PortAndWareHouse("Europe","United Kingdom",29002,"Liverpool",53.46666667,-3.033333333);
 
-//    @Test
-//    void setContinent() {
-//        //portAndWareHouse.setContinent("");
-//    }
-//
-//    @Test
-//    void setCode() {
-//
-//    }
-//
-//    @Test
-//    void setCountry() {
-//    }
-//
-//    @Test
-//    void setLat() {
-//    }
-//
-//    @Test
-//    void setLog() {
-//    }
-//
-//    @Test
-//    void setPort() {
-//    }
-//
-//    @Test
-//    void getCode() {
-//    }
-//
-//    @Test
-//    void getContinent() {
-//    }
-//
-//    @Test
-//    void getLat() {
-//    }
-//
-//    @Test
-//    void getLog() {
-//    }
-//
-//    @Test
-//    void getCountry() {
-//    }
-//
-//    @Test
-//    void getPort() {
-//    }
-//
-//    @Test
-//    void testToString() {
-//    }
+    @Test
+    void getCode() {
+        assertEquals(29002,portAndWareHouse.getCode());
+    }
+
+    @Test
+    void getContinent() {
+        assertEquals("Europe",portAndWareHouse.getContinent());
+    }
+
+    @Test
+    void getLat() {
+        assertEquals(53.46666667,portAndWareHouse.getLat());
+    }
+
+    @Test
+    void getLog() {
+        assertEquals(-3.033333333,portAndWareHouse.getLog());
+    }
+
+    @Test
+    void getCountry() {
+        assertEquals("United Kingdom",portAndWareHouse.getCountry());
+    }
+
+    @Test
+    void getPort() {
+        assertEquals("Liverpool",portAndWareHouse.getPort());
+    }
+
+    @Test
+    void testToString() {
+        String expected = "PortAndWareHouse{" +
+                "continent='" + portAndWareHouse.getContinent() + '\'' +
+                ", country='" + portAndWareHouse.getCountry() + '\'' +
+                ", code=" + portAndWareHouse.getCode() +
+                ", port='" + portAndWareHouse.getPort() + '\'' +
+                ", lat=" + portAndWareHouse.getLat() +
+                ", log=" + portAndWareHouse.getLog() +
+                '}';
+
+        assertEquals(expected,portAndWareHouse.toString());
+    }
 }
