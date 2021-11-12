@@ -26,30 +26,27 @@ public class TreeOfShips extends AVL<Ship> {
             List<Ship> list_of_existent_ships = new ArrayList<>();
 
             while (in.hasNextLine()) {
-                try {
 
-                    String[] ship_info = in.nextLine().trim().split(",");
+                String[] ship_info = in.nextLine().trim().split(",");
 
-                    ShipByMMSI ship = new ShipByMMSI(Integer.parseInt(ship_info[0].trim()), ship_info[7].trim(), ship_info[8].trim(), ship_info[9].trim(), Integer.parseInt(ship_info[10].trim()), Double.parseDouble(ship_info[11].trim()), Double.parseDouble(ship_info[12].trim()), Double.parseDouble(ship_info[13].trim()));
+                ShipByMMSI ship = new ShipByMMSI(Integer.parseInt(ship_info[0].trim()), ship_info[7].trim(), ship_info[8].trim(), ship_info[9].trim(), Integer.parseInt(ship_info[10].trim()), Double.parseDouble(ship_info[11].trim()), Double.parseDouble(ship_info[12].trim()), Double.parseDouble(ship_info[13].trim()));
 
-                    PositionData positionData = new PositionData(formatter(ship_info[1].trim()), Double.parseDouble(ship_info[2].trim()), Double.parseDouble(ship_info[3].trim()), Double.parseDouble(ship_info[4].trim()), Double.parseDouble(ship_info[5].trim()), Double.parseDouble(ship_info[6].trim()), ship_info[14].trim(), ship_info[15].trim());
+                PositionData positionData = new PositionData(formatter(ship_info[1].trim()), Double.parseDouble(ship_info[2].trim()), Double.parseDouble(ship_info[3].trim()), Double.parseDouble(ship_info[4].trim()), Double.parseDouble(ship_info[5].trim()), Double.parseDouble(ship_info[6].trim()), ship_info[14].trim(), ship_info[15].trim());
 
-                    for (Ship ship1 :
-                            list_of_existent_ships) {
-                        if (ship1.getMMSI() == ship.getMMSI()) {
-                            ship1.addPositionData(positionData);
-                        }
+                for (Ship ship1 :
+                        list_of_existent_ships) {
+                    if (ship1.getMMSI() == ship.getMMSI()) {
+                        ship1.addPositionData(positionData);
                     }
-
-                    insert(ship);
-                    list_of_existent_ships.add(ship);
-                    ship.addPositionData(positionData);
-
-                } catch (NumberFormatException e) {
                 }
+
+                insert(ship);
+                list_of_existent_ships.add(ship);
+                ship.addPositionData(positionData);
+
             }
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            System.out.println("File Not Found!");
         }
 
     }
@@ -68,8 +65,6 @@ public class TreeOfShips extends AVL<Ship> {
             List<Ship> list_of_existent_ships = new ArrayList<>();
 
             while (in.hasNextLine()) {
-                try {
-
                     String[] ship_info = in.nextLine().trim().split(",");
 
                     ShipByIMO ship = new ShipByIMO(Integer.parseInt(ship_info[0].trim()), ship_info[7].trim(), ship_info[8].trim(), ship_info[9].trim(), Integer.parseInt(ship_info[10].trim()), Double.parseDouble(ship_info[11].trim()), Double.parseDouble(ship_info[12].trim()), Double.parseDouble(ship_info[13].trim()));
@@ -87,12 +82,10 @@ public class TreeOfShips extends AVL<Ship> {
                     list_of_existent_ships.add(ship);
                     ship.addPositionData(positionData);
 
-                } catch (NumberFormatException e) {
-                }
             }
 
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            System.out.println("File Not Found!");
         }
     }
 
@@ -110,7 +103,6 @@ public class TreeOfShips extends AVL<Ship> {
             List<Ship> list_of_existent_ships = new ArrayList<>();
 
             while (in.hasNextLine()) {
-                try {
 
                     String[] ship_info = in.nextLine().trim().split(",");
 
@@ -129,12 +121,10 @@ public class TreeOfShips extends AVL<Ship> {
                     list_of_existent_ships.add(ship);
                     ship.addPositionData(positionData);
 
-                } catch (NumberFormatException e) {
-                }
             }
 
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            System.out.println("File Not Found!");
         }
     }
 
@@ -145,6 +135,7 @@ public class TreeOfShips extends AVL<Ship> {
 
     /**
      * Returns the ship with that MMSI
+     *
      * @param mMSI ship's MMSI
      * @return Ship with that MMSI or null if not found
      */
@@ -156,6 +147,7 @@ public class TreeOfShips extends AVL<Ship> {
 
     /**
      * Returns the ship with that MMSI
+     *
      * @param node of the tree of ships
      * @param mMSI ship's MMSI
      * @return Ship with that MMSI or null if not found
@@ -183,6 +175,7 @@ public class TreeOfShips extends AVL<Ship> {
 
     /**
      * Returns the ship with that IMO
+     *
      * @param iMO ship's IMO
      * @return Ship with that IMO or null if not found
      */
@@ -192,8 +185,9 @@ public class TreeOfShips extends AVL<Ship> {
 
     /**
      * Returns the ship with that IMO
+     *
      * @param node of the tree of ships
-     * @param iMO ship's IMO
+     * @param iMO  ship's IMO
      * @return Ship with that IMO or null if not found
      */
     public Ship getShipByImo(Node<Ship> node, String iMO) {
@@ -218,6 +212,7 @@ public class TreeOfShips extends AVL<Ship> {
 
     /**
      * Returns the ship with that Call Sign
+     *
      * @param callSign ship's Call Sign
      * @return Ship with that Call Sign or null if not found
      */
@@ -227,7 +222,8 @@ public class TreeOfShips extends AVL<Ship> {
 
     /**
      * Returns the ship with that Call Sign
-     * @param node of the tree of ships
+     *
+     * @param node     of the tree of ships
      * @param callSign ship's Call Sign
      * @return Ship with that Call Sign or null if not found
      */
