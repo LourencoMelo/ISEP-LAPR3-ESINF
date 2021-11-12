@@ -378,7 +378,7 @@ class ShipTest {
         shipTest.addPositionData(positionData1);
         shipTest.addPositionData(positionData2);
 
-        assertEquals("63,2", String.format("%.1f",shipTest.getMeanCOG()));
+        assertEquals("63.2", String.format("%.1f",shipTest.getMeanCOG()).replace(",","."));
     }
 
     @Test
@@ -394,7 +394,7 @@ class ShipTest {
         shipTest.addPositionData(positionData1);
         shipTest.addPositionData(positionData2);
 
-        assertEquals("2650,0",String.format("%.1f",shipTest.travelledDistanceBtDates(formatter("31/12/2020 17:19"),formatter("31/12/2020 22:10"))));
+        assertEquals("2650.0",String.format("%.1f",shipTest.travelledDistanceBtDates(formatter("31/12/2020 17:19"),formatter("31/12/2020 22:10"))).replace(",","."));
     }
 
     @Test
