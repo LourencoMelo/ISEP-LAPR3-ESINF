@@ -5,7 +5,7 @@ import lapr.project.model.Pair;
 import lapr.project.model.Ship;
 import lapr.project.utils.App;
 
-import javax.print.DocFlavor;
+
 import java.util.List;
 
 public class PairOfShipsController {
