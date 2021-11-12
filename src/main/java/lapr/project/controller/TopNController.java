@@ -9,7 +9,7 @@ import lapr.project.utils.TreeOfShips;
 import java.time.LocalDateTime;
 import java.util.*;
 
-public class TopNController extends AVL<Ship> {
+public class TopNController {
 
     public Company company;
 

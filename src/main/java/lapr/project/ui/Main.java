@@ -96,9 +96,9 @@ class Main {
                            // , LocalDateTime.of(2020, 12, 31, 23, 41),3);
                     //System.out.println(topNController.company.getTreeOfShips().getShipByMMSI(257881000).getTreeOfPositionData().travelledDistanceBtDates(LocalDateTime.of(2020, 12,31, 9, 5)
                           //  , LocalDateTime.of(2020, 12, 31, 23, 41)));
-                    PairOfShipsController pairOfShipsController = new PairOfShipsController();
+                    //PairOfShipsController pairOfShipsController = new PairOfShipsController();
 
-                    pairOfShipsController.getPairShips();
+                    //pairOfShipsController.getPairShips();
                     break;
 
                 default:

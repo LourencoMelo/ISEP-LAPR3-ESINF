@@ -1,7 +1,12 @@
 package lapr.project.controller;
 
 import lapr.project.model.Company;
+import lapr.project.model.Pair;
+import lapr.project.model.Ship;
 import lapr.project.utils.App;
+
+import javax.print.DocFlavor;
+import java.util.List;
 
 public class PairOfShipsController {
 
@@ -15,7 +20,7 @@ public class PairOfShipsController {
         this.company = company;
     }
 
-    public void getPairShips(){
-        company.getPairShips();
+    public List<Pair<Ship, Ship>> getPairShips(){
+        return company.getPairShips();
     }
 }

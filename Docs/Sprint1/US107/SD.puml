@@ -1,0 +1,29 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+actor       TrafficManager             as TM
+participant    ":PairOfShipsUI"         as UI
+participant    ":PairOfShipsController" as CTRL
+participant    ":Company"              as Company
+participant    "treeOfShips: Ship"            as TreeOfShips
+participant    "treeOfPositionData: PositionData"            as TreeOfPosition
+participant    ":Ship" as Ship
+
+TM -> UI : Asks for the pairs of ships with routes with \n close departure/arrival coordinates \n (no more than 5 Kms away) and with \n different Travelled Distance
+activate UI
+UI -> CTRL : getPairShips()
+activate CTRL
+CTRL -> Company : GetPairShips()
+activate Company
+Company -> TreeOfShips : getListOfShips()
+activate TreeOfShips
+TreeOfShips -> Company : List<Ships>
+deactivate TreeOfShips
+Company -> Company : closeDepartureArrival(...)
+Company -> Company : travelDistanceDifference(...)
+Company -> CTRL : List<Pair<Ship, Ship>> (ordered)
+deactivate Company
+CTRL -> UI : List<Pair<Ship, Ship>> (ordered)
+UI -> TM : Displays the pair of ships ordered by MMSI code of the 1st ship  \n and in descending order of the Travelled Distance difference
+@enduml

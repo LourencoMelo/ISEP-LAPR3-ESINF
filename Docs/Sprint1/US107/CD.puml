@@ -1,0 +1,40 @@
+@startuml
+
+class Ship {
+
+    -int MMSI <<b>PK>
+    -String name
+    -int IMO
+    -int numberEnergyGenerator
+    -int powerOutput
+    -String callSign
+    -int vesselType
+    -double length
+    -double width
+    -int maximumCapacity
+    -double draft
+}
+
+class TrafficManager{
+}
+
+class PositionData{
+    -Date baseDateTime
+    -double latitude
+    -double longitude
+    -double sog
+    -double cog
+    -double heading
+    -int position
+    -String transceiver
+}
+
+class Company {
+
+}
+
+TrafficManager --> Company
+Company --> Ship
+Ship --> PositionData
+
+@enduml

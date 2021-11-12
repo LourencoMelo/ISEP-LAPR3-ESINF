@@ -210,7 +210,7 @@ public class Company {
     }
 
 
-    public void getPairShips(){
+    public List<Pair<Ship, Ship>> getPairShips(){
         List<Ship> ls = new ArrayList<>();
         List<Pair<Ship, Ship>> pairs = new ArrayList<>();
         for(Ship ship : treeOfShips.inOrder()){
@@ -225,7 +225,7 @@ public class Company {
                 }
             }
         }
-        System.out.println(pairs);
+
         Comparator<Pair<Ship, Ship>> comparator = new Comparator<Pair<Ship, Ship>>() {
             @Override
             public int compare(Pair<Ship, Ship> o1, Pair<Ship, Ship> o2) {
@@ -245,7 +245,7 @@ public class Company {
             }
         };
         Collections.sort(pairs, comparator);
-
+        return pairs;
     }
 
 
