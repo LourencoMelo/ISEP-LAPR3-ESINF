@@ -3,13 +3,12 @@ package lapr.project.utils;
 import lapr.project.model.*;
 
 public class App {
-    private static App singleton = null;
-    private Company company;
 
+    private static App singleton = null;
+    private final Company company;
 
     private App() {
         this.company = new Company();
-        bootstrap();
     }
 
     public static App getInstance() {
@@ -24,10 +23,5 @@ public class App {
     public Company getCompany() {
         return this.company;
     }
-
-    private void bootstrap() {
-
-    }
-
 
 }
