@@ -9,6 +9,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.*;
+import java.util.logging.Logger;
 
 public class TreeOfShips extends AVL<Ship> {
 
@@ -46,7 +47,7 @@ public class TreeOfShips extends AVL<Ship> {
 
             }
         } catch (FileNotFoundException e) {
-            System.out.println("File Not Found!");
+            Logger.getLogger(e.getMessage());
         }
 
     }
@@ -85,7 +86,7 @@ public class TreeOfShips extends AVL<Ship> {
             }
 
         } catch (FileNotFoundException e) {
-            System.out.println("File Not Found!");
+            Logger.getLogger(e.getMessage());
         }
     }
 
@@ -124,7 +125,7 @@ public class TreeOfShips extends AVL<Ship> {
             }
 
         } catch (FileNotFoundException e) {
-            System.out.println("File Not Found!");
+            Logger.getLogger(e.getMessage());
         }
     }
 
