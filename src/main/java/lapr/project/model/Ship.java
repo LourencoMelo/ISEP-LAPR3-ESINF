@@ -3,9 +3,6 @@ package lapr.project.model;
 import lapr.project.utils.TreeOfPositionData;
 
 import java.time.LocalDateTime;
-import java.util.Comparator;
-import java.util.Iterator;
-import java.util.Objects;
 
 public abstract class Ship implements Comparable<Ship> {
 
@@ -123,7 +120,7 @@ public abstract class Ship implements Comparable<Ship> {
     /**
      * Sets the MMSI of the Ship
      *
-     * @param MMSI
+     * @param MMSI new MMSI
      */
     public void setMMSI(int MMSI) {
         if (MMSI >= 100000000 && MMSI <= 999999999) {
@@ -145,7 +142,7 @@ public abstract class Ship implements Comparable<Ship> {
     /**
      * Sets the Name of the Ship
      *
-     * @param name
+     * @param name new name
      */
     public void setName(String name) {
         this.name = name;
@@ -163,7 +160,7 @@ public abstract class Ship implements Comparable<Ship> {
     /**
      * Sets the IMO of the Ship
      *
-     * @param IMO
+     * @param IMO new IMO
      */
     public void setIMO(String IMO) {
         if (IMO.length() == 10) {
@@ -172,38 +169,6 @@ public abstract class Ship implements Comparable<Ship> {
             throw new IllegalArgumentException("IMO needs to be a 10 digits unique number.");
         }
     }
-
-
-//     * Returns the Number of Energy Generators present in the Ship
-//     * @return numberEnergyGenerator
-//
-//    public int getNumberEnergyGenerator() {
-//        return numberEnergyGenerator;
-//    }
-//
-//    /**
-//     * Sets the Number of Energy Generators present in the Ship
-//     * @param numberEnergyGenerator
-//
-//    public void setNumberEnergyGenerator(int numberEnergyGenerator) {
-//        this.numberEnergyGenerator = numberEnergyGenerator;
-//    }
-//
-//    /**
-//     * Returns the PowerOutput of the Ship
-//     * @return powerOutput
-//
-//    public int getPowerOutput() {
-//        return powerOutput;
-//    }
-//
-//    /**
-//     * Sets the PowerOutput of the Ship
-//     * @param powerOutput
-//
-//    public void setPowerOutput(int powerOutput) {
-//        this.powerOutput = powerOutput;
-//    }
 
 
     /**
@@ -218,7 +183,7 @@ public abstract class Ship implements Comparable<Ship> {
     /**
      * Sets the CallSign of the Ship
      *
-     * @param callSign
+     * @param callSign new CallSign
      */
     public void setCallSign(String callSign) {
         this.callSign = callSign;
@@ -236,7 +201,7 @@ public abstract class Ship implements Comparable<Ship> {
     /**
      * Sets the VesselType of the Ship
      *
-     * @param vesselType
+     * @param vesselType new vessel type
      */
     public void setVesselType(int vesselType) {
         this.vesselType = vesselType;
@@ -254,7 +219,7 @@ public abstract class Ship implements Comparable<Ship> {
     /**
      * Sets the Length of the Ship
      *
-     * @param length
+     * @param length new length
      */
     public void setLength(double length) {
         this.length = length;
@@ -272,19 +237,11 @@ public abstract class Ship implements Comparable<Ship> {
     /**
      * Sets the Width of the Ship
      *
-     * @param width
+     * @param width new width
      */
     public void setWidth(double width) {
         this.width = width;
     }
-
-
-//     * Returns the MaximumCapacity of the Ship
-//     * @return maximumCapacity
-//
-//    public int getMaximumCapacity() {
-//        return maximumCapacity;
-//    }
 
 
     /**
@@ -497,12 +454,12 @@ public abstract class Ship implements Comparable<Ship> {
                 '}' + '\n';
     }
 
-    @Override
     /**
-     * -------------------------------------------------------------------------------------------------------------
-     *                                              COMPARE TO
-     * -------------------------------------------------------------------------------------------------------------
+     * Compare method
+     * @param o ship to compare with
+     * @return in value
      */
+    @Override
     public abstract int compareTo(Ship o);
 
 
