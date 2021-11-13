@@ -1,8 +1,5 @@
 package lapr.project.ui;
 
-import lapr.project.controller.ImportFileController;
-import lapr.project.controller.PairOfShipsController;
-import lapr.project.controller.TopNController;
 import lapr.project.model.Company;
 
 import javax.swing.*;
@@ -39,79 +36,8 @@ class Main {
      */
     public static void main(String[] args) throws IOException, SQLException {
 
-
-        Scanner in = new Scanner(System.in);
-
-        System.out.println("What do you wanna run? Select one of the following options: ");
-        System.out.println("1 - Import Ships from CSV file into a BST.");
-        System.out.println("2 - Request ship detail by code (MMSI, IMO or Call Sign)");
-        System.out.println("3 - Request ship position messages ordered by date(Please introduce a code)");
-        System.out.println("4 - Request Summary of a ship's movements");
-        System.out.println("5 - List for all ships the MMSI, the total number of movements, Travelled Distance and Delta Distance");
-
-        String answer = "";
-
-        while (!answer.equalsIgnoreCase("0")) {
-
-            answer = in.next();
-
-            switch (answer) {
-                case "1":
-                    ImportFileUI importFileUI = new ImportFileUI();
-
-                    importFileUI.import_ships();
-
-                    break;
-                case "2":
-                    GetShipByCodeUI getShipByCodeUI = new GetShipByCodeUI();
-
-                    getShipByCodeUI.getShipByCode();
-                    break;
-                case "3":
-                    GetShipPositionByDateUI getShipPositionByDateUI = new GetShipPositionByDateUI();
-
-                    getShipPositionByDateUI.getShipPositionMessagesOrderByDate();
-
-                    break;
-
-                case "4":
-
-                    ShipDataUI shipDataUI = new ShipDataUI();
-
-                    shipDataUI.run();
-
-                    break;
-
-                case "5":
-                    MovementsTravelledAndDeltaDistanceUI movementsTravelledAndDeltaDistanceUI = new MovementsTravelledAndDeltaDistanceUI();
-
-                    movementsTravelledAndDeltaDistanceUI.listMovementsTravelledAndDeltaDistance();
-
-                    break;
-
-                case "6" :
-                    //TopNController topNController = new TopNController();
-
-                    //topNController.getTopShipsWithMostKmByVesselType(LocalDateTime.of(2020, 12,31, 10, 0)
-                            //, LocalDateTime.of(2020, 12, 31, 22, 30),2,70);
-                    //System.out.println(topNController.company.getTreeOfShips().getShipByMMSI(257881000).getTreeOfPositionData().travelledDistanceBtDates(LocalDateTime.of(2020, 12,31, 9, 5)
-                          //  , LocalDateTime.of(2020, 12, 31, 23, 41)));
-                    //PairOfShipsController pairOfShipsController = new PairOfShipsController();
-
-                    //pairOfShipsController.getPairShips();
-                    break;
-
-                default:
-
-            }
-
-        }
-
-
-//        if (LOGGER.isLoggable(Level.INFO)) {
-//            LOGGER.log(Level.INFO, String.valueOf(value));
-//        }
-
+        TrafficManagerUI trafficManagerUI = new TrafficManagerUI();
+        trafficManagerUI.run();
 
     }
 

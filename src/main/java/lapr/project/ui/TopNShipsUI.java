@@ -4,11 +4,12 @@ import lapr.project.controller.TopNController;
 import lapr.project.model.Ship;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Map;
 import java.util.Scanner;
 
-public class TopNShipsUI {
-    Scanner in = new Scanner(System.in);
+public class TopNShipsUI implements Runnable{
+
 
     private TopNController topNController;
 
@@ -16,21 +17,41 @@ public class TopNShipsUI {
         this.topNController = new TopNController();
     }
 
+
     /**
-     * For each Vessel Type this method will give the TOP-N ships with the most kilometres travelled and their respective average speed
+     * When an object implementing interface <code>Runnable</code> is used
+     * to create a thread, starting the thread causes the object's
+     * <code>run</code> method to be called in that separately executing
+     * thread.
+     * <p>
+     * The general contract of the method <code>run</code> is that it may
+     * take any action whatsoever.
      *
-     * @param date1 initial date
-     * @param date2 final date
-     * @param n     N ships
+     * @see Thread#run()
      */
-    public void getTopShipsWithMostKm(LocalDateTime date1, LocalDateTime date2, int n) {
+    @Override
+    public void run() {
+        Scanner in = new Scanner(System.in);
+
+        System.out.println("Please insert the number of ships you wish to see: ");
+        int n = in.nextInt();
+        System.out.print("Please insert the first date: ");
+        String date1 = in.nextLine();
+        System.out.print("Please insert the second date: ");
+        String date2 = in.nextLine();
+
         //For each Vessel Type , creates the respective map
         for (Integer vTypes : topNController.getVesselTypes()) {
-            Map<Ship, Double> topN = topNController.getTopShipsWithMostKmByVesselType(date1, date2, n, vTypes);
+            Map<Ship, Double> topN = topNController.getTopShipsWithMostKmByVesselType(formatter(date1), formatter(date2), n, vTypes);
             for (Map.Entry<Ship, Double> topiN : topN.entrySet()) {
                 System.out.println(topiN);
-                System.out.println(topiN.getKey().travelledDistanceBtDates(date1, date2));
+                System.out.println(topiN.getKey().travelledDistanceBtDates(formatter(date1), formatter(date2)));
             }
         }
+    }
+
+    LocalDateTime formatter(String str) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+        return LocalDateTime.parse(str, formatter);
     }
 }

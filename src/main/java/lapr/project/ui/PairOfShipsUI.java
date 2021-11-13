@@ -4,12 +4,9 @@ import lapr.project.controller.PairOfShipsController;
 import lapr.project.model.Pair;
 import lapr.project.model.Ship;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
-public class PairOfShipsUI {
-    Scanner in = new Scanner(System.in);
+public class PairOfShipsUI implements Runnable{
 
     private PairOfShipsController pairOfShipsController;
 
@@ -17,9 +14,21 @@ public class PairOfShipsUI {
         this.pairOfShipsController = new PairOfShipsController();
     }
 
-    public void getPairShips(){
-        List<Pair<Ship, Ship>> pairs = new ArrayList<>();
-        pairs = pairOfShipsController.getPairShips();
+
+    /**
+     * When an object implementing interface <code>Runnable</code> is used
+     * to create a thread, starting the thread causes the object's
+     * <code>run</code> method to be called in that separately executing
+     * thread.
+     * <p>
+     * The general contract of the method <code>run</code> is that it may
+     * take any action whatsoever.
+     *
+     * @see Thread#run()
+     */
+    @Override
+    public void run() {
+        List<Pair<Ship, Ship>> pairs = pairOfShipsController.getPairShips();
         System.out.println(pairs);
     }
 }

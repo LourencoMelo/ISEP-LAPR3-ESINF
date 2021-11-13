@@ -54,15 +54,16 @@ public class PositionData implements Comparable<PositionData> {
 
     /**
      * Contruct of the class PositionDate
+     *
      * @param baseDateTime BaseDate Time of the Ship
-     * @param latitude Latitude of the Ship(Position)
-     * @param longitude Longitude of the Ship(Position)
-     * @param sog Sog of the Ship(Position)
-     * @param cog Cog of the Ship(Position)
-     * @param heading Heading of the Ship(Position)
-     * @param position Position of the Ship(Position)
+     * @param latitude     Latitude of the Ship(Position)
+     * @param longitude    Longitude of the Ship(Position)
+     * @param sog          Sog of the Ship(Position)
+     * @param cog          Cog of the Ship(Position)
+     * @param heading      Heading of the Ship(Position)
+     * @param position     Position of the Ship(Position)
      */
-    public PositionData(LocalDateTime baseDateTime, double latitude, double longitude, double sog, double cog, double heading, String position,String transceiver) {
+    public PositionData(LocalDateTime baseDateTime, double latitude, double longitude, double sog, double cog, double heading, String position, String transceiver) {
         setBaseDateTime(baseDateTime);
         setLatitude(latitude);
         setLongitude(longitude);
@@ -82,6 +83,7 @@ public class PositionData implements Comparable<PositionData> {
 
     /**
      * Returns the baseDatTime of the Ship
+     *
      * @return baseDateTime
      */
     public LocalDateTime getBaseDateTime() {
@@ -90,6 +92,7 @@ public class PositionData implements Comparable<PositionData> {
 
     /**
      * Set the baseDatTime of the Ship
+     *
      * @param baseDateTime new base date time
      */
     public void setBaseDateTime(LocalDateTime baseDateTime) {
@@ -98,6 +101,7 @@ public class PositionData implements Comparable<PositionData> {
 
     /**
      * Returns the Latitude of the Ship
+     *
      * @return latitude
      */
     public double getLatitude() {
@@ -106,18 +110,20 @@ public class PositionData implements Comparable<PositionData> {
 
     /**
      * Sets the Latitude of the Ship
+     *
      * @param latitude new latitude
      */
     public void setLatitude(double latitude) {
-        if (latitude >= -90 && latitude <= 90){
+        if ((latitude >= -90 && latitude <= 90) || latitude == 91) {
             this.latitude = latitude;
-        }else {
+        } else {
             throw new IllegalArgumentException("latitude must be contained on the following interval [-90;90]");
         }
     }
 
     /**
      * Returns the Longitude of the Ship
+     *
      * @return longitude
      */
     public double getLongitude() {
@@ -126,18 +132,20 @@ public class PositionData implements Comparable<PositionData> {
 
     /**
      * Sets the Longitude of the Ship
+     *
      * @param longitude new longitude
      */
     public void setLongitude(double longitude) {
-        if (longitude >= -180 && longitude <= 180){
+        if ((longitude >= -180 && longitude <= 180) || longitude == 181) {
             this.longitude = longitude;
-        }else {
+        } else {
             throw new IllegalArgumentException("longitude must be contained on the following interval [-180;180]");
         }
     }
 
     /**
      * Returns the Sog of the Ship
+     *
      * @return sog
      */
     public double getSog() {
@@ -146,6 +154,7 @@ public class PositionData implements Comparable<PositionData> {
 
     /**
      * Sets the Sog of the Ship
+     *
      * @param sog
      */
     public void setSog(double sog) {
@@ -154,6 +163,7 @@ public class PositionData implements Comparable<PositionData> {
 
     /**
      * Returns the Cog of the Ship
+     *
      * @return cog
      */
     public double getCog() {
@@ -162,18 +172,20 @@ public class PositionData implements Comparable<PositionData> {
 
     /**
      * Sets the Cog of the Ship
+     *
      * @param cog new cog
      */
     public void setCog(double cog) {
-        if (cog >= 0 && cog <= 359){
+        if ((cog >= 0 && cog <= 359) || cog == 511) {
             this.cog = cog;
-        }else {
+        } else {
             throw new IllegalArgumentException("Cog must be contained on the following interval [0;359]");
         }
     }
 
     /**
      * Returns the Heading of the Ship
+     *
      * @return heading
      */
     public double getHeading() {
@@ -182,18 +194,20 @@ public class PositionData implements Comparable<PositionData> {
 
     /**
      * Sets the Heading of the Ship
+     *
      * @param heading
      */
     public void setHeading(double heading) {
-        if (heading >= 0 && heading <= 359){
+        if (heading >= 0 && heading <= 359) {
             this.heading = heading;
-        }else {
+        } else {
             throw new IllegalArgumentException("heading must be contained on the following interval [0;359]");
         }
     }
 
     /**
      * Returns the position of the Ship
+     *
      * @return position
      */
     public String getPosition() {
@@ -202,6 +216,7 @@ public class PositionData implements Comparable<PositionData> {
 
     /**
      * Sets the position of the Ship
+     *
      * @param position
      */
     public void setPosition(String position) {
@@ -210,6 +225,7 @@ public class PositionData implements Comparable<PositionData> {
 
     /**
      * Sets the transceiver class
+     *
      * @param transceiver
      */
     public void setTransceiver(String transceiver) {
@@ -218,6 +234,7 @@ public class PositionData implements Comparable<PositionData> {
 
     /**
      * Returns the transceiver class
+     *
      * @return transceiver
      */
     public String getTransceiver() {
@@ -226,7 +243,7 @@ public class PositionData implements Comparable<PositionData> {
 
     /**
      * -------------------------------------------------------------------------------------------------------------
-     *                                              EQUALS
+     * EQUALS
      * -------------------------------------------------------------------------------------------------------------
      */
 
@@ -235,13 +252,13 @@ public class PositionData implements Comparable<PositionData> {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         PositionData that = (PositionData) o;
-        return Double.compare(that.latitude, latitude) == 0 && Double.compare(that.longitude, longitude) == 0  && Objects.equals(baseDateTime, that.baseDateTime);
+        return Double.compare(that.latitude, latitude) == 0 && Double.compare(that.longitude, longitude) == 0 && Objects.equals(baseDateTime, that.baseDateTime);
     }
 
 
     /**
      * -------------------------------------------------------------------------------------------------------------
-     *                                              TO STRING
+     * TO STRING
      * -------------------------------------------------------------------------------------------------------------
      */
 
@@ -260,15 +277,15 @@ public class PositionData implements Comparable<PositionData> {
 
     /**
      * -------------------------------------------------------------------------------------------------------------
-     *                                              COMPARE TO
+     * COMPARE TO
      * -------------------------------------------------------------------------------------------------------------
      */
 
     @Override
-    public int compareTo(PositionData positionData){
-        if(this.baseDateTime.compareTo(positionData.baseDateTime) > 0)
+    public int compareTo(PositionData positionData) {
+        if (this.baseDateTime.compareTo(positionData.baseDateTime) > 0)
             return 1;
-        if(this.baseDateTime.compareTo(positionData.baseDateTime) < 0)
+        if (this.baseDateTime.compareTo(positionData.baseDateTime) < 0)
             return -1;
         return 0;
     }

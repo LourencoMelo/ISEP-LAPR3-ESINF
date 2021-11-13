@@ -5,7 +5,7 @@ import lapr.project.controller.GetShipPositionByDateController;
 
 import java.util.Scanner;
 
-public class GetShipPositionByDateUI {
+public class GetShipPositionByDateUI implements Runnable{
 
     Scanner in = new Scanner(System.in);
 
@@ -18,7 +18,19 @@ public class GetShipPositionByDateUI {
         this.getShipByCodeController = new GetShipByCodeController();
     }
 
-    public void getShipPositionMessagesOrderByDate(){
+    /**
+     * When an object implementing interface <code>Runnable</code> is used
+     * to create a thread, starting the thread causes the object's
+     * <code>run</code> method to be called in that separately executing
+     * thread.
+     * <p>
+     * The general contract of the method <code>run</code> is that it may
+     * take any action whatsoever.
+     *
+     * @see Thread#run()
+     */
+    @Override
+    public void run() {
         System.out.println("Write MMSI, IMO or Call Sign of the ship you want to get the positions ordered by date: ");
 
         String answer = in.next();
