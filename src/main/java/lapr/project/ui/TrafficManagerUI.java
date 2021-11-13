@@ -7,6 +7,7 @@ public class TrafficManagerUI implements Runnable{
 
 
     public TrafficManagerUI() {
+        //Empty constructor
     }
 
     /**

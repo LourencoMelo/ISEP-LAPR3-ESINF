@@ -6,12 +6,11 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- * @author Paulo Maio <pam@isep.ipp.pt>
- */
+
 public class Utils {
 
     static public String readLineFromConsole(String prompt) {
@@ -76,7 +75,7 @@ public class Utils {
         String input;
         do {
             input = Utils.readLineFromConsole("\n" + message + "\n");
-        } while (!input.equalsIgnoreCase("s") && !input.equalsIgnoreCase("n"));
+        } while (!Objects.requireNonNull(input).equalsIgnoreCase("s") && !input.equalsIgnoreCase("n"));
 
         return input.equalsIgnoreCase("s");
     }
