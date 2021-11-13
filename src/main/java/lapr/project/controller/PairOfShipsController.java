@@ -39,6 +39,11 @@ public class PairOfShipsController {
         return company.getPairShips();
     }
 
+    /**
+     * Gets the travelled Distance difference between in a pair of ships
+     * @param pairOfShips ship a , ship b
+     * @return travelled distance difference
+     */
     public double travelDistanceDifference(Pair<Ship, Ship> pairOfShips){
         return company.travelDistanceDifference(pairOfShips);
     }

@@ -265,7 +265,7 @@ class CompanyTest {
 
         Boolean result = false;
 
-        if(company.getPairShips().size() == 2) result = true;
+        if(company.getPairShips().size() == 4) result = true;
 
         assertTrue(result);
     }
@@ -278,6 +278,27 @@ class CompanyTest {
 
         if(test.get(0).getFirst().getMMSI() > test.get(1).getFirst().getMMSI()){
             result = true;
+        }
+
+        assertTrue(result);
+    }
+
+    @Test
+    void getPairOfShipsTestOrder2(){
+        importFileController.importShips(new File("Files/pairsTest.csv"));
+        List<Pair<Ship, Ship>> test = company.getPairShips();
+        Boolean result = false;
+
+        for(int i = 0; i < test.size() - 1; i ++) {
+            int j = i + 1;
+            if(test.get(i).getFirst().getMMSI() > test.get(j).getFirst().getMMSI()){
+                result = true;
+            }else if(test.get(i).getFirst().getMMSI() == test.get(j).getFirst().getMMSI()){
+                result = false;
+                if(company.travelDistanceDifference(test.get(i)) > company.travelDistanceDifference(test.get(j))){
+                    result = true;
+                }
+            }
         }
 
         assertTrue(result);

@@ -135,8 +135,6 @@ Ship o-- Container
 Truck o-- Container
 Company o-- Ship
 Company o-- Truck
-Port o-- Ship : 0..*
-Port o-- Warehouse
 
 
 'Composition connections
@@ -145,7 +143,7 @@ Company *-- User
 Company *-- UserRole
 Ship *-- CargoManifest : 1
 Ship *-- PositionData
-
+PortAndWarehouse *-- Ship
 
 'Association connections
 
