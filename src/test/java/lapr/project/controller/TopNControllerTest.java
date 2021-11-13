@@ -7,6 +7,8 @@ import lapr.project.utils.App;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
+import java.time.LocalDateTime;
+import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -18,9 +20,14 @@ public class TopNControllerTest {
     Company company = new Company();
 
     /**
-     * Creates an instance of GetShipByCodeController
+     * Creates an instance of TopNController
      */
     TopNController topNController = new TopNController(company);
+
+    /**
+     * Creates an istance of ImportFileController
+     */
+    ImportFileController importFileController = new ImportFileController(company);
 
     /**
      * Test the constructor and company association
@@ -43,21 +50,24 @@ public class TopNControllerTest {
         assertEquals(App.getInstance().getCompany().getShipPositionMessagesOrderByDate(shipTest), company.getShipPositionMessagesOrderByDate(shipTest));
     }
 
+    /**
+     *Testing method getTopShipsWithMostKmByVesselType()
+     */
     @Test
-    void GetTopShipsWithMostKmByVesselType() {
+    void getTopShipsWithMostKmByVesselType() {
+        importFileController.importShips(new File("Files/sships.csv"));
+        Map<Ship, Double> map1 = topNController.getTopShipsWithMostKmByVesselType(LocalDateTime.of(2020,12,31,10,0), LocalDateTime.of(2020,12,31,22,30), 2, 70);
+        Map<Ship, Double> map2 = company.getTopShipsWithMostKmByVesselType(LocalDateTime.of(2020,12,31,10,0), LocalDateTime.of(2020,12,31,22,30), 2, 70);
 
+        assertEquals(map1, map2);
     }
 
+    /**
+     * Testing Controller method getVesselTypes
+     */
     @Test
-    void GetVesselTypes() {
-        /*company.getTreeOfShips().createTreeMMSI(new File("Files/sships.csv"));
-
-
-
-        assertEquals(,topNController.getVesselTypes());
-
-
-         */
+    void getVesselTypes() {
+       assertEquals(topNController.getVesselTypes(), company.getVesselTypes());
     }
 
 }
