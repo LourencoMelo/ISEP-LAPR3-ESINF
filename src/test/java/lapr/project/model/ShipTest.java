@@ -59,8 +59,11 @@ class ShipTest {
         shipTest.setMMSI(881234567);
         assertEquals(expected3, shipTest.getMMSI());
 
+
+
         try {
             shipTest.setMMSI(11);
+            shipTest.setMMSI(1999999999);
         }catch (Exception exception){
             assertEquals("MMSI needs to be a 9 digits unique number.",exception.getMessage());
         }
