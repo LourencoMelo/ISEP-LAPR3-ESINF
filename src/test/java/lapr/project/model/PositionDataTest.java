@@ -46,9 +46,45 @@ class PositionDataTest {
     @Test
     void setLatitude() {
         double expected = 12;
+        double expected1 = 90;
+        double expected2 = -90;
+        double expected3 = 91;
+
         positionDataTest.setLatitude(expected);
         assertEquals(true, positionDataTest.getLatitude() == expected);
+        positionDataTest.setLatitude(expected1);
+        assertEquals(true, positionDataTest.getLatitude() == expected1);
+        positionDataTest.setLatitude(expected2);
+        assertEquals(true, positionDataTest.getLatitude() == expected2);
+        positionDataTest.setLatitude(expected3);
+        assertEquals(true, positionDataTest.getLatitude() == expected3);
     }
+
+
+    /**
+     * Testing SET Latitude
+     */
+    @Test
+    void setLatitudeLessMinus90(){
+        try{
+            positionDataTest.setLatitude(-91);
+        }catch (Exception e){
+            assertEquals("latitude must be contained on the following interval [-90;90]", e.getMessage());
+        }
+    }
+
+    /**
+     * Testing SET Latitude
+     */
+    @Test
+    void setLatitudeBiggerThan91(){
+        try{
+            positionDataTest.setLatitude(92);
+        }catch (Exception e){
+            assertEquals("latitude must be contained on the following interval [-90;90]", e.getMessage());
+        }
+    }
+
 
     /**
      * Testing GET Longitude
@@ -65,8 +101,41 @@ class PositionDataTest {
     @Test
     void setLongitude() {
         double expected = 12;
+        double expected1 = -180;
+        double expected2 = 180;
+        double expected3 = 181;
         positionDataTest.setLongitude(expected);
         assertEquals(true, positionDataTest.getLongitude() == expected);
+        positionDataTest.setLongitude(expected1);
+        assertEquals(true, positionDataTest.getLongitude() == expected1);
+        positionDataTest.setLongitude(expected2);
+        assertEquals(true, positionDataTest.getLongitude() == expected2);
+        positionDataTest.setLongitude(expected3);
+        assertEquals(true, positionDataTest.getLongitude() == expected3);
+    }
+
+    /**
+     * Testing SET LONGITUDE
+     */
+    @Test
+    void setLongitudeSmallerMinus180(){
+        try{
+            positionDataTest.setLongitude(-181);
+        }catch (Exception e){
+            assertEquals("longitude must be contained on the following interval [-180;180]", e.getMessage());
+        }
+    }
+
+    /**
+     * Testing SET LONGITUDE
+     */
+    @Test
+    void setLongitudeBigger180(){
+        try{
+            positionDataTest.setLongitude(182);
+        }catch (Exception e){
+            assertEquals("longitude must be contained on the following interval [-180;180]", e.getMessage());
+        }
     }
 
     /**
@@ -103,9 +172,44 @@ class PositionDataTest {
     @Test
     void setCog() {
         double expected = 22;
+        double expected1 = 0;
+        double expected2 = 359;
+        double expected3 = 511;
+
         positionDataTest.setCog(expected);
         assertEquals(true, positionDataTest.getCog() == expected);
+        positionDataTest.setCog(expected1);
+        assertEquals(true, positionDataTest.getCog() == expected1);
+        positionDataTest.setCog(expected2);
+        assertEquals(true, positionDataTest.getCog() == expected2);
+        positionDataTest.setCog(expected3);
+        assertEquals(true, positionDataTest.getCog() == expected3);
     }
+
+    /**
+     * Testing SET Cog
+     */
+    @Test
+    void setCogLess0(){
+        try{
+            positionDataTest.setCog(-1);
+        }catch (Exception e){
+            assertEquals("Cog must be contained on the following interval [0;359]", e.getMessage());
+        }
+    }
+
+    /**
+     * Testing SET Cog
+     */
+    @Test
+    void setCogBigger359(){
+        try{
+            positionDataTest.setCog(360);
+        }catch (Exception e){
+            assertEquals("Cog must be contained on the following interval [0;359]", e.getMessage());
+        }
+    }
+
 
     /**
      * Testing GET Heading
@@ -122,9 +226,42 @@ class PositionDataTest {
     @Test
     void setHeading() {
         double expected = 10;
+        double expected1 = 0;
+        double expected2 = 359;
+
         positionDataTest.setHeading(expected);
         assertEquals(true, positionDataTest.getHeading() == expected);
+        positionDataTest.setHeading(expected1);
+        assertEquals(true, positionDataTest.getHeading() == expected1);
+        positionDataTest.setHeading(expected2);
+        assertEquals(true, positionDataTest.getHeading() == expected2);
     }
+
+    /**
+     * Testing SET Heading
+     */
+    @Test
+    void setHeadingLess0(){
+        try{
+            positionDataTest.setHeading(-1);
+        }catch (Exception e){
+            assertEquals("heading must be contained on the following interval [0;359]", e.getMessage());
+        }
+    }
+
+    /**
+     * Testing SET Heading
+     */
+    @Test
+    void setHeadingBigger359(){
+        try{
+            positionDataTest.setHeading(360);
+        }catch (Exception e){
+            assertEquals("heading must be contained on the following interval [0;359]", e.getMessage());
+        }
+    }
+
+
 
     /**
      * Testing GET Position
