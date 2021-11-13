@@ -29,6 +29,12 @@ public class PairOfShipsUI implements Runnable{
     @Override
     public void run() {
         List<Pair<Ship, Ship>> pairs = pairOfShipsController.getPairShips();
-        System.out.println(pairs);
+        System.out.println("------------------------------");
+        for(Pair<Ship, Ship> pairLs : pairs){
+            System.out.println("Ship 1 : " + pairLs.getFirst().getMMSI());
+            System.out.println("Ship 2 : " + pairLs.getSecond().getMMSI());
+            System.out.println("Travelled Distance Difference : " + String.format("%.2f",pairOfShipsController.travelDistanceDifference(pairLs)) + "Km");
+            System.out.println("------------------------------");
+        }
     }
 }

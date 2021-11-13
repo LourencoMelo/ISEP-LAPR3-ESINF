@@ -17,7 +17,7 @@ public class TopNShipsUI implements Runnable{
         this.topNController = new TopNController();
     }
 
-
+    Scanner in = new Scanner(System.in);
     /**
      * When an object implementing interface <code>Runnable</code> is used
      * to create a thread, starting the thread causes the object's
@@ -31,21 +31,25 @@ public class TopNShipsUI implements Runnable{
      */
     @Override
     public void run() {
-        Scanner in = new Scanner(System.in);
 
         System.out.println("Please insert the number of ships you wish to see: ");
         int n = in.nextInt();
-        System.out.print("Please insert the first date: ");
+        in.nextLine();
+        System.out.println("Please insert the first date: ");
         String date1 = in.nextLine();
-        System.out.print("Please insert the second date: ");
+        System.out.println("Please insert the second date: ");
         String date2 = in.nextLine();
 
         //For each Vessel Type , creates the respective map
+        System.out.println("------------------------------");
         for (Integer vTypes : topNController.getVesselTypes()) {
             Map<Ship, Double> topN = topNController.getTopShipsWithMostKmByVesselType(formatter(date1), formatter(date2), n, vTypes);
             for (Map.Entry<Ship, Double> topiN : topN.entrySet()) {
-                System.out.println(topiN);
-                System.out.println(topiN.getKey().travelledDistanceBtDates(formatter(date1), formatter(date2)));
+                System.out.println("Ship : " + topiN.getKey().getMMSI());
+                System.out.println("Vessel Type : " + topiN.getKey().getVesselType());
+                System.out.println("Mean SOG : " + String.format("%.2f",topiN.getValue()) + "Km/h");
+                System.out.println("Travelled distance : " + String.format("%.3f",topiN.getKey().travelledDistanceBtDates(formatter(date1), formatter(date2))) + "Km");
+                System.out.println("------------------------------");
             }
         }
     }
