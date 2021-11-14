@@ -5,9 +5,9 @@ import java.util.*;
 public class User {
 
     private Email id;
-    private Password password;
+    private final Password password;
     private String name;
-    private Set<UserRole> roles = new HashSet<UserRole>();
+    private final Set<UserRole> roles = new HashSet<>();
 
     public User(Email id, Password pwd, String name) {
         if ((Objects.isNull(id)) || Objects.isNull(pwd) || name.isEmpty() )
