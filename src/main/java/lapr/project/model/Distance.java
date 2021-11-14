@@ -2,6 +2,10 @@ package lapr.project.model;
 
 public class Distance {
 
+    private Distance() {
+        //private constructor
+    }
+
     /**
      * Calculates the distance in km that the ship travelled between two points
      *

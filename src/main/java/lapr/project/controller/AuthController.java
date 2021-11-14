@@ -3,10 +3,11 @@ package lapr.project.controller;
 import lapr.project.auth.mappers.dto.UserRoleDTO;
 import lapr.project.utils.App;
 
+import java.util.Collections;
 import java.util.List;
 
 public class AuthController {
-    private App app;
+    private final App app;
 
     public AuthController() {
         this.app = App.getInstance();
@@ -24,7 +25,7 @@ public class AuthController {
         if (this.app.getCurrentUserSession().isLoggedIn()) {
             return this.app.getCurrentUserSession().getUserRoles();
         }
-        return null;
+        return Collections.emptyList();
     }
 
     public void doLogout() {
