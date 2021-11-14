@@ -9,26 +9,19 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class AuthControllerTest {
 
-    AuthController authController = new AuthController();
+
 
     @Test
     void doLogin() {
-
-        assertFalse(authController.doLogin("ola@gmail.com","12345"));
+        AuthController authController = new AuthController();
 
         assertTrue(authController.doLogin("joao@gmail.com","12345"));
 
-        try{
-            authController.doLogin("","");
-            System.out.println("consegui");
-        }catch (Exception exception){
-            System.out.println(exception.getMessage());
-            assertTrue(true);
-        }
     }
 
     @Test
     void getUserRolesTest() {
+        AuthController authController = new AuthController();
 
         Company company = App.getInstance().getCompany();
 
@@ -45,6 +38,7 @@ class AuthControllerTest {
 
     @Test
     void getUserNotLoggedInRoles() {
+        AuthController authController = new AuthController();
         Company company = App.getInstance().getCompany();
 
         AuthFacade authFacade = company.getAuthFacade();
@@ -58,6 +52,7 @@ class AuthControllerTest {
 
     @Test
     void logOutTest() {
+        AuthController authController = new AuthController();
 
         Company company = App.getInstance().getCompany();
 
@@ -69,7 +64,7 @@ class AuthControllerTest {
 
         authFacade.doLogin("joao@gmail.com", "12345");
 
-        authFacade.doLogout();
+        authController.doLogout();
 
         assertNull(authFacade.getCurrentUserSession().getUser());
 
@@ -77,6 +72,7 @@ class AuthControllerTest {
 
     @Test
     void getAppTest() {
+        AuthController authController = new AuthController();
         assertEquals(App.getInstance(), authController.getApp());
     }
 }
