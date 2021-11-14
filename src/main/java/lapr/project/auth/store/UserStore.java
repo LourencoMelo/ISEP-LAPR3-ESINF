@@ -22,12 +22,6 @@ public class UserStore {
         return false;
     }
 
-    public boolean remove(User user) {
-        if (user != null)
-            return this.store.remove(user);
-        return false;
-    }
-
     public Optional<User> getById(String email) {
         return this.getById(new Email(email));
     }
@@ -52,10 +46,6 @@ public class UserStore {
 
     public boolean exists(User user) {
         return this.store.contains(user);
-    }
-
-    public Set<User> getStore() {
-        return store;
     }
 
     public void changeEmailFromUserByLastEmail(String email, String newEmail) {
