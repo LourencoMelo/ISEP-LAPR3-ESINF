@@ -1,6 +1,5 @@
 package lapr.project.auth.store;
 
-import lapr.project.auth.AuthFacade;
 import lapr.project.auth.UserRole;
 
 import java.util.HashSet;
@@ -9,9 +8,7 @@ import java.util.Set;
 
 public class UserRoleStore {
 
-    private Set<UserRole> store = new HashSet<>();
-
-    private AuthFacade aut;
+    private final Set<UserRole> store = new HashSet<>();
 
     public UserRole create(String id, String description) {
         return new UserRole(id, description);
@@ -25,9 +22,8 @@ public class UserRoleStore {
     }
 
     public boolean add(UserRole role) {
-        if (role != null) {
-            if (!exists(role))
-                return this.store.add(role);
+        if (role != null && !exists(role)) {
+            return this.store.add(role);
         }
         return false;
     }

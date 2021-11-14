@@ -2,8 +2,8 @@ package lapr.project.auth.mappers.dto;
 
 public class UserRoleDTO {
 
-    private String id;
-    private String description;
+    private final String id;
+    private final String description;
 
     public UserRoleDTO(String id, String description)
     {

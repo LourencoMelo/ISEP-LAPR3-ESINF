@@ -37,7 +37,7 @@ public class UserSession {
 
     public String getUserName() {
         if (isLoggedIn())
-            this.user.getName();
+            return this.user.getName();
         return null;
     }
 
@@ -52,7 +52,7 @@ public class UserSession {
             UserRoleMapper mapper = new UserRoleMapper();
             return mapper.toDTO(this.user.getRoles());
         }
-        return Collections.EMPTY_LIST;
+        return Collections.emptyList();
     }
 
     public User getUser() {
