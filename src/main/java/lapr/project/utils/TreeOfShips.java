@@ -32,18 +32,8 @@ public class TreeOfShips extends AVL<Ship> {
 
                 try {
                     ShipByMMSI ship = new ShipByMMSI(Integer.parseInt(ship_info[0].trim()), ship_info[7].trim(), ship_info[8].trim(), ship_info[9].trim(), Integer.parseInt(ship_info[10].trim()), Double.parseDouble(ship_info[11].trim()), Double.parseDouble(ship_info[12].trim()), Double.parseDouble(ship_info[13].trim()));
-                    PositionData positionData = new PositionData(formatter(ship_info[1].trim()), Double.parseDouble(ship_info[2].trim()), Double.parseDouble(ship_info[3].trim()), Double.parseDouble(ship_info[4].trim()), Double.parseDouble(ship_info[5].trim()), Double.parseDouble(ship_info[6].trim()), ship_info[14].trim(), ship_info[15].trim());
 
-                    for (Ship ship1 :
-                            list_of_existent_ships) {
-                        if (ship1.getMMSI() == ship.getMMSI()) {
-                            ship1.addPositionData(positionData);
-                        }
-                    }
-
-                    insert(ship);
-                    list_of_existent_ships.add(ship);
-                    ship.addPositionData(positionData);
+                    duplicatedLinesMMSI(list_of_existent_ships, ship_info, ship);
 
                 }catch (IllegalArgumentException exception){
                     Logger.getLogger(exception.getMessage());
@@ -75,18 +65,7 @@ public class TreeOfShips extends AVL<Ship> {
 
                         ShipByIMO ship = new ShipByIMO(Integer.parseInt(ship_info[0].trim()), ship_info[7].trim(), ship_info[8].trim(), ship_info[9].trim(), Integer.parseInt(ship_info[10].trim()), Double.parseDouble(ship_info[11].trim()), Double.parseDouble(ship_info[12].trim()), Double.parseDouble(ship_info[13].trim()));
 
-                        PositionData positionData = new PositionData(formatter(ship_info[1].trim()), Double.parseDouble(ship_info[2].trim()), Double.parseDouble(ship_info[3].trim()), Double.parseDouble(ship_info[4].trim()), Double.parseDouble(ship_info[5].trim()), Double.parseDouble(ship_info[6].trim()), ship_info[14].trim(), ship_info[15].trim());
-
-                        for (Ship ship1 :
-                                list_of_existent_ships) {
-                            if (ship1.getMMSI() == ship.getMMSI()) {
-                                ship1.addPositionData(positionData);
-                            }
-                        }
-
-                        insert(ship);
-                        list_of_existent_ships.add(ship);
-                        ship.addPositionData(positionData);
+                        duplicatedLinesIMO(list_of_existent_ships, ship_info, ship);
                     }catch (IllegalArgumentException exception){
                         Logger.getLogger(exception.getMessage());
                     }
@@ -119,18 +98,7 @@ public class TreeOfShips extends AVL<Ship> {
 
                         ShipByCallSign ship = new ShipByCallSign(Integer.parseInt(ship_info[0].trim()), ship_info[7].trim(), ship_info[8].trim(), ship_info[9].trim(), Integer.parseInt(ship_info[10].trim()), Double.parseDouble(ship_info[11].trim()), Double.parseDouble(ship_info[12].trim()), Double.parseDouble(ship_info[13].trim()));
 
-                        PositionData positionData = new PositionData(formatter(ship_info[1].trim()), Double.parseDouble(ship_info[2].trim()), Double.parseDouble(ship_info[3].trim()), Double.parseDouble(ship_info[4].trim()), Double.parseDouble(ship_info[5].trim()), Double.parseDouble(ship_info[6].trim()), ship_info[14].trim(), ship_info[15].trim());
-
-                        for (Ship ship1 :
-                                list_of_existent_ships) {
-                            if (ship1.getMMSI() == ship.getMMSI()) {
-                                ship1.addPositionData(positionData);
-                            }
-                        }
-
-                        insert(ship);
-                        list_of_existent_ships.add(ship);
-                        ship.addPositionData(positionData);
+                        duplicatedLinesCallSign(list_of_existent_ships, ship_info, ship);
                     }catch (IllegalArgumentException exception){
                         Logger.getLogger(exception.getMessage());
                     }
@@ -259,9 +227,46 @@ public class TreeOfShips extends AVL<Ship> {
         if (callSign.compareTo(node.getElement().getCallSign()) < 0) return getShipByCallSign(node.getLeft(), callSign);
 
         return null;
-
     }
 
+    private void duplicatedLinesMMSI(List<Ship> list_of_existent_ships, String[] ship_info, ShipByMMSI ship){
+        PositionData positionData = new PositionData(formatter(ship_info[1].trim()), Double.parseDouble(ship_info[2].trim()), Double.parseDouble(ship_info[3].trim()), Double.parseDouble(ship_info[4].trim()), Double.parseDouble(ship_info[5].trim()), Double.parseDouble(ship_info[6].trim()), ship_info[14].trim(), ship_info[15].trim());
+        for (Ship ship1 :
+                list_of_existent_ships) {
+            if (ship1.getMMSI() == ship.getMMSI()) {
+                ship1.addPositionData(positionData);
+            }
+        }
+        insert(ship);
+        list_of_existent_ships.add(ship);
+        ship.addPositionData(positionData);
+    }
+
+    private void duplicatedLinesIMO(List<Ship> list_of_existent_ships, String[] ship_info, ShipByIMO ship){
+        PositionData positionData = new PositionData(formatter(ship_info[1].trim()), Double.parseDouble(ship_info[2].trim()), Double.parseDouble(ship_info[3].trim()), Double.parseDouble(ship_info[4].trim()), Double.parseDouble(ship_info[5].trim()), Double.parseDouble(ship_info[6].trim()), ship_info[14].trim(), ship_info[15].trim());
+        for (Ship ship1 :
+                list_of_existent_ships) {
+            if (ship1.getMMSI() == ship.getMMSI()) {
+                ship1.addPositionData(positionData);
+            }
+        }
+        insert(ship);
+        list_of_existent_ships.add(ship);
+        ship.addPositionData(positionData);
+    }
+
+    private void duplicatedLinesCallSign(List<Ship> list_of_existent_ships, String[] ship_info, ShipByCallSign ship){
+        PositionData positionData = new PositionData(formatter(ship_info[1].trim()), Double.parseDouble(ship_info[2].trim()), Double.parseDouble(ship_info[3].trim()), Double.parseDouble(ship_info[4].trim()), Double.parseDouble(ship_info[5].trim()), Double.parseDouble(ship_info[6].trim()), ship_info[14].trim(), ship_info[15].trim());
+        for (Ship ship1 :
+                list_of_existent_ships) {
+            if (ship1.getMMSI() == ship.getMMSI()) {
+                ship1.addPositionData(positionData);
+            }
+        }
+        insert(ship);
+        list_of_existent_ships.add(ship);
+        ship.addPositionData(positionData);
+    }
 
 }
 
