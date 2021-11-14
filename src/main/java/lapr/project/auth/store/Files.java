@@ -17,9 +17,9 @@ public class Files {
         try {
             if (log.exists()) {
 
-                log.delete();
+                assert log.delete();
             }
-            log.createNewFile();
+            assert log.createNewFile();
             PrintWriter out = new PrintWriter(new FileWriter(log, true));
             out.append("Role : " + role + "\n Email : " + email + "\n Password : " + pass + "\n");
             out.close();
