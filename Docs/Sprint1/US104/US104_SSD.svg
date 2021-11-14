@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="318px" preserveAspectRatio="none" style="width:411px;height:318px;background:#FFFFFF;" version="1.1" viewBox="0 0 411 318" width="411px" zoomAndPan="magnify"><defs><filter height="300%" id="f1ov1388fzhldg" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:5.0,5.0;" x1="37" x2="37" y1="41.6094" y2="274.0703"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:5.0,5.0;" x1="344" x2="344" y1="41.6094" y2="274.0703"/><rect fill="#FEFECE" filter="url(#f1ov1388fzhldg)" height="31.6094" style="stroke:#A80036;stroke-width:1.5;" width="60" x="5" y="5"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="46" x="12" y="26.5332">System</text><rect fill="#FEFECE" filter="url(#f1ov1388fzhldg)" height="31.6094" style="stroke:#A80036;stroke-width:1.5;" width="60" x="5" y="273.0703"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="46" x="12" y="294.6035">System</text><rect fill="#FEFECE" filter="url(#f1ov1388fzhldg)" height="31.6094" style="stroke:#A80036;stroke-width:1.5;" width="110" x="287" y="5"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="96" x="294" y="26.5332">TrafficManager</text><rect fill="#FEFECE" filter="url(#f1ov1388fzhldg)" height="31.6094" style="stroke:#A80036;stroke-width:1.5;" width="110" x="287" y="273.0703"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="96" x="294" y="294.6035">TrafficManager</text><polygon fill="#A80036" points="332,69.9609,342,73.9609,332,77.9609,336,73.9609" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;" x1="37" x2="338" y1="73.9609" y2="73.9609"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="117.5" y="69.1045">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="135" x="128.5" y="69.1045">Authentication Request</text><polygon fill="#A80036" points="48,100.3125,38,104.3125,48,108.3125,44,104.3125" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="42" x2="343" y1="104.3125" y2="104.3125"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="112.5" y="99.4561">2</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="145" x="123.5" y="99.4561">Authentication Response</text><polygon fill="#A80036" points="332,130.6641,342,134.6641,332,138.6641,336,134.6641" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;" x1="37" x2="338" y1="134.6641" y2="134.6641"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="131" y="129.8076">3</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="108" x="142" y="129.8076">Operation Request</text><polygon fill="#A80036" points="48,161.0156,38,165.0156,48,169.0156,44,165.0156" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="42" x2="343" y1="165.0156" y2="165.0156"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="86.5" y="160.1592">4</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="197" x="97.5" y="160.1592">Show ship's movements summary</text><polygon fill="#A80036" points="332,191.3672,342,195.3672,332,199.3672,336,195.3672" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;" x1="37" x2="338" y1="195.3672" y2="195.3672"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="49" y="190.5107">5</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="272" x="60" y="190.5107">Insert the code of the ship(IMO/MMSI/CallSign)</text><polygon fill="#A80036" points="48,221.7188,38,225.7188,48,229.7188,44,225.7188" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="42" x2="343" y1="225.7188" y2="225.7188"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="102" y="220.8623">6</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="166" x="113" y="220.8623">Ship object with info required</text><polygon fill="#A80036" points="332,252.0703,342,256.0703,332,260.0703,336,256.0703" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;" x1="37" x2="338" y1="256.0703" y2="256.0703"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="125" y="251.2139">7</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="120" x="136" y="251.2139">Operation completed</text><!--MD5=[648980bba37eef00a3d1d539f34f61de]
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+skinparam sequenceMessageAlign center
+
+System -> TrafficManager: Authentication Request
+TrafficManager - -> System: Authentication Response
+
+System -> TrafficManager: Operation Request
+System <- - TrafficManager: Show ship's movements summary
+
+System -> TrafficManager: Insert the code of the ship(IMO/MMSI/CallSign)
+System <- - TrafficManager: Ship object with info required
+
+System -> TrafficManager: Operation completed
+
+@enduml
+
+@startuml
+
+autonumber
+
+skinparam sequenceMessageAlign center
+
+System -> TrafficManager: Authentication Request
+TrafficManager - -> System: Authentication Response
+
+System -> TrafficManager: Operation Request
+System <- - TrafficManager: Show ship's movements summary
+
+System -> TrafficManager: Insert the code of the ship(IMO/MMSI/CallSign)
+System <- - TrafficManager: Ship object with info required
+
+System -> TrafficManager: Operation completed
+
+@enduml
+
+PlantUML version 1.2021.11(Sat Oct 02 14:26:11 BST 2021)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: Cp1252
+Language: pt
+Country: PT
+--></g></svg>

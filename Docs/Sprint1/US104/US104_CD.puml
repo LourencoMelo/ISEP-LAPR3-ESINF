@@ -1,0 +1,45 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+abstract class Ship
+
+
+class Ship {
+
+    -int MMSI <<b>PK>
+    -String name
+    -int IMO
+    -int numberEnergyGenerator
+    -int powerOutput
+    -String callSign
+    -int vesselType
+    -double length
+    -double width
+    -int maximumCapacity
+    -double draft
+}
+
+class Company{
+
+    +getTreeOfShips()
+    +getTreeOfShipsIMO()
+    +getTreeOfShipsCallSign()
+
+}
+
+class TreeOfShips{
+    +getShipByImo(String code)
+    +getShipByMMSI(int code)
+    +getShipByCallSign(String code)
+}
+
+class TrafficManager{
+}
+
+
+TrafficManager --> Company
+TrafficManager --> Ship
+Company o-- TreeOfShips
+TreeOfShips o-- Ship
+
+@enduml

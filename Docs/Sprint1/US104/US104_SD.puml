@@ -1,0 +1,38 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+actor       TrafficManager             as TM
+participant    ":ShipDataUI"         as UI
+participant    ":GetShipByCodeController" as CTRL
+participant    ":Company"              as Company
+
+TM -> UI : See ship's movements summary
+activate UI
+UI --> TM: Request ship code (IMO/MMSI/CallSign)
+deactivate UI
+
+TM -> UI : Insert ship code
+activate UI
+
+UI -> CTRL : getShipByCode(String code)
+deactivate UI
+activate CTRL
+
+CTRL -> Company : getShipByCode(String code)
+activate Company
+
+Company -> CTRL : ship
+deactivate Company
+
+activate UI
+CTRL -> UI : ship
+deactivate CTRL
+
+UI --> TM : Prints ship's movements summary
+
+
+deactivate UI
+
+@enduml

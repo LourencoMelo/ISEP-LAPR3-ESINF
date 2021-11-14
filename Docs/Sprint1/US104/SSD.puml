@@ -1,0 +1,19 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+skinparam sequenceMessageAlign center
+
+System -> TrafficManager: Authentication Request
+TrafficManager --> System: Authentication Response
+
+System -> TrafficManager: Operation Request
+System <-- TrafficManager: Show ship's movements summary
+
+System -> TrafficManager: Insert the code of the ship(IMO/MMSI/CallSign)
+System <-- TrafficManager: Ship object with info required
+
+System -> TrafficManager: Operation completed
+
+@enduml
