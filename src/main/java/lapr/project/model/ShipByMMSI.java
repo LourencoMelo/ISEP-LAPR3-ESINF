@@ -24,6 +24,11 @@ public class ShipByMMSI extends Ship{
     public ShipByMMSI() {
     }
 
+    /**
+     * Compare to of the class
+     * @param o ship to compare with
+     * @return int
+     */
     @Override
     public int compareTo(Ship o) {
         return this.getMMSI() - o.getMMSI();

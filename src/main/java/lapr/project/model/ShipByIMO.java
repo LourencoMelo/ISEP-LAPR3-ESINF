@@ -25,6 +25,11 @@ public class ShipByIMO extends Ship{
         super();
     }
 
+    /**
+     * Compare to of the class
+     * @param o ship to compare with
+     * @return int
+     */
     @Override
     public int compareTo(Ship o) {
         return this.getIMO().compareTo(o.getIMO());

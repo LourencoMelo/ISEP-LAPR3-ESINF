@@ -2,6 +2,9 @@ package lapr.project.model;
 
 public class Distance {
 
+    /**
+     * Private Constructor of the class
+     */
     private Distance() {
         //private constructor
     }

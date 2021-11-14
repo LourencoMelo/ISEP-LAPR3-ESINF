@@ -15,13 +15,24 @@ public class Company {
      */
     TreeOfShips treeOfShips;
 
+    /**
+     * Tree of the Ships ordered by IMO
+     */
     TreeOfShips treeOfShipsIMO;
 
+    /**
+     * Tree of the Ships ordered by CallSign
+     */
     TreeOfShips treeOfShipsCallSign;
 
+    /**
+     * Instance of AuthFacede
+     */
     private final AuthFacade authFacade;
 
-
+    /**
+     * Constructor of Company
+     */
     public Company() {
         this.authFacade = new AuthFacade();
         this.treeOfShips = new TreeOfShips();
@@ -167,6 +178,10 @@ public class Company {
         return mapShipPositionMessagesOrderedByDate;
     }
 
+    /**
+     * Gets the VesselTypes in a List
+     * @return allVesselTypes
+     */
     public List<Integer> getVesselTypes(){
         //Creates a list of vessel types
         List<Integer> allVesselTypes = new ArrayList<>();
@@ -178,7 +193,12 @@ public class Company {
         return allVesselTypes;
     }
 
-
+    /**
+     * CloseDeparturArrival
+     * @param a
+     * @param b
+     * @return boolean
+     */
     public boolean closeDepartureArrival(Ship a, Ship b){
         double distanceArrival = 0;
         double distanceDeparture = 0;
@@ -191,13 +211,21 @@ public class Company {
         }
     }
 
+    /**
+     * Calculates the travel Distance Differences
+     * @param pairOfShips
+     * @return diff
+     */
     public double travelDistanceDifference(Pair<Ship, Ship> pairOfShips){
         double diff = 0;
         diff = Math.abs(pairOfShips.getFirst().travelledDistance() - pairOfShips.getSecond().travelledDistance());
         return diff;
     }
 
-
+    /**
+     * Gets the Pair of the Ships aggregated
+     * @return pairs
+     */
     public List<Pair<Ship, Ship>> getPairShips(){
         List<Ship> ls = new ArrayList<>();
         List<Pair<Ship, Ship>> pairs = new ArrayList<>();
@@ -231,6 +259,10 @@ public class Company {
         return pairs;
     }
 
+    /**
+     * Gets the AuthFacade
+     * @return authFacade
+     */
     public AuthFacade getAuthFacade() {
         return authFacade;
     }

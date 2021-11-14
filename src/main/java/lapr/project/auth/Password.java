@@ -3,8 +3,16 @@ import java.security.SecureRandom;
 import java.util.Objects;
 
 public class Password {
+
+    /**
+     * Instance pass of Password
+     */
     private final String pass;
 
+    /**
+     * Contructor of Password
+     * @param password
+     */
     public Password(String password) {
         if (!validate(password)) throw new IllegalArgumentException("Invalid Email Address.");
         this.pass = generateRandomPassword(9);
@@ -28,15 +36,29 @@ public class Password {
         return sb.toString();
     }
 
+    /**
+     * Validates the password
+     * @param password
+     * @return boolean
+     */
     private boolean validate(String password) {
         return !password.isEmpty();
     }
 
+    /**
+     * Checks the password
+     * @param pwd
+     * @return boolean
+     */
     public boolean checkPassword(String pwd) {
         return !pwd.isEmpty();
 
     }
 
+    /**
+     * HashCode of the class
+     * @return int
+     */
     @Override
     public int hashCode() {
         int hash = 7;
@@ -44,6 +66,11 @@ public class Password {
         return hash;
     }
 
+    /**
+     * Equals method of Password
+     * @param o
+     * @return boolean
+     */
     @Override
     public boolean equals(Object o) {
 

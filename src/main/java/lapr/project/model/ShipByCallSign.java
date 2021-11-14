@@ -25,6 +25,11 @@ public class ShipByCallSign extends Ship{
     public ShipByCallSign() {
     }
 
+    /**
+     * Compare to of the class
+     * @param o ship to compare with
+     * @return int
+     */
     @Override
     public int compareTo(Ship o) {
         return this.getCallSign().compareTo(o.getCallSign());
