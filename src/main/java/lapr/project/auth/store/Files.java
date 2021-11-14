@@ -17,7 +17,7 @@ public class Files {
         try {
             if (log.exists()) {
 
-                log.delete();
+                assert log.delete();
             }
             log.createNewFile();
             PrintWriter out = new PrintWriter(new FileWriter(log, true));
