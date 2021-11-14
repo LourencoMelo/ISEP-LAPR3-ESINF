@@ -8,7 +8,7 @@ public class GetShipByCodeUI implements Runnable {
 
     Scanner in = new Scanner(System.in);
 
-    private GetShipByCodeController getShipByCodeController;
+    private final GetShipByCodeController getShipByCodeController;
 
     public GetShipByCodeUI() {
         this.getShipByCodeController = new GetShipByCodeController();

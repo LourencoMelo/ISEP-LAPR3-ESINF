@@ -5,8 +5,8 @@ import java.util.Objects;
 
 public class MenuItem {
 
-    private String description;
-    private Runnable ui;
+    private final String description;
+    private final Runnable ui;
 
 
     public MenuItem(String description, Runnable ui) {

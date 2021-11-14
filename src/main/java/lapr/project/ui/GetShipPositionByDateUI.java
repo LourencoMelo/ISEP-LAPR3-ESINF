@@ -9,9 +9,9 @@ public class GetShipPositionByDateUI implements Runnable{
 
     Scanner in = new Scanner(System.in);
 
-    private GetShipPositionByDateController getShipPositionByDateController;
+    private final GetShipPositionByDateController getShipPositionByDateController;
 
-    private GetShipByCodeController getShipByCodeController;
+    private final GetShipByCodeController getShipByCodeController;
 
     public GetShipPositionByDateUI(){
         this.getShipPositionByDateController = new GetShipPositionByDateController();

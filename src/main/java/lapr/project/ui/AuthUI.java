@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class AuthUI implements Runnable {
-    private AuthController ctrl;
+    private final AuthController ctrl;
 
     public AuthUI() {
         ctrl = new AuthController();
