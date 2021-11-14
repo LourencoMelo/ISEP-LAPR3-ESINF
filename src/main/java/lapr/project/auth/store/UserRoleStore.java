@@ -14,12 +14,6 @@ public class UserRoleStore {
         return new UserRole(id, description);
     }
 
-    public boolean validateRole(UserRole role) {
-        if (role == null) {
-            return false;
-        }
-        return !this.exists(role);
-    }
 
     public boolean add(UserRole role) {
         if (role != null && !exists(role)) {
@@ -28,11 +22,6 @@ public class UserRoleStore {
         return false;
     }
 
-    public boolean remove(UserRole role) {
-        if (role != null)
-            return this.store.remove(role);
-        return false;
-    }
 
     public Optional<UserRole> getById(String id) {
         for (UserRole role : this.store) {
@@ -40,11 +29,6 @@ public class UserRoleStore {
                 return Optional.of(role);
         }
         return Optional.empty();
-    }
-
-    public boolean exists(String id) {
-        Optional<UserRole> result = getById(id);
-        return result.isPresent();
     }
 
     public boolean exists(UserRole role) {
