@@ -12,15 +12,15 @@ After that even the systems delivers the information.
 
 ### SSD
 
-![](SSD.svg)
+![](US103_SSD.svg)
 
 ### SD
 
-![](SD.svg)
+![](US103_SD.svg)
 
 ### CD
 
-![](CD.svg)
+![](US103_CD.svg)
 
 ### Test Description
 
