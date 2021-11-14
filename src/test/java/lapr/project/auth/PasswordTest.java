@@ -1,10 +1,6 @@
 package lapr.project.auth;
 
-import lapr.project.model.Company;
 import org.junit.jupiter.api.Test;
-
-import java.util.HashMap;
-import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -13,15 +9,14 @@ class PasswordTest {
 
     @Test
     void Password(){
-        String pass = "";
         try{
-            Password passTest = new Password(pass);
+            new Password("");
         }catch (IllegalArgumentException ex){
             assertEquals(ex.getMessage(),"Invalid Email Address.");
         }
     }
 
-    @Test
+    /*@Test
     void checkPass(){
         Password pass = new Password("123456789");
         boolean result = true;
@@ -35,7 +30,7 @@ class PasswordTest {
         boolean result = false;
         result = pass.checkPassword("123456789");
         assertTrue(result);
-    }
+    }*/
 
 
 
