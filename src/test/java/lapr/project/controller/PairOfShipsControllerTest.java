@@ -3,6 +3,7 @@ package lapr.project.controller;
 import lapr.project.model.Company;
 import lapr.project.model.Pair;
 import lapr.project.model.Ship;
+import lapr.project.model.ShipByMMSI;
 import lapr.project.utils.App;
 import org.junit.jupiter.api.Test;
 
@@ -48,6 +49,15 @@ class PairOfShipsControllerTest {
         Company company1 = App.getInstance().getCompany();
 
         assertEquals(App.getInstance().getCompany().getPairShips(), company1.getPairShips());
+    }
+
+    @Test
+    void travelDistanceDifference(){
+        Ship shipTest1 = new ShipByMMSI(123456788, "WarCraft", "1023456787","Roger",2, 5.0, 3.0, 20.9);
+        Ship shipTest2 = new ShipByMMSI(123456789, "Carlos", "1023456788","Pedro",2, 5.0, 3.0, 20.9);
+        Pair<Ship,Ship> pair = Pair.of(shipTest1,shipTest2);
+
+        assertEquals(pairOfShipsController.travelDistanceDifference(pair), company.travelDistanceDifference(pair));
     }
 
     @Test
