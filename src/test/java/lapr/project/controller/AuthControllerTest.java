@@ -12,14 +12,6 @@ class AuthControllerTest {
 
 
     @Test
-    void doLogin() {
-        AuthController authController = new AuthController();
-
-        assertTrue(authController.doLogin("joao@gmail.com","12345"));
-
-    }
-
-    @Test
     void getUserRolesTest() {
         AuthController authController = new AuthController();
 
