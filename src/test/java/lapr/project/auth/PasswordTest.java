@@ -16,22 +16,4 @@ class PasswordTest {
         }
     }
 
-    /*@Test
-    void checkPass(){
-        Password pass = new Password("123456789");
-        boolean result = true;
-        result = pass.checkPassword("");
-        assertFalse(result);
-    }
-
-    @Test
-    void checkPass2(){
-        Password pass = new Password("123456789");
-        boolean result = false;
-        result = pass.checkPassword("123456789");
-        assertTrue(result);
-    }*/
-
-
-
 }
