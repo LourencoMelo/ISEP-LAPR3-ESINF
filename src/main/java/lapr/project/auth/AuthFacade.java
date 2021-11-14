@@ -64,10 +64,8 @@ public class AuthFacade {
         if (result.isPresent()) {
             User user = result.get();
             this.userToSend = user;
-            //System.out.println(user);
             if (user.hasPassword(password)) {
                 this.userSession = new UserSession(user);
-                //System.out.println("USER NO LOGIN : " + userSession);
             }
         }
         return this.userSession;
