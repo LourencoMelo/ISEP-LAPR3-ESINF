@@ -59,6 +59,8 @@ public class AuthFacadeTest {
 
         assertNull(authFacade.doLogin("oal@gmail.com","").getUser());
 
+        assertNull(authFacade.doLogin("oal@gmail.com","12345").getUser());
+
     }
 
     @Test
