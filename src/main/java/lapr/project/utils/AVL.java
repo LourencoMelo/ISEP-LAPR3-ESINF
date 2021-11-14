@@ -58,19 +58,20 @@ public class AVL <E extends Comparable<E>> extends BST<E> {
 
     @Override
     public void insert(E element){
-        root = insert(element, root);
+        root = insert1(element, root);
     }
-    private Node<E> insert(E element, Node<E> node){
+
+    private Node<E> insert1(E element, Node<E> node){
         if (node == null)
             return new Node<>(element, null, null);
         if (node.getElement() == element){
             node.setElement(element);
         }else if(node.getElement().compareTo(element) > 0){
-            node.setLeft(insert(element,node.getLeft()));
+            node.setLeft(insert1(element,node.getLeft()));
             node = balanceNode(node);
         } else {
             if(node.getElement().compareTo(element) < 0){
-                node.setRight(insert(element,node.getRight()));
+                node.setRight(insert1(element,node.getRight()));
                 node = balanceNode(node);
             }
         }
@@ -79,10 +80,10 @@ public class AVL <E extends Comparable<E>> extends BST<E> {
 
     @Override
     public void remove(E element){
-        root = remove(element, root());
+        root = remove1(element, root());
     }
 
-    private Node<E> remove(E element, BST.Node<E> node) {
+    private Node<E> remove1(E element, BST.Node<E> node) {
         if (node == null)
             return null;
         if (node.getElement() == element) {
@@ -94,14 +95,14 @@ public class AVL <E extends Comparable<E>> extends BST<E> {
                 return node.getLeft();
             E smallElem = smallestElement(node.getRight());
             node.setElement(smallElem);
-            node.setRight(remove(smallElem, node.getRight()));
+            node.setRight(remove1(smallElem, node.getRight()));
             node = balanceNode(node);
         }
         else if (node.getElement().compareTo(element) > 0) {
-            node.setLeft(remove(element,node.getLeft()));
+            node.setLeft(remove1(element,node.getLeft()));
             node = balanceNode(node); }
         else {
-            node.setRight(remove(element,node.getRight()));
+            node.setRight(remove1(element,node.getRight()));
             node = balanceNode(node); }
         return node;
     }
