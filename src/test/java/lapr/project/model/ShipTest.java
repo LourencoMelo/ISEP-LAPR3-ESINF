@@ -466,11 +466,11 @@ class ShipTest {
         shipTest.addPositionData(positionData2);
 
         String toStringActual = "Ship{" +
-                "MMSI=" + shipTest.getMMSI() +
+                "MMSI= " + shipTest.getMMSI() +
                 ", Total number of movements='" + shipTest.getTotalMovements() + '\'' +
-                ", Travelled Distance=" + shipTest.travelledDistance() +
-                ", Delta Distance='" + shipTest.getDeltaDistance() + '\'' +
-                '}' + '\n';
+                ", Travelled Distance=" + '\'' + String.format("%.2f",shipTest.travelledDistance()) + '\'' +
+                ", Delta Distance='" + String.format("%.2f",shipTest.getDeltaDistance()) + '\'' +
+                '}';
 
         assertEquals(toStringActual,shipTest.toStringMMSIMovementsTravelledDistanceDeltaDistance());
 

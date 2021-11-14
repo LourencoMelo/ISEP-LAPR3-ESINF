@@ -447,12 +447,7 @@ public abstract class Ship implements Comparable<Ship> {
     }
 
     public String toStringMMSIMovementsTravelledDistanceDeltaDistance() {
-        return "Ship{" +
-                "MMSI=" + MMSI +
-                ", Total number of movements='" + this.getTotalMovements() + '\'' +
-                ", Travelled Distance=" + this.travelledDistance() +
-                ", Delta Distance='" + this.getDeltaDistance() + '\'' +
-                '}' + '\n';
+        return String.format("Ship{MMSI= %d, Total number of movements='%d', Travelled Distance='%.2f', Delta Distance='%.2f'}", this.getMMSI(), this.getTotalMovements(), this.travelledDistance(), this.getDeltaDistance());
     }
 
     /**

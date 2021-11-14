@@ -15,9 +15,22 @@ class Ship {
     -double draft
 }
 
+class PositionData{
+    -LocalDateTime baseDateTime
+    -double latitude
+    -double longitude
+    -double sog
+    -double cog
+    -double heading
+    -String position
+    -String transceiver
+}
+
 class TrafficManager{
 }
 
 TrafficManager --> Ship
+TrafficManager --> PositionData
+Ship *-- PositionData
 
 @enduml
