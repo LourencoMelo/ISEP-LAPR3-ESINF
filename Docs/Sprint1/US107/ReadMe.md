@@ -1,9 +1,9 @@
-# US106 - Get the top-N ships with the most kilometres travelled and their average speed(MeanSOG).
+# US107 - Return pairs of ships with routes with close departure/arrival coordinates (no more than 5 Kms away) and with different Travelled Distance.
 
 ## Brief Description
 
 The traffic manager already registered in the system enters logins. The system asks for the necessary credentials. 
-The traffic manager enters the system and selects the option to this US106(option 6).
+The traffic manager enters the system and selects the option to this US107(option 7).
 The system requests the number of ships and dates. The traffic managers enters that information.
 The system validates the data and displays the information that was asked.
 
