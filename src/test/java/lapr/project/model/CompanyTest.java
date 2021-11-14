@@ -338,4 +338,33 @@ class CompanyTest {
         Map<Ship, Double> result = company.getTopShipsWithMostKmByVesselType(date1,date2,2,70);
         assertEquals(expected, result);
     }
+
+    @Test
+    void getTopShipsWithMostKm2() {
+        LocalDateTime date1 = LocalDateTime.of(2020, 12, 31, 10, 0);
+        LocalDateTime date2 = LocalDateTime.of(2020, 12, 31, 22, 30);
+        List<Ship> testList = new ArrayList<>();
+
+        importFileController.importShips(new File("Files/sships.csv"));
+        Boolean result = false;
+
+        Map<Ship, Double> map = company.getTopShipsWithMostKmByVesselType(date1,date2,3,70);
+        for (Map.Entry<Ship, Double> topN : map.entrySet()) {
+            testList.add(topN.getKey());
+        }
+
+        for(int i = 0; i < testList.size() - 1; i ++) {
+            int j = i + 1;
+            result = false;
+            if(testList.get(i).getTreeOfPositionData().travelledDistanceBtDates(date1,date2) >  testList.get(j).getTreeOfPositionData().travelledDistanceBtDates(date1,date2)){
+                result = true;
+            }
+        }
+
+        assertTrue(result);
+
+    }
+
+
+
 }
