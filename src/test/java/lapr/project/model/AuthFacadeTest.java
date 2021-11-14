@@ -2,8 +2,6 @@ package lapr.project.model;
 
 import lapr.project.auth.AuthFacade;
 import lapr.project.auth.Email;
-import lapr.project.auth.User;
-import lapr.project.auth.store.UserStore;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -14,10 +12,9 @@ public class AuthFacadeTest {
     @Test
     void addUser() {
 
-        UserStore users = new UserStore();
-        User user = users.create("João", "joao@gmail.com", "12345");
+        AuthFacade authFacade = new AuthFacade();
 
-        assertTrue(users.add(user));
+        assertTrue(authFacade.addUser("João", "joao@gmail.com", "12345"));
     }
 
     @Test
@@ -32,11 +29,15 @@ public class AuthFacadeTest {
     void userWithMultipleRoles() {
         AuthFacade authFacade = new AuthFacade();
 
-        String[] roles = {"TrafficManager"};
+        String[] roles = {"TrafficManager", "ola"};
+
+        authFacade.addUserRole("TrafficManager","TrafficManager");
 
         assertTrue(authFacade.addUserWithRoles("joao", "joao@gmail.com", "12345", roles));
 
+        authFacade.doLogin("joao@gmail.com", "12345");
     }
+
 
     @Test
     void existentUser() {
@@ -49,6 +50,15 @@ public class AuthFacadeTest {
         authFacade.doLogin("joao@gmail.com", "12345");
 
         authFacade.existsUser("ola@gmail.com");
+    }
+
+    @Test
+    void logInFail() {
+
+        AuthFacade authFacade = new AuthFacade();
+
+        assertNull(authFacade.doLogin("oal@gmail.com","").getUser());
+
     }
 
     @Test
