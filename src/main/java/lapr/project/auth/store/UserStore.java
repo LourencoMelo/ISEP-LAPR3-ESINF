@@ -9,17 +9,14 @@ import java.util.Optional;
 import java.util.Set;
 
 public class UserStore {
-    private Set<User> store = new HashSet<User>();
+    private final Set<User> store = new HashSet<>();
 
     public User create(String name, String email, String password) {
         return new User(new Email(email), new Password(password), name);
     }
 
     public boolean add(User user) {
-        if (user != null) {
-            if (!exists(user))
-                return this.store.add(user);
-        }
+        if (user != null && !exists(user)) return this.store.add(user);
         return false;
     }
 
