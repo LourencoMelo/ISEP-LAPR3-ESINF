@@ -2,6 +2,9 @@ package lapr.project.auth;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class UserTest {
@@ -84,5 +87,70 @@ class UserTest {
         assertTrue(user.removeRole(userRoleLegit));
         assertFalse(user.removeRole(userRoleLegit2));
 
+    }
+
+    @Test
+    void hasRoleTest() {
+        Email email = new Email("joana@gmail.com");
+        Password password = new Password("12345");
+        User user = new User(email,password,"joana");
+
+        UserRole userRoleLegit = new UserRole("ADMIN","ADMIN");
+
+        user.addRole(userRoleLegit);
+
+        assertTrue(user.hasRole(userRoleLegit));
+    }
+
+    @Test
+    void hasRoleById() {
+        Email email = new Email("joana@gmail.com");
+        Password password = new Password("12345");
+        User user = new User(email,password,"joana");
+
+        UserRole userRoleLegit = new UserRole("ADMIN","ADMIN");
+
+        user.addRole(userRoleLegit);
+
+        assertTrue(user.hasRole(userRoleLegit.getId()));
+    }
+
+    @Test
+    void getRolesTest() {
+        Email email = new Email("joana@gmail.com");
+        Password password = new Password("12345");
+        User user = new User(email,password,"joana");
+
+        UserRole userRoleLegit = new UserRole("ADMIN","ADMIN");
+
+        user.addRole(userRoleLegit);
+
+        List<UserRole> expected = new ArrayList<>();
+
+        expected.add(userRoleLegit);
+
+        assertEquals(expected.toString(),user.getRoles().toString());
+    }
+
+    @Test
+    void toStringTest() {
+
+        Email email = new Email("joana@gmail.com");
+        Password password = new Password("12345");
+        User user = new User(email,password,"joana");
+
+        String expected = "joana@gmail.com - joana - " + password;
+
+        assertEquals(expected, user.toString());
+
+    }
+
+    @Test
+    void getPasswordTest() {
+        Email email = new Email("joana@gmail.com");
+        Password password = new Password("12345");
+        User user = new User(email,password,"joana");
+
+        assertEquals(user.getPassword().toString(),password.toString());
     }
 }
