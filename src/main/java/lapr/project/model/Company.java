@@ -19,7 +19,7 @@ public class Company {
 
     TreeOfShips treeOfShipsCallSign;
 
-    private AuthFacade authFacade;
+    private final AuthFacade authFacade;
 
 
     public Company() {
@@ -35,24 +35,21 @@ public class Company {
      * @return list of ships
      */
     public List<Ship> printMovementsTravelledAndDeltaDistance() {
-        Comparator<Ship> comparator = new Comparator<Ship>() {
-            @Override
-            public int compare(Ship s1, Ship s2) {
-                if (s1.getTreeOfPositionData().travelledDistance() > s2.getTreeOfPositionData().travelledDistance()) {
-                    return -1;
-                }
-                if (s1.getTreeOfPositionData().travelledDistance() < s2.getTreeOfPositionData().travelledDistance()) {
-                    return 1;
-                }
-
-                if (s1.getTreeOfPositionData().getTotalMovements() > s2.getTreeOfPositionData().getTotalMovements()) {
-                    return 1;
-                }
-                if (s1.getTreeOfPositionData().getTotalMovements() < s2.getTreeOfPositionData().getTotalMovements()) {
-                    return -1;
-                }
-                return 0;
+        Comparator<Ship> comparator = (s1, s2) -> {
+            if (s1.getTreeOfPositionData().travelledDistance() > s2.getTreeOfPositionData().travelledDistance()) {
+                return -1;
             }
+            if (s1.getTreeOfPositionData().travelledDistance() < s2.getTreeOfPositionData().travelledDistance()) {
+                return 1;
+            }
+
+            if (s1.getTreeOfPositionData().getTotalMovements() > s2.getTreeOfPositionData().getTotalMovements()) {
+                return 1;
+            }
+            if (s1.getTreeOfPositionData().getTotalMovements() < s2.getTreeOfPositionData().getTotalMovements()) {
+                return -1;
+            }
+            return 0;
         };
         List<Ship> list = listMovementsTravelledAndDeltaDistance();
 
@@ -125,20 +122,16 @@ public class Company {
         }
 
         // Comparator used to order the list by Travelled Distance
-        Comparator<Ship> comparator = new Comparator<Ship>() {
-            @Override
-            public int compare(Ship a, Ship b) {
-                if (a.travelledDistanceBtDates(date1, date2) > b.travelledDistanceBtDates(date1, date2)) {
-                    return -1;
-                }
-                if (a.travelledDistanceBtDates(date1, date2) < b.travelledDistanceBtDates(date1, date2)) {
-                    return 1;
-                }
-                return 0;
+        Comparator<Ship> comparator = (a, b) -> {
+            if (a.travelledDistanceBtDates(date1, date2) > b.travelledDistanceBtDates(date1, date2)) {
+                return -1;
             }
+            if (a.travelledDistanceBtDates(date1, date2) < b.travelledDistanceBtDates(date1, date2)) {
+                return 1;
+            }
+            return 0;
         };
         Collections.sort(totalShipsByTravelledDistance, comparator);
-        //System.out.println(totalShipsByTravelledDistance);
 
         //Putting the top N ships and average speed into the map
         int j = 0;
@@ -219,23 +212,20 @@ public class Company {
             }
         }
 
-        Comparator<Pair<Ship, Ship>> comparator = new Comparator<Pair<Ship, Ship>>() {
-            @Override
-            public int compare(Pair<Ship, Ship> o1, Pair<Ship, Ship> o2) {
-                if (o1.getFirst().getMMSI() > o2.getFirst().getMMSI()) {
-                    return -1;
-                }
-                if (o1.getFirst().getMMSI() < o2.getFirst().getMMSI()) {
-                    return 1;
-                }
-                if (travelDistanceDifference(o1) > travelDistanceDifference(o2)){
-                    return -1;
-                }
-                if (travelDistanceDifference(o1) < travelDistanceDifference(o2)){
-                    return 1;
-                }
-                return 0;
+        Comparator<Pair<Ship, Ship>> comparator = (o1, o2) -> {
+            if (o1.getFirst().getMMSI() > o2.getFirst().getMMSI()) {
+                return -1;
             }
+            if (o1.getFirst().getMMSI() < o2.getFirst().getMMSI()) {
+                return 1;
+            }
+            if (travelDistanceDifference(o1) > travelDistanceDifference(o2)){
+                return -1;
+            }
+            if (travelDistanceDifference(o1) < travelDistanceDifference(o2)){
+                return 1;
+            }
+            return 0;
         };
         Collections.sort(pairs, comparator);
         return pairs;
