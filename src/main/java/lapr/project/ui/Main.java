@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.sql.SQLOutput;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import java.util.logging.Logger;
 
@@ -36,8 +38,17 @@ class Main {
      */
     public static void main(String[] args) throws IOException, SQLException {
 
-        TrafficManagerUI trafficManagerUI = new TrafficManagerUI();
-        trafficManagerUI.run();
+        List<MenuItem> options = new ArrayList<>();
+        options.add(new MenuItem("Do Login", new AuthUI()));
+        int option = 0;
+        do {
+            option = Utils.showAndSelectIndex(options, "\n===================================== Main Menu =====================================");
+
+            if ((option >= 0) && (option < options.size())) {
+                options.get(option).run();
+            }
+        }
+        while (option != -1);
 
     }
 

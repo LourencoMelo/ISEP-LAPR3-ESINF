@@ -1,5 +1,6 @@
 package lapr.project.model;
 
+import lapr.project.auth.AuthFacade;
 import lapr.project.utils.TreeOfShips;
 
 import java.util.List;
@@ -18,8 +19,11 @@ public class Company {
 
     TreeOfShips treeOfShipsCallSign;
 
+    private AuthFacade authFacade;
+
 
     public Company() {
+        this.authFacade = new AuthFacade();
         this.treeOfShips = new TreeOfShips();
         this.treeOfShipsIMO = new TreeOfShips();
         this.treeOfShipsCallSign = new TreeOfShips();
@@ -237,5 +241,7 @@ public class Company {
         return pairs;
     }
 
-
+    public AuthFacade getAuthFacade() {
+        return authFacade;
+    }
 }
