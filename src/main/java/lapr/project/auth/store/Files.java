@@ -8,6 +8,10 @@ import java.util.logging.Logger;
 
 public class Files {
 
+    private Files(){
+
+    }
+
     public static void writeToAFileAboutPasswords(String role, String email, String pass) {
         File log = new File("Files\\emails.txt");
         try {
