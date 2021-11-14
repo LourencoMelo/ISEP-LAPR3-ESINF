@@ -110,27 +110,6 @@ class UserSessionTest {
     }
 
     @Test
-    void getUserRoles(){
-        Email email = new Email("test@gmail.com");
-        Password password = new Password("123");
-        String name = "testname";
-
-        User user = new User(email, password, name);
-
-        UserRole userRole = new UserRole("1", "Manager");
-        user.addRole(userRole);
-
-        UserSession userSession = new UserSession(user);
-
-        UserRoleMapper mapper = new UserRoleMapper();
-        List<UserRoleDTO> expected =  mapper.toDTO(userSession.getUser().getRoles());
-
-        assertEquals(expected, userSession.getUserRoles());
-
-    }
-
-
-    @Test
     void getUserRolesNull(){
         UserSession userSession = new UserSession();
 
