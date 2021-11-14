@@ -25,3 +25,4 @@ After that even the systems delivers the information.
 ### Test Description
 
 In this US the tests that were done specifically for this US were done in the company to check the return of the objects were in order by Date and if the return of the HashMap on the company was exactly the same of the controller.
+The tests will confirm the possibilities that were created in the methods to tests every type of event.
