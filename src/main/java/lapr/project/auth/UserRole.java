@@ -3,8 +3,8 @@ package lapr.project.auth;
 import java.util.Objects;
 
 public class UserRole {
-    private String id;
-    private String description;
+    private final String id;
+    private final String description;
 
     public UserRole(String id, String description) {
         if (id.isEmpty() || description.isEmpty())

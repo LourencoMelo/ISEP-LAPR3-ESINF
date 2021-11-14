@@ -8,7 +8,8 @@ public class App {
 
     private static App singleton = null;
     private final Company company;
-    private AuthFacade authFacade;
+    private final AuthFacade authFacade;
+    private final String ID = "TrafficManager";
 
     private App() {
         this.company = new Company();
@@ -42,9 +43,9 @@ public class App {
     }
 
     private void bootstrap() {
-            this.authFacade.addUserRole("TrafficManager","TrafficManager");
+            this.authFacade.addUserRole(ID,ID);
 
-            this.authFacade.addUserWithRole("João","joao@gmail.com","12345","TrafficManager");
+            this.authFacade.addUserWithRole("João","joao@gmail.com","12345",ID);
     }
 
 
