@@ -19,7 +19,7 @@ public class Files {
 
                 assert log.delete();
             }
-            log.createNewFile();
+            assert log.createNewFile();
             PrintWriter out = new PrintWriter(new FileWriter(log, true));
             out.append("Role : " + role + "\n Email : " + email + "\n Password : " + pass + "\n");
             out.close();
