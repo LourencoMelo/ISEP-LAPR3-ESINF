@@ -8,15 +8,15 @@ The traffic manager already registered in the system enters login. The system as
 
 ### SSD
 
-![SSD](Docs/Sprint1/US101/SSD.svg)
+![](SSD.svg)
 
 ### SD
 
-![SD](Docs/Sprint1/US101/SD.svg)
+![](SD.svg)
 
 ### CD
 
-![CD](Docs/Sprint1/US101/CD.svg)
+![](CD.svg)
 
 
 ## Tests Description
