@@ -8,7 +8,7 @@ import java.util.List;
 
 public class PairOfShipsUI implements Runnable{
 
-    private PairOfShipsController pairOfShipsController;
+    private final PairOfShipsController pairOfShipsController;
 
     public PairOfShipsUI(){
         this.pairOfShipsController = new PairOfShipsController();

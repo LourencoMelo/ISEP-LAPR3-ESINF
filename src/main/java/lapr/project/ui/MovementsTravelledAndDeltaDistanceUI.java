@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class MovementsTravelledAndDeltaDistanceUI implements Runnable{
 
-    private MovementsTravelledAndDeltaDistanceController movementsTravelledAndDeltaDistanceController;
+    private final MovementsTravelledAndDeltaDistanceController movementsTravelledAndDeltaDistanceController;
 
     public MovementsTravelledAndDeltaDistanceUI() {
         this.movementsTravelledAndDeltaDistanceController = new MovementsTravelledAndDeltaDistanceController();

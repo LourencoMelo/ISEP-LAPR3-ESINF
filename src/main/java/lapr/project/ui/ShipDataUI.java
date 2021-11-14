@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class ShipDataUI implements Runnable {
 
-    private GetShipByCodeController getShipByCodeController;
+    private final GetShipByCodeController getShipByCodeController;
 
     public ShipDataUI() {
         this.getShipByCodeController = new GetShipByCodeController();
@@ -55,7 +55,7 @@ public class ShipDataUI implements Runnable {
                 System.out.println("The code you inserted does not correspond to any ship in the system database.");
             }
         }catch (Exception ignored){
-
+            //ignored
         }
     }
 

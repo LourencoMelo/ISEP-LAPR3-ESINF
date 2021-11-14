@@ -31,7 +31,7 @@ public class ImportFileUI implements Runnable{
         String answer = in.nextLine();
 
         importFileController.importShips(new File(answer));
-        System.out.printf("\nNumber of Ships imported to the system : %d%n", importFileController.getCompany().getTreeOfShips().size());
+        System.out.printf("%nNumber of Ships imported to the system : %d%n", importFileController.getCompany().getTreeOfShips().size());
         System.out.println("File imported!\n");
     }
 }

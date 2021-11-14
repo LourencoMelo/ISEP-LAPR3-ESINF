@@ -11,7 +11,7 @@ import java.util.Scanner;
 public class TopNShipsUI implements Runnable{
 
 
-    private TopNController topNController;
+    private final TopNController topNController;
 
     public TopNShipsUI(){
         this.topNController = new TopNController();
