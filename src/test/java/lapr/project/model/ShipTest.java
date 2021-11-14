@@ -182,6 +182,30 @@ class ShipTest {
     }
 
     /**
+     * Testing an negative length
+     */
+    @Test
+    void setLength2(){
+        try{
+            shipTest.setLength(-4);
+        }catch (IllegalArgumentException ex){
+            assertEquals(ex.getMessage(),"Length needs to be a positive number.");
+        }
+    }
+
+    /**
+     * Testing zero length
+     */
+    @Test
+    void setLength3(){
+        try{
+            shipTest.setLength(0);
+        }catch (IllegalArgumentException ex){
+            assertEquals(ex.getMessage(),"Length needs to be a positive number.");
+        }
+    }
+
+    /**
      * Testing SET Length
      */
     @Test
@@ -211,6 +235,30 @@ class ShipTest {
         shipTest.setWidth(66.0);
         double actual = shipTest.getWidth();
         assertEquals(expected, actual);
+    }
+
+    /**
+     * Testing a negative width
+     */
+    @Test
+    void setWidth2(){
+        try{
+            shipTest.setWidth(-4);
+        }catch (IllegalArgumentException ex){
+            assertEquals(ex.getMessage(),"Width needs to be a positive number.");
+        }
+    }
+
+    /**
+     * Testing zero width
+     */
+    @Test
+    void setWidth3(){
+        try{
+            shipTest.setWidth(0);
+        }catch (IllegalArgumentException ex){
+            assertEquals(ex.getMessage(),"Width needs to be a positive number.");
+        }
     }
 
     /**

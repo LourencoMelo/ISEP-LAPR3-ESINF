@@ -215,7 +215,11 @@ public abstract class Ship implements Comparable<Ship> {
      * @param length new length
      */
     public void setLength(double length) {
-        this.length = length;
+        if (length > 0) {
+            this.length = length;
+        } else {
+            throw new IllegalArgumentException("Length needs to be a positive number.");
+        }
     }
 
     /**
@@ -233,7 +237,11 @@ public abstract class Ship implements Comparable<Ship> {
      * @param width new width
      */
     public void setWidth(double width) {
-        this.width = width;
+        if (width > 0) {
+            this.width = width;
+        } else {
+            throw new IllegalArgumentException("Width needs to be a positive number.");
+        }
     }
 
 
