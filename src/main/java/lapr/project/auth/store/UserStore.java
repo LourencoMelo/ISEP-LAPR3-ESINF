@@ -16,7 +16,9 @@ public class UserStore {
     }
 
     public boolean add(User user) {
-        if (user != null && !exists(user)) return this.store.add(user);
+        if (user != null && !exists(user)) {
+                return this.store.add(user);
+        }
         return false;
     }
 
