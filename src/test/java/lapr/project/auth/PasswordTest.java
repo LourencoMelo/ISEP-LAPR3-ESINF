@@ -27,7 +27,6 @@ class PasswordTest {
     @Test
     void equalTest2(){
         Password password = new Password("123456789");
-        Password password1 = new Password("123456789");
 
         assertFalse(password.equals(null));
     }
@@ -35,7 +34,6 @@ class PasswordTest {
     @Test
     void equalTest3(){
         Password password = new Password("123456789");
-        Password password1 = new Password("123456789");
 
         assertFalse(password.equals("ola"));
     }
