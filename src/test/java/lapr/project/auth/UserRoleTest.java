@@ -55,6 +55,13 @@ class UserRoleTest {
         assertFalse(role.equals(null));
     }
 
+    @Test
+    void equalTest3(){
+        UserRole role = new UserRole("STUDENT","Student of school");
+
+        assertFalse(role.equals("ola"));
+    }
+
 
 
 

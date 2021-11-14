@@ -16,4 +16,12 @@ class PasswordTest {
         }
     }
 
+    @Test
+    void equalTest(){
+        Password password = new Password("123456789");
+        Password password1 = new Password("123456789");
+
+        assertFalse(password.equals(password1));
+    }
+
 }
