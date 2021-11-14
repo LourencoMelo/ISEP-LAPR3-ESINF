@@ -3,11 +3,11 @@ import java.security.SecureRandom;
 import java.util.Objects;
 
 public class Password {
-    private final String password;
+    private final String pass;
 
     public Password(String password) {
         if (!validate(password)) throw new IllegalArgumentException("Invalid Email Address.");
-        this.password = generateRandomPassword(9);
+        this.pass = generateRandomPassword(9);
     }
 
     // Method to generate a random alphanumeric password of a specific length
@@ -40,7 +40,7 @@ public class Password {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 7 * hash + this.password.hashCode();
+        hash = 7 * hash + this.pass.hashCode();
         return hash;
     }
 
@@ -58,6 +58,6 @@ public class Password {
             return false;
         // field comparison
         Password obj = (Password) o;
-        return Objects.equals(this.password, obj.password);
+        return Objects.equals(this.pass, obj.pass);
     }
 }

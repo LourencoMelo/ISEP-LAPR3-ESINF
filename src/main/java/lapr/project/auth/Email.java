@@ -4,10 +4,10 @@ import java.util.regex.Pattern;
 
 public class Email {
 
-    private String email;
+    private String mail;
 
     public Email(String email) {
-        if (validate(email)) this.email = email;
+        if (validate(email)) this.mail = email;
     }
 
     private boolean validate(String email) {
@@ -26,18 +26,18 @@ public class Email {
         return pat.matcher(email).matches();
     }
 
-    public String getEmail() {
-        return email;
+    public String getMail() {
+        return mail;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setMail(String mail) {
+        this.mail = mail;
     }
 
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 17 * hash + this.email.hashCode();
+        hash = 17 * hash + this.mail.hashCode();
         return hash;
     }
 
@@ -56,11 +56,11 @@ public class Email {
             return false;
         // field comparison
         Email obj = (Email) o;
-        return Objects.equals(this.email, obj.email);
+        return Objects.equals(this.mail, obj.mail);
     }
 
     @Override
     public String toString() {
-        return String.format("%s", this.email);
+        return String.format("%s", this.mail);
     }
 }

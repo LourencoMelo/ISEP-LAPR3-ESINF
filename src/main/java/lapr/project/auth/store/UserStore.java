@@ -60,8 +60,8 @@ public class UserStore {
 
     public void changeEmailFromUserByLastEmail(String email, String newEmail) {
         for (User user : store) {
-            if ((user.getId().getEmail()).equalsIgnoreCase(email)) {
-                user.getId().setEmail(newEmail);
+            if ((user.getId().getMail()).equalsIgnoreCase(email)) {
+                user.getId().setMail(newEmail);
             }
         }
     }

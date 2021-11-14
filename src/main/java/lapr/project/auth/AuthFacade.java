@@ -9,8 +9,8 @@ import java.util.Optional;
 public class AuthFacade {
 
     private UserSession userSession;
-    private UserRoleStore roles;
-    private UserStore users;
+    private final UserRoleStore roles;
+    private final UserStore users;
 
     private User userToSend;
 
