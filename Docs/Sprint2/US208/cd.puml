@@ -1,0 +1,75 @@
+@startuml
+
+class GetShipPositionByDateController{
+    -Company company
+    +GetShipPositionByDateController()
+    +GetShipPositionByDateController(Company company)
+    +getShipPositionMessagesOrderByDateController(Ship ship)
+}
+
+class GetShipPositionByDateUI{
+    -ApplicationController applicationController
+    -GetShipPositionByDateController getShipPositionByDateController
+    -GetShipByCodeController getShipByCodeController
+    +GetShipPositionByDateUI()
+    +getShipPositionMessagesOrderByDate()
+
+}
+
+class GetShipByCodeController{
+    -Company company
+    +GetShipByCodeController()
+    +GetShipByCodeController(Company company)
+    +getShipByCode(String code)
+}
+
+class Ship {
+    -int MMSI <<b>PK>
+    -String name <<b>PK>
+    -String IMO <<b>PK>
+    -String callSign
+    -int vesselType
+    -double length
+    -double width
+    -double draft
+    -TreeOfPositionData treeOfPositionData
+
+    +tostring()
+}
+
+class PositionData{
+    -LocalDateTime baseDateTime;
+    -double latitude;
+    -double longitude;
+    -double sog;
+    -double cog;
+    -double heading;
+    -String position;
+    -String transceiver;
+
+    +tostring()
+    +compareTo()
+}
+
+class Company {
+    -TreeofShips treeOfShips
+    +getShipPositionMessagesOrderByDate(Ship ship)
+}
+
+class TreeofShips{
+
+}
+
+class TreeOfPositionData{
+
+}
+
+Company -right-> TreeofShips :has
+TreeofShips -- Ship : has
+Ship -left-> TreeOfPositionData : has
+TreeOfPositionData -- PositionData :has
+GetShipPositionByDateUI -- GetShipPositionByDateController : Creates
+GetShipPositionByDateUI --GetShipByCodeController : has
+GetShipPositionByDateController -- Company : connects
+
+@enduml
