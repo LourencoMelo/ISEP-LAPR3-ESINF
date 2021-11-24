@@ -1,0 +1,22 @@
+@startuml
+
+class ShipCaptain{
+
+}
+
+class Container {
+
+    -String containerID <<b>PK>
+    -int checkDigit
+    -String ISO
+    -int gross
+    -int tare
+    -int payload
+    -int maxVolume
+    -int repairRecommendation
+
+}
+
+ShipCaptain --> Container
+
+@enduml
