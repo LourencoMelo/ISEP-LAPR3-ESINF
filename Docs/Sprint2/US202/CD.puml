@@ -1,0 +1,52 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Ship {
+
+    -int MMSI <<b>PK>
+    -String name
+    -int IMO
+    -int numberEnergyGenerator
+    -int powerOutput
+    -String callSign
+    -int vesselType
+    -double length
+    -double width
+    -int maximumCapacity
+    -double draft
+}
+
+class PortAndWarehouse {
+    -int code <<b>PK>
+    -String continent
+    -String country
+    -String port
+    -double latitude
+    -double longitude
+}
+
+class TrafficManager{
+}
+
+class Company {
+
+}
+
+class PositionData{
+    -Date baseDateTime
+    -double latitude
+    -double longitude
+    -double sog
+    -double cog
+    -double heading
+    -int position
+    -String transceiver
+}
+
+TrafficManager --> Company
+Company --> Ship
+Company --> PortAndWarehouse
+Ship --> PositionData
+Ship -> PortAndWarehouse
+
+@enduml

@@ -1,0 +1,12 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+TrafficManager -> System : Find the closest port of a ship given its CallSign, on a certain DateTime
+System --> TrafficManager: Requests the CallSign of the ship and the date
+TrafficManager -> System : Enters the requested data
+System --> TrafficManager : Validates and displays the data , asking for confirmation
+TrafficManager -> System : Confirms
+System --> TrafficManager : Displays the closest port of the ship
+@enduml
