@@ -2,29 +2,14 @@
 
 autonumber
 
-actor TrafficManager #red
+actor Client #red
 
-System --> TrafficManager: Authentication Request
-TrafficManager -> System : Another authentication Response
-System --> TrafficManager : Authentication successful
-TrafficManager-> GetShipPositionByDateUI : Asking for positional messages temporally organized and associated with each of the ships
-GetShipPositionByDateUI --> TrafficManager : Write MMSI, IMO or Call Sign of the ship you want to get the positions ordered by date
-TrafficManager --> GetShipPositionByDateUI : Writes MMSI, IMO or Call Sign
-GetShipPositionByDateUI --> GetShipByCodeController : getShipPositionMessagesOrderByDate()
-GetShipByCodeController --> GetShipPositionByDateUI : getShipByCode()
-GetShipPositionByDateUI --> GetShipPositionByDateController : getShipPositionMessagesOrderByDate()
-GetShipPositionByDateController --> Company : getShipPositionMessagesOrderByDateController(Ship ship)
-Company --> TreeofShips: getShipPositionMessagesOrderByDate(Ship ship)
-TreeofShips --> Ship: getShipByMMSI(int mMSI)/getShipByImo(String iMO)/getShipByCallSign(String callSign)
-Ship --> TreeOfPositionData : getTreeOfPositionData()
-TreeOfPositionData --> PositionData: treeOfPositionData
-PositionData --> TreeOfPositionData: positionData
-TreeOfPositionData --> Ship: treeOfPositionData
-Ship --> TreeofShips: ship
-TreeofShips --> Company: treeOfShips
-Company --> GetShipPositionByDateController: HashMap<Ship, Set<PositionData>>
-GetShipPositionByDateController --> GetShipPositionByDateUI: HashMap<Ship, Set<PositionData>>
-GetShipPositionByDateUI --> System: Print: HashMap<Ship, Set<PositionData>>
-System --> TrafficManager : Shows the information of the ship positions ordered by date
+System --> Client: Authentication Request
+Client -> System : Another authentication Response
+System --> Client : Authentication successful
+Client --> System : Asking the current situation of a specific container
+System --> Client : Asks for the containerID
+Client --> System : Inserts the containerID
+System --> Client : Delivers the information asked
 
 @enduml

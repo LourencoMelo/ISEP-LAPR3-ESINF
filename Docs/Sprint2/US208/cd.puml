@@ -1,75 +1,66 @@
 @startuml
 
-class GetShipPositionByDateController{
-    -Company company
-    +GetShipPositionByDateController()
-    +GetShipPositionByDateController(Company company)
-    +getShipPositionMessagesOrderByDateController(Ship ship)
-}
-
-class GetShipPositionByDateUI{
-    -ApplicationController applicationController
-    -GetShipPositionByDateController getShipPositionByDateController
-    -GetShipByCodeController getShipByCodeController
-    +GetShipPositionByDateUI()
-    +getShipPositionMessagesOrderByDate()
+class ShipCaptian{
 
 }
 
-class GetShipByCodeController{
-    -Company company
-    +GetShipByCodeController()
-    +GetShipByCodeController(Company company)
-    +getShipByCode(String code)
+class User{
+    -String id <<b>PK>
+    -String password
+    -UserRole role
 }
 
-class Ship {
-    -int MMSI <<b>PK>
-    -String name <<b>PK>
-    -String IMO <<b>PK>
-    -String callSign
-    -int vesselType
-    -double length
-    -double width
-    -double draft
-    -TreeOfPositionData treeOfPositionData
-
-    +tostring()
+class UserRole{
+    -String id <<b>PK>
+    -String description
 }
 
-class PositionData{
-    -LocalDateTime baseDateTime;
-    -double latitude;
-    -double longitude;
-    -double sog;
-    -double cog;
-    -double heading;
-    -String position;
-    -String transceiver;
+class GetOccupancyRateCargoManifestUI(){
 
-    +tostring()
-    +compareTo()
+}
+
+class GetOccupancyRateCargoManifestController(){
+
 }
 
 class Company {
     -TreeofShips treeOfShips
-    +getShipPositionMessagesOrderByDate(Ship ship)
 }
 
 class TreeofShips{
 
 }
 
-class TreeOfPositionData{
-
+class CargoManifest{
+    HashMap<Container, int>
 }
 
-Company -right-> TreeofShips :has
-TreeofShips -- Ship : has
-Ship -left-> TreeOfPositionData : has
-TreeOfPositionData -- PositionData :has
-GetShipPositionByDateUI -- GetShipPositionByDateController : Creates
-GetShipPositionByDateUI --GetShipByCodeController : has
-GetShipPositionByDateController -- Company : connects
+class Ship {
+
+    -int MMSI <<b>PK>
+    -String name
+    -int IMO
+    -int numberEnergyGenerator
+    -int powerOutput
+    -String callSign
+    -int vesselType
+    -double length
+    -double width
+    -int maximumCapacity
+    -double draft
+}
+
+class Container {
+
+    -String containerID <<b>PK>
+    -int checkDigit
+    -String ISO
+    -int gross
+    -int tare
+    -int payload
+    -int maxVolume
+    -int repairRecommendation
+
+}
 
 @enduml
