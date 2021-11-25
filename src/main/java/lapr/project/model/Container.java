@@ -251,25 +251,4 @@ public class Container {
                 ", repairRecommendation=" + repairRecommendation +
                 '}';
     }
-
-
-    /**
-     * -------------------------------------------------------------------------------------------------------------
-     *                                          EQUALS
-     * -------------------------------------------------------------------------------------------------------------
-     */
-
-    /**
-     * Equals method
-     * @param o
-     * @return boolean
-     */
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Container container = (Container) o;
-        return checkDigit == container.checkDigit && gross == container.gross && tare == container.tare && payload == container.payload && maxVolume == container.maxVolume && repairRecommendation == container.repairRecommendation && Objects.equals(containerID, container.containerID) && Objects.equals(iso, container.iso);
-    }
-
 }
