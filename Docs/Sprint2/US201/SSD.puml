@@ -1,0 +1,20 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+skinparam sequenceMessageAlign center
+
+System -> PortManager: Authentication Request
+PortManager --> System: Authentication Response
+
+System -> PortManager: Operation Request
+System <-- PortManager: Import ports data into the system
+
+System -> PortManager: Insert the path of the file with data
+System <-- PortManager: Text file path inserted
+
+System -> PortManager: Operation completed. Ports were imported.
+
+
+@enduml

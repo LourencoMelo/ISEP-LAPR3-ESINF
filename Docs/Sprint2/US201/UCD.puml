@@ -1,0 +1,12 @@
+@startuml
+'https://plantuml.com/use-case-diagram
+
+:Main Admin: as Admin
+:Port Manager: as PortManager
+
+
+Admin -> (Regist new Staff)
+PortManager -> (Import Ports from a txt file)
+
+
+@enduml
