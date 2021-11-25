@@ -1,0 +1,9 @@
+@startuml
+'https://plantuml.com/use-case-diagram
+
+:Main Admin: as Admin
+:Traffic Manager: as TrafficManager
+
+Admin -> (Regist new Staff)
+TrafficManager -> (Find the closest port of \n a ship given its CallSign)
+@enduml
