@@ -1,5 +1,20 @@
 @startuml
 
+'https://plantuml.com/sequence-diagram
 
+autonumber
+
+skinparam sequenceMessageAlign center
+
+System -> TrafficManager: Authentication Request
+TrafficManager --> System: Authentication Response
+
+System -> TrafficManager: Operation Request
+System <-- TrafficManager: List ships that will be available on Monday next week and their location
+
+System -> TrafficManager: Shows the ships's list
+System <-- TrafficManager: Confirms the operation
+
+System -> TrafficManager: Operation completed
 
 @enduml
