@@ -6,15 +6,15 @@ autonumber
 
 skinparam sequenceMessageAlign center
 
-System -> TrafficManager: Authentication Request
-TrafficManager --> System: Authentication Response
+System -> ShipCaptain: Authentication Request
+ShipCaptain --> System: Authentication Response
 
-System -> TrafficManager: Operation Request
-System <-- TrafficManager: Writes ship's code (MMSI, IMO or Call Sign)
+System -> ShipCaptain: Operation Request
+System <-- ShipCaptain: List of containers to be offloaded in the next port
 
-System -> TrafficManager: Shows the ship's details
-System <-- TrafficManager: Confirms the operation
+System -> ShipCaptain: Shows the containers's list
+System <-- ShipCaptain: Confirms the operation
 
-System -> TrafficManager: Operation completed
+System -> ShipCaptain: Operation completed
 
 @enduml
