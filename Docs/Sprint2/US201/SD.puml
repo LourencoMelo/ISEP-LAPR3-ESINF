@@ -1,0 +1,55 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+actor       PortManager             as PM
+participant    ":importPortsUI"         as UI
+participant    ":importPortsController" as CTRL
+participant    ":Company"              as Company
+participant    "import: importFile"    as Model
+participant    "port: PortAndWareHouse"            as Port
+database       "DataBase"              as db
+
+PM -> UI : Import text file with ports
+activate UI
+UI --> PM: Request text file
+deactivate UI
+
+PM -> UI : Choose text file
+activate UI
+loop txt_size times
+    UI -> CTRL : newPortAndWareHouse(........)
+    activate CTRL
+    CTRL -> Company : import = getImportFile()
+    activate Company
+    deactivate Company
+
+    CTRL -> Model : port = newPortAndWareHouse(......)
+    activate Model
+    Model -> Port ** : create(......)
+    deactivate Model
+
+    CTRL -> Model : registPort(port)
+    activate Model
+
+    deactivate CTRL
+
+    Model -> Model : validatePort(port)
+    Model -> Model : addPort(port)
+    deactivate Model
+
+    activate CTRL
+
+    CTRL -> db ** : save(port)
+
+    deactivate CTRL
+
+
+end
+
+UI --> PM : Operation successful
+deactivate UI
+
+
+@enduml

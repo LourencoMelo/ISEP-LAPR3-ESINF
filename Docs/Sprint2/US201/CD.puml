@@ -1,0 +1,19 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class PortAndWareHouse{
+    -String continent
+    -String country
+    -int code <<b>PK>
+    -String port
+    -double lat
+    -double log
+}
+
+class PortManager
+
+
+
+PortManager --> PortAndWareHouse : controls
+
+@enduml
