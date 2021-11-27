@@ -1,0 +1,38 @@
+@startuml
+
+autonumber
+
+actor       TrafficManager                as tm
+participant    ":getListShipsAvailableMondayNextWeekUI"         as ui
+participant    ":getListShipsAvailableMondayNextWeekController" as ctrl
+participant    ":Company"                 as company
+participant    ":TreeOfShips_MMSI"        as mmsi
+
+tm -> ui : List of ships will be available on Monday next week
+
+activate ui
+
+    ui -> ctrl : getListShipsAvailableMondayNextWeek()
+
+    activate ctrl
+
+    ctrl -> company : getListShipsAvailableMondayNextWeek()
+
+    activate company
+
+    company -> mmsi : getListShipsAvailableMondayNextWeek()
+
+    activate mmsi
+
+    deactivate mmsi
+
+    deactivate company
+
+    deactivate ctrl
+
+
+ui --> tm : listShips
+
+deactivate ui
+
+@enduml
