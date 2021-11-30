@@ -1,7 +1,10 @@
 package lapr.project.controller;
 
 import lapr.project.model.Company;
+import lapr.project.model.Ship;
 import lapr.project.utils.App;
+
+import java.util.List;
 
 public class GetListShipsAvailableMondayNextWeekController {
 
@@ -25,8 +28,11 @@ public class GetListShipsAvailableMondayNextWeekController {
         this.company = company;
     }
 
-    public void getListShipsAvailableMondayNextWeekController() {
-
+    public List<Ship> getListShipsAvailableMondayNextWeek() {
+        return null;
     }
 
+    public Company getCompany() {
+        return company;
+    }
 }

@@ -12,7 +12,7 @@ public class GetListShipsAvailableMondayNextWeekUI implements Runnable {
 
     @Override
     public void run() {
-        getListShipsAvailableMondayNextWeekController.getListShipsAvailableMondayNextWeekController();
+        getListShipsAvailableMondayNextWeekController.getListShipsAvailableMondayNextWeek();
 
         System.out.println("Done.");
     }
