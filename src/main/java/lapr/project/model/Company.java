@@ -1,6 +1,7 @@
 package lapr.project.model;
 
 import lapr.project.auth.AuthFacade;
+import lapr.project.utils.TreeOfPorts;
 import lapr.project.utils.TreeOfShips;
 
 import java.util.List;
@@ -24,6 +25,11 @@ public class Company {
      * Tree of the Ships ordered by CallSign
      */
     TreeOfShips treeOfShipsCallSign;
+
+    /**
+     * Tree of the ports
+     */
+    TreeOfPorts treeOfPorts;
 
     /**
      * Instance of AuthFacede
@@ -110,6 +116,13 @@ public class Company {
         return treeOfShipsCallSign;
     }
 
+    /**
+     * Returns kd-tree of ports
+     * @return tree of ports
+     */
+    public TreeOfPorts getTreeOfPorts() {
+        return treeOfPorts;
+    }
 
     /**
      * Returns a map of the TOP-N ships with the most kilometres travelled and their respective average speed for a specific vessel type

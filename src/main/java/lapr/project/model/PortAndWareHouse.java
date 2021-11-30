@@ -1,5 +1,7 @@
 package lapr.project.model;
 
+import java.util.Objects;
+
 public class PortAndWareHouse {
 
     /**
@@ -175,5 +177,18 @@ public class PortAndWareHouse {
                 ", lat=" + lat +
                 ", log=" + log +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        PortAndWareHouse that = (PortAndWareHouse) o;
+        return code == that.code;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(continent, country, code, port, lat, log);
     }
 }
