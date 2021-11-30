@@ -4,7 +4,7 @@
 autonumber
 
 actor       ShipCaptain                as SC
-participant    ":getListContainerToBeOffloadedUI"         as ui
+participant    ":GetListContainerToBeOffloadedUI"         as ui
 participant    ":getListContainerToBeOffloadedController" as ctrl
 participant    ":Company"                 as company
 participant    ":TreeOfShips_MMSI"        as mmsi
