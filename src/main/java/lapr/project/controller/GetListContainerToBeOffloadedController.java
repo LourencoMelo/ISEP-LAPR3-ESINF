@@ -1,7 +1,10 @@
 package lapr.project.controller;
 
 import lapr.project.model.Company;
+import lapr.project.model.Container;
 import lapr.project.utils.App;
+
+import java.util.List;
 
 public class GetListContainerToBeOffloadedController {
 
@@ -25,8 +28,11 @@ public class GetListContainerToBeOffloadedController {
         this.company = company;
     }
 
-    public void getListContainerToBeOffloadedController() {
-
+    public List<Container> getListContainerToBeOffloaded() {
+        return null;
     }
 
+    public Company getCompany() {
+        return company;
+    }
 }

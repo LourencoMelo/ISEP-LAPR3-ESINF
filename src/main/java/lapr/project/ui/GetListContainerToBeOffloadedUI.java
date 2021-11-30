@@ -14,7 +14,7 @@ public class GetListContainerToBeOffloadedUI implements Runnable {
 
     @Override
     public void run() {
-        getListContainerToBeOffloadedController.getListContainerToBeOffloadedController();
+        getListContainerToBeOffloadedController.getListContainerToBeOffloaded();
 
         System.out.println("Done.");
     }
