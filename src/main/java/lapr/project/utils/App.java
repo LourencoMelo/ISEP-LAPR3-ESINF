@@ -10,6 +10,7 @@ public class App {
     private final Company company;
     private final AuthFacade authFacade;
     private final String ID = "TrafficManager";
+    private final String ClientRole = "Client";
 
     private App() {
         this.company = new Company();
@@ -44,8 +45,10 @@ public class App {
 
     private void bootstrap() {
             this.authFacade.addUserRole(ID,ID);
+            this.authFacade.addUserRole(ClientRole,ClientRole);
 
             this.authFacade.addUserWithRole("João","joao@gmail.com","12345",ID);
+            this.authFacade.addUserWithRole("Client","client@gmail.com", "12345", ClientRole);
     }
 
 
