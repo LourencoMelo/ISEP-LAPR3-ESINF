@@ -34,6 +34,7 @@ public class TrafficManagerUI implements Runnable{
             options.add(new MenuItem("List all ships(MMSI,Total Number of Movements, Travelled Distance and Delta Distance", new MovementsTravelledAndDeltaDistanceUI()));
             options.add(new MenuItem("Get the Ships with most km travelled and their mean SOG grouped by Vessel Types", new TopNShipsUI()));
             options.add(new MenuItem("See pair os ships with routes with close dparture/arrival coordinates(<=5km) and with different Travelled Distance", new PairOfShipsUI()));
+            options.add(new MenuItem("Know which ships will be available on Monday next week and their location", new GetListContainerToBeOffloadedUI()));
 
             int option = 0;
 
