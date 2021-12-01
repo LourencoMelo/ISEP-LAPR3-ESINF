@@ -28,7 +28,7 @@ public class ClientUI implements Runnable{
         try{
             List<MenuItem> options = new ArrayList<>();
 
-           // options.add(new MenuItem("See the current situation of a specific container being used to transport my goods"), new GetInfoContainer);
+            options.add(new MenuItem("See the current situation of a specific container being used to transport my goods", new GetInfoContainerUI()));
 
             int option = 0;
 
