@@ -187,8 +187,4 @@ public class PortAndWareHouse {
         return code == that.code;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(continent, country, code, port, lat, log);
-    }
 }

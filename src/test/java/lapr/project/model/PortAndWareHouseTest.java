@@ -44,6 +44,23 @@ class PortAndWareHouseTest {
     }
 
     @Test
+    void equals() {
+        PortAndWareHouse portAndWareHouse1 = new PortAndWareHouse("Europe","United Kingdom",29002,"Liverpool",53.46666667,-3.033333333);
+
+        Ship shipTestCompare1 = new ShipByMMSI(123000788, "WarCraft", "1023456787", "Roger", 2, 5.0, 3.0, 20.9);
+
+        PortAndWareHouse portAndWareHouse2 = new PortAndWareHouse("ola","ola",29002,"ola",1,-2);
+
+        PortAndWareHouse portAndWareHouse3 = null;
+
+        assertEquals(portAndWareHouse1, portAndWareHouse1);
+        assertEquals(portAndWareHouse1, portAndWareHouse2);
+        assertNotEquals(portAndWareHouse1, shipTestCompare1);
+        assertNotEquals(portAndWareHouse1, portAndWareHouse3);
+
+    }
+
+    @Test
     void testToString() {
         String expected = "PortAndWareHouse{" +
                 "continent='" + portAndWareHouse.getContinent() + '\'' +
