@@ -28,10 +28,18 @@ public class GetListContainerToBeOffloadedController {
         this.company = company;
     }
 
+    /**
+     * Return the list of containers asked
+     * @return list of containers
+     */
     public List<Container> getListContainerToBeOffloaded() {
         return null;
     }
 
+    /**
+     * Returns company
+     * @return company
+     */
     public Company getCompany() {
         return company;
     }
