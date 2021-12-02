@@ -25,12 +25,32 @@ class UserRole{
 
 }
 
-class GetInfoContainerUI{
+class Company{
 
+}
+
+class GetInfoContainerUI{
+    -GetInfoContainerController getInfoContainerController
+    -Scanner in
+    +GetInfoContainerUI()
+    +run()
 }
 
 class GetInfoContainerController{
-
+    -Company company
+    +GetInfoContainerController()
+    +GetInfoContainerController(Company company)
+    +getInfoContainerController(String containerID)
+    +getCompany()
 }
+
+Client --> GetInfoContainerUI : Access
+GetInfoContainerUI -down-> GetInfoContainerController : Connects with
+Client --> User : is a
+User --> UserRole : has
+GetInfoContainerController -up-> GetInfoContainerUI : Returns Container
+GetInfoContainerController --> Company : Connects with
+Company --> GetInfoContainerController : Returns Container
+Company --> Container : has
 
 @enduml

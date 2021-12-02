@@ -7,9 +7,12 @@ actor ShipCaptian #red
 System --> ShipCaptian: Authentication Request
 ShipCaptian -> System : Another authentication Response
 System --> ShipCaptian : Authentication successful
-ShipCaptian --> System : Asks for the occupancy rate (percentage) of a given ship for a given cargo manifest
-System --> ShipCaptian : Asks for the Ship MMSI or CallSign
-ShipCaptian --> System : Inserts the data
-System --> ShipCaptian : Shows the occupancy rate (percentage) of a given ship for a given cargo manifest
+ShipCaptian --> ShipCaptianUI : Asks for the occupancy rate (percentage) of a given ship for a given cargo manifest
+ShipCaptianUI --> GetOccupancyRateCargoManifestUI : access
+GetOccupancyRateCargoManifestUI --> ShipCaptian : Asks for the Ship MMSI or CallSign
+ShipCaptian --> GetOccupancyRateCargoManifestUI : Inserts the data
+GetOccupancyRateCargoManifestUI --> GetOccupancyRateCargoManifestController : getOccupancyRateCargoManifestController()
+GetOccupancyRateCargoManifestController --> GetOccupancyRateCargoManifestUI : result
+GetOccupancyRateCargoManifestUI --> ShipCaptian : Shows the occupancy rate (percentage) of a given ship for a given cargo manifest
 
 @enduml

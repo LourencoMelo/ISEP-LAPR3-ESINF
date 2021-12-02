@@ -7,9 +7,11 @@ actor Client #red
 System --> Client: Authentication Request
 Client -> System : Another authentication Response
 System --> Client : Authentication successful
-Client --> System : Asking the current situation of a specific container
-System --> Client : Asks for the containerID
-Client --> System : Inserts the containerID
-System --> Client : Delivers the information asked
+Client --> GetInfoContainerUI : Asking the current situation of a specific container
+GetInfoContainerUI --> Client : Asks for the containerID
+Client --> GetInfoContainerUI : Inserts the containerID
+GetInfoContainerUI --> GetInfoContainerController : getInfoContainerController(answer)
+GetInfoContainerController --> GetInfoContainerUI : Container
+GetInfoContainerUI --> Client : Delivers the information asked
 
 @enduml

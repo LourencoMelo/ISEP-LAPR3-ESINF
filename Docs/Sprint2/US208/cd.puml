@@ -15,11 +15,18 @@ class UserRole{
     -String description
 }
 
-class GetOccupancyRateCargoManifestUI(){
-
+class GetOccupancyRateCargoManifestUI{
+    -GetOccupancyRateCargoManifestController getOccupancyRateCargoManifestController
+    -Scanner in
+    +run()
 }
 
-class GetOccupancyRateCargoManifestController(){
+class GetOccupancyRateCargoManifestController{
+    -Company company
+    +GetOccupancyRateCargoManifestController(Company company)
+    +GetOccupancyRateCargoManifestController()
+    +getOccupancyRateCargoManifestController()
+    +getCompany()
 
 }
 
@@ -62,5 +69,16 @@ class Container {
     -int repairRecommendation
 
 }
+
+ShipCaptain --> GetOccupancyRateCargoManifestUI : Access
+GetOccupancyRateCargoManifestUI -right-> GetOccupancyRateCargoManifestController : Connects with
+GetOccupancyRateCargoManifestController --> Company : Connects with
+Company -left-> TreeofShips : has
+TreeofShips --> Ship : has
+CargoManifest --> Container : has
+Ship -right-> CargoManifest : loads
+Ship --> Container : has
+ShipCaptain --> User : is a
+User --> UserRole : has
 
 @enduml
