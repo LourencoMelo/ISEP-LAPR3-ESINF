@@ -9,7 +9,7 @@ public class ImportPortsUI implements Runnable{
 
     private final ImportPortsController importPortsController;
 
-    public ImportPortsUI(ImportPortsController importPortsController) {
+    public ImportPortsUI() {
         this.importPortsController = new ImportPortsController();
     }
 
@@ -33,7 +33,7 @@ public class ImportPortsUI implements Runnable{
         importPortsController.importPorts(new File(answer));
 
         System.out.println(importPortsController.getKdTreeOfPorts());
-        System.out.printf("%nNumber of Ships imported to the system : %d%n", importPortsController.getCompany().getTreeOfPorts().size());
+        System.out.printf("%nNumber of Ports imported to the system : %d%n", importPortsController.getCompany().getTreeOfPorts().size());
         System.out.println("File imported!\n");
     }
 }
