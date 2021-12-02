@@ -51,12 +51,17 @@ class PortAndWareHouseTest {
 
         PortAndWareHouse portAndWareHouse2 = new PortAndWareHouse("ola","ola",29002,"ola",1,-2);
 
-        PortAndWareHouse portAndWareHouse3 = null;
+        PortAndWareHouse portAndWareHouse3 = new PortAndWareHouse("ola","ola",29001,"ola",1,-2);
+
+
+        PortAndWareHouse portAndWareHouse4 = null;
 
         assertEquals(portAndWareHouse1, portAndWareHouse1);
+        assertNotEquals(portAndWareHouse1, portAndWareHouse3);
         assertEquals(portAndWareHouse1, portAndWareHouse2);
         assertNotEquals(portAndWareHouse1, shipTestCompare1);
-        assertNotEquals(portAndWareHouse1, portAndWareHouse3);
+        assertNotEquals(portAndWareHouse1, portAndWareHouse4);
+
 
     }
 

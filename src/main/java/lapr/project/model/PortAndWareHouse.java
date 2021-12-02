@@ -1,7 +1,5 @@
 package lapr.project.model;
 
-import java.util.Objects;
-
 public class PortAndWareHouse {
 
     /**
