@@ -17,7 +17,7 @@ public class Files {
         try {
             if (log.exists()) {
 
-                boolean delete = log.delete();
+                boolean delete = java.nio.file.Files.deleteIfExists(log.toPath());
                 assert delete;
             }
             assert log.createNewFile();
