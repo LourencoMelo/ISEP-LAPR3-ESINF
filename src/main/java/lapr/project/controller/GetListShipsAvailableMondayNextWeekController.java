@@ -28,10 +28,18 @@ public class GetListShipsAvailableMondayNextWeekController {
         this.company = company;
     }
 
+    /**
+     * Returns the list of ships available on monday next week
+     * @return list of ships
+     */
     public List<Ship> getListShipsAvailableMondayNextWeek() {
         return null;
     }
 
+    /**
+     * Returns company
+     * @return company
+     */
     public Company getCompany() {
         return company;
     }
