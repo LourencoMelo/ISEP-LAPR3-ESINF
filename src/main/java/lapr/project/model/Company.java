@@ -44,6 +44,7 @@ public class Company {
         this.treeOfShips = new TreeOfShips();
         this.treeOfShipsIMO = new TreeOfShips();
         this.treeOfShipsCallSign = new TreeOfShips();
+        this.treeOfPorts = new TreeOfPorts();
 
     }
 
