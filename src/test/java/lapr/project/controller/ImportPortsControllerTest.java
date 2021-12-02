@@ -36,7 +36,7 @@ class ImportPortsControllerTest {
 
         importPortsController.importPorts(new File("Files/sports.csv"));
 
-        assertEquals(importPortsController.getCompany().getTreeOfPorts().size(), 22);
+        assertEquals(App.getInstance().getCompany().getTreeOfPorts().size(), 22);
 
     }
 
