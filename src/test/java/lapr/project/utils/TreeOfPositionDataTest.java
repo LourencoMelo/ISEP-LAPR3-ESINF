@@ -757,4 +757,185 @@ class TreeOfPositionDataTest {
      * ---------------------------------------------------------------------------------------
      */
 
+    @Test
+    void closestDate(){
+
+        /**
+         * Wanted date
+         */
+        LocalDateTime dateWanted = LocalDateTime.of(2020, 12,30,22,19);
+
+        /**
+         * Objects Needed For testing
+         */
+        LocalDateTime datetest1 = LocalDateTime.of(2020, 12,30,17,19);
+        LocalDateTime datetest2 = LocalDateTime.of(2020, 12,30,18,29);
+        LocalDateTime datetest3 = LocalDateTime.of(2020, 12,30,19,19);
+        LocalDateTime datetest4 = LocalDateTime.of(2020, 12,30,20,19);
+        LocalDateTime datetest5 = LocalDateTime.of(2020, 12,30,21,29);
+        LocalDateTime datetest6 = LocalDateTime.of(2020, 12,30,22,19);
+        LocalDateTime datetest7 = LocalDateTime.of(2020, 12,30,23,19);
+        LocalDateTime datetest8 = LocalDateTime.of(2020, 12,30,16,29);
+        LocalDateTime datetest9 = LocalDateTime.of(2020, 12,30,15,19);
+
+        PositionData positionDataTestCompare1 = new PositionData(datetest1,10,10,0,4,5,"1","Sopa");
+        PositionData positionDataTestCompare2 = new PositionData(datetest2,10,10,0,4,5,"1","Sopa");
+        PositionData positionDataTestCompare3 = new PositionData(datetest3,10,10,0,4,5,"1","Sopa");
+        PositionData positionDataTestCompare4 = new PositionData(datetest4,10,10,0,4,5,"1","Sopa");
+        PositionData positionDataTestCompare5 = new PositionData(datetest5,10,10,0,4,5,"1","Sopa");
+        PositionData expected = new PositionData(datetest6,10,10,0,4,5,"1","Sopa");
+        PositionData positionDataTestCompare7 = new PositionData(datetest7,10,10,0,4,5,"1","Sopa");
+        PositionData positionDataTestCompare8 = new PositionData(datetest8,10,10,0,4,5,"1","Sopa");
+        PositionData positionDataTestCompare9 = new PositionData(datetest9,10,10,0,4,5,"1","Sopa");
+
+        shipTestCompare1.addPositionData(positionDataTestCompare1);
+        shipTestCompare1.addPositionData(positionDataTestCompare2);
+        shipTestCompare1.addPositionData(positionDataTestCompare3);
+        shipTestCompare1.addPositionData(positionDataTestCompare4);
+        shipTestCompare1.addPositionData(positionDataTestCompare5);
+        shipTestCompare1.addPositionData(expected);
+        shipTestCompare1.addPositionData(positionDataTestCompare7);
+        shipTestCompare1.addPositionData(positionDataTestCompare8);
+        shipTestCompare1.addPositionData(positionDataTestCompare9);
+
+        PositionData result = shipTestCompare1.getTreeOfPositionData().closestData(dateWanted);
+
+        assertEquals(expected,result);
+    }
+
+    @Test
+    void closestDate2(){
+
+        /**
+         * Wanted date
+         */
+        LocalDateTime dateWanted = LocalDateTime.of(2020, 12,30,22,50);
+
+        /**
+         * Objects Needed For testing
+         */
+        LocalDateTime datetest1 = LocalDateTime.of(2020, 12,30,17,19);
+        LocalDateTime datetest2 = LocalDateTime.of(2020, 12,30,18,29);
+        LocalDateTime datetest3 = LocalDateTime.of(2020, 12,30,19,19);
+        LocalDateTime datetest4 = LocalDateTime.of(2020, 12,30,20,19);
+        LocalDateTime datetest5 = LocalDateTime.of(2020, 12,30,21,29);
+        LocalDateTime datetest6 = LocalDateTime.of(2020, 12,30,22,19);
+        LocalDateTime datetest7 = LocalDateTime.of(2020, 12,30,23,19);
+        LocalDateTime datetest8 = LocalDateTime.of(2020, 12,30,16,29);
+        LocalDateTime datetest9 = LocalDateTime.of(2020, 12,30,15,19);
+
+        PositionData positionDataTestCompare1 = new PositionData(datetest1,10,10,0,4,5,"1","Sopa");
+        PositionData positionDataTestCompare2 = new PositionData(datetest2,10,10,0,4,5,"1","Sopa");
+        PositionData positionDataTestCompare3 = new PositionData(datetest3,10,10,0,4,5,"1","Sopa");
+        PositionData positionDataTestCompare4 = new PositionData(datetest4,10,10,0,4,5,"1","Sopa");
+        PositionData positionDataTestCompare5 = new PositionData(datetest5,10,10,0,4,5,"1","Sopa");
+        PositionData expected = new PositionData(datetest6,10,10,0,4,5,"1","Sopa");
+        PositionData positionDataTestCompare7 = new PositionData(datetest7,10,10,0,4,5,"1","Sopa");
+        PositionData positionDataTestCompare8 = new PositionData(datetest8,10,10,0,4,5,"1","Sopa");
+        PositionData positionDataTestCompare9 = new PositionData(datetest9,10,10,0,4,5,"1","Sopa");
+
+        shipTestCompare1.addPositionData(positionDataTestCompare1);
+        shipTestCompare1.addPositionData(positionDataTestCompare2);
+        shipTestCompare1.addPositionData(positionDataTestCompare3);
+        shipTestCompare1.addPositionData(positionDataTestCompare4);
+        shipTestCompare1.addPositionData(positionDataTestCompare5);
+        shipTestCompare1.addPositionData(expected);
+        shipTestCompare1.addPositionData(positionDataTestCompare7);
+        shipTestCompare1.addPositionData(positionDataTestCompare8);
+        shipTestCompare1.addPositionData(positionDataTestCompare9);
+
+        PositionData result = shipTestCompare1.getTreeOfPositionData().closestData(dateWanted);
+
+        assertEquals(expected,result);
+    }
+
+    @Test
+    void closestDate3(){
+
+        /**
+         * Wanted date
+         */
+        LocalDateTime dateWanted = LocalDateTime.of(2020, 12,30,18,49);
+
+        /**
+         * Objects Needed For testing
+         */
+        LocalDateTime datetest1 = LocalDateTime.of(2020, 12,30,17,19);
+        LocalDateTime datetest2 = LocalDateTime.of(2020, 12,30,18,29);
+        LocalDateTime datetest3 = LocalDateTime.of(2020, 12,30,19,19);
+
+        PositionData positionDataTestCompare1 = new PositionData(datetest1,10,10,0,4,5,"1","Sopa");
+        PositionData expected = new PositionData(datetest2,10,10,0,4,5,"1","Sopa");
+        PositionData positionDataTestCompare3 = new PositionData(datetest3,10,10,0,4,5,"1","Sopa");
+
+        shipTestCompare1.addPositionData(positionDataTestCompare1);
+        shipTestCompare1.addPositionData(expected);
+        shipTestCompare1.addPositionData(positionDataTestCompare3);
+
+        PositionData result = shipTestCompare1.getTreeOfPositionData().closestData(dateWanted);
+
+        assertEquals(expected,result);
+    }
+
+    @Test
+    void closestDate4(){
+
+        /**
+         * Wanted date
+         */
+        LocalDateTime dateWanted = LocalDateTime.of(2020, 12,30,22,49);
+
+        /**
+         * Objects Needed For testing
+         */
+        LocalDateTime datetest1 = LocalDateTime.of(2020, 12,30,17,19);
+        LocalDateTime datetest2 = LocalDateTime.of(2020, 12,30,18,29);
+        LocalDateTime datetest3 = LocalDateTime.of(2020, 12,30,19,19);
+
+        PositionData positionDataTestCompare1 = new PositionData(datetest1,10,10,0,4,5,"1","Sopa");
+        PositionData positionDataTestCompare2 = new PositionData(datetest2,10,10,0,4,5,"1","Sopa");
+        PositionData expected = new PositionData(datetest3,10,10,0,4,5,"1","Sopa");
+
+        shipTestCompare1.addPositionData(positionDataTestCompare1);
+        shipTestCompare1.addPositionData(positionDataTestCompare2);
+        shipTestCompare1.addPositionData(expected);
+
+        PositionData result = shipTestCompare1.getTreeOfPositionData().closestData(dateWanted);
+
+        assertEquals(expected,result);
+    }
+
+    @Test
+    void closestDate5(){
+
+        /**
+         * Wanted date
+         */
+        LocalDateTime dateWanted = LocalDateTime.of(2020, 12,30,15,49);
+
+        /**
+         * Objects Needed For testing
+         */
+        LocalDateTime datetest1 = LocalDateTime.of(2020, 12,30,17,19);
+        LocalDateTime datetest2 = LocalDateTime.of(2020, 12,30,18,29);
+        LocalDateTime datetest3 = LocalDateTime.of(2020, 12,30,19,19);
+
+        PositionData positionDataTestCompare1 = new PositionData(datetest1,10,10,0,4,5,"1","Sopa");
+        PositionData positionDataTestCompare2 = new PositionData(datetest2,10,10,0,4,5,"1","Sopa");
+        PositionData positionDataTestCompare3 = new PositionData(datetest3,10,10,0,4,5,"1","Sopa");
+
+        shipTestCompare1.addPositionData(positionDataTestCompare1);
+        shipTestCompare1.addPositionData(positionDataTestCompare2);
+        shipTestCompare1.addPositionData(positionDataTestCompare3);
+
+        PositionData result = shipTestCompare1.getTreeOfPositionData().closestData(dateWanted);
+
+        assertNull(result);
+    }
+
+
+
+
+
+
 }

@@ -274,6 +274,35 @@ public class Company {
     }
 
     /**
+     * Finds the wanted message (PositionData) for the wanted call sign and date
+     * @param callSign call sign
+     * @param date date
+     * @return message (position data)
+     */
+    public PositionData getPositionDataByCallSignAndDateTime(String callSign, LocalDateTime date){
+        Ship ship = treeOfShipsCallSign.getShipByCallSign(callSign);
+        if(ship == null){
+            return null;
+        }
+        return ship.getTreeOfPositionData().closestData(date);
+    }
+
+    /**
+     * Returns the closest port of a wanted ship in a wanted time
+     * @param callSign call sign
+     * @param date date
+     * @return port
+     */
+    public PortAndWareHouse getClosest(String callSign, LocalDateTime date){
+        if(getPositionDataByCallSignAndDateTime(callSign,date) != null){
+            return treeOfPorts.getClosest(getPositionDataByCallSignAndDateTime(callSign,date));
+        }else{
+            throw new IllegalArgumentException("There's no ship with this Call Sign");
+        }
+    }
+
+
+    /**
      * Gets the AuthFacade
      * @return authFacade
      */

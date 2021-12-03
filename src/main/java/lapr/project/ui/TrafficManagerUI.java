@@ -35,7 +35,7 @@ public class TrafficManagerUI implements Runnable{
             options.add(new MenuItem("Get the Ships with most km travelled and their mean SOG grouped by Vessel Types", new TopNShipsUI()));
             options.add(new MenuItem("See pair os ships with routes with close dparture/arrival coordinates(<=5km) and with different Travelled Distance", new PairOfShipsUI()));
             options.add(new MenuItem("Know which ships will be available on Monday next week and their location", new GetListContainerToBeOffloadedUI()));
-
+            options.add(new MenuItem("Find the closest port of a ship given its Call Sign, on a certain Date Time", new ClosestPortUI()));
             int option = 0;
 
             do{

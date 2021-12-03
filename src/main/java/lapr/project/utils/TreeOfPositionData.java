@@ -1,6 +1,7 @@
 package lapr.project.utils;
 
 import lapr.project.model.Distance;
+import lapr.project.model.PortAndWareHouse;
 import lapr.project.model.PositionData;
 
 import java.time.LocalDateTime;
@@ -27,6 +28,7 @@ public class TreeOfPositionData extends AVL<PositionData> {
 
     /**
      * Returns the delta distance of a ship
+     *
      * @return delta distance
      */
     public double getDeltaDistance() {
@@ -78,7 +80,7 @@ public class TreeOfPositionData extends AVL<PositionData> {
         List<PositionData> list = new ArrayList<>();
         inOrder().forEach(list::add);
 
-        for (int i = 1; i < list.size() ; i++) {
+        for (int i = 1; i < list.size(); i++) {
             j = i - 1;
             if (list.get(j).getBaseDateTime().compareTo(date1) >= 0 && list.get(i).getBaseDateTime().compareTo(date2) <= 0) {
                 km += Distance.distance(list.get(j).getLatitude(), list.get(j).getLongitude(), list.get(i).getLatitude(), list.get(i).getLongitude());
@@ -126,6 +128,31 @@ public class TreeOfPositionData extends AVL<PositionData> {
         }
     }
 
+    public PositionData closestData(LocalDateTime date) {
+        List<PositionData> list = new ArrayList<>();
+        inOrder().forEach(list::add);
+
+        if(list.isEmpty()){
+            return null;
+        }
+        if(list.get(list.size() - 1).getBaseDateTime().compareTo(date) < 0){
+            return list.get(list.size() - 1);
+        }
+        if(list.get(0).getBaseDateTime().compareTo(date) > 0){
+            return null;
+        }
+        for(int i = 0; i < list.size(); i ++){
+            if(list.get(i).getBaseDateTime().compareTo(date) == 0){
+                return list.get(i);
+            }
+            if(list.get(i).getBaseDateTime().compareTo(date) > 0 && i != 0){
+                return list.get(i - 1);
+            }
+        }
+        return null;
+    }
+
+
     /**
      * Gets the last date of a ship's movement
      *
@@ -147,7 +174,6 @@ public class TreeOfPositionData extends AVL<PositionData> {
     }
 
 
-
     /**
      * Calculates the average speed between two dates
      *
@@ -164,7 +190,7 @@ public class TreeOfPositionData extends AVL<PositionData> {
                 aux++;
             }
         }
-        if(aux != 0){
+        if (aux != 0) {
             return mean / aux;
         }
         return 0;
@@ -198,7 +224,7 @@ public class TreeOfPositionData extends AVL<PositionData> {
             mean += positionData.getSog();
             aux++;
         }
-        if(aux !=0){
+        if (aux != 0) {
             return mean / aux;
         }
         return 0;
@@ -231,7 +257,7 @@ public class TreeOfPositionData extends AVL<PositionData> {
             mean += positionData.getCog();
             aux++;
         }
-        if(aux !=0){
+        if (aux != 0) {
             return mean / aux;
         }
         return 0;
@@ -256,7 +282,6 @@ public class TreeOfPositionData extends AVL<PositionData> {
     public double departureLatitude() {
         return inOrder().iterator().next().getLatitude();
     }
-
 
     /**
      * Calculates the departure longitude of a vessel
@@ -301,24 +326,23 @@ public class TreeOfPositionData extends AVL<PositionData> {
 
     /**
      * Returns true if the ships has at least 2 messages send in the wanted period of time
+     *
      * @param date1 date 1
      * @param date2 date 2
      * @return true or false
      */
-    public boolean atLeastTwo(LocalDateTime date1, LocalDateTime date2){
+    public boolean atLeastTwo(LocalDateTime date1, LocalDateTime date2) {
         int aux = 0;
         for (PositionData positionData : inOrder()) {
             if (positionData.getBaseDateTime().compareTo(date1) >= 0 && positionData.getBaseDateTime().compareTo(date2) <= 0) {
                 aux++;
             }
         }
-        if(aux>= 2){
+        if (aux >= 2) {
             return true;
         }
-        return  false;
+        return false;
     }
-
-
 
 
 }

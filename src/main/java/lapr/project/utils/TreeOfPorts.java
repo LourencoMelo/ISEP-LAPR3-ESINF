@@ -1,6 +1,7 @@
 package lapr.project.utils;
 
 import lapr.project.model.PortAndWareHouse;
+import lapr.project.model.PositionData;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -96,7 +97,10 @@ public class TreeOfPorts extends KD_TREE<PortAndWareHouse> {
         list.sort(eixo ? cmpx : cmpy);
 
         return list.size() / 2;
+    }
 
+    public PortAndWareHouse getClosest(PositionData positionData){
+        return findNearestNeighbour(positionData.getLatitude(),positionData.getLongitude());
     }
 
 }

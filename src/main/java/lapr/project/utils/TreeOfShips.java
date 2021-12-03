@@ -210,7 +210,7 @@ public class TreeOfShips extends AVL<Ship> {
      */
     public Ship getShipByCallSign(Node<Ship> node, String callSign) {
 
-        if (root == null) {
+        if (node == null) {
             return null;
         }
 

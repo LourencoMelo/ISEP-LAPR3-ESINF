@@ -1,9 +1,11 @@
 package lapr.project.model;
 
 import lapr.project.controller.ImportFileController;
+import lapr.project.controller.ImportPortsController;
 import org.junit.jupiter.api.Test;
 
 
+import javax.security.auth.callback.LanguageCallback;
 import java.io.File;
 import java.time.LocalDateTime;
 import java.util.*;
@@ -14,6 +16,7 @@ class CompanyTest {
 
     Company company = new Company();
     ImportFileController importFileController = new ImportFileController(company);
+    ImportPortsController importPortsController = new ImportPortsController(company);
 
     @Test
     void printMovementsTravelledAndDeltaDistance() {
@@ -364,6 +367,100 @@ class CompanyTest {
         assertTrue(result);
 
     }
+
+    @Test
+    void getPositionDataByCallSignAndDateTimeTest(){
+        LocalDateTime date1 = LocalDateTime.of(2020, 12, 31, 16, 14);
+        String callSignTest = "C4SQ2";
+        importFileController.importShips(new File("Files/sships.csv"));
+
+        LocalDateTime datetest1 = LocalDateTime.of(2020, 12,31,16,12);
+        PositionData expected = new PositionData(datetest1,42.73879,-66.97726,13.4,3.4,357,"NA","B");
+
+        PositionData result = company.getPositionDataByCallSignAndDateTime(callSignTest,date1);
+
+        assertEquals(expected.getBaseDateTime(),result.getBaseDateTime());
+    }
+
+    @Test
+    void getPositionDataByCallSignAndDateTimeTest2(){
+        LocalDateTime date1 = LocalDateTime.of(2020, 12, 31, 0, 24);
+        String callSignTest = "FLSU";
+        importFileController.importShips(new File("Files/sships.csv"));
+
+        LocalDateTime datetest1 = LocalDateTime.of(2020, 12,31,0,20);
+        PositionData expected = new PositionData(datetest1,28.33263,-88.82491,11.8,129.5,131,"79","B");
+
+        PositionData result = company.getPositionDataByCallSignAndDateTime(callSignTest,date1);
+
+        assertEquals(expected.getBaseDateTime(),result.getBaseDateTime());
+    }
+
+    @Test
+    void getPositionDataByCallSignAndDateTimeTest3(){
+        LocalDateTime date1 = LocalDateTime.of(2020, 12, 30, 23, 55);
+        String callSignTest = "FLSU";
+        importFileController.importShips(new File("Files/sships.csv"));
+
+        PositionData result = company.getPositionDataByCallSignAndDateTime(callSignTest,date1);
+
+        assertNull(result);
+    }
+
+    @Test
+    void getPositionDataByCallSignAndDateTimeTest4(){
+        LocalDateTime date1 = LocalDateTime.of(2020, 12, 31, 19, 55);
+        String callSignTest = "C4SQ2";
+        importFileController.importShips(new File("Files/sships.csv"));
+
+        LocalDateTime datetest1 = LocalDateTime.of(2020, 12,31,18,31);
+        PositionData expected = new PositionData(datetest1,43.22513,-66.96725,11.7,5.5,355,"NA","B");
+
+        PositionData result = company.getPositionDataByCallSignAndDateTime(callSignTest,date1);
+
+        assertEquals(expected.getBaseDateTime(),result.getBaseDateTime());
+    }
+
+    @Test
+    void getClosest(){
+        String callSignTest = "D5WI6";
+        LocalDateTime dateTest = LocalDateTime.of(2020, 12, 31, 23, 45);
+
+        importFileController.importShips(new File("Files/closestPortTest.csv"));
+        importPortsController.importPorts(new File("Files/sports.csv"));
+
+        String result = "Ponta Delgada";
+
+        assertEquals(company.getClosest("D5WI6",dateTest).getPort(),result);
+    }
+
+    @Test
+    void getClosest2(){
+        String callSignTest = "D5WI4";
+        LocalDateTime dateTest = LocalDateTime.of(2020, 12, 31, 23, 45);
+
+        importFileController.importShips(new File("Files/closestPortTest.csv"));
+        importPortsController.importPorts(new File("Files/sports.csv"));
+
+        try{
+            company.getClosest(callSignTest,dateTest);
+        }catch (Exception e){
+            assertEquals("There's no ship with this Call Sign",e.getMessage());
+        }
+    }
+
+    /*@Test
+    void getClosest3(){
+        String callSignTest = "D5WI6";
+        LocalDateTime dateTest = LocalDateTime.of(2020, 12, 31, 23, 32);
+
+        importFileController.importShips(new File("Files/closestPortTest.csv"));
+        importPortsController.importPorts(new File("Files/sports.csv"));
+
+        String expected = "Valparaiso";
+
+        assertEquals(expected,company.getClosest("D5WI6",dateTest).getPort());
+    }*/
 
 
 

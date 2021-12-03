@@ -243,21 +243,6 @@ public class PositionData implements Comparable<PositionData> {
 
     /**
      * -------------------------------------------------------------------------------------------------------------
-     * EQUALS
-     * -------------------------------------------------------------------------------------------------------------
-     */
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        PositionData that = (PositionData) o;
-        return Double.compare(that.latitude, latitude) == 0 && Double.compare(that.longitude, longitude) == 0 && Objects.equals(baseDateTime, that.baseDateTime);
-    }
-
-
-    /**
-     * -------------------------------------------------------------------------------------------------------------
      * TO STRING
      * -------------------------------------------------------------------------------------------------------------
      */
