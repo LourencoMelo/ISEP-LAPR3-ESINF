@@ -3,8 +3,6 @@ package lapr.project.ui;
 import lapr.project.controller.MovementsTravelledAndDeltaDistanceController;
 import lapr.project.model.Ship;
 
-import java.util.Scanner;
-
 public class MovementsTravelledAndDeltaDistanceUI implements Runnable{
 
     private final MovementsTravelledAndDeltaDistanceController movementsTravelledAndDeltaDistanceController;

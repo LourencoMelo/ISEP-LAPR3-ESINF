@@ -4,7 +4,7 @@ import lapr.project.controller.GetListShipsAvailableMondayNextWeekController;
 
 public class GetListShipsAvailableMondayNextWeekUI implements Runnable {
 
-    private GetListShipsAvailableMondayNextWeekController getListShipsAvailableMondayNextWeekController;
+    private final GetListShipsAvailableMondayNextWeekController getListShipsAvailableMondayNextWeekController;
 
     private GetListShipsAvailableMondayNextWeekUI() {
         this.getListShipsAvailableMondayNextWeekController = new GetListShipsAvailableMondayNextWeekController();
