@@ -22,6 +22,17 @@ class AuthControllerTest {
     }
 
     @Test
+    void doLogin() {
+
+        AuthController authController = new AuthController();
+
+        assertTrue(authController.doLogin("joao@gmail.com", "12345"));
+        authController.doLogout();
+        assertFalse(authController.doLogin("joao1@gmail.com", "12345"));
+        authController.doLogout();
+    }
+
+    @Test
     void doLogOutTest() {
         AuthController authController = new AuthController();
 
