@@ -6,6 +6,8 @@ import lapr.project.model.ShipByMMSI;
 import lapr.project.utils.App;
 import org.junit.jupiter.api.Test;
 
+import java.util.Collections;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class GetListContainerToBeOffloadedControllerTest {
@@ -43,7 +45,7 @@ public class GetListContainerToBeOffloadedControllerTest {
 
     @Test
     void getListShipsAvailableMondayNextWeekController() {
-        assertEquals(null, getListContainerToBeOffloadedController.getListContainerToBeOffloaded());
+        assertEquals(Collections.emptyList(), getListContainerToBeOffloadedController.getListContainerToBeOffloaded());
     }
 
 }
