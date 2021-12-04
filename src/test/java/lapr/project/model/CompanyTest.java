@@ -432,23 +432,67 @@ class CompanyTest {
         try{
             company.getClosest(callSignTest,dateTest);
         }catch (Exception e){
-            assertEquals("There's no ship with this Call Sign",e.getMessage());
+            assertEquals("The data you inserted is illegible",e.getMessage());
         }
     }
 
     @Test
     void getClosest2(){
         String callSignTest = "5BBA4";
+        LocalDateTime dateTest = LocalDateTime.of(2020, 12, 30, 23, 45);
+
+        importFileController.importShips(new File("Files/sships.csv"));
+        importPortsController.importPorts(new File("Files/sports.csv"));
+
+        try{
+            company.getClosest(callSignTest,dateTest);
+        }catch (Exception e){
+            assertEquals("The data you inserted is illegible",e.getMessage());
+        }
+    }
+
+    @Test
+    void getClosest3(){
+        String callSignTest = "5BBA4";
         LocalDateTime dateTest = LocalDateTime.of(2020, 12, 31, 21, 49);
 
         importFileController.importShips(new File("Files/sships.csv"));
         importPortsController.importPorts(new File("Files/sports.csv"));
 
+        String expected = "Cartagena";
+
+        assertEquals(expected,company.getClosest(callSignTest,dateTest).getPort());
+    }
+
+    @Test
+    void getClosest4(){
+        String callSignTest = "FLSU";
+        LocalDateTime dateTest = LocalDateTime.of(2020, 12, 31, 0, 17);
+
+        importFileController.importShips(new File("Files/sships.csv"));
+        importPortsController.importPorts(new File("Files/sports.csv"));
 
         String expected = "Cartagena";
 
         assertEquals(expected,company.getClosest(callSignTest,dateTest).getPort());
     }
+
+    @Test
+    void getClosest5(){
+        String callSignTest = "C4SQ2";
+        LocalDateTime dateTest = LocalDateTime.of(2020, 12, 31, 17, 07);
+
+        importFileController.importShips(new File("Files/sships.csv"));
+        importPortsController.importPorts(new File("Files/sports.csv"));
+
+        String expected = "Halifax";
+
+        assertEquals(expected,company.getClosest(callSignTest,dateTest).getPort());
+    }
+
+
+
+
 
 
 

@@ -28,8 +28,22 @@ public class ClosestPortController {
         this.company = company;
     }
 
+    /**
+     * Gets the closest port of a ship on a certain date
+     * @param callSign ship call sign
+     * @param date wanted date
+     * @return closest port
+     */
     public PortAndWareHouse getClosest(String callSign, LocalDateTime date){
         return company.getClosest(callSign,date);
+    }
+
+    /**
+     * Returns the company instance
+     * @return company
+     */
+    public Company getCompany() {
+        return company;
     }
 
 

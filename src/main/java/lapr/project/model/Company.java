@@ -297,7 +297,7 @@ public class Company {
         if(getPositionDataByCallSignAndDateTime(callSign,date) != null){
             return treeOfPorts.getClosest(getPositionDataByCallSignAndDateTime(callSign,date));
         }else{
-            throw new IllegalArgumentException("There's no ship with this Call Sign");
+            throw new IllegalArgumentException("The data you inserted is illegible");
         }
     }
 

@@ -99,9 +99,12 @@ public class TreeOfPorts extends KD_TREE<PortAndWareHouse> {
         return list.size() / 2;
     }
 
+    /**
+     * With the wanted message returns the closest port on that date
+     * @param positionData wanted message
+     * @return closest port
+     */
     public PortAndWareHouse getClosest(PositionData positionData){
-        //System.out.println(positionData.getLongitude());
-        //System.out.println(positionData.getLatitude());
         return findNearestNeighbour(positionData.getLatitude(),positionData.getLongitude());
     }
 

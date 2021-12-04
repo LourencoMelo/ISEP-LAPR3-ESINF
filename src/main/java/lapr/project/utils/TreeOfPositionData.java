@@ -128,6 +128,11 @@ public class TreeOfPositionData extends AVL<PositionData> {
         }
     }
 
+    /**
+     * Gets the wanted date if it exists, if not, it will give the last message that the ship sent before the wanted date
+     * @param date wanted date
+     * @return date
+     */
     public PositionData closestData(LocalDateTime date) {
         List<PositionData> list = new ArrayList<>();
         inOrder().forEach(list::add);
