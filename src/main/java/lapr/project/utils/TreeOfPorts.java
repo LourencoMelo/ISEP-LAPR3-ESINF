@@ -100,6 +100,8 @@ public class TreeOfPorts extends KD_TREE<PortAndWareHouse> {
     }
 
     public PortAndWareHouse getClosest(PositionData positionData){
+        //System.out.println(positionData.getLongitude());
+        //System.out.println(positionData.getLatitude());
         return findNearestNeighbour(positionData.getLatitude(),positionData.getLongitude());
     }
 

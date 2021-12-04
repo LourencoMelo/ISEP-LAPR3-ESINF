@@ -422,24 +422,11 @@ class CompanyTest {
     }
 
     @Test
-    void getClosest(){
-        String callSignTest = "D5WI6";
+    void getClosest1(){
+        String callSignTest = "D4DD5";
         LocalDateTime dateTest = LocalDateTime.of(2020, 12, 31, 23, 45);
 
-        importFileController.importShips(new File("Files/closestPortTest.csv"));
-        importPortsController.importPorts(new File("Files/sports.csv"));
-
-        String result = "Ponta Delgada";
-
-        assertEquals(company.getClosest("D5WI6",dateTest).getPort(),result);
-    }
-
-    @Test
-    void getClosest2(){
-        String callSignTest = "D5WI4";
-        LocalDateTime dateTest = LocalDateTime.of(2020, 12, 31, 23, 45);
-
-        importFileController.importShips(new File("Files/closestPortTest.csv"));
+        importFileController.importShips(new File("Files/sships.csv"));
         importPortsController.importPorts(new File("Files/sports.csv"));
 
         try{
@@ -449,18 +436,20 @@ class CompanyTest {
         }
     }
 
-    /*@Test
-    void getClosest3(){
-        String callSignTest = "D5WI6";
-        LocalDateTime dateTest = LocalDateTime.of(2020, 12, 31, 23, 32);
+    @Test
+    void getClosest2(){
+        String callSignTest = "5BBA4";
+        LocalDateTime dateTest = LocalDateTime.of(2020, 12, 31, 21, 49);
 
-        importFileController.importShips(new File("Files/closestPortTest.csv"));
+        importFileController.importShips(new File("Files/sships.csv"));
         importPortsController.importPorts(new File("Files/sports.csv"));
 
-        String expected = "Valparaiso";
 
-        assertEquals(expected,company.getClosest("D5WI6",dateTest).getPort());
-    }*/
+        String expected = "Cartagena";
+
+        assertEquals(expected,company.getClosest(callSignTest,dateTest).getPort());
+    }
+
 
 
 

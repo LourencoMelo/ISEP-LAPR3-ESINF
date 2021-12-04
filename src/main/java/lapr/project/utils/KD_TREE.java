@@ -1,5 +1,7 @@
 package lapr.project.utils;
 
+import lapr.project.model.Distance;
+
 import java.awt.geom.Point2D;
 import java.util.Comparator;
 
@@ -129,7 +131,9 @@ public class KD_TREE<E>{
      * @return nearest neighbour
      */
     public E findNearestNeighbour(double latitude, double longitude){
-        return findNearestNeighbour2(root(), latitude, longitude, root(), true);
+        E element = findNearestNeighbour2(root(), latitude, longitude, root(), true);
+        //System.out.println(element);
+        return element;//findNearestNeighbour2(root(), latitude, longitude, root(), true);
     }
 
     /**
@@ -143,10 +147,8 @@ public class KD_TREE<E>{
      */
     private E findNearestNeighbour2(KD_NODE<E> node, double x, double y, KD_NODE<E> closestNode, boolean divx){
 
-        if (node == null) return null;
-
-        double d = Point2D.distanceSq(node.coordinates.x, node.coordinates.y, x, y);
-        double closestDistance = Point2D.distanceSq(node.coordinates.x, node.coordinates.y, x, y);
+        double d = Distance.distance(node.coordinates.x, node.coordinates.y, x, y);
+        double closestDistance = Distance.distance(closestNode.coordinates.x, closestNode.coordinates.y, x, y);
 
         if (closestDistance > d) closestNode = node;
 
@@ -156,9 +158,13 @@ public class KD_TREE<E>{
         KD_NODE<E> node1 = delta < 0 ? node.left : node.right;
         KD_NODE<E> node2 = delta < 0 ? node.right : node.left;
 
-        findNearestNeighbour2(node1, x, y, closestNode, !divx);
+        if(node1 != null){
+            return findNearestNeighbour2(node1, x, y, closestNode, !divx);
+        }
 
-        if (delta2 < closestDistance) findNearestNeighbour2(node2, x, y, closestNode, !divx);
+        if (delta2 < closestDistance && node2 != null){
+            return findNearestNeighbour2(node2, x, y, closestNode, !divx);
+        }
 
         return closestNode.info;
 
