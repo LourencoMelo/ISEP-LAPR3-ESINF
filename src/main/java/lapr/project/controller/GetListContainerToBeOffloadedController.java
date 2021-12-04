@@ -4,6 +4,7 @@ import lapr.project.model.Company;
 import lapr.project.model.Container;
 import lapr.project.utils.App;
 
+import java.util.Collections;
 import java.util.List;
 
 public class GetListContainerToBeOffloadedController {
@@ -33,7 +34,7 @@ public class GetListContainerToBeOffloadedController {
      * @return list of containers
      */
     public List<Container> getListContainerToBeOffloaded() {
-        return null;
+        return Collections.emptyList();
     }
 
     /**

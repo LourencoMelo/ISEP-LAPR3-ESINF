@@ -4,6 +4,7 @@ import lapr.project.model.Company;
 import lapr.project.model.Ship;
 import lapr.project.utils.App;
 
+import java.util.Collections;
 import java.util.List;
 
 public class GetListShipsAvailableMondayNextWeekController {
@@ -33,7 +34,7 @@ public class GetListShipsAvailableMondayNextWeekController {
      * @return list of ships
      */
     public List<Ship> getListShipsAvailableMondayNextWeek() {
-        return null;
+        return Collections.emptyList();
     }
 
     /**
