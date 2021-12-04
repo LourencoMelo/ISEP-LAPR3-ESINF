@@ -2,6 +2,7 @@ package lapr.project.model;
 
 import lapr.project.auth.AuthFacade;
 import lapr.project.auth.Email;
+import lapr.project.utils.App;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -138,6 +139,17 @@ public class AuthFacadeTest {
         authFacade.doLogin("joao@gmail.com", "12345");
 
         assertEquals(authFacade.getUserToSend(),authFacade.getCurrentUserByUserSession());
+
+    }
+
+    @Test
+    void bootstrapTest() {
+
+        assertTrue(App.getInstance().getCompany().getAuthFacade().existsUser("joao@gmail.com"));
+        assertTrue(App.getInstance().getCompany().getAuthFacade().existsUser("client@gmail.com"));
+        assertTrue(App.getInstance().getCompany().getAuthFacade().existsUser("vanessa@gmail.com"));
+        assertTrue(App.getInstance().getCompany().getAuthFacade().existsUser("jose@gmail.com"));
+
 
     }
 }
