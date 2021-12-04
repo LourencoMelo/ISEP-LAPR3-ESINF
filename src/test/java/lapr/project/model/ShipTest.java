@@ -198,11 +198,16 @@ class ShipTest {
      */
     @Test
     void setLength3(){
+
+        String message = "";
+
         try{
             shipTest.setLength(0);
         }catch (IllegalArgumentException ex){
-            assertEquals(ex.getMessage(),"Length needs to be a positive number.");
+            message = ex.getMessage();
         }
+
+        assertEquals(message,"Length needs to be a positive number.");
     }
 
     /**
@@ -254,11 +259,15 @@ class ShipTest {
      */
     @Test
     void setWidth3(){
+        String message = "";
+
         try{
             shipTest.setWidth(0);
         }catch (IllegalArgumentException ex){
-            assertEquals(ex.getMessage(),"Width needs to be a positive number.");
+           message = ex.getMessage();
         }
+
+        assertEquals(message,"Width needs to be a positive number.");
     }
 
     /**
