@@ -8,6 +8,7 @@ import lapr.project.utils.App;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -49,33 +50,35 @@ class AuthControllerTest {
         assertNull(authController.getApp().getCurrentUserSession().getUser());
     }
 
-//    @Test
-//    void getUserRoles() {
-//
-//        AuthController authController = new AuthController();
-//
-//        AuthFacade authFacade = authController.getApp().getCompany().getAuthFacade();
-//
-//        authFacade.doLogin("joao@gmail.com", "12345");
-//
-//        System.out.println(authFacade.getCurrentUserByUserSession().getRoles());
-//
-//        List<UserRole> expected = new ArrayList<>();
-//
-//        UserRole userRole = new UserRole("TrafficManager","TrafficManager");
-//
-//        expected.add(userRole);
-//
-//        UserRoleMapper mapper = new UserRoleMapper();
-//
-//        List<UserRoleDTO> dtoList = new ArrayList<>();
-//
-//        dtoList.add(mapper.toDTO(expected).get(0));
-//
-//        assertEquals(dtoList.size(),authController.getUserRoles().size());
-//        assertEquals(dtoList.get(0).getId(),authController.getUserRoles().get(0).getId());
-//
-//    }
+    @Test
+    void getUserRoles() {
+
+        AuthController authController = new AuthController();
+
+        AuthFacade authFacade = authController.getApp().getCompany().getAuthFacade();
+
+        authFacade.doLogin("joao@gmail.com", "12345");
+
+        System.out.println(authFacade.getCurrentUserByUserSession().getRoles());
+
+        List<UserRole> expected = new ArrayList<>();
+
+        UserRole userRole = new UserRole("TrafficManager","TrafficManager");
+
+        expected.add(userRole);
+
+        UserRoleMapper mapper = new UserRoleMapper();
+
+        List<UserRoleDTO> dtoList = new ArrayList<>();
+
+        dtoList.add(mapper.toDTO(expected).get(0));
+
+        assertEquals(dtoList.size(),authController.getUserRoles().size());
+        assertEquals(dtoList.get(0).getId(),authController.getUserRoles().get(0).getId());
+
+        authController.doLogout();
+
+    }
 
     @Test
     void getUserRolesNotLoggedIn() {
@@ -90,6 +93,6 @@ class AuthControllerTest {
 
         authFacade.addUserWithRoles("ola", "ola@gmail.com", "12345", roles);
 
-        assertEquals(0, authController.getUserRoles().size());
+        assertEquals(Collections.emptyList(), authController.getUserRoles());
     }
 }
