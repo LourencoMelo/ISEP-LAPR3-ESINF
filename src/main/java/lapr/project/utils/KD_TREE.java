@@ -4,6 +4,7 @@ import lapr.project.model.Distance;
 
 import java.awt.geom.Point2D;
 import java.util.Comparator;
+import java.util.Objects;
 
 
 public class KD_TREE<E>{
@@ -30,6 +31,14 @@ public class KD_TREE<E>{
             this.info = info;
             this.left = left;
             this.right = right;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            KD_NODE<?> kd_node = (KD_NODE<?>) o;
+            return coordinates.equals(kd_node.coordinates);
         }
 
         @Override

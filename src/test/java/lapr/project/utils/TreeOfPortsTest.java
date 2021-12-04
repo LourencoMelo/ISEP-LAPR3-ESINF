@@ -98,6 +98,18 @@ class TreeOfPortsTest {
     }
 
     @Test
+    void invalidPortParameters() {
+        TreeOfPorts treeOfPorts = new TreeOfPorts();
+
+        List<KD_TREE.KD_NODE<PortAndWareHouse>> list = treeOfPorts.createListOfPorts(new File("Files/invalidPortTest"));
+
+        System.out.println(list);
+
+        assertEquals(1,list.size());
+
+    }
+
+    @Test
     void wrongFilePath() {
         TreeOfPorts treeOfPorts = new TreeOfPorts();
         assertNull(treeOfPorts.createListOfPorts(new File("Files/ola.csv")));
