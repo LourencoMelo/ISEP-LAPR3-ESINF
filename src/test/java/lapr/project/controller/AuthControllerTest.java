@@ -49,33 +49,33 @@ class AuthControllerTest {
         assertNull(authController.getApp().getCurrentUserSession().getUser());
     }
 
-    @Test
-    void getUserRoles() {
-
-        AuthController authController = new AuthController();
-
-        AuthFacade authFacade = authController.getApp().getCompany().getAuthFacade();
-
-        authFacade.doLogin("joao@gmail.com", "12345");
-
-        System.out.println(authFacade.getCurrentUserByUserSession().getRoles());
-
-        List<UserRole> expected = new ArrayList<>();
-
-        UserRole userRole = new UserRole("TrafficManager","TrafficManager");
-
-        expected.add(userRole);
-
-        UserRoleMapper mapper = new UserRoleMapper();
-
-        List<UserRoleDTO> dtoList = new ArrayList<>();
-
-        dtoList.add(mapper.toDTO(expected).get(0));
-
-        assertEquals(dtoList.size(),authController.getUserRoles().size());
-        assertEquals(dtoList.get(0).getId(),authController.getUserRoles().get(0).getId());
-
-    }
+//    @Test
+//    void getUserRoles() {
+//
+//        AuthController authController = new AuthController();
+//
+//        AuthFacade authFacade = authController.getApp().getCompany().getAuthFacade();
+//
+//        authFacade.doLogin("joao@gmail.com", "12345");
+//
+//        System.out.println(authFacade.getCurrentUserByUserSession().getRoles());
+//
+//        List<UserRole> expected = new ArrayList<>();
+//
+//        UserRole userRole = new UserRole("TrafficManager","TrafficManager");
+//
+//        expected.add(userRole);
+//
+//        UserRoleMapper mapper = new UserRoleMapper();
+//
+//        List<UserRoleDTO> dtoList = new ArrayList<>();
+//
+//        dtoList.add(mapper.toDTO(expected).get(0));
+//
+//        assertEquals(dtoList.size(),authController.getUserRoles().size());
+//        assertEquals(dtoList.get(0).getId(),authController.getUserRoles().get(0).getId());
+//
+//    }
 
     @Test
     void getUserRolesNotLoggedIn() {
