@@ -14,6 +14,9 @@ public class ListOfContainersToBeOffloaded {
     DatabaseConnection databaseConnection = null;
 
 
+    public ListOfContainersToBeOffloaded() {
+    }
+
     public List<Container> getContainersList(String portID) throws SQLException {
 
         //Get a connection to database

@@ -1,0 +1,16 @@
+@startuml
+
+autonumber
+
+actor ShipCaptian #red
+
+System --> ShipCaptian: Authentication Request
+ShipCaptian -> System : Another authentication Response
+System --> ShipCaptian : Authentication successful
+ShipCaptian --> System : Asks for the occupancy rate (percentage) of a given ship at a certain moment
+System --> ShipCaptian : Asks for the Ship MMSI or CallSign
+ShipCaptian --> System : Inserts the data
+System --> ShipCaptian : Ask for the Date of the moment he wants to know
+ShipCaptian --> System : Inserts the data
+System --> ShipCaptian : Shows the occupancy rate (percentage) of a given ship for a given cargo manifest
+@enduml

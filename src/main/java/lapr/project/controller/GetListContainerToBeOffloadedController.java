@@ -33,7 +33,7 @@ public class GetListContainerToBeOffloadedController {
      * Return the list of containers asked
      * @return list of containers
      */
-    public List<Container> getListContainerToBeOffloaded() {
+    public List<Container> getListContainerToBeOffloaded(String portCode) {
         return Collections.emptyList();
     }
 

@@ -1,0 +1,76 @@
+@startuml
+
+class ShipCaptain{
+
+}
+
+class User{
+    -String id <<b>PK>
+    -String password
+    -UserRole role
+}
+
+class UserRole{
+    -String id <<b>PK>
+    -String description
+}
+
+class GetShipOccupancyRateUI{
+    -GetShipOccupancyRateController getShipOccupancyRateController
+    -Scanner in
+    +run()
+    +formatter(String str)
+}
+
+class GetShipOccupancyRateController{
+    -Company company
+    +GetShipOccupancyRateController(Company company)
+    +GetShipOccupancyRateController()
+    +getShipOccupancyRateController(int shipMMSI, LocalDateTime dateTime)
+    +getCompany()
+
+}
+
+class CargoManifest{
+    HashMap<Container, int>
+}
+
+class Ship {
+
+    -int MMSI <<b>PK>
+    -String name
+    -int IMO
+    -int numberEnergyGenerator
+    -int powerOutput
+    -String callSign
+    -int vesselType
+    -double length
+    -double width
+    -int maximumCapacity
+    -double draft
+}
+
+class Container {
+
+    -String containerID <<b>PK>
+    -int checkDigit
+    -String ISO
+    -int gross
+    -int tare
+    -int payload
+    -int maxVolume
+    -int repairRecommendation
+
+}
+
+ShipCaptain --> GetShipOccupancyRateUI : Access
+GetShipOccupancyRateUI -right-> GetShipOccupancyRateController : Connects with
+GetShipOccupancyRateController --> DataBase : Connects with
+DataBase -left-> Ship : has
+CargoManifest --> Container : has
+Ship -right-> CargoManifest : loads
+Ship --> Container : has
+ShipCaptain --> User : is a
+User --> UserRole : has
+
+@enduml

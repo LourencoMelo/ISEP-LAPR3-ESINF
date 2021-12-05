@@ -1,6 +1,6 @@
 package lapr.project.data;
 
-import lapr.project.model.Container;
+import lapr.project.model.Ship;
 
 import java.io.IOException;
 import java.sql.CallableStatement;
@@ -8,15 +8,16 @@ import java.sql.SQLException;
 import java.util.Collections;
 import java.util.List;
 
-public class ListOfContainersToBeLoaded {
+public class ShipsAvailable {
 
     CallableStatement myStm = null;
     DatabaseConnection databaseConnection = null;
 
-    public ListOfContainersToBeLoaded() {
+
+    public ShipsAvailable() {
     }
 
-    public List<Container> getLoadedContainersList(String portID) throws SQLException {
+    public List<Ship> getShipsAvailable(String date) throws SQLException {
 
         //Get a connection to database
         try {
@@ -28,13 +29,13 @@ public class ListOfContainersToBeLoaded {
 
 
             //Prepare the stored procedure call
-            myStm = databaseConnection.getConnection().prepareCall("{call list_of_Loaded_Containers(?)}");
+            myStm = databaseConnection.getConnection().prepareCall("{call ships_available(?)}");
 
             //Set the parameters
-            myStm.setString(1, portID);
+            myStm.setString(1, date);
 
             //Call stored procedure
-            System.out.println("\n\n Calling stored procedure. list_of_Loaded_Containers('" + portID + ")");
+            System.out.println("\n\n Calling stored procedure. ships_available(" + date + ")");
             myStm.execute();
             System.out.println("Finished calling stored procedure.");
 
@@ -45,5 +46,4 @@ public class ListOfContainersToBeLoaded {
 
         return Collections.emptyList();
     }
-
 }

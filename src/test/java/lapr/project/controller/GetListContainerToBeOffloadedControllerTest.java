@@ -45,7 +45,8 @@ public class GetListContainerToBeOffloadedControllerTest {
 
     @Test
     void getListShipsAvailableMondayNextWeekController() {
-        assertEquals(Collections.emptyList(), getListContainerToBeOffloadedController.getListContainerToBeOffloaded());
+        String code = "123";
+        assertEquals(Collections.emptyList(), getListContainerToBeOffloadedController.getListContainerToBeOffloaded(code));
     }
 
 }
