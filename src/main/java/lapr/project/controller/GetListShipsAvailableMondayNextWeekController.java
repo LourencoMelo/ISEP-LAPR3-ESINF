@@ -4,6 +4,7 @@ import lapr.project.model.Company;
 import lapr.project.model.Ship;
 import lapr.project.utils.App;
 
+import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.List;
 
@@ -33,7 +34,7 @@ public class GetListShipsAvailableMondayNextWeekController {
      * Returns the list of ships available on monday next week
      * @return list of ships
      */
-    public List<Ship> getListShipsAvailableMondayNextWeek() {
+    public List<Ship> getListShipsAvailableMondayNextWeek(LocalDateTime date) {
         return Collections.emptyList();
     }
 

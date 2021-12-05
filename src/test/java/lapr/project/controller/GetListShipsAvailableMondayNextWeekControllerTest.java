@@ -6,6 +6,8 @@ import lapr.project.model.ShipByMMSI;
 import lapr.project.utils.App;
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Collections;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -45,7 +47,12 @@ public class GetListShipsAvailableMondayNextWeekControllerTest {
 
     @Test
     void getListShipsAvailableMondayNextWeekController() {
-        assertEquals(Collections.emptyList(), getListShipsAvailableMondayNextWeekController.getListShipsAvailableMondayNextWeek());
+        String date = "02/05/2021 22:03";
+        assertEquals(Collections.emptyList(), getListShipsAvailableMondayNextWeekController.getListShipsAvailableMondayNextWeek(formatter(date)));
     }
 
+    LocalDateTime formatter(String str) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+        return LocalDateTime.parse(str, formatter);
+    }
 }

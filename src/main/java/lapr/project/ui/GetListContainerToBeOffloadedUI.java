@@ -6,6 +6,8 @@ import java.util.Scanner;
 
 public class GetListContainerToBeOffloadedUI implements Runnable {
 
+    Scanner sc = new Scanner(System.in);
+
     private GetListContainerToBeOffloadedController getListContainerToBeOffloadedController;
 
     GetListContainerToBeOffloadedUI() {
@@ -14,7 +16,12 @@ public class GetListContainerToBeOffloadedUI implements Runnable {
 
     @Override
     public void run() {
-        getListContainerToBeOffloadedController.getListContainerToBeOffloaded();
+
+        System.out.println("Write the code of the port: ");
+
+        String code = sc.next();
+
+        getListContainerToBeOffloadedController.getListContainerToBeOffloaded(code);
 
         System.out.println("Done.");
     }
