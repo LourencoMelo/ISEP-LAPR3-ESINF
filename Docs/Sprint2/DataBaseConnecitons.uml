@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>lapr.project.data.ConnectionFactory</OriginalElement>
+  <nodes>
+    <node x="252.75000000000003" y="112.0">lapr.project.data.ConnectionFactory</node>
+    <node x="300.0" y="214.0">lapr.project.data.ContainerSituation</node>
+    <node x="87.0" y="112.0">lapr.project.data.Persistable</node>
+    <node x="512.0" y="214.0">lapr.project.data.ListOfContainersToBeLoaded</node>
+    <node x="248.75000000000003" y="0.0">lapr.project.data.DatabaseConnection</node>
+    <node x="0.0" y="214.0">lapr.project.data.ListOfContainersToBeOffloaded</node>
+  </nodes>
+  <notes />
+  <edges />
+  <settings layout="Hierarchic Group" zoom="1.0" x="384.0" y="133.0" />
+  <SelectedNodes>
+    <node>lapr.project.data.ConnectionFactory</node>
+  </SelectedNodes>
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

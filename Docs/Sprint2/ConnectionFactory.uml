@@ -1,0 +1,420 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>lapr.project.utils.TreeOfPositionData</OriginalElement>
+  <nodes>
+    <node x="256.58333333333337" y="620.0">lapr.project.auth.store.Files</node>
+    <node x="786.4229202524382" y="214.0">lapr.project.utils.AVL</node>
+    <node x="0.0" y="326.0">lapr.project.auth.mappers.dto.UserRoleDTO</node>
+    <node x="1616.1497809419498" y="620.0">lapr.project.utils.KD_TREE</node>
+    <node x="100.58333333333337" y="620.0">lapr.project.auth.UserSession</node>
+    <node x="643.5056355291292" y="326.0">lapr.project.auth.Password</node>
+    <node x="1002.9673368799877" y="326.0">lapr.project.utils.TreeOfPositionData</node>
+    <node x="623.702380952381" y="620.0">lapr.project.auth.store.UserStore</node>
+    <node x="1624.733114275283" y="214.0">lapr.project.model.Distance</node>
+    <node x="1334.8032545767483" y="1036.0">lapr.project.utils.App</node>
+    <node x="1415.433114275283" y="762.0">lapr.project.model.Pair</node>
+    <node x="1353.4699212434148" y="934.0">lapr.project.model.Company</node>
+    <node x="1262.8846216032966" y="214.0">lapr.project.model.PositionData</node>
+    <node x="1198.8846216032966" y="620.0">lapr.project.model.ShipByIMO</node>
+    <node x="365.58333333333337" y="488.0">lapr.project.auth.store.UserRoleStore</node>
+    <node x="37.25" y="488.0">lapr.project.auth.mappers.UserRoleMapper</node>
+    <node x="1408.3164476086163" y="620.0">lapr.project.model.PortAndWareHouse</node>
+    <node x="573.4166666666666" y="488.0">lapr.project.auth.User</node>
+    <node x="358.33333333333337" y="326.0">lapr.project.auth.UserRole</node>
+    <node x="1018.8846216032966" y="620.0">lapr.project.model.ShipByCallSign</node>
+    <node x="742.2173368799877" y="0.0">lapr.project.utils.BSTInterface</node>
+    <node x="535.5056355291292" y="326.0">lapr.project.auth.Email</node>
+    <node x="1058.8846216032966" y="488.0">lapr.project.model.Ship</node>
+    <node x="990.0056355291292" y="762.0">lapr.project.utils.TreeOfShips</node>
+    <node x="1515.433114275283" y="762.0">lapr.project.utils.TreeOfPorts</node>
+    <node x="796.2173368799877" y="102.0">lapr.project.utils.BST</node>
+    <node x="0.0" y="1133.0">lapr.project.model.Container</node>
+    <node x="906.2173368799877" y="0.0">java.lang.Comparable</node>
+    <node x="869.8846216032966" y="620.0">lapr.project.model.ShipByMMSI</node>
+    <node x="352.5056355291292" y="762.0">lapr.project.auth.AuthFacade</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="lapr.project.model.Company" target="lapr.project.model.Distance">
+      <point x="48.285714285714334" y="-26.0" />
+      <point x="1453.7556355291292" y="914.0" />
+      <point x="1730.6497809419498" y="914.0" />
+      <point x="1730.6497809419498" y="306.0" />
+      <point x="1718.0664476086163" y="306.0" />
+      <point x="37.33333333333337" y="26.0" />
+    </edge>
+    <edge source="lapr.project.auth.AuthFacade" target="lapr.project.auth.store.UserStore">
+      <point x="58.18181818181819" y="-26.0" />
+      <point x="474.68745371094747" y="742.0" />
+      <point x="713.702380952381" y="742.0" />
+      <point x="30.0" y="26.0" />
+    </edge>
+    <edge source="lapr.project.utils.App" target="lapr.project.auth.UserSession">
+      <point x="-28.799999999999955" y="-26.0" />
+      <point x="1342.0032545767483" y="1016.0" />
+      <point x="168.62491263756328" y="1016.0" />
+      <point x="168.62491263756328" y="742.0" />
+      <point x="117.58333333333337" y="742.0" />
+      <point x="-51.0" y="26.0" />
+    </edge>
+    <edge source="lapr.project.model.Company" target="lapr.project.model.PortAndWareHouse">
+      <point x="11.14285714285711" y="-26.0" />
+      <point x="1416.6127783862719" y="834.0" />
+      <point x="1404.933114275283" y="834.0" />
+      <point x="1404.933114275283" y="742.0" />
+      <point x="1437.6497809419498" y="742.0" />
+      <point x="-58.66666666666663" y="26.0" />
+    </edge>
+    <edge source="lapr.project.utils.AVL" target="lapr.project.utils.BST">
+      <point x="-24.0" y="-26.0" />
+      <point x="798.4229202524382" y="184.0" />
+      <point x="823.2173368799877" y="184.0" />
+      <point x="-9.0" y="26.0" />
+    </edge>
+    <edge source="lapr.project.utils.TreeOfShips" target="lapr.project.model.ShipByIMO">
+      <point x="39.66666666666674" y="-26.0" />
+      <point x="1097.672302195796" y="722.0" />
+      <point x="1288.8846216032966" y="722.0" />
+      <point x="30.0" y="26.0" />
+    </edge>
+    <edge source="lapr.project.auth.store.UserStore" target="lapr.project.auth.User">
+      <point x="-30.0" y="-26.0" />
+      <point x="653.702380952381" y="590.0" />
+      <point x="636.2738095238095" y="590.0" />
+      <point x="22.85714285714289" y="26.0" />
+    </edge>
+    <edge source="lapr.project.auth.store.UserRoleStore" target="lapr.project.auth.UserRole">
+      <point x="0.0" y="-26.0" />
+      <point x="441.58333333333337" y="468.0" />
+      <point x="414.33333333333337" y="468.0" />
+      <point x="0.0" y="26.0" />
+    </edge>
+    <edge source="lapr.project.model.Ship" target="java.lang.Comparable">
+      <point x="-32.0" y="-26.0" />
+      <point x="1066.8846216032966" y="468.0" />
+      <point x="992.4673368799877" y="468.0" />
+      <point x="992.4673368799877" y="77.0" />
+      <point x="986.2173368799877" y="77.0" />
+      <point x="16.0" y="26.0" />
+    </edge>
+    <edge source="lapr.project.model.Company" target="lapr.project.auth.AuthFacade">
+      <point x="-33.428571428571445" y="-26.0" />
+      <point x="1372.0413498148434" y="894.0" />
+      <point x="464.5056355291292" y="894.0" />
+      <point x="48.0" y="26.0" />
+    </edge>
+    <edge source="lapr.project.auth.AuthFacade" target="lapr.project.auth.UserSession">
+      <point x="-34.909090909090935" y="-26.0" />
+      <point x="381.59654462003823" y="712.0" />
+      <point x="219.58333333333337" y="712.0" />
+      <point x="51.0" y="26.0" />
+    </edge>
+    <edge source="lapr.project.utils.TreeOfShips" target="lapr.project.model.ShipByMMSI">
+      <point x="-17.0" y="-26.0" />
+      <point x="1041.0056355291292" y="702.0" />
+      <point x="965.8846216032966" y="702.0" />
+      <point x="32.0" y="26.0" />
+    </edge>
+    <edge source="lapr.project.auth.User" target="lapr.project.auth.Password">
+      <point x="33.33333333333337" y="-26.0" />
+      <point x="646.75" y="468.0" />
+      <point x="699.5056355291292" y="468.0" />
+      <point x="0.0" y="26.0" />
+    </edge>
+    <edge source="lapr.project.auth.UserSession" target="lapr.project.auth.Email">
+      <point x="11.333333333333371" y="-26.0" />
+      <point x="179.91666666666674" y="570.0" />
+      <point x="562.9166666666666" y="570.0" />
+      <point x="562.9166666666666" y="468.0" />
+      <point x="544.3056355291292" y="468.0" />
+      <point x="-35.19999999999999" y="26.0" />
+    </edge>
+    <edge source="lapr.project.auth.UserSession" target="lapr.project.auth.User">
+      <point x="56.666666666666686" y="-26.0" />
+      <point x="225.25" y="590.0" />
+      <point x="590.5595238095237" y="590.0" />
+      <point x="-22.85714285714289" y="26.0" />
+    </edge>
+    <edge source="lapr.project.utils.TreeOfPorts" target="lapr.project.utils.KD_TREE">
+      <point x="54.39999999999998" y="-26.0" />
+      <point x="1637.8331142752832" y="742.0" />
+      <point x="1694.1497809419498" y="742.0" />
+      <point x="26.0" y="26.0" />
+    </edge>
+    <edge source="lapr.project.auth.AuthFacade" target="lapr.project.auth.User">
+      <point x="23.272727272727252" y="-26.0" />
+      <point x="439.7783628018565" y="712.0" />
+      <point x="547.7913498148434" y="712.0" />
+      <point x="547.7913498148434" y="600.0" />
+      <point x="601.9880952380952" y="600.0" />
+      <point x="-11.428571428571445" y="26.0" />
+    </edge>
+    <edge source="lapr.project.utils.TreeOfShips" target="lapr.project.model.ShipByCallSign">
+      <point x="17.0" y="-26.0" />
+      <point x="1075.0056355291292" y="702.0" />
+      <point x="1138.8846216032966" y="702.0" />
+      <point x="40.0" y="26.0" />
+    </edge>
+    <edge source="lapr.project.auth.store.UserStore" target="lapr.project.auth.Password">
+      <point x="50.0" y="-26.0" />
+      <point x="733.702380952381" y="600.0" />
+      <point x="749.4569237990926" y="600.0" />
+      <point x="749.4569237990926" y="468.0" />
+      <point x="736.8389688624626" y="468.0" />
+      <point x="37.33333333333337" y="26.0" />
+    </edge>
+    <edge source="lapr.project.utils.TreeOfPositionData" target="lapr.project.utils.AVL">
+      <point x="-72.0" y="-26.0" />
+      <point x="1026.9673368799877" y="306.0" />
+      <point x="846.4229202524382" y="306.0" />
+      <point x="24.0" y="26.0" />
+    </edge>
+    <edge source="lapr.project.model.PositionData" target="java.lang.Comparable">
+      <point x="0.0" y="-26.0" />
+      <point x="1334.8846216032966" y="77.0" />
+      <point x="1018.2173368799877" y="77.0" />
+      <point x="48.0" y="26.0" />
+    </edge>
+    <edge source="lapr.project.utils.TreeOfShips" target="lapr.project.model.PositionData">
+      <point x="62.33333333333326" y="-26.0" />
+      <point x="1120.3389688624625" y="742.0" />
+      <point x="1362.8735904657592" y="742.0" />
+      <point x="1362.8735904657592" y="286.0" />
+      <point x="1346.8846216032966" y="286.0" />
+      <point x="12.0" y="26.0" />
+    </edge>
+    <edge source="lapr.project.auth.User" target="lapr.project.auth.Email">
+      <point x="6.666666666666629" y="-26.0" />
+      <point x="620.0833333333333" y="418.0" />
+      <point x="579.5056355291292" y="418.0" />
+      <point x="0.0" y="26.0" />
+    </edge>
+    <edge source="lapr.project.utils.TreeOfPositionData" target="lapr.project.utils.BST">
+      <point x="-24.0" y="-26.0" />
+      <point x="1074.9673368799877" y="296.0" />
+      <point x="923.8846216032966" y="296.0" />
+      <point x="923.8846216032966" y="184.0" />
+      <point x="859.2173368799877" y="184.0" />
+      <point x="27.0" y="26.0" />
+    </edge>
+    <edge source="lapr.project.model.Company" target="lapr.project.utils.TreeOfShips">
+      <point x="-18.571428571428555" y="-26.0" />
+      <point x="1386.8984926719863" y="874.0" />
+      <point x="1058.0056355291292" y="874.0" />
+      <point x="0.0" y="26.0" />
+    </edge>
+    <edge source="lapr.project.utils.App" target="lapr.project.model.Company">
+      <point x="14.399999999999977" y="-26.0" />
+      <point x="1385.2032545767483" y="1006.0" />
+      <point x="1405.4699212434148" y="1006.0" />
+      <point x="0.0" y="26.0" />
+    </edge>
+    <edge source="lapr.project.model.ShipByIMO" target="lapr.project.model.Ship">
+      <point x="30.0" y="-26.0" />
+      <point x="1288.8846216032966" y="580.0" />
+      <point x="1123.8846216032966" y="580.0" />
+      <point x="25.0" y="26.0" />
+    </edge>
+    <edge source="lapr.project.auth.UserSession" target="lapr.project.auth.mappers.dto.UserRoleDTO">
+      <point x="-56.66666666666663" y="-26.0" />
+      <point x="111.91666666666674" y="600.0" />
+      <point x="26.75" y="600.0" />
+      <point x="26.75" y="468.0" />
+      <point x="22.66666666666663" y="468.0" />
+      <point x="-45.33333333333337" y="26.0" />
+    </edge>
+    <edge source="lapr.project.auth.mappers.UserRoleMapper" target="lapr.project.auth.mappers.dto.UserRoleDTO">
+      <point x="-53.33333333333334" y="-26.0" />
+      <point x="63.91666666666663" y="468.0" />
+      <point x="68.0" y="468.0" />
+      <point x="0.0" y="26.0" />
+    </edge>
+    <edge source="lapr.project.model.Ship" target="lapr.project.model.PositionData">
+      <point x="32.0" y="-26.0" />
+      <point x="1130.8846216032966" y="468.0" />
+      <point x="1205.4673368799877" y="468.0" />
+      <point x="1205.4673368799877" y="296.0" />
+      <point x="1298.8846216032966" y="296.0" />
+      <point x="-36.0" y="26.0" />
+    </edge>
+    <edge source="lapr.project.auth.store.UserStore" target="lapr.project.auth.Email">
+      <point x="30.0" y="-26.0" />
+      <point x="713.702380952381" y="600.0" />
+      <point x="712.0697178323685" y="600.0" />
+      <point x="712.0697178323685" y="398.0" />
+      <point x="614.7056355291293" y="398.0" />
+      <point x="35.19999999999999" y="26.0" />
+    </edge>
+    <edge source="lapr.project.utils.TreeOfShips" target="lapr.project.model.Ship">
+      <point x="-5.6666666666667425" y="-26.0" />
+      <point x="1052.3389688624625" y="692.0" />
+      <point x="1008.3846216032966" y="692.0" />
+      <point x="1008.3846216032966" y="590.0" />
+      <point x="1083.8846216032966" y="590.0" />
+      <point x="-15.0" y="26.0" />
+    </edge>
+    <edge source="lapr.project.model.Company" target="lapr.project.utils.TreeOfPorts">
+      <point x="40.85714285714289" y="-26.0" />
+      <point x="1446.3270641005577" y="904.0" />
+      <point x="1628.7664476086165" y="904.0" />
+      <point x="45.33333333333337" y="26.0" />
+    </edge>
+    <edge source="lapr.project.utils.AVL" target="java.lang.Comparable">
+      <point x="24.0" y="-26.0" />
+      <point x="846.4229202524382" y="194.0" />
+      <point x="954.2173368799877" y="194.0" />
+      <point x="-16.0" y="26.0" />
+    </edge>
+    <edge source="lapr.project.auth.AuthFacade" target="lapr.project.auth.store.Files">
+      <point x="-23.272727272727252" y="-26.0" />
+      <point x="393.23290825640197" y="702.0" />
+      <point x="300.58333333333337" y="702.0" />
+      <point x="0.0" y="26.0" />
+    </edge>
+    <edge source="lapr.project.utils.TreeOfPorts" target="lapr.project.model.PositionData">
+      <point x="0.0" y="-26.0" />
+      <point x="1583.433114275283" y="742.0" />
+      <point x="1605.483114275283" y="742.0" />
+      <point x="1605.483114275283" y="296.0" />
+      <point x="1394.8846216032966" y="296.0" />
+      <point x="60.0" y="26.0" />
+    </edge>
+    <edge source="lapr.project.utils.TreeOfPositionData" target="lapr.project.model.PositionData">
+      <point x="24.0" y="-26.0" />
+      <point x="1122.9673368799877" y="286.0" />
+      <point x="1274.8846216032966" y="286.0" />
+      <point x="-60.0" y="26.0" />
+    </edge>
+    <edge source="lapr.project.auth.User" target="lapr.project.auth.UserRole">
+      <point x="-33.33333333333337" y="-26.0" />
+      <point x="580.0833333333333" y="448.0" />
+      <point x="446.33333333333337" y="448.0" />
+      <point x="32.0" y="26.0" />
+    </edge>
+    <edge source="lapr.project.model.ShipByMMSI" target="lapr.project.model.Ship">
+      <point x="32.0" y="-26.0" />
+      <point x="965.8846216032966" y="580.0" />
+      <point x="1073.8846216032966" y="580.0" />
+      <point x="-25.0" y="26.0" />
+    </edge>
+    <edge source="lapr.project.model.ShipByCallSign" target="lapr.project.model.Ship">
+      <point x="40.0" y="-26.0" />
+      <point x="1138.8846216032966" y="600.0" />
+      <point x="1103.8846216032966" y="600.0" />
+      <point x="5.0" y="26.0" />
+    </edge>
+    <edge source="lapr.project.utils.BST" target="java.lang.Comparable">
+      <point x="18.0" y="-26.0" />
+      <point x="850.2173368799877" y="77.0" />
+      <point x="922.2173368799877" y="77.0" />
+      <point x="-48.0" y="26.0" />
+    </edge>
+    <edge source="lapr.project.auth.mappers.UserRoleMapper" target="lapr.project.auth.UserRole">
+      <point x="53.33333333333334" y="-26.0" />
+      <point x="170.58333333333337" y="458.0" />
+      <point x="366.33333333333337" y="458.0" />
+      <point x="-48.0" y="26.0" />
+    </edge>
+    <edge source="lapr.project.model.Ship" target="lapr.project.utils.TreeOfPositionData">
+      <point x="16.0" y="-26.0" />
+      <point x="1114.8846216032966" y="458.0" />
+      <point x="1162.9673368799877" y="458.0" />
+      <point x="64.0" y="26.0" />
+    </edge>
+    <edge source="lapr.project.model.Company" target="lapr.project.model.Ship">
+      <point x="-3.7142857142856656" y="-26.0" />
+      <point x="1401.7556355291292" y="854.0" />
+      <point x="1373.8735904657592" y="854.0" />
+      <point x="1373.8735904657592" y="570.0" />
+      <point x="1133.8846216032966" y="570.0" />
+      <point x="35.0" y="26.0" />
+    </edge>
+    <edge source="lapr.project.auth.UserSession" target="lapr.project.auth.mappers.UserRoleMapper">
+      <point x="-34.0" y="-26.0" />
+      <point x="134.58333333333337" y="590.0" />
+      <point x="77.25" y="590.0" />
+      <point x="-40.0" y="26.0" />
+    </edge>
+    <edge source="lapr.project.utils.TreeOfShips" target="lapr.project.utils.BST">
+      <point x="-62.333333333333485" y="-26.0" />
+      <point x="995.6723021957957" y="742.0" />
+      <point x="775.9229202524382" y="742.0" />
+      <point x="775.9229202524382" y="174.0" />
+      <point x="805.2173368799877" y="174.0" />
+      <point x="-27.0" y="26.0" />
+    </edge>
+    <edge source="lapr.project.utils.BST" target="lapr.project.utils.BSTInterface">
+      <point x="-18.0" y="-26.0" />
+      <point x="0.0" y="26.0" />
+    </edge>
+    <edge source="lapr.project.auth.AuthFacade" target="lapr.project.auth.store.UserRoleStore">
+      <point x="11.636363636363626" y="-26.0" />
+      <point x="428.14199916549285" y="702.0" />
+      <point x="450.18958691910507" y="702.0" />
+      <point x="450.18958691910507" y="560.0" />
+      <point x="479.58333333333337" y="560.0" />
+      <point x="38.0" y="26.0" />
+    </edge>
+    <edge source="lapr.project.utils.TreeOfPositionData" target="lapr.project.model.Distance">
+      <point x="72.0" y="-26.0" />
+      <point x="1170.9673368799877" y="306.0" />
+      <point x="1643.3997809419498" y="306.0" />
+      <point x="-37.33333333333337" y="26.0" />
+    </edge>
+    <edge source="lapr.project.utils.KD_TREE" target="lapr.project.model.Distance">
+      <point x="0.0" y="-26.0" />
+      <point x="1668.1497809419498" y="306.0" />
+      <point x="1680.733114275283" y="306.0" />
+      <point x="0.0" y="26.0" />
+    </edge>
+    <edge source="lapr.project.utils.TreeOfPorts" target="lapr.project.model.PortAndWareHouse">
+      <point x="-54.39999999999998" y="-26.0" />
+      <point x="1529.033114275283" y="742.0" />
+      <point x="1496.3164476086163" y="742.0" />
+      <point x="0.0" y="26.0" />
+    </edge>
+    <edge source="lapr.project.model.Company" target="lapr.project.model.PositionData">
+      <point x="3.7142857142857792" y="-26.0" />
+      <point x="1409.1842069577006" y="844.0" />
+      <point x="1381.3021618943308" y="844.0" />
+      <point x="1381.3021618943308" y="296.0" />
+      <point x="1370.8846216032966" y="296.0" />
+      <point x="36.0" y="26.0" />
+    </edge>
+    <edge source="lapr.project.auth.AuthFacade" target="lapr.project.auth.UserRole">
+      <point x="-11.636363636363626" y="-26.0" />
+      <point x="404.8692718927656" y="692.0" />
+      <point x="355.08333333333337" y="692.0" />
+      <point x="355.08333333333337" y="468.0" />
+      <point x="382.33333333333337" y="468.0" />
+      <point x="-32.0" y="26.0" />
+    </edge>
+    <edge source="lapr.project.utils.App" target="lapr.project.auth.AuthFacade">
+      <point x="-14.399999999999977" y="-26.0" />
+      <point x="1356.4032545767482" y="1006.0" />
+      <point x="368.5056355291292" y="1006.0" />
+      <point x="-48.0" y="26.0" />
+    </edge>
+    <edge source="lapr.project.utils.TreeOfShips" target="lapr.project.utils.AVL">
+      <point x="-39.66666666666674" y="-26.0" />
+      <point x="1018.3389688624625" y="722.0" />
+      <point x="822.4229202524382" y="722.0" />
+      <point x="0.0" y="26.0" />
+    </edge>
+    <edge source="lapr.project.model.Company" target="lapr.project.model.Pair">
+      <point x="18.571428571428555" y="-26.0" />
+      <point x="1424.0413498148434" y="874.0" />
+      <point x="1455.433114275283" y="874.0" />
+      <point x="0.0" y="26.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.9" x="466.3888888888889" y="509.44444444444446" />
+  <SelectedNodes>
+    <node>lapr.project.utils.TreeOfPositionData</node>
+  </SelectedNodes>
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
