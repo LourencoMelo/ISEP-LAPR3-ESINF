@@ -21,10 +21,17 @@
 
     <dependencies>
         <!-- Students can only add new dependencies to this section -->
+<!--        <dependency>-->
+<!--            <groupId>com.oracle.ojdbc</groupId>-->
+<!--            <artifactId>ojdbc10</artifactId>-->
+<!--            <version>19.3.0.0</version>-->
+<!--        </dependency>-->
+
         <dependency>
-            <groupId>com.oracle.ojdbc</groupId>
-            <artifactId>ojdbc10</artifactId>
-            <version>19.3.0.0</version>
+            <groupId>com.oracle.database.jdbc</groupId>
+            <artifactId>ojdbc8</artifactId>
+            <version>19.8.0.0</version>
+            <type>jar</type>
         </dependency>
 
 
@@ -39,6 +46,20 @@
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
             <version>${junit.jupiter.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>4.1.0</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-junit-jupiter</artifactId>
+            <version>4.1.0</version>
             <scope>test</scope>
         </dependency>
 
