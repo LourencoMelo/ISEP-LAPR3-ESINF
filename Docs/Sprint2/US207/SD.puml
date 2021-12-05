@@ -1,0 +1,40 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+actor       ShipCaptain                as SC
+participant    ":GetCargoManifestYearUI"         as ui
+participant    ":GetCargoManifestYearController" as ctrl
+participant    ":Company"                 as company
+database       "DataBase"              as db
+
+SC -> ui : I want to know how many cargo manifests I have transported \n during a given year and the average number of containers per manifest
+
+activate ui
+
+ui -> ctrl : getCargoManifestGivenYear(...)
+
+activate ctrl
+
+ctrl -> company : getCargoManifestGivenYear(...)
+
+activate company
+
+ company -> db** : getCargoManifestGivenYear(...)
+
+    company -> db : getCargoManifestGivenYear(...)
+
+    company -> company : getCargoManifestGivenYear(...)
+
+company -> ctrl : result
+
+deactivate company
+
+ctrl -> ui : result
+deactivate ctrl
+
+ui -> SC : result
+
+
+@enduml

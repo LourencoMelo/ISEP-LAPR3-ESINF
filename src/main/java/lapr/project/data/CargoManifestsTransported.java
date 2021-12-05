@@ -1,22 +1,19 @@
 package lapr.project.data;
 
-import lapr.project.model.Container;
-
 import java.io.IOException;
 import java.sql.CallableStatement;
 import java.sql.SQLException;
-import java.util.Collections;
-import java.util.List;
 
-public class ListOfContainersToBeLoaded {
+public class CargoManifestsTransported {
 
     CallableStatement myStm = null;
     DatabaseConnection databaseConnection = null;
 
-    public ListOfContainersToBeLoaded() {
+
+    public CargoManifestsTransported() {
     }
 
-    public List<Container> getLoadedContainersList(String portID) throws SQLException {
+    public void getCargoManifestInfoByYear(int year) throws SQLException {
 
         //Get a connection to database
         try {
@@ -28,13 +25,13 @@ public class ListOfContainersToBeLoaded {
 
 
             //Prepare the stored procedure call
-            myStm = databaseConnection.getConnection().prepareCall("{call list_of_Loaded_Containers(?)}");
+            myStm = databaseConnection.getConnection().prepareCall("{call cargo_manifests_by_year(?)}");
 
             //Set the parameters
-            myStm.setString(1, portID);
+            myStm.setInt(1, year);
 
             //Call stored procedure
-            System.out.println("\n\n Calling stored procedure. list_of_Loaded_Containers('" + portID + ")");
+            System.out.println("\n\n Calling stored procedure. cargo_manifests_by_year('" + year + ")");
             myStm.execute();
             System.out.println("Finished calling stored procedure.");
 
@@ -42,8 +39,5 @@ public class ListOfContainersToBeLoaded {
         } catch (IOException ex) {
             ex.printStackTrace();
         }
-
-        return Collections.emptyList();
     }
-
 }
