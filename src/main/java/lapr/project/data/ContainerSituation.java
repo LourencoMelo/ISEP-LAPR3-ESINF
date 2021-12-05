@@ -12,6 +12,9 @@ public class ContainerSituation {
     DatabaseConnection databaseConnection = null;
 
 
+    public ContainerSituation() {
+    }
+
     public void getCurrentSituation(String containerID, String dateFormatted) throws SQLException {
 
         //Get a connection to database
