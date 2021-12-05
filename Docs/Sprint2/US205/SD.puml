@@ -6,8 +6,7 @@ actor       ShipCaptain                as SC
 participant    ":getListContainerToBeOffloadedUI"         as ui
 participant    ":getListContainerToBeOffloadedController" as ctrl
 participant    ":Company"                 as company
-participant    ":TreeOfShips_MMSI"        as mmsi
-participant    ":TreeOfPorts"             as ports
+database       "DataBase"              as db
 
 SC -> ui : List of containers to be offloaded in the next port
 
@@ -21,21 +20,9 @@ activate ui
 
     activate company
 
-    company -> mmsi : getShipsListContainerToBeOffloaded()
+    company -> db** : getShipsListContainerToBeOffloaded()
 
-    activate mmsi
-
-    mmsi -> mmsi : getShipsListContainerToBeOffloaded()
-
-    deactivate mmsi
-
-    company -> ports : getPortsListContainerToBeOffloaded()
-
-    activate ports
-
-    ports -> ports : getPortsListContainerToBeOffloaded()
-
-    deactivate ports
+    company -> db : getPortsListContainerToBeOffloaded()
 
     company -> company : getListContainerToBeOffloaded()
 

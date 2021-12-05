@@ -10,8 +10,8 @@ System --> Client : Authentication successful
 Client --> GetInfoContainerUI : Asking the current situation of a specific container
 GetInfoContainerUI --> Client : Asks for the containerID
 Client --> GetInfoContainerUI : Inserts the containerID
-GetInfoContainerUI --> GetInfoContainerController : getInfoContainerController(answer)
-GetInfoContainerController --> GetInfoContainerUI : Container
+database       "DataBase"              as db
+GetInfoContainerUI --> db** : getInfoContainerController(answer)
 GetInfoContainerUI --> Client : Delivers the information asked
 
 @enduml

@@ -5,8 +5,7 @@ autonumber
 actor       TrafficManager                as tm
 participant    ":getListShipsAvailableMondayNextWeekUI"         as ui
 participant    ":getListShipsAvailableMondayNextWeekController" as ctrl
-participant    ":Company"                 as company
-participant    ":TreeOfShips_MMSI"        as mmsi
+database       "DataBase"              as db
 
 tm -> ui : List of ships will be available on Monday next week
 
@@ -16,17 +15,7 @@ activate ui
 
     activate ctrl
 
-    ctrl -> company : getListShipsAvailableMondayNextWeek()
-
-    activate company
-
-    company -> mmsi : getListShipsAvailableMondayNextWeek()
-
-    activate mmsi
-
-    deactivate mmsi
-
-    deactivate company
+    ctrl -> db** : getListShipsAvailableMondayNextWeek()
 
     deactivate ctrl
 

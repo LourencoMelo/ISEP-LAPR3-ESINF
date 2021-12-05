@@ -11,6 +11,7 @@ participant    ":TreeOfPorts"   as TreeOfPorts
 participant    ":treeOfShipsCallSign"   as treeOfShipsCallSign
 participant    ":treeOfPositionData"   as TreeOfPositionData
 participant    ":KD:TREE"   as KD
+database       "DataBase"              as db
 
 TM -> UI : , I wish to find the closest port of a ship given its CallSign \n on a certain DateTime.
 activate UI
@@ -25,21 +26,9 @@ activate CTRL
 CTRL -> Company : getClosest(..)
 activate Company
 Company -> Company : getPositionDataByCallSignAndDateTime(...)
-Company -> treeOfShipsCallSign : getShipByCallSign(...)
-activate treeOfShipsCallSign
-treeOfShipsCallSign -> Company : Ship
-deactivate treeOfShipsCallSign
-Company -> TreeOfPositionData : closestData(...)
-activate TreeOfPositionData
-TreeOfPositionData -> Company : PositionData
-deactivate TreeOfPositionData
-Company -> TreeOfPorts : getClosest(...)
-activate TreeOfPorts
-TreeOfPorts -> KD : findNearestNeighbour(...)
-deactivate TreeOfPorts
-activate KD
-KD -> Company : ClosestPort
-deactivate KD
+Company -> db** : getShipByCallSign(...)
+Company -> db : closestData(...)
+Company -> db : getClosest(...)
 Company -> CTRL : ClosestPort
 deactivate Company
 CTRL -> UI : ClosestPort

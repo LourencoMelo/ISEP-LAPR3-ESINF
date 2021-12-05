@@ -4,6 +4,7 @@ autonumber
 
 actor ShipCaptian #red
 
+
 System --> ShipCaptian: Authentication Request
 ShipCaptian -> System : Another authentication Response
 System --> ShipCaptian : Authentication successful
@@ -12,6 +13,8 @@ ShipCaptianUI --> GetOccupancyRateCargoManifestUI : access
 GetOccupancyRateCargoManifestUI --> ShipCaptian : Asks for the Ship MMSI or CallSign
 ShipCaptian --> GetOccupancyRateCargoManifestUI : Inserts the data
 GetOccupancyRateCargoManifestUI --> GetOccupancyRateCargoManifestController : getOccupancyRateCargoManifestController()
+database       "DataBase"              as db
+GetOccupancyRateCargoManifestController -> db** : getOccupancyRateCargoManifestController()
 GetOccupancyRateCargoManifestController --> GetOccupancyRateCargoManifestUI : result
 GetOccupancyRateCargoManifestUI --> ShipCaptian : Shows the occupancy rate (percentage) of a given ship for a given cargo manifest
 

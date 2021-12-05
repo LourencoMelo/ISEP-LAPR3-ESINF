@@ -1,18 +1,8 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="92px" preserveAspectRatio="none" style="width:687px;height:92px;background:#FFFFFF;" version="1.1" viewBox="0 0 687 92" width="687px" zoomAndPan="magnify"><defs><filter height="300%" id="f16hta0550vose" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--MD5=[97ab183161fd5d1db7fba7485cf76add]
-entity Admin--><ellipse cx="42.5" cy="14" fill="#FEFECE" filter="url(#f16hta0550vose)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><path d="M42.5,22 L42.5,49 M29.5,30 L55.5,30 M42.5,49 L29.5,64 M42.5,49 L55.5,64 " fill="none" filter="url(#f16hta0550vose)" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="73" x="6" y="84.0332">Main Admin</text><!--MD5=[566a1df68487c1fb1cc09ccf1a09a80e]
-entity TrafficManager--><ellipse cx="349.5" cy="14" fill="#FEFECE" filter="url(#f16hta0550vose)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><path d="M349.5,22 L349.5,49 M336.5,30 L362.5,30 M349.5,49 L336.5,64 M349.5,49 L362.5,64 " fill="none" filter="url(#f16hta0550vose)" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="100" x="299.5" y="84.0332">Traffic Manager</text><ellipse cx="189.7256" cy="45.9451" fill="#FEFECE" filter="url(#f16hta0550vose)" rx="75.2256" ry="17.4451" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="102" x="135.7256" y="50.4617">Regist new Staff</text><ellipse cx="555.3797" cy="45.9034" fill="#FEFECE" filter="url(#f16hta0550vose)" rx="120.3797" ry="27.9034" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="145" x="480.8797" y="40.8272">Find the closest port of</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="150" x="482.3797" y="58.4366">a ship given its CallSign</text><!--MD5=[e7a0d0f4fa0cf58bcb7420c86b20f03c]
-link Admin to Regist new Staff--><path d="M79.25,46 C89.15,46 99.05,46 108.96,46 " fill="none" id="Admin-to-Regist new Staff" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="114.13,46,105.13,42,109.13,46,105.13,50,114.13,46" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[0ac6ea7f55976f39a0826307614f2cd0]
-link TrafficManager to Find the closest port of \n a ship given its CallSign--><path d="M399.79,46 C409.72,46 419.65,46 429.57,46 " fill="none" id="TrafficManager-to-Find the closest port of \n a ship given its CallSign" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="434.77,46,425.77,42,429.77,46,425.77,50,434.77,46" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[06600a0a1d44a7d3db4cf279d4deca1d]
-@startuml
-'https://plantuml.com/use-case-diagram
-
-:Main Admin: as Admin
-:Traffic Manager: as TrafficManager
-
-Admin -> (Regist new Staff)
-TrafficManager -> (Find the closest port of \n a ship given its CallSign)
-@enduml
-
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="101px" preserveAspectRatio="none" style="width:652px;height:101px;" version="1.1" viewBox="0 0 652 101" width="652px" zoomAndPan="magnify"><defs><filter height="300%" id="f16hta0550vose" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--MD5=[97ab183161fd5d1db7fba7485cf76add]
+entity Admin--><ellipse cx="42.5" cy="17.5" fill="#FEFECE" filter="url(#f16hta0550vose)" rx="8" ry="8" style="stroke: #A80036; stroke-width: 1.5;"/><path d="M42.5,25.5 L42.5,52.5 M29.5,33.5 L55.5,33.5 M42.5,52.5 L29.5,67.5 M42.5,52.5 L55.5,67.5 " fill="none" filter="url(#f16hta0550vose)" style="stroke: #A80036; stroke-width: 1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="73" x="6" y="87.5332">Main Admin</text><!--MD5=[566a1df68487c1fb1cc09ccf1a09a80e]
+entity TrafficManager--><ellipse cx="340.5" cy="17.5" fill="#FEFECE" filter="url(#f16hta0550vose)" rx="8" ry="8" style="stroke: #A80036; stroke-width: 1.5;"/><path d="M340.5,25.5 L340.5,52.5 M327.5,33.5 L353.5,33.5 M340.5,52.5 L327.5,67.5 M340.5,52.5 L353.5,67.5 " fill="none" filter="url(#f16hta0550vose)" style="stroke: #A80036; stroke-width: 1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="100" x="290.5" y="87.5332">Traffic Manager</text><ellipse cx="184.3726" cy="49.4745" fill="#FEFECE" filter="url(#f16hta0550vose)" rx="70.3726" ry="16.4745" style="stroke: #A80036; stroke-width: 1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="102" x="133.3726" y="54.7792">Regist new Staff</text><ellipse cx="533.7005" cy="49.7002" fill="#FEFECE" filter="url(#f16hta0550vose)" rx="108.2005" ry="27.7002" style="stroke: #A80036; stroke-width: 1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="145" x="461.2005" y="45.9116">Find the closest port of</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="150" x="458.7005" y="63.521">a ship given its CallSign</text><!--MD5=[e7a0d0f4fa0cf58bcb7420c86b20f03c]
+link Admin to Regist new Staff--><path d="M79.1094,49.5 C88.9254,49.5 98.7415,49.5 108.558,49.5 " fill="none" id="Admin-&gt;Regist new Staff" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="113.691,49.5,104.691,45.5,108.691,49.5,104.691,53.5,113.691,49.5" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[0ac6ea7f55976f39a0826307614f2cd0]
+link TrafficManager to Find the closest port of \n a ship given its CallSign--><path d="M390.635,49.5 C400.456,49.5 410.278,49.5 420.099,49.5 " fill="none" id="TrafficManager-&gt;Find the closest port of \n a ship given its CallSign" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="425.235,49.5,416.235,45.5,420.235,49.5,416.235,53.5,425.235,49.5" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[906d67f4b046bb4589167528c6e16f59]
 @startuml
 
 :Main Admin: as Admin
@@ -22,10 +12,12 @@ Admin -> (Regist new Staff)
 TrafficManager -> (Find the closest port of \n a ship given its CallSign)
 @enduml
 
-PlantUML version 1.2021.11(Sat Oct 02 14:26:11 BST 2021)
+PlantUML version 1.2020.07(Sun Apr 19 12:42:40 BST 2020)
 (GPL source distribution)
 Java Runtime: OpenJDK Runtime Environment
 JVM: OpenJDK 64-Bit Server VM
+Java Version: 11.0.6+8-b765.40
+Operating System: Windows 10
 Default Encoding: Cp1252
 Language: pt
 Country: PT
