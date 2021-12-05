@@ -1,0 +1,33 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class ShipCaptain{
+
+}
+
+class Company{
+}
+
+class CargoManifest{
+    HashMap<Container, int>
+}
+
+class Container {
+
+    -String containerID <<b>PK>
+    -int checkDigit
+    -String ISO
+    -int gross
+    -int tare
+    -int payload
+    -int maxVolume
+    -int repairRecommendation
+
+}
+
+ShipCaptain --> Company
+Company --> CargoManifest
+Company -> Container
+CargoManifest -> Container
+
+@enduml

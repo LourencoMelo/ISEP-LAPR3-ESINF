@@ -1,0 +1,17 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+skinparam sequenceMessageAlign center
+
+ShipCaptain -> System : I want to know how many cargo manifests I have transported \n during a given year and the average number of containers per manifest
+System --> ShipCaptain : Asks for the year
+
+ShipCaptain -> System : Enters the requested data
+System --> ShipCaptain : Validates and displays the data , asking for confirmation
+
+ShipCaptain -> System : Confirms
+System --> ShipCaptain : Displays how many cargo manifests were transported \n during a given year and the average number of containers per manifest
+
+@enduml

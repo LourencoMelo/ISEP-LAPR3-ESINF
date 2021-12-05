@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="540px" preserveAspectRatio="none" style="width:1217px;height:540px;background:#FFFFFF;" version="1.1" viewBox="0 0 1217 540" width="1217px" zoomAndPan="magnify"><defs><filter height="300%" id="fu4tobi7ogobx" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><rect fill="#FFFFFF" filter="url(#fu4tobi7ogobx)" height="308.0703" style="stroke:#A80036;stroke-width:1.0;" width="10" x="483.5" y="138.3125"/><rect fill="#FFFFFF" filter="url(#fu4tobi7ogobx)" height="238.3672" style="stroke:#A80036;stroke-width:1.0;" width="10" x="703.5" y="168.6641"/><rect fill="#FFFFFF" filter="url(#fu4tobi7ogobx)" height="177.6641" style="stroke:#A80036;stroke-width:1.0;" width="10" x="923.5" y="199.0156"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:5.0,5.0;" x1="46" x2="46" y1="89.6094" y2="455.3828"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:5.0,5.0;" x1="488" x2="488" y1="89.6094" y2="455.3828"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:5.0,5.0;" x1="708" x2="708" y1="89.6094" y2="455.3828"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:5.0,5.0;" x1="928.5" x2="928.5" y1="89.6094" y2="455.3828"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:5.0,5.0;" x1="1182.5" x2="1182.5" y1="253.8203" y2="455.3828"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="77" x="5" y="86.5332">ShipCaptain</text><ellipse cx="46.5" cy="15" fill="#FEFECE" filter="url(#fu4tobi7ogobx)" rx="8" ry="8" style="stroke:#A80036;stroke-width:2.0;"/><path d="M46.5,23 L46.5,50 M33.5,31 L59.5,31 M46.5,50 L33.5,65 M46.5,50 L59.5,65 " fill="none" filter="url(#fu4tobi7ogobx)" style="stroke:#A80036;stroke-width:2.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="77" x="5" y="468.916">ShipCaptain</text><ellipse cx="46.5" cy="481.9922" fill="#FEFECE" filter="url(#fu4tobi7ogobx)" rx="8" ry="8" style="stroke:#A80036;stroke-width:2.0;"/><path d="M46.5,489.9922 L46.5,516.9922 M33.5,497.9922 L59.5,497.9922 M46.5,516.9922 L33.5,531.9922 M46.5,516.9922 L59.5,531.9922 " fill="none" filter="url(#fu4tobi7ogobx)" style="stroke:#A80036;stroke-width:2.0;"/><rect fill="#FEFECE" filter="url(#fu4tobi7ogobx)" height="31.6094" style="stroke:#A80036;stroke-width:1.5;" width="175" x="399" y="53"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="161" x="406" y="74.5332">:GetCargoManifestYearUI</text><rect fill="#FEFECE" filter="url(#fu4tobi7ogobx)" height="31.6094" style="stroke:#A80036;stroke-width:1.5;" width="175" x="399" y="454.3828"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="161" x="406" y="475.916">:GetCargoManifestYearUI</text><rect fill="#FEFECE" filter="url(#fu4tobi7ogobx)" height="31.6094" style="stroke:#A80036;stroke-width:1.5;" width="225" x="594" y="53"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="211" x="601" y="74.5332">:GetCargoManifestYearController</text><rect fill="#FEFECE" filter="url(#fu4tobi7ogobx)" height="31.6094" style="stroke:#A80036;stroke-width:1.5;" width="225" x="594" y="454.3828"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="211" x="601" y="475.916">:GetCargoManifestYearController</text><rect fill="#FEFECE" filter="url(#fu4tobi7ogobx)" height="31.6094" style="stroke:#A80036;stroke-width:1.5;" width="78" x="887.5" y="53"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="64" x="894.5" y="74.5332">:Company</text><rect fill="#FEFECE" filter="url(#fu4tobi7ogobx)" height="31.6094" style="stroke:#A80036;stroke-width:1.5;" width="78" x="887.5" y="454.3828"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="64" x="894.5" y="475.916">:Company</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="62" x="1148.5" y="468.916">DataBase</text><path d="M1164.5,481.9922 C1164.5,471.9922 1182.5,471.9922 1182.5,471.9922 C1182.5,471.9922 1200.5,471.9922 1200.5,481.9922 L1200.5,507.9922 C1200.5,517.9922 1182.5,517.9922 1182.5,517.9922 C1182.5,517.9922 1164.5,517.9922 1164.5,507.9922 L1164.5,481.9922 " fill="#FEFECE" filter="url(#fu4tobi7ogobx)" style="stroke:#000000;stroke-width:1.5;"/><path d="M1164.5,481.9922 C1164.5,491.9922 1182.5,491.9922 1182.5,491.9922 C1182.5,491.9922 1200.5,491.9922 1200.5,481.9922 " fill="none" style="stroke:#000000;stroke-width:1.5;"/><rect fill="#FFFFFF" filter="url(#fu4tobi7ogobx)" height="308.0703" style="stroke:#A80036;stroke-width:1.0;" width="10" x="483.5" y="138.3125"/><rect fill="#FFFFFF" filter="url(#fu4tobi7ogobx)" height="238.3672" style="stroke:#A80036;stroke-width:1.0;" width="10" x="703.5" y="168.6641"/><rect fill="#FFFFFF" filter="url(#fu4tobi7ogobx)" height="177.6641" style="stroke:#A80036;stroke-width:1.0;" width="10" x="923.5" y="199.0156"/><polygon fill="#A80036" points="471.5,134.3125,481.5,138.3125,471.5,142.3125,475.5,138.3125" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;" x1="46.5" x2="477.5" y1="138.3125" y2="138.3125"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="53.5" y="125.2803">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="348" x="64.5" y="117.1045">I want to know how many cargo manifests I have transported</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="403" x="68.5" y="133.4561">during a given year and the average number of containers per manifest</text><polygon fill="#A80036" points="691.5,164.6641,701.5,168.6641,691.5,172.6641,695.5,168.6641" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;" x1="493.5" x2="697.5" y1="168.6641" y2="168.6641"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="500.5" y="163.8076">2</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="180" x="511.5" y="163.8076">getCargoManifestGivenYear(...)</text><polygon fill="#A80036" points="911.5,195.0156,921.5,199.0156,911.5,203.0156,915.5,199.0156" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;" x1="713.5" x2="917.5" y1="199.0156" y2="199.0156"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="720.5" y="194.1592">3</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="180" x="731.5" y="194.1592">getCargoManifestGivenYear(...)</text><polygon fill="#A80036" points="1136.5,225.3672,1146.5,229.3672,1136.5,233.3672,1140.5,229.3672" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;" x1="933.5" x2="1142.5" y1="229.3672" y2="229.3672"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="940.5" y="224.5107">4</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="180" x="951.5" y="224.5107">getCargoManifestGivenYear(...)</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="62" x="1148.5" y="267.5488">DataBase</text><path d="M1164.5,217.0156 C1164.5,207.0156 1182.5,207.0156 1182.5,207.0156 C1182.5,207.0156 1200.5,207.0156 1200.5,217.0156 L1200.5,243.0156 C1200.5,253.0156 1182.5,253.0156 1182.5,253.0156 C1182.5,253.0156 1164.5,253.0156 1164.5,243.0156 L1164.5,217.0156 " fill="#FEFECE" filter="url(#fu4tobi7ogobx)" style="stroke:#000000;stroke-width:1.5;"/><path d="M1164.5,217.0156 C1164.5,227.0156 1182.5,227.0156 1182.5,227.0156 C1182.5,227.0156 1200.5,227.0156 1200.5,217.0156 " fill="none" style="stroke:#000000;stroke-width:1.5;"/><polygon fill="#A80036" points="1170.5,298.9766,1180.5,302.9766,1170.5,306.9766,1174.5,302.9766" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;" x1="933.5" x2="1176.5" y1="302.9766" y2="302.9766"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="940.5" y="298.1201">5</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="180" x="951.5" y="298.1201">getCargoManifestGivenYear(...)</text><line style="stroke:#A80036;stroke-width:1.0;" x1="933.5" x2="975.5" y1="333.3281" y2="333.3281"/><line style="stroke:#A80036;stroke-width:1.0;" x1="975.5" x2="975.5" y1="333.3281" y2="346.3281"/><line style="stroke:#A80036;stroke-width:1.0;" x1="934.5" x2="975.5" y1="346.3281" y2="346.3281"/><polygon fill="#A80036" points="944.5,342.3281,934.5,346.3281,944.5,350.3281,940.5,346.3281" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="940.5" y="328.4717">6</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="180" x="951.5" y="328.4717">getCargoManifestGivenYear(...)</text><polygon fill="#A80036" points="724.5,372.6797,714.5,376.6797,724.5,380.6797,720.5,376.6797" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;" x1="718.5" x2="927.5" y1="376.6797" y2="376.6797"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="730.5" y="371.8232">7</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="32" x="741.5" y="371.8232">result</text><polygon fill="#A80036" points="504.5,403.0313,494.5,407.0313,504.5,411.0313,500.5,407.0313" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;" x1="498.5" x2="707.5" y1="407.0313" y2="407.0313"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="510.5" y="402.1748">8</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="32" x="521.5" y="402.1748">result</text><polygon fill="#A80036" points="57.5,433.3828,47.5,437.3828,57.5,441.3828,53.5,437.3828" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;" x1="51.5" x2="482.5" y1="437.3828" y2="437.3828"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="63.5" y="432.5264">9</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="32" x="74.5" y="432.5264">result</text><!--MD5=[4a09deaaa0901b2eb0a53e7616f8cf97]
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+actor       ShipCaptain                as SC
+participant    ":GetCargoManifestYearUI"         as ui
+participant    ":GetCargoManifestYearController" as ctrl
+participant    ":Company"                 as company
+database       "DataBase"              as db
+
+SC -> ui : I want to know how many cargo manifests I have transported \n during a given year and the average number of containers per manifest
+
+activate ui
+
+ui -> ctrl : getCargoManifestGivenYear(...)
+
+activate ctrl
+
+ctrl -> company : getCargoManifestGivenYear(...)
+
+activate company
+
+ company -> db** : getCargoManifestGivenYear(...)
+
+    company -> db : getCargoManifestGivenYear(...)
+
+    company -> company : getCargoManifestGivenYear(...)
+
+company -> ctrl : result
+
+deactivate company
+
+ctrl -> ui : result
+deactivate ctrl
+
+ui -> SC : result
+
+
+@enduml
+
+@startuml
+
+autonumber
+
+actor       ShipCaptain                as SC
+participant    ":GetCargoManifestYearUI"         as ui
+participant    ":GetCargoManifestYearController" as ctrl
+participant    ":Company"                 as company
+database       "DataBase"              as db
+
+SC -> ui : I want to know how many cargo manifests I have transported \n during a given year and the average number of containers per manifest
+
+activate ui
+
+ui -> ctrl : getCargoManifestGivenYear(...)
+
+activate ctrl
+
+ctrl -> company : getCargoManifestGivenYear(...)
+
+activate company
+
+ company -> db** : getCargoManifestGivenYear(...)
+
+    company -> db : getCargoManifestGivenYear(...)
+
+    company -> company : getCargoManifestGivenYear(...)
+
+company -> ctrl : result
+
+deactivate company
+
+ctrl -> ui : result
+deactivate ctrl
+
+ui -> SC : result
+
+
+@enduml
+
+PlantUML version 1.2021.11(Sat Oct 02 14:26:11 BST 2021)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: Cp1252
+Language: pt
+Country: PT
+--></g></svg>
