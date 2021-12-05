@@ -1,0 +1,23 @@
+@startuml
+
+autonumber
+
+actor ShipCaptain #red
+
+
+System --> ShipCaptain: Authentication Request
+ShipCaptain -> System : Another authentication Response
+System --> ShipCaptainUI : Authentication successful
+ShipCaptainUI --> GetShipOccupancyRateUI : Asks for the occupancy rate (percentage) of a given ship at a certain moment
+GetShipOccupancyRateUI --> ShipCaptain : Asks for the Ship MMSI or CallSign
+ShipCaptain --> GetShipOccupancyRateUI : Inserts the data
+GetShipOccupancyRateUI --> ShipCaptain : Ask for the Date of the moment he wants to know
+ShipCaptain --> GetShipOccupancyRateUI : Inserts the data
+GetShipOccupancyRateUI --> GetShipOccupancyRateController : getShipOccupancyRateController.getShipOccupancyRateController(shipMMSI, formatter(date))
+database       "DataBase"              as db
+GetShipOccupancyRateController -> db** : SQL script
+db -> GetShipOccupancyRateController : result
+GetShipOccupancyRateController -> GetShipOccupancyRateUI : result
+GetShipOccupancyRateUI -> ShipCaptain : Shows the result
+
+@enduml
