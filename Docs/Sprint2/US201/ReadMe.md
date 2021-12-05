@@ -12,7 +12,7 @@ The port manager already registered in the system enters login. The system asks 
 
 ### SD
 
-![](US201_SD.png)
+![](US201_SD.svg)
 
 ### CD
 
