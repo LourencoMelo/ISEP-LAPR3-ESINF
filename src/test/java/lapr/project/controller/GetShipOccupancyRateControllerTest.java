@@ -1,6 +1,6 @@
 package lapr.project.controller;
 
-import javafx.util.converter.LocalDateTimeStringConverter;
+
 import lapr.project.model.Company;
 import lapr.project.model.Ship;
 import lapr.project.model.ShipByMMSI;
@@ -8,7 +8,7 @@ import lapr.project.utils.App;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+
 
 import static org.junit.jupiter.api.Assertions.*;
 
