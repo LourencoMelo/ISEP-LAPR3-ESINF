@@ -1,0 +1,17 @@
+@startuml
+
+autonumber
+
+actor Client #red
+
+System --> Client: Authentication Request
+Client -> System : Another authentication Response
+System --> Client : Authentication successful
+Client --> GetInfoContainerUI : Asking the current situation of a specific container
+GetInfoContainerUI --> Client : Asks for the containerID
+Client --> GetInfoContainerUI : Inserts the containerID
+database       "DataBase"              as db
+GetInfoContainerUI --> db** : getInfoContainerController(answer)
+GetInfoContainerUI --> Client : Delivers the information asked
+
+@enduml

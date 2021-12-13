@@ -1,0 +1,14 @@
+@startuml
+autonumber
+
+actor Client #red
+
+System --> Client: Authentication Request
+Client -> System : Another authentication Response
+System --> Client : Authentication successful
+Client --> System : Asking the current situation of a specific container
+System --> Client : Asks for the containerID
+Client --> System : Inserts the containerID
+System --> Client : Delivers the information asked
+
+@enduml

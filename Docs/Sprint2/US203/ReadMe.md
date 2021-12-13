@@ -1,4 +1,6 @@
-# US103 - As a traffic manager I which to have the positional messages temporally organized and associated with each of the ships
+# US203 - As Project Manager, I want the team to review the relational data model in view
+of the new user stories so it can support all the requirements to fulfil the purpose of the
+system being developed
 
 ## Brief Description
 
