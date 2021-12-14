@@ -2,7 +2,8 @@
 
 ## Brief Description
 
-
+The Ship Chief Electrical Engineer selects the menu option "Get Summary Documents on materials, thermal resistances of refrigerated containers".
+The System will show the summary document, the choice of materials considered for the two types of containers considered, and their thermal resistances.
 
 ## Design
 

@@ -1,14 +1,12 @@
 @startuml
 autonumber
 
-actor Client #red
+actor ShipChiefElectricalEngineer #red
 
-System --> Client: Authentication Request
-Client -> System : Another authentication Response
-System --> Client : Authentication successful
-Client --> System : Asking the current situation of a specific container
-System --> Client : Asks for the containerID
-Client --> System : Inserts the containerID
-System --> Client : Delivers the information asked
+System --> ShipChiefElectricalEngineer: Authentication Request
+ShipChiefElectricalEngineer -> System : Another authentication Response
+System --> ShipChiefElectricalEngineer : Authentication successful
+ShipChiefElectricalEngineer --> System : Asks for the summary document about materials and thermal resistances about refrigerated containers.
+System --> ShipChiefElectricalEngineer : Delivers the summary document
 
 @enduml

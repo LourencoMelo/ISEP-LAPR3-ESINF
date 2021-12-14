@@ -11,7 +11,7 @@ ShipChiefElectricalEngineer --> ShipChiefElectricalEngineerUI : Asks for the set
 ShipChiefElectricalEngineerUI --> GetSetOfMaterialsToContainerAtSevenUI : Connects
 GetSetOfMaterialsToContainerAtSevenUI --> GetSetOfMaterialsToContainerAtSevenController : asks for the info
 database       "DataBase"              as db
-GetSetOfMaterialsToContainerAtSevenController --> db** : getInfoContainerController(answer)
+GetSetOfMaterialsToContainerAtSevenController --> db** : getSetOfMaterialsToContainerAtSevenController()
 db --> GetSetOfMaterialsToContainerAtSevenController : List<String>
 GetSetOfMaterialsToContainerAtSevenController --> GetSetOfMaterialsToContainerAtSevenUI : List<String>
 GetSetOfMaterialsToContainerAtSevenUI --> ShipChiefElectricalEngineer : Delivers the information asked

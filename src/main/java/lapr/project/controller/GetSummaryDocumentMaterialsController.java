@@ -5,7 +5,7 @@ import lapr.project.utils.App;
 
 import java.util.List;
 
-public class GetSetOfMaterialsToContainerAtSevenController {
+public class GetSummaryDocumentMaterialsController {
 
     /**
      * Creates instance of company
@@ -15,22 +15,23 @@ public class GetSetOfMaterialsToContainerAtSevenController {
     /**
      *  Constructor of GetSetOfMaterialsToContainerAtSevenController
      */
-    public GetSetOfMaterialsToContainerAtSevenController(){
+    public GetSummaryDocumentMaterialsController(){
         this(App.getInstance().getCompany());
     }
 
     /**
      *  Constructor of GetSetOfMaterialsToContainerAtSevenController
      */
-    public GetSetOfMaterialsToContainerAtSevenController(Company company){
+    public GetSummaryDocumentMaterialsController(Company company){
         this.company = company;
     }
 
     /**
-     * Method that returns the materials to use at 7 degrees Celcius
-     * @return listOfMaterials
+     * Returns the summary of document
+     * the choice of materials considered for the two types of containers considered,
+     * and their thermal resistances.
      */
-    public List<String> getSetOfMaterialsToContainerAtSevenController(){
+    public List<String> getSummaryDocumentMaterialsController(){
         return null;
     }
 
@@ -43,4 +44,3 @@ public class GetSetOfMaterialsToContainerAtSevenController {
     }
 
 }
-

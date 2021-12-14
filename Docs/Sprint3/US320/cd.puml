@@ -1,19 +1,6 @@
 @startuml
 
-class Container {
-
-    -String containerID <<b>PK>
-    -int checkDigit
-    -String ISO
-    -int gross
-    -int tare
-    -int payload
-    -int maxVolume
-    -int repairRecommendation
-
-}
-
-class Client{
+class ShipChiefElectricalEngineer{
 
 }
 
@@ -29,28 +16,27 @@ class Company{
 
 }
 
-class GetInfoContainerUI{
-    -GetInfoContainerController getInfoContainerController
-    -Scanner in
-    +GetInfoContainerUI()
+class GetSummaryDocumentMaterialsUI{
+    -GetSetOfMaterialsToContainerAtSevenController getSetOfMaterialsToContainerAtSevenController
+    +GetSummaryDocumentMaterialsUI()
     +run()
 }
 
-class GetInfoContainerController{
+class GetSummaryDocumentMaterialsController{
     -Company company
-    +GetInfoContainerController()
-    +GetInfoContainerController(Company company)
-    +getInfoContainerController(String containerID)
+    +GetSummaryDocumentMaterialsController()
+    +GetSummaryDocumentMaterialsController(Company company)
+    +getSummaryDocumentMaterialsController()
     +getCompany()
 }
 
-Client --> GetInfoContainerUI : Access
-GetInfoContainerUI -down-> GetInfoContainerController : Connects with
-Client --> User : is a
+ShipChiefElectricalEngineer --> GetSummaryDocumentMaterialsUI : Access
+GetSummaryDocumentMaterialsUI -down-> GetSummaryDocumentMaterialsController : Connects with
+ShipChiefElectricalEngineer --> User : is a
 User --> UserRole : has
-GetInfoContainerController -up-> GetInfoContainerUI : Returns Container
-GetInfoContainerController --> Company : Connects with
-Company --> GetInfoContainerController : Returns Container
-Company --> Container : has
+GetSummaryDocumentMaterialsController -up-> GetSummaryDocumentMaterialsUI : Returns Info
+GetSummaryDocumentMaterialsController --> Company : Connects with
+Company --> GetSummaryDocumentMaterialsController : Returns Info
+Company --> DataBase : Connects
 
 @enduml

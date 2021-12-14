@@ -28,6 +28,7 @@ public class ShipChiefElectricalEngineerUI implements Runnable {
 
 
             options.add(new MenuItem("Get what set of materials to use in a container, to operate at temperatures of 7°C", new GetSetOfMaterialsToContainerAtSevenUI()));
+            options.add(new MenuItem("Get Summary Documents on materials, thermal resistances of refrigerated containers", new GetSummaryDocumentMaterialsUI()));
 
             int option = 0;
 

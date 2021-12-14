@@ -2,16 +2,18 @@
 
 autonumber
 
-actor Client #red
+actor ShipChiefElectricalEngineer #red
 
-System --> Client: Authentication Request
-Client -> System : Another authentication Response
-System --> Client : Authentication successful
-Client --> GetInfoContainerUI : Asking the current situation of a specific container
-GetInfoContainerUI --> Client : Asks for the containerID
-Client --> GetInfoContainerUI : Inserts the containerID
+System --> ShipChiefElectricalEngineer: Authentication Request
+ShipChiefElectricalEngineer -> System : Another authentication Response
+System --> ShipChiefElectricalEngineer : Authentication successful
+ShipChiefElectricalEngineer --> System : Asks for the summary document about materials and thermal resistances about refrigerated containers.
+ShipChiefElectricalEngineerUI --> GetSummaryDocumentMaterialsUI : Connects
+GetSummaryDocumentMaterialsUI --> GetSummaryDocumentMaterialsController : asks for the info
 database       "DataBase"              as db
-GetInfoContainerUI --> db** : getInfoContainerController(answer)
-GetInfoContainerUI --> Client : Delivers the information asked
+GetSummaryDocumentMaterialsController --> db** : getSummaryDocumentMaterialsController()
+db --> GetSummaryDocumentMaterialsController : List<String>
+GetSummaryDocumentMaterialsController --> GetSummaryDocumentMaterialsUI : List<String>
+GetSummaryDocumentMaterialsUI --> ShipChiefElectricalEngineer : Delivers the summary document
 
 @enduml
