@@ -45,8 +45,8 @@ class Main {
         Connection connection = databaseConnection.getConnection();
 
         System.out.println("Connected to the database!");
-
         */
+
 
         List<MenuItem> options = new ArrayList<>();
         options.add(new MenuItem("Do Login", new AuthUI()));

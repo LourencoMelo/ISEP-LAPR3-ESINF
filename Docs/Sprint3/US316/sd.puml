@@ -2,16 +2,18 @@
 
 autonumber
 
-actor Client #red
+actor PortStaff #red
 
-System --> Client: Authentication Request
-Client -> System : Another authentication Response
-System --> Client : Authentication successful
-Client --> GetInfoContainerUI : Asking the current situation of a specific container
-GetInfoContainerUI --> Client : Asks for the containerID
-Client --> GetInfoContainerUI : Inserts the containerID
+System --> PortStaff: Authentication Request
+PortStaff -> System : Another authentication Response
+System --> PortStaff : Authentication successful
+PortStaff --> PortStaffUI : Asks for the total number of occupied slots on the Port.
+PortStaffUI --> GetTotalNumberOfOccupiedSlotsUI : Connects
+GetTotalNumberOfOccupiedSlotsUI --> GetTotalNumberOfOccupiedSlotsController : asks for the info
 database       "DataBase"              as db
-GetInfoContainerUI --> db** : getInfoContainerController(answer)
-GetInfoContainerUI --> Client : Delivers the information asked
+GetTotalNumberOfOccupiedSlotsController --> db** : getTotalNumberOfOccupiedSlotsController()
+db --> GetTotalNumberOfOccupiedSlotsController : result
+GetTotalNumberOfOccupiedSlotsController --> GetTotalNumberOfOccupiedSlotsUI : result
+GetTotalNumberOfOccupiedSlotsUI --> PortStaff : Delivers the information asked
 
 @enduml
