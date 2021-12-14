@@ -1,9 +1,9 @@
-# US316 - As a Port staff, given a set of positions, I wish to know the total number of occupied slots
+# US313 As a Port staff, given a Cargo Manifest, I wish to fill a statically reserved matrix in memory with each container's ID in its respective place.
 
 ## Brief Description
 
-As a Port staff, given a set of positions, I wish to know the total number of occupied slots.
-The system delivers the the total number of occupied slots.
+As a Port staff, given a Cargo Manifest, I wish to fill a statically reserved matrix in memory with each container's ID in its respective place.
+The system does that requirement.
 
 ## Design
 

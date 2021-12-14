@@ -1,0 +1,21 @@
+@startuml
+
+autonumber
+
+actor PortStaff #red
+
+System --> PortStaff: Authentication Request
+PortStaff -> System : Another authentication Response
+System --> PortStaff : Authentication successful
+PortStaff --> PortStaffUI : Wish to fill a statically reserved matrix in memory with each container's ID in its respective place.
+PortStaffUI --> AllocateCargoManifestToPortUI : Connects
+AllocateCargoManifestToPortUI --> PortStaff : Asks for Cargo Manifest ID
+PortStaff --> AllocateCargoManifestToPortUI : Inserts Cargo Manifest ID
+AllocateCargoManifestToPortUI --> AllocateCargoManifestToPortController : asks for the info
+database       "DataBase"              as db
+AllocateCargoManifestToPortController --> db** : allocateCargoManifestToPortController(cargoManifestId)
+db --> AllocateCargoManifestToPortController : boolean
+AllocateCargoManifestToPortController --> AllocateCargoManifestToPortUI : boolean
+AllocateCargoManifestToPortUI --> PortStaff : Warns of the successful/unsuccessful of the task
+
+@enduml

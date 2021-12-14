@@ -1,0 +1,42 @@
+@startuml
+
+class PortStaff{
+
+}
+
+class User{
+
+}
+
+class UserRole{
+
+}
+
+class Company{
+
+}
+
+class AllocateCargoManifestToPortUI{
+    -AllocateCargoManifestToPortController allocateCargoManifestToPortController
+    +AllocateCargoManifestToPortUI()
+    +run()
+}
+
+class AllocateCargoManifestToPortController{
+    -Company company
+    +AllocateCargoManifestToPortController()
+    +AllocateCargoManifestToPortController(Company company)
+    +allocateCargoManifestToPortController()
+    +getCompany()
+}
+
+PortStaff --> AllocateCargoManifestToPortUI : Access
+AllocateCargoManifestToPortUI -down-> AllocateCargoManifestToPortController : Connects with
+PortStaff --> User : is a
+User --> UserRole : has
+AllocateCargoManifestToPortController -up-> AllocateCargoManifestToPortUI : Returns Info
+AllocateCargoManifestToPortController --> Company : Connects with
+Company --> AllocateCargoManifestToPortController : Returns Info
+Company --> DataBase : Connects
+
+@enduml

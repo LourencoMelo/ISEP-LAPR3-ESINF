@@ -15,6 +15,7 @@ public class PortStaffUI implements Runnable{
             List<MenuItem> options = new ArrayList<>();
 
             options.add(new MenuItem("I wish to know the total number of occupied slots on the Port", new GetTotalNumberOfOccupiedSlotsUI()));
+            options.add(new MenuItem("I wish to fill a statically reserved matrix in memory with each container's ID in its respective place", new AllocateCargoManifestToPortUI()));
 
             int option = 0;
 
