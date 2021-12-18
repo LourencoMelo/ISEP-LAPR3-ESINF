@@ -1,0 +1,22 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+autonumber
+
+actor ShipChiefElectricalEngineer #red
+
+System --> ShipChiefElectricalEngineer: Authentication Request
+ShipChiefElectricalEngineer -> System : Another authentication Response
+System --> ShipChiefElectricalEngineer : Authentication successful
+ShipChiefElectricalEngineer --> ShipChiefElectricalEngineerUI : Asks for the set of materials to use in a container, to operate at temperatures of -5°C.
+ShipChiefElectricalEngineerUI --> GetSetOfMaterialsAtMinus5cUI : Connects
+GetSetOfMaterialsAtMinus5cUI --> GetSetOfMaterialsToContainerAtMinus5cController : asks for the info
+database       "DataBase"              as db
+GetSetOfMaterialsToContainerAtMinus5cController --> db** : GetSetOfMaterialsToContainerAtMinus5cController()
+db --> GetSetOfMaterialsToContainerAtMinus5cController : List<String>
+GetSetOfMaterialsToContainerAtMinus5cController --> GetSetOfMaterialsAtMinus5cUI : List<String>
+GetSetOfMaterialsAtMinus5cUI --> ShipChiefElectricalEngineer : Delivers the information asked
+
+@enduml

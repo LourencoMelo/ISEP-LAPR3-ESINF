@@ -1,0 +1,41 @@
+@startuml
+
+class ShipChiefElectricalEngineer{
+
+}
+
+class User{
+
+}
+
+class UserRole{
+
+}
+
+class Company{
+
+}
+
+class SetOfMaterialsMinus5cUI{
+    -SetOfMaterialsMinus5cController getSetOfMaterialsToContainerAtMinus5cController
+    +GetSetOfMaterialsToContainerAtMinus5cUI()
+    +run()
+}
+
+class SetOfMaterialsMinus5cController{
+    -Company company
+    +getSetOfMaterialsToContainerAtMinus5cController()
+    +GetSetOfMaterialsToContainerAtMinus5cController(Company company)
+    +getCompany()
+}
+
+ShipChiefElectricalEngineer --> SetOfMaterialsMinus5cUI : Access
+SetOfMaterialsMinus5cUI -down-> SetOfMaterialsMinus5cController : Connects with
+ShipChiefElectricalEngineer --> User : is a
+User --> UserRole : has
+SetOfMaterialsMinus5cController -up-> SetOfMaterialsMinus5cUI : Returns Info
+SetOfMaterialsMinus5cController --> Company : Connects with
+Company --> SetOfMaterialsMinus5cController : Returns Info
+Company --> DataBase : Connects
+
+@enduml

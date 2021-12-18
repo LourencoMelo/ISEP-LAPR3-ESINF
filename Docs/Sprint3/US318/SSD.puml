@@ -1,0 +1,14 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+actor ShipChiefElectricalEngineer #red
+
+System --> ShipChiefElectricalEngineer: Authentication Request
+ShipChiefElectricalEngineer -> System : Another authentication Response
+System --> ShipChiefElectricalEngineer : Authentication successful
+ShipChiefElectricalEngineer --> System : Asks for the set of materials to use in a container, to operate at temperatures of -5°C.
+System --> ShipChiefElectricalEngineer : Delivers the information asked
+
+@enduml
