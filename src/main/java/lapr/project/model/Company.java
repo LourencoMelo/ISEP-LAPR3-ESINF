@@ -365,6 +365,14 @@ public class Company {
         //Adds all the edges read on the file received. This file represents all borders between countries.
         graphGenerator.addEdgesFromBorders(borders, countryList);
 
+        //Adds all the ports to the graph
+        graphGenerator.addPortsToGraph(treeOfPorts.getListOfAllPorts());
+
+        //Add edges for all the ports from the same country
+        graphGenerator.addEdgesForPortsSameCountry();
+
+        //Add edges between capitals and closest ports
+        graphGenerator.addEdgesFromClosestPortToCapital(countryList);
     }
 
     /**

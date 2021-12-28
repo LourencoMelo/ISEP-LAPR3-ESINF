@@ -21,11 +21,6 @@ public class GraphGenerator {
      */
     private final Graph<Object, Double> graph;
 
-//    /**
-//     * List of all imported countries
-//     */
-//    private final List<Country> countryList;
-
     /**
      * Constructor that initializes the graph
      */
@@ -135,14 +130,44 @@ public class GraphGenerator {
         }
     }
 
-//    /**
-//     * Getter for the country list
-//     *
-//     * @return list with all countries
-//     */
-//    public List<Country> getCountryList() {
-//        return countryList;
-//    }
+    public void addPortsToGraph(List<PortAndWareHouse> portAndWareHouseList) {
+        for (PortAndWareHouse portAndWareHouse : portAndWareHouseList) {
+            insert(portAndWareHouse);
+        }
+    }
+
+    /**
+     * Adds edges between the closest port and capital from a country
+     *
+     * @param countryList list of countries from the company
+     */
+    public void addEdgesFromClosestPortToCapital(List<Country> countryList) {
+        for (Country country : countryList) {
+            if (country.getTree_of_ports().size() != 0) {
+                Capital capital = country.getCapital();
+                PortAndWareHouse portAndWareHouse = country.getTree_of_ports().findNearestNeighbour(capital.getLatitude(), capital.getLongitude());
+
+                if (portAndWareHouse != null)
+                    graph.addEdge(country.getCapital(), portAndWareHouse, Distance.distance(capital.getLatitude(), capital.getLongitude(), portAndWareHouse.getLat(), portAndWareHouse.getLog()));
+            }
+        }
+    }
+
+    /**
+     * Adds edges between ports from the same country
+     */
+    public void addEdgesForPortsSameCountry() {
+        for (Object vertex : graph.vertices()) {
+            for (Object vertex2 : graph.vertices()) {
+                if (vertex != vertex2 && vertex instanceof PortAndWareHouse && vertex2 instanceof PortAndWareHouse) {
+                    if (((PortAndWareHouse) vertex).getCountry().equals(((PortAndWareHouse) vertex2).getCountry())) {
+                        graph.addEdge(vertex, vertex2, Distance.distance(((PortAndWareHouse) vertex).getLat(), ((PortAndWareHouse) vertex).getLog(), ((PortAndWareHouse) vertex2).getLat(), ((PortAndWareHouse) vertex2).getLog()));
+                    }
+                }
+            }
+        }
+    }
+
 
     /**
      * Getter method to find the capital of a country

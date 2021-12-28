@@ -177,4 +177,18 @@ class GraphGeneratorTest {
         assertNull(graphGenerator.getCapitalByCountryName("Etiópia", countryList));
 
     }
+
+    @Test
+    void wrongFilePath() {
+        List<Country> countryList = new ArrayList<>(); //Creates new List to be filled with countries from the file
+
+        graphGenerator.importCountries(new File("Files/countryWrongPath.csv"), countryList); //Imports the countries from the file
+
+        assertEquals(0, countryList.size());
+
+        graphGenerator.addEdgesFromBorders(new File("Files/bordersWrongPath.csv"), countryList); //Add new edges from the file
+
+        assertEquals(0, graphGenerator.getGraph().numEdges());
+
+    }
 }

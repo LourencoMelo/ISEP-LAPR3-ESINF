@@ -114,6 +114,6 @@ public class TreeOfPorts extends KD_TREE<PortAndWareHouse> {
     }
 
     public List<PortAndWareHouse> getListOfAllPorts() {
-        return listOfAllPorts;
+        return new ArrayList<>(listOfAllPorts);
     }
 }
