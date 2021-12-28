@@ -12,6 +12,7 @@ import java.util.logging.Logger;
 
 public class TreeOfPorts extends KD_TREE<PortAndWareHouse> {
 
+    private final List<PortAndWareHouse> listOfAllPorts = new ArrayList<>();
 
     public void generateKDTREEOfPorts(File file) {
         create2TreeOfPorts(createListOfPorts(file), true);
@@ -40,7 +41,10 @@ public class TreeOfPorts extends KD_TREE<PortAndWareHouse> {
 
                     KD_NODE<PortAndWareHouse> node2D = new KD_NODE<>(portAndWareHouse.getLat(), portAndWareHouse.getLog(), portAndWareHouse, null, null);
 
-                    if (!portAndWareHouseList.contains(node2D)) portAndWareHouseList.add(node2D);
+                    if (!portAndWareHouseList.contains(node2D)) {
+                        portAndWareHouseList.add(node2D);
+                        listOfAllPorts.add(portAndWareHouse);
+                    }
 
 
                 } catch (IllegalArgumentException exception) {
@@ -101,11 +105,15 @@ public class TreeOfPorts extends KD_TREE<PortAndWareHouse> {
 
     /**
      * With the wanted message returns the closest port on that date
+     *
      * @param positionData wanted message
      * @return closest port
      */
-    public PortAndWareHouse getClosest(PositionData positionData){
-        return findNearestNeighbour(positionData.getLatitude(),positionData.getLongitude());
+    public PortAndWareHouse getClosest(PositionData positionData) {
+        return findNearestNeighbour(positionData.getLatitude(), positionData.getLongitude());
     }
 
+    public List<PortAndWareHouse> getListOfAllPorts() {
+        return listOfAllPorts;
+    }
 }

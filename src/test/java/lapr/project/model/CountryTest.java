@@ -5,11 +5,14 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class CountryTest {
+    Capital capital1 = new Capital("Nicosia", 22, 23);
+    Capital capital = new Capital("Nycosya", 22, 23);
 
-    Country country = new Country("Europe","CY","CYP","Cyprus",0.85,"Nicosia",35.16666667,33.366667);
-    Country country2 = new Country("Europe","CY","CYP","Cyprus",0.85,"Nicosia",35.16666667,33.366667);
-    Country country3 = new Country("Europe","MT","MLT","Malta",0.44,"Valletta",35.88333333,14.5);
+    Country country = new Country("Europe","CY","CYP","Cyprus",0.85,capital1);
+    Country country2 = new Country("Europe","CY","CYP","Cyprus",0.85,capital1);
+    Country country3 = new Country("Europe","MT","MLT","Malta",0.44,capital1);
     Country country4 = new Country();
+
 
     @Test
     void getContinent() {
@@ -73,38 +76,14 @@ class CountryTest {
 
     @Test
     void getCapital() {
-        assertEquals("Nicosia", country.getCapital());
+        assertEquals("Nicosia", country.getCapital().getName());
     }
 
     @Test
     void setCapital() {
-        country.setCapital("Nycosya");
+        country.setCapital(capital);
 
-        assertEquals("Nycosya", country.getCapital());
-    }
-
-    @Test
-    void getLatitude() {
-        assertEquals(35.16666667, country.getLatitude());
-    }
-
-    @Test
-    void setLatitude() {
-        country.setLatitude(33);
-
-        assertEquals(33, country.getLatitude());
-    }
-
-    @Test
-    void getLongitude() {
-        assertEquals(33.366667, country.getLongitude());
-    }
-
-    @Test
-    void setLongitude() {
-        country.setLongitude(32);
-
-        assertEquals(32, country.getLongitude());
+        assertEquals("Nycosya", country.getCapital().getName());
     }
 
     @Test
@@ -116,8 +95,6 @@ class CountryTest {
                 ", name='" + country3.getName() + '\'' +
                 ", population='" + country3.getPopulation() + '\'' +
                 ", capital='" + country3.getCapital() + '\'' +
-                ", latitude=" + country3.getLatitude() +
-                ", longitude=" + country3.getLongitude() +
                 '}';
 
         assertEquals(expected, country3.toString());

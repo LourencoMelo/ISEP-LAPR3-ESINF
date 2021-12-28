@@ -1,5 +1,8 @@
 package lapr.project.model;
 
+
+import lapr.project.utils.graph.SubTreeOfPorts;
+
 import java.util.Objects;
 
 public class Country {
@@ -32,39 +35,31 @@ public class Country {
     /**
      * Capital of the country
      */
-    private String capital;
+    private Capital capital;
 
     /**
-     * Latitude of the country's capital
+     * 2d tree of ports in the country
      */
-    private double latitude;
-
-    /**
-     * Longitude of the country´s capital
-     */
-    private double longitude;
-
+    private SubTreeOfPorts tree_of_ports;
 
     /**
      * Constructor for country
-     * @param continent continent of the country
-     * @param alpha2 alphanumeric code
-     * @param alpha3 alphanumeric code
-     * @param name name of the country
+     *
+     * @param continent  continent of the country
+     * @param alpha2     alphanumeric code
+     * @param alpha3     alphanumeric code
+     * @param name       name of the country
      * @param population population of the country
-     * @param capital capital of the country
-     * @param latitude latitude of the country
-     * @param longitude longitude of the country
+     * @param capital    capital of the country
      */
-    public Country(String continent, String alpha2, String alpha3, String name, double population, String capital, double latitude, double longitude) {
+    public Country(String continent, String alpha2, String alpha3, String name, double population, Capital capital) {
         setContinent(continent);
         setAlpha2(alpha2);
         setAlpha3(alpha3);
         setName(name);
         setPopulation(population);
         setCapital(capital);
-        setLatitude(latitude);
-        setLongitude(longitude);
+        tree_of_ports = new SubTreeOfPorts();
     }
 
     /**
@@ -75,6 +70,7 @@ public class Country {
 
     /**
      * Getter for continent
+     *
      * @return continent
      */
     public String getContinent() {
@@ -83,6 +79,7 @@ public class Country {
 
     /**
      * Changes the continent
+     *
      * @param continent new continent
      */
     public void setContinent(String continent) {
@@ -91,6 +88,7 @@ public class Country {
 
     /**
      * Getter for alpha2 code
+     *
      * @return alpha2 code
      */
     public String getAlpha2() {
@@ -99,6 +97,7 @@ public class Country {
 
     /**
      * Changes the alpha2 code
+     *
      * @param alpha2 new alpha2 code
      */
     public void setAlpha2(String alpha2) {
@@ -107,6 +106,7 @@ public class Country {
 
     /**
      * Getter for alpha3
+     *
      * @return alpha3
      */
     public String getAlpha3() {
@@ -115,6 +115,7 @@ public class Country {
 
     /**
      * Changes the alpha3 code
+     *
      * @param alpha3 new alpha3 code
      */
     public void setAlpha3(String alpha3) {
@@ -123,6 +124,7 @@ public class Country {
 
     /**
      * Getter for name
+     *
      * @return name
      */
     public String getName() {
@@ -131,6 +133,7 @@ public class Country {
 
     /**
      * Changes the name
+     *
      * @param name name
      */
     public void setName(String name) {
@@ -139,6 +142,7 @@ public class Country {
 
     /**
      * Getter for the population
+     *
      * @return popolation
      */
     public double getPopulation() {
@@ -147,6 +151,7 @@ public class Country {
 
     /**
      * Changes the population
+     *
      * @param population new population
      */
     public void setPopulation(double population) {
@@ -155,54 +160,34 @@ public class Country {
 
     /**
      * Getter for the capital
+     *
      * @return capital
      */
-    public String getCapital() {
+    public Capital getCapital() {
         return capital;
     }
 
     /**
      * Changes the capital
+     *
      * @param capital new capital
      */
-    public void setCapital(String capital) {
+    public void setCapital(Capital capital) {
         this.capital = capital;
     }
 
     /**
-     * Getter for the latitude
-     * @return latitude
+     * Tree of country's ports
+     *
+     * @return 2d tree of ports
      */
-    public double getLatitude() {
-        return latitude;
-    }
-
-    /**
-     * Changes the latitude
-     * @param latitude new latitude
-     */
-    public void setLatitude(double latitude) {
-        this.latitude = latitude;
-    }
-
-    /**
-     * Getter for the longitude
-     * @return longitude
-     */
-    public double getLongitude() {
-        return longitude;
-    }
-
-    /**
-     * Changes the longitude
-     * @param longitude new longitude
-     */
-    public void setLongitude(double longitude) {
-        this.longitude = longitude;
+    public SubTreeOfPorts getTree_of_ports() {
+        return tree_of_ports;
     }
 
     /**
      * Equal method
+     *
      * @param o object to compare
      * @return boolean result. true if objects are the same
      */
@@ -216,6 +201,7 @@ public class Country {
 
     /**
      * Generates hascode
+     *
      * @return hascode
      */
     @Override
@@ -225,6 +211,7 @@ public class Country {
 
     /**
      * Description of the country
+     *
      * @return description
      */
     @Override
@@ -236,8 +223,6 @@ public class Country {
                 ", name='" + name + '\'' +
                 ", population='" + population + '\'' +
                 ", capital='" + capital + '\'' +
-                ", latitude=" + latitude +
-                ", longitude=" + longitude +
                 '}';
     }
 }

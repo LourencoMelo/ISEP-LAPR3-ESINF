@@ -15,6 +15,7 @@ class MapAlgorithmsTest {
 
     final Graph<String, Integer> completeMap = new MapGraph<>(false);
     Graph<String, Integer> incompleteMap = new MapGraph<>(false);
+    final Graph<String, Integer> emptyMap = new MapGraph<>(false);
 
     public MapAlgorithmsTest() {
     }
@@ -91,6 +92,7 @@ class MapAlgorithmsTest {
         path = Algorithms.BreadthFirstSearch(incompleteMap, "Viseu");
         expected = new LinkedList<>(Arrays.asList("Viseu", "Guarda", "Castelo Branco"));
         assertEquals(expected, path, "BreathFirst Viseu");
+
     }
 
     /**
@@ -116,6 +118,8 @@ class MapAlgorithmsTest {
         path = Algorithms.BreadthFirstSearch(incompleteMap, "Viseu");
         List<String> expected = new LinkedList<>(Arrays.asList("Viseu", "Guarda", "Castelo Branco"));
         assertEquals(expected, path, "DepthFirst Viseu");
+
+
     }
 
     /**

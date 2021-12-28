@@ -63,6 +63,8 @@ class MatrixAlgorithmsTest {
      */
     @Test
     public void testBreadthFirstSearch() {
+        System.out.println(completeMap.toString());
+
         System.out.println("Test BreadthFirstSearch");
 
         Assertions.assertNull(Algorithms.BreadthFirstSearch(completeMap, "LX"), "Should be null if vertex does not exist");

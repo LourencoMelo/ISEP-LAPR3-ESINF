@@ -1,9 +1,11 @@
 package lapr.project.model;
 
 import lapr.project.auth.AuthFacade;
+import lapr.project.utils.GraphGenerator;
 import lapr.project.utils.TreeOfPorts;
 import lapr.project.utils.TreeOfShips;
 
+import java.io.File;
 import java.util.List;
 
 import java.time.LocalDateTime;
@@ -32,6 +34,16 @@ public class Company {
     TreeOfPorts treeOfPorts;
 
     /**
+     * List of all company countries
+     */
+    List<Country> countryList;
+
+    /**
+     * Graph generator instance
+     */
+    GraphGenerator graphGenerator;
+
+    /**
      * Instance of AuthFacede
      */
     private final AuthFacade authFacade;
@@ -45,11 +57,13 @@ public class Company {
         this.treeOfShipsIMO = new TreeOfShips();
         this.treeOfShipsCallSign = new TreeOfShips();
         this.treeOfPorts = new TreeOfPorts();
-
+        this.graphGenerator = new GraphGenerator();
+        this.countryList = new ArrayList<>();
     }
 
     /**
      * Return the list of Ships ordered by travelled distance and number of movements (descending/ascending)
+     *
      * @return list of ships
      */
     public List<Ship> printMovementsTravelledAndDeltaDistance() {
@@ -78,6 +92,7 @@ public class Company {
 
     /**
      * Returns the list of ships that are in the TreeOfShips
+     *
      * @return list of ships
      */
     private List<Ship> listMovementsTravelledAndDeltaDistance() {
@@ -95,6 +110,7 @@ public class Company {
 
     /**
      * Returns tree of ships ordered by MMSI
+     *
      * @return tree of ships
      */
     public TreeOfShips getTreeOfShips() {
@@ -103,6 +119,7 @@ public class Company {
 
     /**
      * Returns tree of ships ordered by IMO
+     *
      * @return tree of ships
      */
     public TreeOfShips getTreeOfShipsIMO() {
@@ -111,6 +128,7 @@ public class Company {
 
     /**
      * Returns tree of ships ordered by Call Sign
+     *
      * @return tree of ships
      */
     public TreeOfShips getTreeOfShipsCallSign() {
@@ -119,6 +137,7 @@ public class Company {
 
     /**
      * Returns kd-tree of ports
+     *
      * @return tree of ports
      */
     public TreeOfPorts getTreeOfPorts() {
@@ -141,8 +160,8 @@ public class Company {
         //List of ships between the wanted dates and with the same vessel type
         List<Ship> totalShipsByTravelledDistance = new ArrayList<>();
         for (Ship ship : treeOfShips.inOrder()) {
-            if(ship.getVesselType() == vType && ship.atLeastTwo(date1,date2)) {
-                    totalShipsByTravelledDistance.add(ship);
+            if (ship.getVesselType() == vType && ship.atLeastTwo(date1, date2)) {
+                totalShipsByTravelledDistance.add(ship);
             }
         }
 
@@ -194,9 +213,10 @@ public class Company {
 
     /**
      * Gets the VesselTypes in a List
+     *
      * @return allVesselTypes
      */
-    public List<Integer> getVesselTypes(){
+    public List<Integer> getVesselTypes() {
         //Creates a list of vessel types
         List<Integer> allVesselTypes = new ArrayList<>();
         for (Ship ship : treeOfShips.inOrder()) {
@@ -209,28 +229,30 @@ public class Company {
 
     /**
      * CloseDeparturArrival
+     *
      * @param a
      * @param b
      * @return boolean
      */
-    public boolean closeDepartureArrival(Ship a, Ship b){
+    public boolean closeDepartureArrival(Ship a, Ship b) {
         double distanceArrival = 0;
         double distanceDeparture = 0;
-        distanceArrival = Distance.distance(a.arrivalLatitude(),a.arrivalLongitude(),b.arrivalLatitude(),b.arrivalLongitude());
-        distanceDeparture = Distance.distance(a.departureLatitude(),a.departureLongitude(),b.departureLatitude(),b.departureLongitude());
-        if(distanceArrival <= 5 && distanceDeparture <= 5 && a.travelledDistance() >= 10 && b.travelledDistance() >= 10 && a.travelledDistance() != b.travelledDistance()){
+        distanceArrival = Distance.distance(a.arrivalLatitude(), a.arrivalLongitude(), b.arrivalLatitude(), b.arrivalLongitude());
+        distanceDeparture = Distance.distance(a.departureLatitude(), a.departureLongitude(), b.departureLatitude(), b.departureLongitude());
+        if (distanceArrival <= 5 && distanceDeparture <= 5 && a.travelledDistance() >= 10 && b.travelledDistance() >= 10 && a.travelledDistance() != b.travelledDistance()) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
 
     /**
      * Calculates the travel Distance Differences
+     *
      * @param pairOfShips
      * @return diff
      */
-    public double travelDistanceDifference(Pair<Ship, Ship> pairOfShips){
+    public double travelDistanceDifference(Pair<Ship, Ship> pairOfShips) {
         double diff = 0;
         diff = Math.abs(pairOfShips.getFirst().travelledDistance() - pairOfShips.getSecond().travelledDistance());
         return diff;
@@ -238,18 +260,19 @@ public class Company {
 
     /**
      * Gets the Pair of the Ships aggregated
+     *
      * @return pairs
      */
-    public List<Pair<Ship, Ship>> getPairShips(){
+    public List<Pair<Ship, Ship>> getPairShips() {
         List<Ship> ls = new ArrayList<>();
         List<Pair<Ship, Ship>> pairs = new ArrayList<>();
-        for(Ship ship : treeOfShips.inOrder()){
+        for (Ship ship : treeOfShips.inOrder()) {
             ls.add(ship);
         }
-        for(int i = 0; i < ls.size() - 1; i ++){
-            for(int j = i + 1; j < ls.size(); j ++ ){
-                if(closeDepartureArrival(ls.get(i),ls.get(j))){
-                    pairs.add(Pair.of(ls.get(i),ls.get(j)));
+        for (int i = 0; i < ls.size() - 1; i++) {
+            for (int j = i + 1; j < ls.size(); j++) {
+                if (closeDepartureArrival(ls.get(i), ls.get(j))) {
+                    pairs.add(Pair.of(ls.get(i), ls.get(j)));
                 }
             }
         }
@@ -261,10 +284,10 @@ public class Company {
             if (o1.getFirst().getMMSI() < o2.getFirst().getMMSI()) {
                 return 1;
             }
-            if (travelDistanceDifference(o1) > travelDistanceDifference(o2)){
+            if (travelDistanceDifference(o1) > travelDistanceDifference(o2)) {
                 return -1;
             }
-            if (travelDistanceDifference(o1) < travelDistanceDifference(o2)){
+            if (travelDistanceDifference(o1) < travelDistanceDifference(o2)) {
                 return 1;
             }
             return 0;
@@ -275,13 +298,14 @@ public class Company {
 
     /**
      * Finds the wanted message (PositionData) for the wanted call sign and date
+     *
      * @param callSign call sign
-     * @param date date
+     * @param date     date
      * @return message (position data)
      */
-    public PositionData getPositionDataByCallSignAndDateTime(String callSign, LocalDateTime date){
+    public PositionData getPositionDataByCallSignAndDateTime(String callSign, LocalDateTime date) {
         Ship ship = treeOfShipsCallSign.getShipByCallSign(callSign);
-        if(ship == null){
+        if (ship == null) {
             return null;
         }
         return ship.getTreeOfPositionData().closestData(date);
@@ -289,14 +313,15 @@ public class Company {
 
     /**
      * Returns the closest port of a wanted ship in a wanted time
+     *
      * @param callSign call sign
-     * @param date date
+     * @param date     date
      * @return port
      */
-    public PortAndWareHouse getClosest(String callSign, LocalDateTime date){
-        if(getPositionDataByCallSignAndDateTime(callSign,date) != null){
-            return treeOfPorts.getClosest(getPositionDataByCallSignAndDateTime(callSign,date));
-        }else{
+    public PortAndWareHouse getClosest(String callSign, LocalDateTime date) {
+        if (getPositionDataByCallSignAndDateTime(callSign, date) != null) {
+            return treeOfPorts.getClosest(getPositionDataByCallSignAndDateTime(callSign, date));
+        } else {
             throw new IllegalArgumentException("The data you inserted is illegible");
         }
     }
@@ -304,9 +329,58 @@ public class Company {
 
     /**
      * Gets the AuthFacade
+     *
      * @return authFacade
      */
     public AuthFacade getAuthFacade() {
         return authFacade;
+    }
+
+    /**
+     * Getter method for graph instance
+     *
+     * @return graphGenerator instance
+     */
+    public GraphGenerator getGraphGenerator() {
+        return graphGenerator;
+    }
+
+    /**
+     * Generates the graph with all capitals.
+     *
+     * @param countries list of countries to import
+     * @param borders   list of edges to add to the graph
+     */
+    public void generateGraph(File countries, File borders) {
+
+        //Fills the country list with the countries read on the file received
+        graphGenerator.importCountries(countries, countryList);
+
+        //Fills the countries subtrees of ports
+        fillCountriesSubTreesOfPorts();
+
+        //Inserts the vertex for all the capitals
+        graphGenerator.generateCapitalVertex(countryList);
+
+        //Adds all the edges read on the file received. This file represents all borders between countries.
+        graphGenerator.addEdgesFromBorders(borders, countryList);
+
+    }
+
+    /**
+     * Fills the countries subTrees of ports
+     */
+    public void fillCountriesSubTreesOfPorts() {
+        for (Country country : countryList) {
+            country.getTree_of_ports().fillSubTree(treeOfPorts.getListOfAllPorts(), country.getName());
+        }
+    }
+
+    /**
+     * Gets all the countries from the company
+     * @return list of countries
+     */
+    public List<Country> getCountryList() {
+        return countryList;
     }
 }
