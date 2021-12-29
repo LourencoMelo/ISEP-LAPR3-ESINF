@@ -38,6 +38,11 @@ public class Country {
     private Capital capital;
 
     /**
+     * Colour of the country
+     */
+    private int colour;
+
+    /**
      * 2d tree of ports in the country
      */
     private SubTreeOfPorts tree_of_ports;
@@ -60,12 +65,21 @@ public class Country {
         setPopulation(population);
         setCapital(capital);
         tree_of_ports = new SubTreeOfPorts();
+        this.colour = -1;
     }
 
     /**
      * Empty constructor
      */
     public Country() {
+    }
+
+    public int getColour() {
+        return colour;
+    }
+
+    public void setColour(int colour) {
+        this.colour = colour;
     }
 
     /**

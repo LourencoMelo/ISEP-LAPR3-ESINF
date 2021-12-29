@@ -9,9 +9,7 @@ import lapr.project.utils.graph.matrix.MatrixGraph;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 import java.util.logging.Logger;
 
 public class GraphGenerator {
@@ -184,6 +182,15 @@ public class GraphGenerator {
         return null;
     }
 
+    public Country getCountryByCapitalName(String capitalName, List<Country> countryList){
+        for(Country country : countryList) {
+            if(country.getCapital().getName().equalsIgnoreCase(capitalName)) return country;
+        }
+        return null;
+    }
+
+
+
     /**
      * Gets the graph
      *
@@ -191,5 +198,68 @@ public class GraphGenerator {
      */
     public Graph<Object, Double> getGraph() {
         return graph;
+    }
+
+    public ArrayList<Capital> getVertexCapital(){
+        ArrayList<Capital> capitalArrayList = new ArrayList<>();
+        graph.vertices().forEach(capitals ->
+        {
+            if(capitals instanceof Capital){
+                capitalArrayList.add((Capital) capitals);
+            }
+        });
+        return capitalArrayList;
+    }
+
+    public ArrayList<Capital> getAdjVertexCapital(Capital cap){
+        ArrayList<Capital> adjCapitalArrayList = new ArrayList<>();
+        graph.adjVertices(cap).forEach(capitals ->
+        {
+            if(capitals instanceof Capital){
+                adjCapitalArrayList.add((Capital) capitals);
+            }
+        });
+        return adjCapitalArrayList;
+    }
+
+
+    void colourMap(List<Country> countryList){
+
+        // Assign the first color to first vertex
+        countryList.get(0).setColour(0);
+
+        // A temporary array to store the available colors. False
+        // value of available[cr] would mean that the color cr is
+        // assigned to one of its adjacent vertices
+        boolean[] remainingColors = new boolean[countryList.size()];
+
+        // Initially, all colors are available
+        Arrays.fill(remainingColors, true);
+
+        for(Capital capital : getVertexCapital()){
+            for(Capital capitalAdj : getAdjVertexCapital(capital)){
+                Country country = getCountryByCapitalName(capitalAdj.getName(),countryList);
+                if(country.getColour() != -1){
+                    remainingColors[country.getColour()] = false;
+                }
+
+                // Find the first available color
+                int cr;
+                for (cr = 0; cr < countryList.size(); cr++){
+                    if (remainingColors[cr])
+                        break;
+                }
+
+                getCountryByCapitalName(capitalAdj.getName(),countryList).setColour(cr); // Assign the found color
+
+                // Reset the values back to true for the next iteration
+                Arrays.fill(remainingColors, true);
+            }
+        }
+
+        for(Country country : countryList){
+            System.out.println("Country -> " + country.getName() + " Colour -> " + country.getColour());
+        }
+
     }
 }

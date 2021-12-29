@@ -191,4 +191,17 @@ class GraphGeneratorTest {
         assertEquals(0, graphGenerator.getGraph().numEdges());
 
     }
+
+    @Test
+    void colourCountries(){
+        List<Country> countryList = new ArrayList<>(); //Creates new List to be filled with countries from the file
+
+        graphGenerator.importCountries(new File(PATH_COUNTRIES_TEST), countryList); //Imports the countries from the file
+
+        graphGenerator.generateCapitalVertex(countryList); //Generates vertex for all capital from all countries
+
+        graphGenerator.colourMap(countryList);
+
+
+    }
 }
