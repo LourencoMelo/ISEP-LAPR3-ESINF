@@ -14,10 +14,12 @@ class GenerateGraphControllerTest {
     private static final String PATH_COUNTRIES_TEST = "Files/countries.csv";
     private static final String PATH_BORDERS_TEST = "Files/borders.csv";
 
+    Company company = new Company();
+
     /**
      * Creates an instance of GenerateGraphController
      */
-    GenerateGraphController generateGraphController = new GenerateGraphController(App.getInstance().getCompany());
+    GenerateGraphController generateGraphController = new GenerateGraphController(company);
 
 
     /**
@@ -25,22 +27,21 @@ class GenerateGraphControllerTest {
      */
     @Test
     void GenerateGraphControllerTestMethod() {
-
-        Company company = App.getInstance().getCompany();
-
         assertEquals(company, generateGraphController.getCompany());
     }
 
     @Test
     void generateTest() {
 
-        ImportPortsController importPortsController = new ImportPortsController(App.getInstance().getCompany());
+        ImportPortsController importPortsController = new ImportPortsController(company);
 
         importPortsController.importPorts(new File("Files/bports.csv"));
 
         generateGraphController.generate(new File(PATH_COUNTRIES_TEST), new File(PATH_BORDERS_TEST));
 
-        assertEquals(generateGraphController.getCompany().getGraphGenerator().getGraph(), App.getInstance().getCompany().getGraphGenerator().getGraph());
+        assertEquals(generateGraphController.getCompany().getGraphGenerator().getGraph(),company.getGraphGenerator().getGraph());
+
+        System.out.println(company.getGraphGenerator().getGraph().numVertices());
     }
 
     @Test
