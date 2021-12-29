@@ -1,7 +1,6 @@
 package lapr.project.controller;
 
 import lapr.project.model.Company;
-import lapr.project.model.Country;
 import lapr.project.utils.App;
 
 import java.io.File;
@@ -35,9 +34,6 @@ public class GenerateGraphController {
      */
     public void generate(File countriesFile, File bordersFile){
         company.generateGraph(countriesFile,bordersFile);
-        for (Country country : company.getCountryList()) {
-            System.out.println(country.getTree_of_ports());
-        }
 
     }
 
@@ -49,4 +45,11 @@ public class GenerateGraphController {
         return company.getGraphGenerator().getGraph().toString();
     }
 
+    /**
+     * Gets the company instance
+     * @return company instance
+     */
+    public Company getCompany() {
+        return company;
+    }
 }
