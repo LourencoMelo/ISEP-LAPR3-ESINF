@@ -27,7 +27,11 @@ class GenerateGraphControllerTest {
      */
     @Test
     void GenerateGraphControllerTestMethod() {
-        assertEquals(company, generateGraphController.getCompany());
+        Company company1 = App.getInstance().getCompany();
+
+        GenerateGraphController generateGraphController = new GenerateGraphController();
+
+        assertEquals(company1, generateGraphController.getCompany());
     }
 
     @Test
