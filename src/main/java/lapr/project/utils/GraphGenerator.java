@@ -236,30 +236,26 @@ public class GraphGenerator {
         // Initially, all colors are available
         Arrays.fill(remainingColors, true);
 
-        for(Capital capital : getVertexCapital()){
-            for(Capital capitalAdj : getAdjVertexCapital(capital)){
+        for(Capital capital : getVertexCapital()) {
+            for(Capital capitalAdj : getAdjVertexCapital(capital)) {
                 Country country = getCountryByCapitalName(capitalAdj.getName(),countryList);
                 if(country.getColour() != -1){
                     remainingColors[country.getColour()] = false;
                 }
-
-                // Find the first available color
-                int cr;
-                for (cr = 0; cr < countryList.size(); cr++){
-                    if (remainingColors[cr])
-                        break;
-                }
-
-                getCountryByCapitalName(capitalAdj.getName(),countryList).setColour(cr); // Assign the found color
-
-                // Reset the values back to true for the next iteration
-                Arrays.fill(remainingColors, true);
             }
+            int cor;
+            for(cor = 0;cor < countryList.size(); cor ++){
+                if(remainingColors[cor])
+                    break;
+            }
+
+            getCountryByCapitalName(capital.getName(),countryList).setColour(cor);
+            Arrays.fill(remainingColors, true);
         }
 
         for(Country country : countryList){
             System.out.println("Country -> " + country.getName() + " Colour -> " + country.getColour());
         }
-
     }
+
 }

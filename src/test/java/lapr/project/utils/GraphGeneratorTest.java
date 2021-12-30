@@ -196,9 +196,11 @@ class GraphGeneratorTest {
     void colourCountries(){
         List<Country> countryList = new ArrayList<>(); //Creates new List to be filled with countries from the file
 
-        graphGenerator.importCountries(new File(PATH_COUNTRIES_TEST), countryList); //Imports the countries from the file
+        graphGenerator.importCountries(new File("Files/countries.csv"), countryList); //Imports the countries from the file
 
         graphGenerator.generateCapitalVertex(countryList); //Generates vertex for all capital from all countries
+
+        graphGenerator.addEdgesFromBorders(new File("Files/borders.csv"), countryList); //Add new edges from the file
 
         graphGenerator.colourMap(countryList);
 
