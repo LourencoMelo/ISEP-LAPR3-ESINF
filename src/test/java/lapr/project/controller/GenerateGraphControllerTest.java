@@ -45,6 +45,8 @@ class GenerateGraphControllerTest {
 
         assertEquals(generateGraphController.getCompany().getGraphGenerator().getGraph(),company.getGraphGenerator().getGraph());
 
+        assertEquals(145, company.getGraphGenerator().getGraph().numVertices());
+
         System.out.println(company.getGraphGenerator().getGraph().numVertices());
     }
 
