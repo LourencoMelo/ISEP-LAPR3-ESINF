@@ -360,7 +360,7 @@ public class Company {
         fillCountriesSubTreesOfPorts();
 
         //Inserts the vertex for all the capitals
-        graphGenerator.generateCapitalVertex(countryList);
+        //graphGenerator.generateCapitalVertex(countryList);
 
         //Adds all the edges read on the file received. This file represents all borders between countries.
         graphGenerator.addEdgesFromBorders(borders, countryList);

@@ -24,7 +24,6 @@ public class GraphGenerator {
      */
     public GraphGenerator() {
         this.graph = new MatrixGraph<>(false);
-//        countryList = new ArrayList<>();
     }
 
 
@@ -63,16 +62,16 @@ public class GraphGenerator {
 
     }
 
-    /**
-     * Creates all vertex for respective capitals
-     */
-    public void generateCapitalVertex(List<Country> countryList) {
-
-        for (Country country : countryList) {
-            insert(country.getCapital());
-        }
-
-    }
+//    /**
+//     * Creates all vertex for respective capitals
+//     */
+//    public void generateCapitalVertex(List<Country> countryList) {
+//
+//        for (Country country : countryList) {
+//            insert(country.getCapital());
+//        }
+//
+//    }
 
     /**
      * Inserts new vertex to the graph. Checks if the graph contains the vertex first.

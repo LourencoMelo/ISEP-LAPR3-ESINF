@@ -108,20 +108,20 @@ class GraphGeneratorTest {
         assertEquals(expectedCountryList.toString(), countryList.toString()); //Checks if the content of both lists is the same
     }
 
-    @Test
-    void capitalVertexInsertionTest() {
-
-        List<Country> countryList = new ArrayList<>(); //Creates new List to be filled with countries from the file
-
-        graphGenerator.importCountries(new File(PATH_COUNTRIES_TEST), countryList); //Imports the countries from the file
-
-        graphGenerator.generateCapitalVertex(countryList); //Generates vertex for all capital from all countries
-
-        assertEquals(graphGenerator.getGraph().vertices().size(), expectedVertices.size()); //Checks if the size of both lists is the same
-
-        assertEquals(graphGenerator.getGraph().vertices().toString(), expectedVertices.toString()); //Checks if the content of both lists is the same
-
-    }
+//    @Test
+//    void capitalVertexInsertionTest() {
+//
+//        List<Country> countryList = new ArrayList<>(); //Creates new List to be filled with countries from the file
+//
+//        graphGenerator.importCountries(new File(PATH_COUNTRIES_TEST), countryList); //Imports the countries from the file
+//
+//        graphGenerator.generateCapitalVertex(countryList); //Generates vertex for all capital from all countries
+//
+//        assertEquals(graphGenerator.getGraph().vertices().size(), expectedVertices.size()); //Checks if the size of both lists is the same
+//
+//        assertEquals(graphGenerator.getGraph().vertices().toString(), expectedVertices.toString()); //Checks if the content of both lists is the same
+//
+//    }
 
     @Test
     void insertTest() {
@@ -151,7 +151,7 @@ class GraphGeneratorTest {
 
         graphGenerator.importCountries(new File(PATH_COUNTRIES_TEST), countryList); //Imports the countries from the file
 
-        graphGenerator.generateCapitalVertex(countryList); //Generates vertex for all capital from all countries
+        //graphGenerator.generateCapitalVertex(countryList); //Generates vertex for all capital from all countries
 
         graphGenerator.addEdgesFromBorders(new File(PATH_BORDERS_TEST), countryList); //Add new edges from the file
 
@@ -198,7 +198,7 @@ class GraphGeneratorTest {
 
         graphGenerator.importCountries(new File("Files/countries.csv"), countryList); //Imports the countries from the file
 
-        graphGenerator.generateCapitalVertex(countryList); //Generates vertex for all capital from all countries
+        //graphGenerator.generateCapitalVertex(countryList); //Generates vertex for all capital from all countries
 
         graphGenerator.addEdgesFromBorders(new File("Files/borders.csv"), countryList); //Add new edges from the file
 
