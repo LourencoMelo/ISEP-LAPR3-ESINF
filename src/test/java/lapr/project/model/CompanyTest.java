@@ -2,6 +2,7 @@ package lapr.project.model;
 
 import lapr.project.controller.ImportFileController;
 import lapr.project.controller.ImportPortsController;
+import lapr.project.utils.graph.Edge;
 import org.junit.jupiter.api.Test;
 
 
@@ -14,9 +15,14 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class CompanyTest {
 
+    private static final String PATH_COUNTRIES_TEST = "Files/countries.csv";
+    private static final String PATH_BORDERS_TEST = "Files/borders.csv";
+    private static final String PATH_PORTS_TEST = "Files/bports.csv";
+
     Company company = new Company();
     ImportFileController importFileController = new ImportFileController(company);
     ImportPortsController importPortsController = new ImportPortsController(company);
+
 
     @Test
     void printMovementsTravelledAndDeltaDistance() {
@@ -43,14 +49,14 @@ class CompanyTest {
      */
     @Test
     void getShipPositionMessagesOrderByDateYear() {
-        Ship shipTest = new ShipByMMSI(123456788, "WarCraft", "1023456787","Roger",2, 5.0, 3.0, 20.9);
+        Ship shipTest = new ShipByMMSI(123456788, "WarCraft", "1023456787", "Roger", 2, 5.0, 3.0, 20.9);
 
         PositionData positionDataTestCompare1 = new PositionData(LocalDateTime.of(2012, 11, 8, 13, 39), 11, 2, 2, 2, 4, "1", "S1");
         PositionData positionDataTestCompare2 = new PositionData(LocalDateTime.of(2013, 11, 8, 13, 39), 12, 3, 3, 4, 5, "2", "S2");
         PositionData positionDataTestCompare3 = new PositionData(LocalDateTime.of(2014, 11, 8, 13, 39), 13, 5, 1, 2, 5, "3", "S3");
         PositionData positionDataTestCompare4 = new PositionData(LocalDateTime.of(2015, 11, 8, 13, 39), 14, 6, 1, 4, 5, "4", "S4");
-        PositionData positionDataTestCompare5 = new PositionData(LocalDateTime.of(2016, 11,8,13,39),15,7,3,4,3,"5","S5");
-        PositionData positionDataTestCompare6 = new PositionData(LocalDateTime.of(2017, 11,8,13,39),16,8,3,4,5,"6","S6");
+        PositionData positionDataTestCompare5 = new PositionData(LocalDateTime.of(2016, 11, 8, 13, 39), 15, 7, 3, 4, 3, "5", "S5");
+        PositionData positionDataTestCompare6 = new PositionData(LocalDateTime.of(2017, 11, 8, 13, 39), 16, 8, 3, 4, 5, "6", "S6");
 
         shipTest.addPositionData(positionDataTestCompare1);
         shipTest.addPositionData(positionDataTestCompare2);
@@ -74,9 +80,9 @@ class CompanyTest {
 
     //A pair of ships that passes all the requirements
     @Test
-    void closeDepartureArrivalTest(){
-        Ship shipTest1 = new ShipByMMSI(123456788, "WarCraft", "1023456787","Roger",2, 5.0, 3.0, 20.9);
-        Ship shipTest2 = new ShipByMMSI(123456789, "Carlos", "1023456788","Pedro",2, 5.0, 3.0, 20.9);
+    void closeDepartureArrivalTest() {
+        Ship shipTest1 = new ShipByMMSI(123456788, "WarCraft", "1023456787", "Roger", 2, 5.0, 3.0, 20.9);
+        Ship shipTest2 = new ShipByMMSI(123456789, "Carlos", "1023456788", "Pedro", 2, 5.0, 3.0, 20.9);
 
         //Partida ship 1
         PositionData positionDataTestCompare1 = new PositionData(LocalDateTime.of(2021, 11, 8, 13, 39), 27.86118, -78.01013, 2, 2, 4, "1", "S1");
@@ -97,9 +103,9 @@ class CompanyTest {
 
     // Dont have close departure/arrival coordinates
     @Test
-    void closeDepartureArrivalTest2(){
-        Ship shipTest1 = new ShipByMMSI(123456788, "WarCraft", "1023456787","Roger",2, 5.0, 3.0, 20.9);
-        Ship shipTest2 = new ShipByMMSI(123456789, "Carlos", "1023456788","Pedro",2, 5.0, 3.0, 20.9);
+    void closeDepartureArrivalTest2() {
+        Ship shipTest1 = new ShipByMMSI(123456788, "WarCraft", "1023456787", "Roger", 2, 5.0, 3.0, 20.9);
+        Ship shipTest2 = new ShipByMMSI(123456789, "Carlos", "1023456788", "Pedro", 2, 5.0, 3.0, 20.9);
 
         //Partida ship 1
         PositionData positionDataTestCompare1 = new PositionData(LocalDateTime.of(2021, 11, 8, 13, 39), 40.86118, -80.01013, 2, 2, 4, "1", "S1");
@@ -121,9 +127,9 @@ class CompanyTest {
 
     // The ships aren't eligible because both have the same travelled distance
     @Test
-    void closeDepartureArrivalTest3(){
-        Ship shipTest1 = new ShipByMMSI(123456788, "WarCraft", "1023456787","Roger",2, 5.0, 3.0, 20.9);
-        Ship shipTest2 = new ShipByMMSI(123456789, "Carlos", "1023456788","Pedro",2, 5.0, 3.0, 20.9);
+    void closeDepartureArrivalTest3() {
+        Ship shipTest1 = new ShipByMMSI(123456788, "WarCraft", "1023456787", "Roger", 2, 5.0, 3.0, 20.9);
+        Ship shipTest2 = new ShipByMMSI(123456789, "Carlos", "1023456788", "Pedro", 2, 5.0, 3.0, 20.9);
 
         //Partida ship 1
         PositionData positionDataTestCompare1 = new PositionData(LocalDateTime.of(2021, 11, 8, 13, 39), 27.86118, -78.01013, 2, 2, 4, "1", "S1");
@@ -144,9 +150,9 @@ class CompanyTest {
 
     // The ships aren't eligible because they don´t have at least 10km travelled
     @Test
-    void closeDepartureArrivalTest4(){
-        Ship shipTest1 = new ShipByMMSI(123456788, "WarCraft", "1023456787","Roger",2, 5.0, 3.0, 20.9);
-        Ship shipTest2 = new ShipByMMSI(123456789, "Carlos", "1023456788","Pedro",2, 5.0, 3.0, 20.9);
+    void closeDepartureArrivalTest4() {
+        Ship shipTest1 = new ShipByMMSI(123456788, "WarCraft", "1023456787", "Roger", 2, 5.0, 3.0, 20.9);
+        Ship shipTest2 = new ShipByMMSI(123456789, "Carlos", "1023456788", "Pedro", 2, 5.0, 3.0, 20.9);
 
         //Partida ship 1
         PositionData positionDataTestCompare1 = new PositionData(LocalDateTime.of(2021, 11, 8, 13, 39), 27.86118, -78.01013, 2, 2, 4, "1", "S1");
@@ -167,9 +173,9 @@ class CompanyTest {
 
     //The ships have close departure but not arrival
     @Test
-    void closeDepartureArrivalTest5(){
-        Ship shipTest1 = new ShipByMMSI(123456788, "WarCraft", "1023456787","Roger",2, 5.0, 3.0, 20.9);
-        Ship shipTest2 = new ShipByMMSI(123456789, "Carlos", "1023456788","Pedro",2, 5.0, 3.0, 20.9);
+    void closeDepartureArrivalTest5() {
+        Ship shipTest1 = new ShipByMMSI(123456788, "WarCraft", "1023456787", "Roger", 2, 5.0, 3.0, 20.9);
+        Ship shipTest2 = new ShipByMMSI(123456789, "Carlos", "1023456788", "Pedro", 2, 5.0, 3.0, 20.9);
 
         //Partida ship 1
         PositionData positionDataTestCompare1 = new PositionData(LocalDateTime.of(2021, 11, 8, 13, 39), 27.86118, -78.01013, 2, 2, 4, "1", "S1");
@@ -190,9 +196,9 @@ class CompanyTest {
 
     //The pair has close arrival but not departure
     @Test
-    void closeDepartureArrivalTest6(){
-        Ship shipTest1 = new ShipByMMSI(123456788, "WarCraft", "1023456787","Roger",2, 5.0, 3.0, 20.9);
-        Ship shipTest2 = new ShipByMMSI(123456789, "Carlos", "1023456788","Pedro",2, 5.0, 3.0, 20.9);
+    void closeDepartureArrivalTest6() {
+        Ship shipTest1 = new ShipByMMSI(123456788, "WarCraft", "1023456787", "Roger", 2, 5.0, 3.0, 20.9);
+        Ship shipTest2 = new ShipByMMSI(123456789, "Carlos", "1023456788", "Pedro", 2, 5.0, 3.0, 20.9);
 
         //Partida ship 1
         PositionData positionDataTestCompare1 = new PositionData(LocalDateTime.of(2021, 11, 8, 13, 39), 27.86118, -78.01013, 2, 2, 4, "1", "S1");
@@ -213,9 +219,9 @@ class CompanyTest {
 
     // The ships aren't eligible because one of them don't have 10km travelled
     @Test
-    void closeDepartureArrivalTest7(){
-        Ship shipTest1 = new ShipByMMSI(123456788, "WarCraft", "1023456787","Roger",2, 5.0, 3.0, 20.9);
-        Ship shipTest2 = new ShipByMMSI(123456789, "Carlos", "1023456788","Pedro",2, 5.0, 3.0, 20.9);
+    void closeDepartureArrivalTest7() {
+        Ship shipTest1 = new ShipByMMSI(123456788, "WarCraft", "1023456787", "Roger", 2, 5.0, 3.0, 20.9);
+        Ship shipTest2 = new ShipByMMSI(123456789, "Carlos", "1023456788", "Pedro", 2, 5.0, 3.0, 20.9);
 
         //Partida ship 1
         PositionData positionDataTestCompare1 = new PositionData(LocalDateTime.of(2021, 11, 8, 13, 39), 27.86118, -78.01013, 2, 2, 4, "1", "S1");
@@ -238,9 +244,9 @@ class CompanyTest {
     }
 
     @Test
-    void travelDistanceDifferenceTest(){
-        Ship shipTest1 = new ShipByMMSI(123456788, "WarCraft", "1023456787","Roger",2, 5.0, 3.0, 20.9);
-        Ship shipTest2 = new ShipByMMSI(123456789, "Carlos", "1023456788","Pedro",2, 5.0, 3.0, 20.9);
+    void travelDistanceDifferenceTest() {
+        Ship shipTest1 = new ShipByMMSI(123456788, "WarCraft", "1023456787", "Roger", 2, 5.0, 3.0, 20.9);
+        Ship shipTest2 = new ShipByMMSI(123456789, "Carlos", "1023456788", "Pedro", 2, 5.0, 3.0, 20.9);
 
         //Partida ship 1
         PositionData positionDataTestCompare1 = new PositionData(LocalDateTime.of(2021, 11, 8, 13, 39), 27.86118, -78.01013, 2, 2, 4, "1", "S1");
@@ -256,30 +262,30 @@ class CompanyTest {
         shipTest2.addPositionData(positionDataTestCompare2);
         shipTest2.addPositionData(positionDataTestCompare4);
 
-        Pair<Ship, Ship> test = Pair.of(shipTest1,shipTest2);
+        Pair<Ship, Ship> test = Pair.of(shipTest1, shipTest2);
         double expected = 144.7276176940785;
         double result = company.travelDistanceDifference(test);
-        assertEquals(expected,result);
+        assertEquals(expected, result);
     }
 
     @Test
-    void getPairShips(){
+    void getPairShips() {
         importFileController.importShips(new File("Files/pairsTest.csv"));
 
         Boolean result = false;
 
-        if(company.getPairShips().size() == 4) result = true;
+        if (company.getPairShips().size() == 4) result = true;
 
         assertTrue(result);
     }
 
     @Test
-    void getPairOfShipsTestOrder(){
+    void getPairOfShipsTestOrder() {
         importFileController.importShips(new File("Files/pairsTest.csv"));
         List<Pair<Ship, Ship>> test = company.getPairShips();
         Boolean result = false;
 
-        if(test.get(0).getFirst().getMMSI() > test.get(1).getFirst().getMMSI()){
+        if (test.get(0).getFirst().getMMSI() > test.get(1).getFirst().getMMSI()) {
             result = true;
         }
 
@@ -287,18 +293,18 @@ class CompanyTest {
     }
 
     @Test
-    void getPairOfShipsTestOrder2(){
+    void getPairOfShipsTestOrder2() {
         importFileController.importShips(new File("Files/pairsTest.csv"));
         List<Pair<Ship, Ship>> test = company.getPairShips();
         Boolean result = false;
 
-        for(int i = 0; i < test.size() - 1; i ++) {
+        for (int i = 0; i < test.size() - 1; i++) {
             int j = i + 1;
-            if(test.get(i).getFirst().getMMSI() > test.get(j).getFirst().getMMSI()){
+            if (test.get(i).getFirst().getMMSI() > test.get(j).getFirst().getMMSI()) {
                 result = true;
-            }else if(test.get(i).getFirst().getMMSI() == test.get(j).getFirst().getMMSI()){
+            } else if (test.get(i).getFirst().getMMSI() == test.get(j).getFirst().getMMSI()) {
                 result = false;
-                if(company.travelDistanceDifference(test.get(i)) > company.travelDistanceDifference(test.get(j))){
+                if (company.travelDistanceDifference(test.get(i)) > company.travelDistanceDifference(test.get(j))) {
                     result = true;
                 }
             }
@@ -316,15 +322,15 @@ class CompanyTest {
         expected.add(80);
         expected.add(79);
 
-        List<Integer>  result = company.getVesselTypes();
-        assertEquals(expected,result);
+        List<Integer> result = company.getVesselTypes();
+        assertEquals(expected, result);
     }
 
 
     @Test
     void getTopShipsWithMostKm() {
-        LocalDateTime date1 = LocalDateTime.of(2020,12,31,10,0);
-        LocalDateTime date2 = LocalDateTime.of(2020,12,31,22,30);
+        LocalDateTime date1 = LocalDateTime.of(2020, 12, 31, 10, 0);
+        LocalDateTime date2 = LocalDateTime.of(2020, 12, 31, 22, 30);
 
         importFileController.importShips(new File("Files/sships.csv"));
 
@@ -332,13 +338,13 @@ class CompanyTest {
         Ship shipTest1 = company.getTreeOfShips().getShipByMMSI(257881000);
         Ship shipTest2 = company.getTreeOfShips().getShipByMMSI(210950000);
 
-        double mean1 = shipTest1.meanSOG(date1,date2);
-        double mean2 = shipTest2.meanSOG(date1,date2);
+        double mean1 = shipTest1.meanSOG(date1, date2);
+        double mean2 = shipTest2.meanSOG(date1, date2);
 
         expected.put(shipTest1, mean1);
         expected.put(shipTest2, mean2);
 
-        Map<Ship, Double> result = company.getTopShipsWithMostKmByVesselType(date1,date2,2,70);
+        Map<Ship, Double> result = company.getTopShipsWithMostKmByVesselType(date1, date2, 2, 70);
         assertEquals(expected, result);
     }
 
@@ -351,15 +357,15 @@ class CompanyTest {
         importFileController.importShips(new File("Files/sships.csv"));
         Boolean result = false;
 
-        Map<Ship, Double> map = company.getTopShipsWithMostKmByVesselType(date1,date2,3,70);
+        Map<Ship, Double> map = company.getTopShipsWithMostKmByVesselType(date1, date2, 3, 70);
         for (Map.Entry<Ship, Double> topN : map.entrySet()) {
             testList.add(topN.getKey());
         }
 
-        for(int i = 0; i < testList.size() - 1; i ++) {
+        for (int i = 0; i < testList.size() - 1; i++) {
             int j = i + 1;
             result = false;
-            if(testList.get(i).getTreeOfPositionData().travelledDistanceBtDates(date1,date2) >  testList.get(j).getTreeOfPositionData().travelledDistanceBtDates(date1,date2)){
+            if (testList.get(i).getTreeOfPositionData().travelledDistanceBtDates(date1, date2) > testList.get(j).getTreeOfPositionData().travelledDistanceBtDates(date1, date2)) {
                 result = true;
             }
         }
@@ -369,90 +375,90 @@ class CompanyTest {
     }
 
     @Test
-    void getPositionDataByCallSignAndDateTimeTest(){
+    void getPositionDataByCallSignAndDateTimeTest() {
         LocalDateTime date1 = LocalDateTime.of(2020, 12, 31, 16, 14);
         String callSignTest = "C4SQ2";
         importFileController.importShips(new File("Files/sships.csv"));
 
-        LocalDateTime datetest1 = LocalDateTime.of(2020, 12,31,16,12);
-        PositionData expected = new PositionData(datetest1,42.73879,-66.97726,13.4,3.4,357,"NA","B");
+        LocalDateTime datetest1 = LocalDateTime.of(2020, 12, 31, 16, 12);
+        PositionData expected = new PositionData(datetest1, 42.73879, -66.97726, 13.4, 3.4, 357, "NA", "B");
 
-        PositionData result = company.getPositionDataByCallSignAndDateTime(callSignTest,date1);
+        PositionData result = company.getPositionDataByCallSignAndDateTime(callSignTest, date1);
 
-        assertEquals(expected.getBaseDateTime(),result.getBaseDateTime());
+        assertEquals(expected.getBaseDateTime(), result.getBaseDateTime());
     }
 
     @Test
-    void getPositionDataByCallSignAndDateTimeTest2(){
+    void getPositionDataByCallSignAndDateTimeTest2() {
         LocalDateTime date1 = LocalDateTime.of(2020, 12, 31, 0, 24);
         String callSignTest = "FLSU";
         importFileController.importShips(new File("Files/sships.csv"));
 
-        LocalDateTime datetest1 = LocalDateTime.of(2020, 12,31,0,20);
-        PositionData expected = new PositionData(datetest1,28.33263,-88.82491,11.8,129.5,131,"79","B");
+        LocalDateTime datetest1 = LocalDateTime.of(2020, 12, 31, 0, 20);
+        PositionData expected = new PositionData(datetest1, 28.33263, -88.82491, 11.8, 129.5, 131, "79", "B");
 
-        PositionData result = company.getPositionDataByCallSignAndDateTime(callSignTest,date1);
+        PositionData result = company.getPositionDataByCallSignAndDateTime(callSignTest, date1);
 
-        assertEquals(expected.getBaseDateTime(),result.getBaseDateTime());
+        assertEquals(expected.getBaseDateTime(), result.getBaseDateTime());
     }
 
     @Test
-    void getPositionDataByCallSignAndDateTimeTest3(){
+    void getPositionDataByCallSignAndDateTimeTest3() {
         LocalDateTime date1 = LocalDateTime.of(2020, 12, 30, 23, 55);
         String callSignTest = "FLSU";
         importFileController.importShips(new File("Files/sships.csv"));
 
-        PositionData result = company.getPositionDataByCallSignAndDateTime(callSignTest,date1);
+        PositionData result = company.getPositionDataByCallSignAndDateTime(callSignTest, date1);
 
         assertNull(result);
     }
 
     @Test
-    void getPositionDataByCallSignAndDateTimeTest4(){
+    void getPositionDataByCallSignAndDateTimeTest4() {
         LocalDateTime date1 = LocalDateTime.of(2020, 12, 31, 19, 55);
         String callSignTest = "C4SQ2";
         importFileController.importShips(new File("Files/sships.csv"));
 
-        LocalDateTime datetest1 = LocalDateTime.of(2020, 12,31,18,31);
-        PositionData expected = new PositionData(datetest1,43.22513,-66.96725,11.7,5.5,355,"NA","B");
+        LocalDateTime datetest1 = LocalDateTime.of(2020, 12, 31, 18, 31);
+        PositionData expected = new PositionData(datetest1, 43.22513, -66.96725, 11.7, 5.5, 355, "NA", "B");
 
-        PositionData result = company.getPositionDataByCallSignAndDateTime(callSignTest,date1);
+        PositionData result = company.getPositionDataByCallSignAndDateTime(callSignTest, date1);
 
-        assertEquals(expected.getBaseDateTime(),result.getBaseDateTime());
+        assertEquals(expected.getBaseDateTime(), result.getBaseDateTime());
     }
 
     @Test
-    void getClosest1(){
+    void getClosest1() {
         String callSignTest = "D4DD5";
         LocalDateTime dateTest = LocalDateTime.of(2020, 12, 31, 23, 45);
 
         importFileController.importShips(new File("Files/sships.csv"));
         importPortsController.importPorts(new File("Files/sports.csv"));
 
-        try{
-            company.getClosest(callSignTest,dateTest);
-        }catch (Exception e){
-            assertEquals("The data you inserted is illegible",e.getMessage());
+        try {
+            company.getClosest(callSignTest, dateTest);
+        } catch (Exception e) {
+            assertEquals("The data you inserted is illegible", e.getMessage());
         }
     }
 
     @Test
-    void getClosest2(){
+    void getClosest2() {
         String callSignTest = "5BBA4";
         LocalDateTime dateTest = LocalDateTime.of(2020, 12, 30, 23, 45);
 
         importFileController.importShips(new File("Files/sships.csv"));
         importPortsController.importPorts(new File("Files/sports.csv"));
 
-        try{
-            company.getClosest(callSignTest,dateTest);
-        }catch (Exception e){
-            assertEquals("The data you inserted is illegible",e.getMessage());
+        try {
+            company.getClosest(callSignTest, dateTest);
+        } catch (Exception e) {
+            assertEquals("The data you inserted is illegible", e.getMessage());
         }
     }
 
     @Test
-    void getClosest3(){
+    void getClosest3() {
         String callSignTest = "5BBA4";
         LocalDateTime dateTest = LocalDateTime.of(2020, 12, 31, 21, 49);
 
@@ -461,11 +467,11 @@ class CompanyTest {
 
         String expected = "Cartagena";
 
-        assertEquals(expected,company.getClosest(callSignTest,dateTest).getPort());
+        assertEquals(expected, company.getClosest(callSignTest, dateTest).getPort());
     }
 
     @Test
-    void getClosest4(){
+    void getClosest4() {
         String callSignTest = "FLSU";
         LocalDateTime dateTest = LocalDateTime.of(2020, 12, 31, 0, 17);
 
@@ -474,11 +480,11 @@ class CompanyTest {
 
         String expected = "Cartagena";
 
-        assertEquals(expected,company.getClosest(callSignTest,dateTest).getPort());
+        assertEquals(expected, company.getClosest(callSignTest, dateTest).getPort());
     }
 
     @Test
-    void getClosest5(){
+    void getClosest5() {
         String callSignTest = "C4SQ2";
         LocalDateTime dateTest = LocalDateTime.of(2020, 12, 31, 17, 07);
 
@@ -487,14 +493,51 @@ class CompanyTest {
 
         String expected = "Halifax";
 
-        assertEquals(expected,company.getClosest(callSignTest,dateTest).getPort());
+        assertEquals(expected, company.getClosest(callSignTest, dateTest).getPort());
     }
 
+    @Test
+    void generateGraphTest() {
 
+        importPortsController.importPorts(new File(PATH_PORTS_TEST)); //Imports all porters from file
 
+        company.generateGraph(new File(PATH_COUNTRIES_TEST), new File(PATH_BORDERS_TEST)); //Generates graph
 
+        //Test for country list
+        assertEquals(68, company.getCountryList().size());
 
+        //Test for subTreeOfPorts
 
+        //Test for Capital Vertices
 
+        int capital_counter = 0;
 
+        for (Object vertex : company.getGraphGenerator().getGraph().vertices()) {
+
+            if (vertex instanceof Capital) capital_counter++;
+
+        }
+
+        assertEquals(68, capital_counter);
+
+        //Test for edges between capitals with Borders
+
+        int edges_between_capitals = 0;
+
+        for (Edge<Object, Double> edge : company.getGraphGenerator().getGraph().edges()) {
+
+            if (edge.getVOrig() instanceof Capital && edge.getVDest() instanceof Capital) edges_between_capitals++;
+
+        }
+
+        assertEquals(238, edges_between_capitals);
+
+        //Test for Edges between ports from the same country
+
+        //Test for the edge between capital and closest port
+
+        //Test for all edges
+        assertEquals(408, company.getGraphGenerator().getGraph().numEdges());
+
+    }
 }
