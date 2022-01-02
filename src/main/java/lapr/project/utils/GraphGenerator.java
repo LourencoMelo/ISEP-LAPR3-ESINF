@@ -62,16 +62,16 @@ public class GraphGenerator {
 
     }
 
-//    /**
-//     * Creates all vertex for respective capitals
-//     */
-//    public void generateCapitalVertex(List<Country> countryList) {
-//
-//        for (Country country : countryList) {
-//            insert(country.getCapital());
-//        }
-//
-//    }
+    /**
+     * Creates all vertex for respective capitals
+     */
+    public void generateCapitalVertex(List<Country> countryList) {
+
+        for (Country country : countryList) {
+            insert(country.getCapital());
+        }
+
+    }
 
     /**
      * Inserts new vertex to the graph. Checks if the graph contains the vertex first.
@@ -181,6 +181,12 @@ public class GraphGenerator {
         return null;
     }
 
+    /**
+     * Gets the country by Capital Name
+     * @param capitalName capital name
+     * @param countryList list of countries
+     * @return Country
+     */
     public Country getCountryByCapitalName(String capitalName, List<Country> countryList){
         for(Country country : countryList) {
             if(country.getCapital().getName().equalsIgnoreCase(capitalName)) return country;
@@ -188,11 +194,8 @@ public class GraphGenerator {
         return null;
     }
 
-
-
     /**
      * Gets the graph
-     *
      * @return graph
      */
     public Graph<Object, Double> getGraph() {
@@ -210,6 +213,11 @@ public class GraphGenerator {
         return capitalArrayList;
     }
 
+    /**
+     * Gets the adjacent capitals
+     * @param cap capital
+     * @return list of adjacent capitals
+     */
     public ArrayList<Capital> getAdjVertexCapital(Capital cap){
         ArrayList<Capital> adjCapitalArrayList = new ArrayList<>();
         graph.adjVertices(cap).forEach(capitals ->
@@ -221,18 +229,15 @@ public class GraphGenerator {
         return adjCapitalArrayList;
     }
 
-
-    void colourMap(List<Country> countryList){
-
-        // Assign the first color to first vertex
+    /**
+     * Colours the map
+     * @param countryList list of country
+     */
+    public void colourMap(List<Country> countryList){
         countryList.get(0).setColour(0);
 
-        // A temporary array to store the available colors. False
-        // value of available[cr] would mean that the color cr is
-        // assigned to one of its adjacent vertices
         boolean[] remainingColors = new boolean[countryList.size()];
 
-        // Initially, all colors are available
         Arrays.fill(remainingColors, true);
 
         for(Capital capital : getVertexCapital()) {
@@ -250,10 +255,6 @@ public class GraphGenerator {
 
             getCountryByCapitalName(capital.getName(),countryList).setColour(cor);
             Arrays.fill(remainingColors, true);
-        }
-
-        for(Country country : countryList){
-            System.out.println("Country -> " + country.getName() + " Colour -> " + country.getColour());
         }
     }
 

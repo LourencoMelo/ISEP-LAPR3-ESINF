@@ -1,0 +1,40 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+actor       TrafficManager             as TM
+participant    ":ColourMapUI"         as UI
+participant    ":ColourMapController" as CTRL
+participant    ":Company"              as Company
+participant    ":GraphGenerator"              as GG
+
+TM ->UI: I wish to colour the map using as few colours as possible.
+activate UI
+UI --> TM: Requests confirmation
+deactivate UI
+
+TM -> UI : Confirms
+activate UI
+
+UI -> CTRL : getCountryList()
+activate CTRL
+CTRL -> Company : getCountryList()
+activate Company
+Company -> CTRL : coutryList
+deactivate Company
+CTRL -> UI : coutryList
+deactivate CTRL
+UI -> CTRL : colourMap(...)
+activate CTRL
+CTRL -> Company : colourMap(...)
+activate Company
+Company -> GG : colourMap(...)
+activate GG
+deactivate GG
+deactivate Company
+deactivate CTRL
+UI -> TM : Displays the coloured map
+deactivate UI
+
+@enduml

@@ -1,0 +1,11 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+TrafficManager -> System : I wish to colour the map using as few colours as possible
+System --> TrafficManager: Asks for confirmation
+TrafficManager -> System : Confirms
+System --> TrafficManager : Colours the map and displays it
+
+@enduml

@@ -1,6 +1,34 @@
 @startuml
 'https://plantuml.com/class-diagram
 
+class TrafficManager{
+}
+
+class Company {
+
+}
+
+class country{
+-String continent
+-String alpha2
+-String alpha3
+-String name
+-double population
+-int colour
+}
+
+class capital{
+-String name;
+-double latitude;
+-double longitude;
+}
+
+TrafficManager --> Company
+Company --> country
+Company --> capital
+country --> capital
+
+
 
 
 @enduml

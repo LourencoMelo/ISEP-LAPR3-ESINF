@@ -360,7 +360,7 @@ public class Company {
         fillCountriesSubTreesOfPorts();
 
         //Inserts the vertex for all the capitals
-        //graphGenerator.generateCapitalVertex(countryList);
+        graphGenerator.generateCapitalVertex(countryList);
 
         //Adds all the edges read on the file received. This file represents all borders between countries.
         graphGenerator.addEdgesFromBorders(borders, countryList);
@@ -391,4 +391,14 @@ public class Company {
     public List<Country> getCountryList() {
         return countryList;
     }
+
+    /**
+     * Colour the map of countries
+     * @param countryList list of countries
+     */
+    public void colourMap(List<Country> countryList){
+        graphGenerator.colourMap(countryList);
+    }
+
+
 }

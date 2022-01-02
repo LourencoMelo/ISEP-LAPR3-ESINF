@@ -12,7 +12,7 @@ participant    ":treeOfShipsCallSign"   as treeOfShipsCallSign
 participant    ":treeOfPositionData"   as TreeOfPositionData
 participant    ":KD:TREE"   as KD
 
-TM -> UI : , I wish to find the closest port of a ship given its CallSign \n on a certain DateTime.
+TM -> UI : I wish to find the closest port of a ship given its CallSign \n on a certain DateTime.
 activate UI
 UI --> TM: Requests the Call Sign and the date
 deactivate UI

@@ -198,12 +198,22 @@ class GraphGeneratorTest {
 
         graphGenerator.importCountries(new File("Files/countries.csv"), countryList); //Imports the countries from the file
 
-        //graphGenerator.generateCapitalVertex(countryList); //Generates vertex for all capital from all countries
+        graphGenerator.generateCapitalVertex(countryList); //Generates vertex for all capital from all countries
 
         graphGenerator.addEdgesFromBorders(new File("Files/borders.csv"), countryList); //Add new edges from the file
 
         graphGenerator.colourMap(countryList);
 
+        boolean result = true;
 
+        for(Capital capital : graphGenerator.getVertexCapital()) {
+            int countryColor = graphGenerator.getCountryByCapitalName(capital.getName(),countryList).getColour();
+            for(Capital capitalAdj : graphGenerator.getAdjVertexCapital(capital)) {
+                if(countryColor == graphGenerator.getCountryByCapitalName(capitalAdj.getName(),countryList).getColour()){
+                    result = false;
+                }
+            }
+        }
+        assertTrue(result);
     }
 }
