@@ -15,7 +15,7 @@ import java.util.*;
 public class MapGraph<V, E> extends CommonGraph<V, E> {
 
 
-    final private Map<V, MapVertex<V, E>> mapVertices;  // all the Vertices of the graph
+    private final Map<V, MapVertex<V, E>> mapVertices;  // all the Vertices of the graph
 
     // Constructs an empty graph (either undirected or directed)
     public MapGraph(boolean directed) {
@@ -23,20 +23,22 @@ public class MapGraph<V, E> extends CommonGraph<V, E> {
         mapVertices = new LinkedHashMap<>();
     }
 
-    public MapGraph(Graph<V,E> g) {
+    public MapGraph(Graph<V, E> g) {
         this(g.isDirected());
         copy(g, this);
     }
 
     @Override
-    public boolean validVertex(V vert) { return (mapVertices.get(vert) != null);   }
+    public boolean validVertex(V vert) {
+        return (mapVertices.get(vert) != null);
+    }
 
     @Override
     public Collection<V> adjVertices(V vert) {
 
         if (!validVertex(vert)) return null;
 
-        MapVertex<V,E> mapaAdj = mapVertices.get(vert);
+        MapVertex<V, E> mapaAdj = mapVertices.get(vert);
 
         return mapaAdj.getAllAdjVerts();
     }
@@ -113,11 +115,11 @@ public class MapGraph<V, E> extends CommonGraph<V, E> {
         if (!validVertex(vert))
             return null;
 
-        Collection<Edge<V,E>> incomeEdges = new ArrayList<>();
+        Collection<Edge<V, E>> incomeEdges = new ArrayList<>();
 
-        for (Map.Entry<V, MapVertex<V,E>> mapaTodosVertices : mapVertices.entrySet()) {
-            for (Edge<V,E> edgeOut : mapaTodosVertices.getValue().getAllOutEdges()) {
-                if (edgeOut.getVDest().equals(vert)){
+        for (Map.Entry<V, MapVertex<V, E>> mapaTodosVertices : mapVertices.entrySet()) {
+            for (Edge<V, E> edgeOut : mapaTodosVertices.getValue().getAllOutEdges()) {
+                if (edgeOut.getVDest().equals(vert)) {
                     incomeEdges.add(edgeOut);
                 }
             }
@@ -165,7 +167,7 @@ public class MapGraph<V, E> extends CommonGraph<V, E> {
         if (!isDirected)
             // if vDest different vOrig
             if (edge(vDest, vOrig) == null) {
-                Edge<V, E> otherEdge = new Edge<>( mvd.getElement(), mvo.getElement(), weight);
+                Edge<V, E> otherEdge = new Edge<>(mvd.getElement(), mvo.getElement(), weight);
                 mvd.addAdjVert(mvo.getElement(), otherEdge);
                 numEdges++;
             }
@@ -232,7 +234,7 @@ public class MapGraph<V, E> extends CommonGraph<V, E> {
 
         MapGraph<V, E> g = new MapGraph<>(this.isDirected);
 
-        copy(this,g);
+        copy(this, g);
 
         return g;
     }
