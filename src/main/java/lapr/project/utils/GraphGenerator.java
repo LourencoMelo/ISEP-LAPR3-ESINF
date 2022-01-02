@@ -199,7 +199,7 @@ public class GraphGenerator {
         return graph;
     }
 
-    public ArrayList<Capital> getVertexCapital() {
+    public List<Capital> getVertexCapital() {
         ArrayList<Capital> capitalArrayList = new ArrayList<>();
         graph.vertices().forEach(capitals ->
         {
@@ -216,7 +216,7 @@ public class GraphGenerator {
      * @param cap capital
      * @return list of adjacent capitals
      */
-    public ArrayList<Capital> getAdjVertexCapital(Capital cap) {
+    public List<Capital> getAdjVertexCapital(Capital cap) {
         ArrayList<Capital> adjCapitalArrayList = new ArrayList<>();
         graph.adjVertices(cap).forEach(capitals ->
         {
