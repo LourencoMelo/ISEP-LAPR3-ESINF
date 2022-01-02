@@ -52,6 +52,20 @@ class ColourMapControllerTest {
         assertEquals(App.getInstance().getCompany().getShipPositionMessagesOrderByDate(shipTest), company.getShipPositionMessagesOrderByDate(shipTest));
     }
 
+    /**
+     * Tests the method getCountryList
+     */
+    @Test
+    void getCountryList(){
+        List<Country> list1 = colourMapController.getCountryList();
+        List<Country> list2 = company.getCountryList();
+
+        assertEquals(list1,list2);
+    }
+
+    /**
+     * Tests the method colour map
+     */
     @Test
     void colourMap(){
         List<Country> countryList = new ArrayList<>(); //Creates new List to be filled with countries from the file
