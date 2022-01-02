@@ -22,7 +22,7 @@ public class Capital implements PortAndCapital{
     /**
      * Continent of the capital
      */
-    private String Continent;
+    private String continent;
 
     /**
      * Constructor for a capital
@@ -34,6 +34,7 @@ public class Capital implements PortAndCapital{
         this.name = name;
         this.latitude = latitude;
         this.longitude = longitude;
+        setContinent(continent);
     }
 
     /**
@@ -85,20 +86,24 @@ public class Capital implements PortAndCapital{
     }
 
     /**
-     * Getter for the continent of the capital
-     * @return continent of capital
-     */
-    @Override
-    public String getContinent() {
-        return null;
-    }
-
-    /**
      * Changes the longitude
      * @param longitude new longitude
      */
     public void setLongitude(double longitude) {
         this.longitude = longitude;
+    }
+
+    /**
+     * Getter for the continent of the capital
+     * @return continent of capital
+     */
+    @Override
+    public String getContinent() {
+        return continent;
+    }
+
+    public void setContinent(String continent) {
+        this.continent = continent;
     }
 
     /**
