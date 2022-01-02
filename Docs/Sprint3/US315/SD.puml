@@ -1,0 +1,45 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+actor       PortStaff             as Ps
+participant    ":HasContainerOrNotUI"         as UI
+participant    ":HasContainerOrNotController" as CTRL
+participant    ":Company"              as Company
+participant    ":TreeOfShips"   as treeOfShipsCallSign
+
+Ps -> UI : I wish to know if a container is there or not
+activate UI
+
+UI --> Ps : Requests the Call Sign, position and container id
+
+deactivate UI
+
+Ps -> UI : Enters the requested data
+
+activate UI
+
+UI -> CTRL : hasContainerOrNot(...)
+
+activate CTRL
+
+CTRL -> Company : hasContainerOrNot(...)
+
+deactivate CTRL
+
+activate Company
+
+Company -> treeOfShipsCallSign : hasContainerOrNot(...)
+
+activate treeOfShipsCallSign
+
+treeOfShipsCallSign -> treeOfShipsCallSign : hasContainerOrNot(...)
+
+deactivate treeOfShipsCallSign
+
+deactivate Company
+
+deactivate UI
+
+@enduml

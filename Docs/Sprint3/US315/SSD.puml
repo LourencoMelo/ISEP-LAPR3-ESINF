@@ -1,0 +1,12 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+PortStaff -> System : I wish to know if a container is there or not
+System --> PortStaff: Requests the Call Sign, position and container id
+PortStaff -> System : Enters the requested data
+System --> PortStaff : Validates and displays the data , asking for confirmation
+PortStaff -> System : Confirms
+System --> PortStaff : Displays the closest port of the ship
+@enduml

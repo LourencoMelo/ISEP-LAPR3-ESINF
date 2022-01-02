@@ -1,0 +1,11 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+PortStaff -> System : I wish to know the total number of \nfree/occupied slots in the transport vehicle
+System --> PortStaff: Requests the CallSign of the ship
+PortStaff -> System : Enters the requested data
+PortStaff -> System : Confirms
+System --> PortStaff : Displays the number of free/occupied slots
+@enduml

@@ -1,0 +1,14 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class PortStaff{
+
+}
+
+class TransportVehicle{
+
+}
+
+PortStaff --> TreeOfShips : Get the number of free/occupied slots
+
+@enduml

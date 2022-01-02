@@ -1,0 +1,44 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+actor       PortStaff             as Ps
+participant    ":TotalNumberFreeOccupiedSlotsUI"         as UI
+participant    ":TotalNumberFreeOccupiedSlotsController" as CTRL
+participant    ":Company"              as Company
+participant    ":TreeOfShips"   as treeOfShipsCallSign
+
+Ps -> UI : I wish to know the total number of \nfree/occupied slots in the transport vehicle
+activate UI
+
+UI --> Ps : Requests the Call Sign
+
+deactivate UI
+
+Ps -> UI : Enters the requested data
+
+activate UI
+
+UI -> CTRL : getNumberOfFreeOccupiedSlots(...)
+
+activate CTRL
+
+CTRL -> Company : getNumberOfFreeOccupiedSlots(...)
+
+deactivate CTRL
+
+activate Company
+
+Company -> treeOfShipsCallSign : getNumberOfFreeOccupiedSlots(...)
+
+activate treeOfShipsCallSign
+
+treeOfShipsCallSign -> treeOfShipsCallSign : getNumberOfFreeOccupiedSlots(...)
+
+deactivate treeOfShipsCallSign
+
+deactivate Company
+
+deactivate UI
+@enduml

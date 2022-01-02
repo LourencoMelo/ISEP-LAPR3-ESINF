@@ -1,0 +1,19 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class PortStaff{
+
+}
+
+class TransportVehicle{
+
+}
+
+class Container{
+
+}
+
+PortStaff --> TransportVehicle : Get the number of free/occupied slots
+TransportVehicle --> Container : has containers or not
+
+@enduml
