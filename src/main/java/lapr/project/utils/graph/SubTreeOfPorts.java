@@ -35,7 +35,7 @@ public class SubTreeOfPorts extends KD_TREE<PortAndWareHouse> {
             if (portAndWareHouse.getCountry().equalsIgnoreCase(countryName)) {
 
                 //Cria o node 2d para o port encontrado
-                KD_NODE<PortAndWareHouse> node2D = new KD_NODE<>(portAndWareHouse.getLat(), portAndWareHouse.getLog(), portAndWareHouse, null, null);
+                KD_NODE<PortAndWareHouse> node2D = new KD_NODE<>(portAndWareHouse.getLatitude(), portAndWareHouse.getLongitude(), portAndWareHouse, null, null);
 
                 //Adiciona o node 2d caso a lista já não o contenha
                 if (!listToReturn.contains(node2D)) listToReturn.add(node2D);

@@ -1,6 +1,6 @@
 package lapr.project.model;
 
-public class PortAndWareHouse {
+public class PortAndWareHouse implements PortAndCapital{
 
     /**
      * -------------------------------------------------------------------------------------------------------------
@@ -126,6 +126,7 @@ public class PortAndWareHouse {
      * Returns the continent
      * @return continent
      */
+    @Override
     public String getContinent() {
         return continent;
     }
@@ -134,7 +135,8 @@ public class PortAndWareHouse {
      * Returns the latitude
      * @return latitude
      */
-    public double getLat() {
+    @Override
+    public double getLatitude() {
         return lat;
     }
 
@@ -142,7 +144,8 @@ public class PortAndWareHouse {
      * Returns the longitude
      * @return longitude
      */
-    public double getLog() {
+    @Override
+    public double getLongitude() {
         return log;
     }
 

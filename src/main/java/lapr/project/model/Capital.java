@@ -2,7 +2,7 @@ package lapr.project.model;
 
 import java.util.Objects;
 
-public class Capital {
+public class Capital implements PortAndCapital{
 
     /**
      * Name of the capital
@@ -20,12 +20,17 @@ public class Capital {
     private double longitude;
 
     /**
+     * Continent of the capital
+     */
+    private String Continent;
+
+    /**
      * Constructor for a capital
      * @param name name of the capital
      * @param latitude latitude of the capital
      * @param longitude longitude of the capital
      */
-    public Capital(String name, double latitude, double longitude) {
+    public Capital(String name, double latitude, double longitude, String continent) {
         this.name = name;
         this.latitude = latitude;
         this.longitude = longitude;
@@ -57,6 +62,7 @@ public class Capital {
      * Getter for the latitude
      * @return latitude of the capital
      */
+    @Override
     public double getLatitude() {
         return latitude;
     }
@@ -73,8 +79,18 @@ public class Capital {
      * Getter of the longitude
      * @return longitude of the capital
      */
+    @Override
     public double getLongitude() {
         return longitude;
+    }
+
+    /**
+     * Getter for the continent of the capital
+     * @return continent of capital
+     */
+    @Override
+    public String getContinent() {
+        return null;
     }
 
     /**

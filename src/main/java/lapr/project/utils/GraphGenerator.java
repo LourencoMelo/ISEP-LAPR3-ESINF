@@ -1,9 +1,6 @@
 package lapr.project.utils;
 
-import lapr.project.model.Capital;
-import lapr.project.model.Country;
-import lapr.project.model.Distance;
-import lapr.project.model.PortAndWareHouse;
+import lapr.project.model.*;
 import lapr.project.utils.graph.Graph;
 import lapr.project.utils.graph.matrix.MatrixGraph;
 
@@ -17,7 +14,7 @@ public class GraphGenerator {
     /**
      * Graph of capitals and ports
      */
-    private final Graph<Object, Double> graph;
+    private final Graph<PortAndCapital, Double> graph;
 
     /**
      * Constructor that initializes the graph
@@ -45,7 +42,7 @@ public class GraphGenerator {
 
                 try {
 
-                    Capital capital = new Capital(line[5].trim(), Double.parseDouble(line[6].trim()), Double.parseDouble(line[7].trim()));
+                    Capital capital = new Capital(line[5].trim(), Double.parseDouble(line[6].trim()), Double.parseDouble(line[7].trim()), line[0].trim());
 
                     Country country = new Country(line[0].trim(), line[1].trim(), line[2].trim(), line[3].trim(), Double.parseDouble(line[4].trim()), capital);
 
@@ -76,18 +73,16 @@ public class GraphGenerator {
     /**
      * Inserts new vertex to the graph. Checks if the graph contains the vertex first.
      *
-     * @param object object to insert as a vertex
+     * @param portAndCapital object to insert as a vertex
      * @return true if added. False if failed.
      */
-    public boolean insert(Object object) {
+    public boolean insert(PortAndCapital portAndCapital) {
 
-        if (object instanceof Capital || object instanceof PortAndWareHouse) {
-            if (!graph.validVertex(object)) {
-                return graph.addVertex(object);
-            }
-
-            return false;
+        if (!graph.validVertex(portAndCapital)) {
+            return graph.addVertex(portAndCapital);
         }
+
+
         return false;
     }
 
@@ -145,7 +140,7 @@ public class GraphGenerator {
                 PortAndWareHouse portAndWareHouse = country.getTree_of_ports().findNearestNeighbour(capital.getLatitude(), capital.getLongitude());
 
                 if (portAndWareHouse != null)
-                    graph.addEdge(country.getCapital(), portAndWareHouse, Distance.distance(capital.getLatitude(), capital.getLongitude(), portAndWareHouse.getLat(), portAndWareHouse.getLog()));
+                    graph.addEdge(country.getCapital(), portAndWareHouse, Distance.distance(capital.getLatitude(), capital.getLongitude(), portAndWareHouse.getLatitude(), portAndWareHouse.getLongitude()));
             }
         }
     }
@@ -154,11 +149,11 @@ public class GraphGenerator {
      * Adds edges between ports from the same country
      */
     public void addEdgesForPortsSameCountry() {
-        for (Object vertex : graph.vertices()) {
-            for (Object vertex2 : graph.vertices()) {
+        for (PortAndCapital vertex : graph.vertices()) {
+            for (PortAndCapital vertex2 : graph.vertices()) {
                 if (vertex != vertex2 && vertex instanceof PortAndWareHouse && vertex2 instanceof PortAndWareHouse) {
                     if (((PortAndWareHouse) vertex).getCountry().equals(((PortAndWareHouse) vertex2).getCountry())) {
-                        graph.addEdge(vertex, vertex2, Distance.distance(((PortAndWareHouse) vertex).getLat(), ((PortAndWareHouse) vertex).getLog(), ((PortAndWareHouse) vertex2).getLat(), ((PortAndWareHouse) vertex2).getLog()));
+                        graph.addEdge(vertex, vertex2, Distance.distance(vertex.getLatitude(), vertex.getLongitude(), vertex2.getLatitude(), vertex2.getLongitude()));
                     }
                 }
             }
@@ -183,30 +178,32 @@ public class GraphGenerator {
 
     /**
      * Gets the country by Capital Name
+     *
      * @param capitalName capital name
      * @param countryList list of countries
      * @return Country
      */
-    public Country getCountryByCapitalName(String capitalName, List<Country> countryList){
-        for(Country country : countryList) {
-            if(country.getCapital().getName().equalsIgnoreCase(capitalName)) return country;
+    public Country getCountryByCapitalName(String capitalName, List<Country> countryList) {
+        for (Country country : countryList) {
+            if (country.getCapital().getName().equalsIgnoreCase(capitalName)) return country;
         }
         return null;
     }
 
     /**
      * Gets the graph
+     *
      * @return graph
      */
-    public Graph<Object, Double> getGraph() {
+    public Graph<PortAndCapital, Double> getGraph() {
         return graph;
     }
 
-    public ArrayList<Capital> getVertexCapital(){
+    public ArrayList<Capital> getVertexCapital() {
         ArrayList<Capital> capitalArrayList = new ArrayList<>();
         graph.vertices().forEach(capitals ->
         {
-            if(capitals instanceof Capital){
+            if (capitals instanceof Capital) {
                 capitalArrayList.add((Capital) capitals);
             }
         });
@@ -215,14 +212,15 @@ public class GraphGenerator {
 
     /**
      * Gets the adjacent capitals
+     *
      * @param cap capital
      * @return list of adjacent capitals
      */
-    public ArrayList<Capital> getAdjVertexCapital(Capital cap){
+    public ArrayList<Capital> getAdjVertexCapital(Capital cap) {
         ArrayList<Capital> adjCapitalArrayList = new ArrayList<>();
         graph.adjVertices(cap).forEach(capitals ->
         {
-            if(capitals instanceof Capital){
+            if (capitals instanceof Capital) {
                 adjCapitalArrayList.add((Capital) capitals);
             }
         });
@@ -231,29 +229,30 @@ public class GraphGenerator {
 
     /**
      * Colours the map
+     *
      * @param countryList list of country
      */
-    public void colourMap(List<Country> countryList){
+    public void colourMap(List<Country> countryList) {
         countryList.get(0).setColour(0);
 
         boolean[] remainingColors = new boolean[countryList.size()];
 
         Arrays.fill(remainingColors, true);
 
-        for(Capital capital : getVertexCapital()) {
-            for(Capital capitalAdj : getAdjVertexCapital(capital)) {
-                Country country = getCountryByCapitalName(capitalAdj.getName(),countryList);
-                if(country.getColour() != -1){
+        for (Capital capital : getVertexCapital()) {
+            for (Capital capitalAdj : getAdjVertexCapital(capital)) {
+                Country country = getCountryByCapitalName(capitalAdj.getName(), countryList);
+                if (country.getColour() != -1) {
                     remainingColors[country.getColour()] = false;
                 }
             }
             int cor;
-            for(cor = 0;cor < countryList.size(); cor ++){
-                if(remainingColors[cor])
+            for (cor = 0; cor < countryList.size(); cor++) {
+                if (remainingColors[cor])
                     break;
             }
 
-            getCountryByCapitalName(capital.getName(),countryList).setColour(cor);
+            getCountryByCapitalName(capital.getName(), countryList).setColour(cor);
             Arrays.fill(remainingColors, true);
         }
     }

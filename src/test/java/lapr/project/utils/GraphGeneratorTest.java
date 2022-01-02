@@ -1,9 +1,6 @@
 package lapr.project.utils;
 
-import lapr.project.model.Capital;
-import lapr.project.model.Country;
-import lapr.project.model.PortAndWareHouse;
-import lapr.project.model.PositionData;
+import lapr.project.model.*;
 import lapr.project.utils.graph.Edge;
 import lapr.project.utils.graph.matrix.MatrixGraph;
 import org.junit.jupiter.api.BeforeEach;
@@ -20,7 +17,7 @@ class GraphGeneratorTest {
     private GraphGenerator graphGenerator;
     private final List<Country> expectedCountryList = new ArrayList<>();
     private final ArrayList<Capital> expectedVertices = new ArrayList<>();
-    private final Collection<Edge<Object, Double>> collection = new ArrayList<>();
+    private final Collection<Edge<PortAndCapital, Double>> collection = new ArrayList<>();
 
     private static final String PATH_COUNTRIES_TEST = "Files/countryTestFile.csv";
     private static final String PATH_BORDERS_TEST = "Files/bordersTestFile.csv";
@@ -30,14 +27,14 @@ class GraphGeneratorTest {
 
         graphGenerator = new GraphGenerator();
 
-        Capital capital1 = new Capital("Nicosia", 35.16666667, 33.366667);
-        Capital capital2 = new Capital("Valletta", 35.88333333, 14.5);
-        Capital capital3 = new Capital("Athens", 37.98333333, 23.733333);
-        Capital capital4 = new Capital("Lisbon", 38.71666667, -9.133333);
-        Capital capital5 = new Capital("Ankara", 39.93333333, 32.866667);
-        Capital capital6 = new Capital("Yerevan", 40.16666667, 44.5);
-        Capital capital7 = new Capital("Madrid", 40.4, -3.683333);
-        Capital capital8 = new Capital("Tirana", 41.31666667, 19.816667);
+        Capital capital1 = new Capital("Nicosia", 35.16666667, 33.366667, "Europe");
+        Capital capital2 = new Capital("Valletta", 35.88333333, 14.5, "Europe");
+        Capital capital3 = new Capital("Athens", 37.98333333, 23.733333, "Europe");
+        Capital capital4 = new Capital("Lisbon", 38.71666667, -9.133333, "Europe");
+        Capital capital5 = new Capital("Ankara", 39.93333333, 32.866667, "Europe");
+        Capital capital6 = new Capital("Yerevan", 40.16666667, 44.5, "Europe");
+        Capital capital7 = new Capital("Madrid", 40.4, -3.683333, "Europe");
+        Capital capital8 = new Capital("Tirana", 41.31666667, 19.816667, "Europe");
 
 
         Country country1 = new Country("Europe", "CY", "CYP", "Cyprus", 0.85, capital1);
@@ -68,17 +65,17 @@ class GraphGeneratorTest {
         expectedVertices.add(capital7);
         expectedVertices.add(capital8);
 
-        Edge<Object, Double> edge1 = new Edge<>(capital3, capital5, 818.4775977283588);
-        Edge<Object, Double> edge2 = new Edge<>(capital5, capital3, 818.4775977283588);
+        Edge<PortAndCapital, Double> edge1 = new Edge<>(capital3, capital5, 818.4775977283588);
+        Edge<PortAndCapital, Double> edge2 = new Edge<>(capital5, capital3, 818.4775977283588);
 
-        Edge<Object, Double> edge3 = new Edge<>(capital3, capital8, 818.4775977283588);
-        Edge<Object, Double> edge4 = new Edge<>(capital8, capital3, 818.4775977283588);
+        Edge<PortAndCapital, Double> edge3 = new Edge<>(capital3, capital8, 818.4775977283588);
+        Edge<PortAndCapital, Double> edge4 = new Edge<>(capital8, capital3, 818.4775977283588);
 
-        Edge<Object, Double> edge5 = new Edge<>(capital4, capital7, 818.4775977283588);
-        Edge<Object, Double> edge6 = new Edge<>(capital7, capital4, 818.4775977283588);
+        Edge<PortAndCapital, Double> edge5 = new Edge<>(capital4, capital7, 818.4775977283588);
+        Edge<PortAndCapital, Double> edge6 = new Edge<>(capital7, capital4, 818.4775977283588);
 
-        Edge<Object, Double> edge7 = new Edge<>(capital6, capital5, 818.4775977283588);
-        Edge<Object, Double> edge8 = new Edge<>(capital5, capital6, 818.4775977283588);
+        Edge<PortAndCapital, Double> edge7 = new Edge<>(capital6, capital5, 818.4775977283588);
+        Edge<PortAndCapital, Double> edge8 = new Edge<>(capital5, capital6, 818.4775977283588);
 
         collection.add(edge1);
         collection.add(edge2);
@@ -126,8 +123,8 @@ class GraphGeneratorTest {
     @Test
     void insertTest() {
 
-        Capital capital1 = new Capital("Nicosia", 35.16666667, 33.366667);
-        Capital same_capital = new Capital("Nicosia", 35.16666667, 33.366667);
+        Capital capital1 = new Capital("Nicosia", 35.16666667, 33.366667, "Europe");
+        Capital same_capital = new Capital("Nicosia", 35.16666667, 33.366667, "Europe");
 
         PortAndWareHouse portAndWareHouse1 = new PortAndWareHouse("Europe", "United Kingdom", 29002, "Liverpool", 53.46666667, -3.033333333);
 
@@ -136,8 +133,6 @@ class GraphGeneratorTest {
         assertTrue(graphGenerator.insert(capital1)); //Inserts new capital vertex
 
         assertTrue(graphGenerator.insert(portAndWareHouse1)); //Inserts new port vertex
-
-        assertFalse(graphGenerator.insert(positionDataTest)); //Try to insert new postion data object
 
         assertFalse(graphGenerator.insert(same_capital)); //Try to insert same capital
 
@@ -168,8 +163,8 @@ class GraphGeneratorTest {
 
         graphGenerator.importCountries(new File(PATH_COUNTRIES_TEST), countryList); //Imports the countries from the file
 
-        Capital capital4 = new Capital("Lisbon", 38.71666667, -9.133333);
-        Capital capital5 = new Capital("Ankara", 39.93333333, 32.866667);
+        Capital capital4 = new Capital("Lisbon", 38.71666667, -9.133333, "Europe");
+        Capital capital5 = new Capital("Ankara", 39.93333333, 32.866667, "Europe");
 
         assertEquals(capital4, graphGenerator.getCapitalByCountryName("Portugal", countryList));
         assertEquals(capital5, graphGenerator.getCapitalByCountryName("Turkey", countryList));

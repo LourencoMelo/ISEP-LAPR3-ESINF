@@ -39,7 +39,7 @@ public class TreeOfPorts extends KD_TREE<PortAndWareHouse> {
 
                     PortAndWareHouse portAndWareHouse = new PortAndWareHouse(ports_line[0].trim(), ports_line[1].trim(), Integer.parseInt(ports_line[2].trim()), ports_line[3].trim(), Double.parseDouble(ports_line[4].trim()), Double.parseDouble(ports_line[5].trim()));
 
-                    KD_NODE<PortAndWareHouse> node2D = new KD_NODE<>(portAndWareHouse.getLat(), portAndWareHouse.getLog(), portAndWareHouse, null, null);
+                    KD_NODE<PortAndWareHouse> node2D = new KD_NODE<>(portAndWareHouse.getLatitude(), portAndWareHouse.getLongitude(), portAndWareHouse, null, null);
 
                     if (!portAndWareHouseList.contains(node2D)) {
                         portAndWareHouseList.add(node2D);

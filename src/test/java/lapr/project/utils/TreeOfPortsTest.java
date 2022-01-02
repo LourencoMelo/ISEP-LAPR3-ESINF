@@ -41,28 +41,28 @@ class TreeOfPortsTest {
         PortAndWareHouse portAndWareHouse22 = new PortAndWareHouse("America", "Peru", 10860, "Matarani", -17, -72.1);
 
 
-        KD_TREE.KD_NODE<PortAndWareHouse> node2D1 = new KD_TREE.KD_NODE<>(portAndWareHouse1.getLat(), portAndWareHouse1.getLog(), portAndWareHouse1, null, null);
-        KD_TREE.KD_NODE<PortAndWareHouse> node2D2 = new KD_TREE.KD_NODE<>(portAndWareHouse2.getLat(), portAndWareHouse2.getLog(), portAndWareHouse2, null, null);
-        KD_TREE.KD_NODE<PortAndWareHouse> node2D3 = new KD_TREE.KD_NODE<>(portAndWareHouse3.getLat(), portAndWareHouse3.getLog(), portAndWareHouse3, null, null);
-        KD_TREE.KD_NODE<PortAndWareHouse> node2D4 = new KD_TREE.KD_NODE<>(portAndWareHouse4.getLat(), portAndWareHouse4.getLog(), portAndWareHouse4, null, null);
-        KD_TREE.KD_NODE<PortAndWareHouse> node2D5 = new KD_TREE.KD_NODE<>(portAndWareHouse5.getLat(), portAndWareHouse5.getLog(), portAndWareHouse5, null, null);
-        KD_TREE.KD_NODE<PortAndWareHouse> node2D6 = new KD_TREE.KD_NODE<>(portAndWareHouse6.getLat(), portAndWareHouse6.getLog(), portAndWareHouse6, null, null);
-        KD_TREE.KD_NODE<PortAndWareHouse> node2D7 = new KD_TREE.KD_NODE<>(portAndWareHouse7.getLat(), portAndWareHouse7.getLog(), portAndWareHouse7, null, null);
-        KD_TREE.KD_NODE<PortAndWareHouse> node2D8 = new KD_TREE.KD_NODE<>(portAndWareHouse8.getLat(), portAndWareHouse8.getLog(), portAndWareHouse8, null, null);
-        KD_TREE.KD_NODE<PortAndWareHouse> node2D9 = new KD_TREE.KD_NODE<>(portAndWareHouse9.getLat(), portAndWareHouse9.getLog(), portAndWareHouse9, null, null);
-        KD_TREE.KD_NODE<PortAndWareHouse> node2D10 = new KD_TREE.KD_NODE<>(portAndWareHouse10.getLat(), portAndWareHouse10.getLog(), portAndWareHouse10, null, null);
-        KD_TREE.KD_NODE<PortAndWareHouse> node2D11 = new KD_TREE.KD_NODE<>(portAndWareHouse11.getLat(), portAndWareHouse11.getLog(), portAndWareHouse11, null, null);
-        KD_TREE.KD_NODE<PortAndWareHouse> node2D12 = new KD_TREE.KD_NODE<>(portAndWareHouse12.getLat(), portAndWareHouse12.getLog(), portAndWareHouse12, null, null);
-        KD_TREE.KD_NODE<PortAndWareHouse> node2D13 = new KD_TREE.KD_NODE<>(portAndWareHouse13.getLat(), portAndWareHouse13.getLog(), portAndWareHouse13, null, null);
-        KD_TREE.KD_NODE<PortAndWareHouse> node2D14 = new KD_TREE.KD_NODE<>(portAndWareHouse14.getLat(), portAndWareHouse14.getLog(), portAndWareHouse14, null, null);
-        KD_TREE.KD_NODE<PortAndWareHouse> node2D15 = new KD_TREE.KD_NODE<>(portAndWareHouse15.getLat(), portAndWareHouse15.getLog(), portAndWareHouse15, null, null);
-        KD_TREE.KD_NODE<PortAndWareHouse> node2D16 = new KD_TREE.KD_NODE<>(portAndWareHouse16.getLat(), portAndWareHouse16.getLog(), portAndWareHouse16, null, null);
-        KD_TREE.KD_NODE<PortAndWareHouse> node2D17 = new KD_TREE.KD_NODE<>(portAndWareHouse17.getLat(), portAndWareHouse17.getLog(), portAndWareHouse17, null, null);
-        KD_TREE.KD_NODE<PortAndWareHouse> node2D18 = new KD_TREE.KD_NODE<>(portAndWareHouse18.getLat(), portAndWareHouse18.getLog(), portAndWareHouse18, null, null);
-        KD_TREE.KD_NODE<PortAndWareHouse> node2D19 = new KD_TREE.KD_NODE<>(portAndWareHouse19.getLat(), portAndWareHouse19.getLog(), portAndWareHouse19, null, null);
-        KD_TREE.KD_NODE<PortAndWareHouse> node2D20 = new KD_TREE.KD_NODE<>(portAndWareHouse20.getLat(), portAndWareHouse20.getLog(), portAndWareHouse20, null, null);
-        KD_TREE.KD_NODE<PortAndWareHouse> node2D21 = new KD_TREE.KD_NODE<>(portAndWareHouse21.getLat(), portAndWareHouse21.getLog(), portAndWareHouse21, null, null);
-        KD_TREE.KD_NODE<PortAndWareHouse> node2D22 = new KD_TREE.KD_NODE<>(portAndWareHouse22.getLat(), portAndWareHouse22.getLog(), portAndWareHouse22, null, null);
+        KD_TREE.KD_NODE<PortAndWareHouse> node2D1 = new KD_TREE.KD_NODE<>(portAndWareHouse1.getLatitude(), portAndWareHouse1.getLongitude(), portAndWareHouse1, null, null);
+        KD_TREE.KD_NODE<PortAndWareHouse> node2D2 = new KD_TREE.KD_NODE<>(portAndWareHouse2.getLatitude(), portAndWareHouse2.getLongitude(), portAndWareHouse2, null, null);
+        KD_TREE.KD_NODE<PortAndWareHouse> node2D3 = new KD_TREE.KD_NODE<>(portAndWareHouse3.getLatitude(), portAndWareHouse3.getLongitude(), portAndWareHouse3, null, null);
+        KD_TREE.KD_NODE<PortAndWareHouse> node2D4 = new KD_TREE.KD_NODE<>(portAndWareHouse4.getLatitude(), portAndWareHouse4.getLongitude(), portAndWareHouse4, null, null);
+        KD_TREE.KD_NODE<PortAndWareHouse> node2D5 = new KD_TREE.KD_NODE<>(portAndWareHouse5.getLatitude(), portAndWareHouse5.getLongitude(), portAndWareHouse5, null, null);
+        KD_TREE.KD_NODE<PortAndWareHouse> node2D6 = new KD_TREE.KD_NODE<>(portAndWareHouse6.getLatitude(), portAndWareHouse6.getLongitude(), portAndWareHouse6, null, null);
+        KD_TREE.KD_NODE<PortAndWareHouse> node2D7 = new KD_TREE.KD_NODE<>(portAndWareHouse7.getLatitude(), portAndWareHouse7.getLongitude(), portAndWareHouse7, null, null);
+        KD_TREE.KD_NODE<PortAndWareHouse> node2D8 = new KD_TREE.KD_NODE<>(portAndWareHouse8.getLatitude(), portAndWareHouse8.getLongitude(), portAndWareHouse8, null, null);
+        KD_TREE.KD_NODE<PortAndWareHouse> node2D9 = new KD_TREE.KD_NODE<>(portAndWareHouse9.getLatitude(), portAndWareHouse9.getLongitude(), portAndWareHouse9, null, null);
+        KD_TREE.KD_NODE<PortAndWareHouse> node2D10 = new KD_TREE.KD_NODE<>(portAndWareHouse10.getLatitude(), portAndWareHouse10.getLongitude(), portAndWareHouse10, null, null);
+        KD_TREE.KD_NODE<PortAndWareHouse> node2D11 = new KD_TREE.KD_NODE<>(portAndWareHouse11.getLatitude(), portAndWareHouse11.getLongitude(), portAndWareHouse11, null, null);
+        KD_TREE.KD_NODE<PortAndWareHouse> node2D12 = new KD_TREE.KD_NODE<>(portAndWareHouse12.getLatitude(), portAndWareHouse12.getLongitude(), portAndWareHouse12, null, null);
+        KD_TREE.KD_NODE<PortAndWareHouse> node2D13 = new KD_TREE.KD_NODE<>(portAndWareHouse13.getLatitude(), portAndWareHouse13.getLongitude(), portAndWareHouse13, null, null);
+        KD_TREE.KD_NODE<PortAndWareHouse> node2D14 = new KD_TREE.KD_NODE<>(portAndWareHouse14.getLatitude(), portAndWareHouse14.getLongitude(), portAndWareHouse14, null, null);
+        KD_TREE.KD_NODE<PortAndWareHouse> node2D15 = new KD_TREE.KD_NODE<>(portAndWareHouse15.getLatitude(), portAndWareHouse15.getLongitude(), portAndWareHouse15, null, null);
+        KD_TREE.KD_NODE<PortAndWareHouse> node2D16 = new KD_TREE.KD_NODE<>(portAndWareHouse16.getLatitude(), portAndWareHouse16.getLongitude(), portAndWareHouse16, null, null);
+        KD_TREE.KD_NODE<PortAndWareHouse> node2D17 = new KD_TREE.KD_NODE<>(portAndWareHouse17.getLatitude(), portAndWareHouse17.getLongitude(), portAndWareHouse17, null, null);
+        KD_TREE.KD_NODE<PortAndWareHouse> node2D18 = new KD_TREE.KD_NODE<>(portAndWareHouse18.getLatitude(), portAndWareHouse18.getLongitude(), portAndWareHouse18, null, null);
+        KD_TREE.KD_NODE<PortAndWareHouse> node2D19 = new KD_TREE.KD_NODE<>(portAndWareHouse19.getLatitude(), portAndWareHouse19.getLongitude(), portAndWareHouse19, null, null);
+        KD_TREE.KD_NODE<PortAndWareHouse> node2D20 = new KD_TREE.KD_NODE<>(portAndWareHouse20.getLatitude(), portAndWareHouse20.getLongitude(), portAndWareHouse20, null, null);
+        KD_TREE.KD_NODE<PortAndWareHouse> node2D21 = new KD_TREE.KD_NODE<>(portAndWareHouse21.getLatitude(), portAndWareHouse21.getLongitude(), portAndWareHouse21, null, null);
+        KD_TREE.KD_NODE<PortAndWareHouse> node2D22 = new KD_TREE.KD_NODE<>(portAndWareHouse22.getLatitude(), portAndWareHouse22.getLongitude(), portAndWareHouse22, null, null);
 
 
 
@@ -142,13 +142,13 @@ class TreeOfPortsTest {
         PortAndWareHouse portAndWareHouse6 = new PortAndWareHouse("America", "Brazil", 27248, "Santos", -23.93333333, -46.31666667);
         PortAndWareHouse portAndWareHouse7 = new PortAndWareHouse("America", "Canada", 22226, "Halifax", 44.65, -63.56666667);
 
-        KD_TREE.KD_NODE<PortAndWareHouse> node2D1 = new KD_TREE.KD_NODE<>(portAndWareHouse1.getLat(), portAndWareHouse1.getLog(), portAndWareHouse1, null, null);
-        KD_TREE.KD_NODE<PortAndWareHouse> node2D2 = new KD_TREE.KD_NODE<>(portAndWareHouse2.getLat(), portAndWareHouse2.getLog(), portAndWareHouse2, null, null);
-        KD_TREE.KD_NODE<PortAndWareHouse> node2D3 = new KD_TREE.KD_NODE<>(portAndWareHouse3.getLat(), portAndWareHouse3.getLog(), portAndWareHouse3, null, null);
-        KD_TREE.KD_NODE<PortAndWareHouse> node2D4 = new KD_TREE.KD_NODE<>(portAndWareHouse4.getLat(), portAndWareHouse4.getLog(), portAndWareHouse4, null, null);
-        KD_TREE.KD_NODE<PortAndWareHouse> node2D5 = new KD_TREE.KD_NODE<>(portAndWareHouse5.getLat(), portAndWareHouse5.getLog(), portAndWareHouse5, null, null);
-        KD_TREE.KD_NODE<PortAndWareHouse> node2D6 = new KD_TREE.KD_NODE<>(portAndWareHouse6.getLat(), portAndWareHouse6.getLog(), portAndWareHouse6, null, null);
-        KD_TREE.KD_NODE<PortAndWareHouse> node2D7 = new KD_TREE.KD_NODE<>(portAndWareHouse7.getLat(), portAndWareHouse7.getLog(), portAndWareHouse7, null, null);
+        KD_TREE.KD_NODE<PortAndWareHouse> node2D1 = new KD_TREE.KD_NODE<>(portAndWareHouse1.getLatitude(), portAndWareHouse1.getLongitude(), portAndWareHouse1, null, null);
+        KD_TREE.KD_NODE<PortAndWareHouse> node2D2 = new KD_TREE.KD_NODE<>(portAndWareHouse2.getLatitude(), portAndWareHouse2.getLongitude(), portAndWareHouse2, null, null);
+        KD_TREE.KD_NODE<PortAndWareHouse> node2D3 = new KD_TREE.KD_NODE<>(portAndWareHouse3.getLatitude(), portAndWareHouse3.getLongitude(), portAndWareHouse3, null, null);
+        KD_TREE.KD_NODE<PortAndWareHouse> node2D4 = new KD_TREE.KD_NODE<>(portAndWareHouse4.getLatitude(), portAndWareHouse4.getLongitude(), portAndWareHouse4, null, null);
+        KD_TREE.KD_NODE<PortAndWareHouse> node2D5 = new KD_TREE.KD_NODE<>(portAndWareHouse5.getLatitude(), portAndWareHouse5.getLongitude(), portAndWareHouse5, null, null);
+        KD_TREE.KD_NODE<PortAndWareHouse> node2D6 = new KD_TREE.KD_NODE<>(portAndWareHouse6.getLatitude(), portAndWareHouse6.getLongitude(), portAndWareHouse6, null, null);
+        KD_TREE.KD_NODE<PortAndWareHouse> node2D7 = new KD_TREE.KD_NODE<>(portAndWareHouse7.getLatitude(), portAndWareHouse7.getLongitude(), portAndWareHouse7, null, null);
 
         auxList.add(node2D1);
         auxList.add(node2D2);
@@ -179,13 +179,13 @@ class TreeOfPortsTest {
         PortAndWareHouse portAndWareHouse6 = new PortAndWareHouse("America", "Brazil", 27248, "Santos", -23.93333333, -46.31666667);
         PortAndWareHouse portAndWareHouse7 = new PortAndWareHouse("America", "Canada", 22226, "Halifax", 44.65, -63.56666667);
 
-        KD_TREE.KD_NODE<PortAndWareHouse> node2D1 = new KD_TREE.KD_NODE<>(portAndWareHouse1.getLat(), portAndWareHouse1.getLog(), portAndWareHouse1, null, null);
-        KD_TREE.KD_NODE<PortAndWareHouse> node2D2 = new KD_TREE.KD_NODE<>(portAndWareHouse2.getLat(), portAndWareHouse2.getLog(), portAndWareHouse2, null, null);
-        KD_TREE.KD_NODE<PortAndWareHouse> node2D3 = new KD_TREE.KD_NODE<>(portAndWareHouse3.getLat(), portAndWareHouse3.getLog(), portAndWareHouse3, null, null);
-        KD_TREE.KD_NODE<PortAndWareHouse> node2D4 = new KD_TREE.KD_NODE<>(portAndWareHouse4.getLat(), portAndWareHouse4.getLog(), portAndWareHouse4, null, null);
-        KD_TREE.KD_NODE<PortAndWareHouse> node2D5 = new KD_TREE.KD_NODE<>(portAndWareHouse5.getLat(), portAndWareHouse5.getLog(), portAndWareHouse5, null, null);
-        KD_TREE.KD_NODE<PortAndWareHouse> node2D6 = new KD_TREE.KD_NODE<>(portAndWareHouse6.getLat(), portAndWareHouse6.getLog(), portAndWareHouse6, null, null);
-        KD_TREE.KD_NODE<PortAndWareHouse> node2D7 = new KD_TREE.KD_NODE<>(portAndWareHouse7.getLat(), portAndWareHouse7.getLog(), portAndWareHouse7, null, null);
+        KD_TREE.KD_NODE<PortAndWareHouse> node2D1 = new KD_TREE.KD_NODE<>(portAndWareHouse1.getLatitude(), portAndWareHouse1.getLongitude(), portAndWareHouse1, null, null);
+        KD_TREE.KD_NODE<PortAndWareHouse> node2D2 = new KD_TREE.KD_NODE<>(portAndWareHouse2.getLatitude(), portAndWareHouse2.getLongitude(), portAndWareHouse2, null, null);
+        KD_TREE.KD_NODE<PortAndWareHouse> node2D3 = new KD_TREE.KD_NODE<>(portAndWareHouse3.getLatitude(), portAndWareHouse3.getLongitude(), portAndWareHouse3, null, null);
+        KD_TREE.KD_NODE<PortAndWareHouse> node2D4 = new KD_TREE.KD_NODE<>(portAndWareHouse4.getLatitude(), portAndWareHouse4.getLongitude(), portAndWareHouse4, null, null);
+        KD_TREE.KD_NODE<PortAndWareHouse> node2D5 = new KD_TREE.KD_NODE<>(portAndWareHouse5.getLatitude(), portAndWareHouse5.getLongitude(), portAndWareHouse5, null, null);
+        KD_TREE.KD_NODE<PortAndWareHouse> node2D6 = new KD_TREE.KD_NODE<>(portAndWareHouse6.getLatitude(), portAndWareHouse6.getLongitude(), portAndWareHouse6, null, null);
+        KD_TREE.KD_NODE<PortAndWareHouse> node2D7 = new KD_TREE.KD_NODE<>(portAndWareHouse7.getLatitude(), portAndWareHouse7.getLongitude(), portAndWareHouse7, null, null);
 
         auxList.add(node2D1);
         auxList.add(node2D2);

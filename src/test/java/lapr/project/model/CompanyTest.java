@@ -524,7 +524,7 @@ class CompanyTest {
 
         int edges_between_capitals = 0;
 
-        for (Edge<Object, Double> edge : company.getGraphGenerator().getGraph().edges()) {
+        for (Edge<PortAndCapital, Double> edge : company.getGraphGenerator().getGraph().edges()) {
 
             if (edge.getVOrig() instanceof Capital && edge.getVDest() instanceof Capital) edges_between_capitals++;
 

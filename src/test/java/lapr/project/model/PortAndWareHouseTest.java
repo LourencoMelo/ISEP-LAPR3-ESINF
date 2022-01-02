@@ -25,12 +25,12 @@ class PortAndWareHouseTest {
 
     @Test
     void getLat() {
-        assertEquals(53.46666667,portAndWareHouse.getLat());
+        assertEquals(53.46666667,portAndWareHouse.getLatitude());
     }
 
     @Test
     void getLog() {
-        assertEquals(-3.033333333,portAndWareHouse.getLog());
+        assertEquals(-3.033333333,portAndWareHouse.getLongitude());
     }
 
     @Test
@@ -72,8 +72,8 @@ class PortAndWareHouseTest {
                 ", country='" + portAndWareHouse.getCountry() + '\'' +
                 ", code=" + portAndWareHouse.getCode() +
                 ", port='" + portAndWareHouse.getPort() + '\'' +
-                ", lat=" + portAndWareHouse.getLat() +
-                ", log=" + portAndWareHouse.getLog() +
+                ", lat=" + portAndWareHouse.getLatitude() +
+                ", log=" + portAndWareHouse.getLongitude() +
                 '}';
 
         assertEquals(expected,portAndWareHouse.toString());

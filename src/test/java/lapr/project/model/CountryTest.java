@@ -5,13 +5,12 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class CountryTest {
-    Capital capital1 = new Capital("Nicosia", 22, 23);
-    Capital capital = new Capital("Nycosya", 22, 23);
+    Capital capital1 = new Capital("Nicosia", 22, 23, "Europe");
+    Capital capital = new Capital("Nycosya", 22, 23, "Europe");
 
     Country country = new Country("Europe","CY","CYP","Cyprus",0.85,capital1);
     Country country2 = new Country("Europe","CY","CYP","Cyprus",0.85,capital1);
     Country country3 = new Country("Europe","MT","MLT","Malta",0.44,capital1);
-    Country country4 = new Country();
 
 
     @Test
