@@ -194,8 +194,6 @@ public class Algorithms {
 
         getPath(g, vOrig, vDest, pathKeys, shortPath);  //Executa o algoritmo para retirar o path e guarda na linked list "shortpath"
 
-        System.out.println(shortPath);
-
         return path_lenght;
     }
 

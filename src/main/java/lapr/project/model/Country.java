@@ -191,6 +191,13 @@ public class Country {
     }
 
     /**
+     * Sets the Continent for the Capital
+     */
+    public void setContinentForCapital(){
+        capital.setContinentByCapital(continent);
+    }
+
+    /**
      * Tree of country's ports
      *
      * @return 2d tree of ports

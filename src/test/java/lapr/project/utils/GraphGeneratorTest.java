@@ -234,4 +234,35 @@ class GraphGeneratorTest {
         }
         assertTrue(result);
     }
+
+    @Test
+    void topClosenessByContinent(){
+        List<Country> countryList = new ArrayList<>(); //Creates new List to be filled with countries from the file
+
+        List<PortAndWareHouse> portList = new ArrayList<>();
+
+        Company company = new Company();
+
+        company.getTreeOfPorts().generateKDTREEOfPorts(new File("Files/bports.csv"));
+
+        graphGenerator.importCountries(new File("Files/countries.csv"), countryList); //Imports the countries from the file
+
+        graphGenerator.generateCapitalVertex(countryList); //Generates vertex for all capital from all countries
+
+        graphGenerator.addEdgesFromBorders(new File("Files/borders.csv"), countryList); //Add new edges from the file
+
+        graphGenerator.colourMap(countryList);
+
+        graphGenerator.importSeaDists(new File("Files/seadists.csv"),portList );
+
+        Map<Double, PortAndCapital> lastMap = new LinkedHashMap<>();
+
+        Capital capital1 = new Capital("Reykjavik", 64.15, -21.95, "Europe");
+        Capital capital2 = new Capital("Dublin", 53.31666667, -6.233333, "Europe");
+
+        lastMap.put(0.0, capital1);
+        lastMap.put(10.07113308750532, capital2);
+
+        assertEquals(lastMap, graphGenerator.topClosenessByContinent(2, "Europe"));
+    }
 }

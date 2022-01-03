@@ -19,6 +19,8 @@ public class Capital implements PortAndCapital{
      */
     private double longitude;
 
+    private String continentOfCapital;
+
     /**
      * Continent of the capital
      */
@@ -83,6 +85,22 @@ public class Capital implements PortAndCapital{
     @Override
     public double getLongitude() {
         return longitude;
+    }
+
+    /**
+     * Getter of Continent By Capital
+     * @return
+     */
+    public String getContinentByCapital(){
+        return continentOfCapital;
+    }
+
+    /**
+     * Setter of Continent By Capital
+     * @param continent
+     */
+    public void setContinentByCapital(String continent){
+        this.continentOfCapital = continent;
     }
 
     /**

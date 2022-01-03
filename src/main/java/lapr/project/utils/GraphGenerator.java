@@ -1,6 +1,8 @@
 package lapr.project.utils;
 
 import lapr.project.model.*;
+import lapr.project.model.*;
+import lapr.project.utils.graph.Algorithms;
 import lapr.project.utils.graph.Graph;
 import lapr.project.utils.graph.matrix.MatrixGraph;
 
@@ -265,6 +267,8 @@ public class GraphGenerator {
         return null;
     }
 
+
+
     /**
      * Gets the graph
      *
@@ -354,4 +358,57 @@ public class GraphGenerator {
     public Map<PortAndWareHouse, List<SeaDist>> getSeaDistancesMap() {
         return seaDistancesMap;
     }
+
+    public Map<Double, PortAndCapital> topClosenessByContinent(int topN, String continent){
+
+        //Creates the map to aux
+        Map<Double, PortAndCapital> auxMap = new TreeMap<>(Double::compare);
+
+        //Creates the map that is goint to be returned
+        Map<Double, PortAndCapital> lastMap = new LinkedHashMap<>();
+
+        //Creates a List of that specific continent
+        List<PortAndCapital> listLocations = new ArrayList<>();
+
+        //Adds in the "listLocations" if is in the same continent
+        for(PortAndCapital location : graph.vertices()){
+            if(location.getContinent().compareTo(continent) == 0){
+                listLocations.add(location);
+            }
+        }
+
+        //
+        for(PortAndCapital location1 : listLocations){
+            double averageCloseness = 0;
+            double sum = 0;
+            for(PortAndCapital location2 : listLocations){
+                LinkedList<PortAndCapital> path = new LinkedList<>(); //To save the sequence of the paths
+                Algorithms.shortestPath(graph, location1, location2, Double::compare, Double::sum, 0.0, path); //Saves the shortestPath on path
+                for(int i = 0; i < path.size(); i++){ //Gets the weight of the path between location1 & location 2
+                    if(i + 1 == path.size()){
+                        break;
+                    }
+                    sum += graph.edge(path.get(i), path.get(i+1)).getWeight();
+                }
+            }
+            averageCloseness = sum/listLocations.size();
+            auxMap.put(averageCloseness, location1);
+        }
+
+        //Ordering the Map ascending order(The locations that have the most closeness)
+        //auxMap.entrySet().stream().sorted(Map.Entry.comparingByKey());
+
+        //Limiting the return to the TopN Places in closeness
+        int limitTopN = 0;
+        for(Map.Entry<Double, PortAndCapital> mapObject : auxMap.entrySet()){
+            if(limitTopN == topN){
+                return lastMap;
+            }
+            lastMap.put(mapObject.getKey(), mapObject.getValue());
+            limitTopN ++;
+        }
+
+        return lastMap;
+    }
+
 }
