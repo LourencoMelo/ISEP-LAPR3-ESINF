@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="407px" preserveAspectRatio="none" style="width:593px;height:407px;background:#FFFFFF;" version="1.1" viewBox="0 0 593 407" width="593px" zoomAndPan="magnify"><defs><filter height="300%" id="fkeltzaghiiqu" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:5.0,5.0;" x1="46" x2="46" y1="89.6094" y2="322.0703"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:5.0,5.0;" x1="551.5" x2="551.5" y1="89.6094" y2="322.0703"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="77" x="5" y="86.5332">ShipCaptain</text><ellipse cx="46.5" cy="15" fill="#FF0000" filter="url(#fkeltzaghiiqu)" rx="8" ry="8" style="stroke:#A80036;stroke-width:2.0;"/><path d="M46.5,23 L46.5,50 M33.5,31 L59.5,31 M46.5,50 L33.5,65 M46.5,50 L59.5,65 " fill="none" filter="url(#fkeltzaghiiqu)" style="stroke:#A80036;stroke-width:2.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="77" x="5" y="335.6035">ShipCaptain</text><ellipse cx="46.5" cy="348.6797" fill="#FF0000" filter="url(#fkeltzaghiiqu)" rx="8" ry="8" style="stroke:#A80036;stroke-width:2.0;"/><path d="M46.5,356.6797 L46.5,383.6797 M33.5,364.6797 L59.5,364.6797 M46.5,383.6797 L33.5,398.6797 M46.5,383.6797 L59.5,398.6797 " fill="none" filter="url(#fkeltzaghiiqu)" style="stroke:#A80036;stroke-width:2.0;"/><rect fill="#FEFECE" filter="url(#fkeltzaghiiqu)" height="31.6094" style="stroke:#A80036;stroke-width:1.5;" width="60" x="519.5" y="53"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="46" x="526.5" y="74.5332">System</text><rect fill="#FEFECE" filter="url(#fkeltzaghiiqu)" height="31.6094" style="stroke:#A80036;stroke-width:1.5;" width="60" x="519.5" y="321.0703"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="46" x="526.5" y="342.6035">System</text><polygon fill="#A80036" points="57.5,117.9609,47.5,121.9609,57.5,125.9609,53.5,121.9609" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="51.5" x2="550.5" y1="121.9609" y2="121.9609"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="63.5" y="117.1045">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="135" x="74.5" y="117.1045">Authentication Request</text><polygon fill="#A80036" points="539.5,148.3125,549.5,152.3125,539.5,156.3125,543.5,152.3125" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;" x1="46.5" x2="545.5" y1="152.3125" y2="152.3125"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="53.5" y="147.4561">2</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="192" x="64.5" y="147.4561">Another authentication Response</text><polygon fill="#A80036" points="57.5,178.6641,47.5,182.6641,57.5,186.6641,53.5,182.6641" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="51.5" x2="550.5" y1="182.6641" y2="182.6641"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="63.5" y="177.8076">3</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="149" x="74.5" y="177.8076">Authentication successful</text><polygon fill="#A80036" points="539.5,209.0156,549.5,213.0156,539.5,217.0156,543.5,213.0156" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="46.5" x2="545.5" y1="213.0156" y2="213.0156"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="53.5" y="208.1592">4</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="470" x="64.5" y="208.1592">I want to have access to audit trails for a given container of a given cargo manifest</text><polygon fill="#A80036" points="57.5,239.3672,47.5,243.3672,57.5,247.3672,53.5,243.3672" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="51.5" x2="550.5" y1="243.3672" y2="243.3672"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="63.5" y="238.5107">5</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="267" x="74.5" y="238.5107">Asks for the Cargo Manifest and the Container</text><polygon fill="#A80036" points="539.5,269.7188,549.5,273.7188,539.5,277.7188,543.5,273.7188" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="46.5" x2="545.5" y1="273.7188" y2="273.7188"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="53.5" y="268.8623">6</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="135" x="64.5" y="268.8623">Inserts the wanted data</text><polygon fill="#A80036" points="57.5,300.0703,47.5,304.0703,57.5,308.0703,53.5,304.0703" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="51.5" x2="550.5" y1="304.0703" y2="304.0703"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="63.5" y="299.2139">7</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="146" x="74.5" y="299.2139">Displays the wanted data</text><!--MD5=[192928e8e34660ec2819296b1138e360]
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+actor ShipCaptain #red
+
+System - -> ShipCaptain: Authentication Request
+ShipCaptain -> System : Another authentication Response
+System - -> ShipCaptain : Authentication successful
+ShipCaptain - -> System : I want to have access to audit trails for a given container of a given cargo manifest
+System - -> ShipCaptain : Asks for the Cargo Manifest and the Container
+ShipCaptain - -> System : Inserts the wanted data
+System - -> ShipCaptain : Displays the wanted data
+@enduml
+
+@startuml
+
+autonumber
+
+actor ShipCaptain #red
+
+System - -> ShipCaptain: Authentication Request
+ShipCaptain -> System : Another authentication Response
+System - -> ShipCaptain : Authentication successful
+ShipCaptain - -> System : I want to have access to audit trails for a given container of a given cargo manifest
+System - -> ShipCaptain : Asks for the Cargo Manifest and the Container
+ShipCaptain - -> System : Inserts the wanted data
+System - -> ShipCaptain : Displays the wanted data
+@enduml
+
+PlantUML version 1.2021.11(Sat Oct 02 14:26:11 BST 2021)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: Cp1252
+Language: pt
+Country: PT
+--></g></svg>

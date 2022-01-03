@@ -5,7 +5,7 @@ import lapr.project.utils.App;
 
 import java.util.List;
 
-public class GetSetOfMaterialsToContainerAtMinus5Controller {
+public class AuditTrailsController {
 
     /**
      * Creates instance of company
@@ -15,23 +15,15 @@ public class GetSetOfMaterialsToContainerAtMinus5Controller {
     /**
      *  Constructor of GetSetOfMaterialsToContainerAtSevenController
      */
-    public GetSetOfMaterialsToContainerAtMinus5Controller(){
+    public AuditTrailsController(){
         this(App.getInstance().getCompany());
     }
 
     /**
      *  Constructor of GetSetOfMaterialsToContainerAtSevenController
      */
-    public GetSetOfMaterialsToContainerAtMinus5Controller(Company company){
+    public AuditTrailsController(Company company){
         this.company = company;
-    }
-
-    /**
-     * Method that returns the materials to use at 7 degrees Celcius
-     * @return listOfMaterials
-     */
-    public List<String> getSetOfMaterialsToContainerAtMinus5Controller(){
-        return null;
     }
 
     /**
@@ -40,5 +32,16 @@ public class GetSetOfMaterialsToContainerAtMinus5Controller {
      */
     public Company getCompany() {
         return company;
+    }
+
+    /**
+     * Returns a list of all operations performed on
+     * a given container of a given manifest
+     * @param container given container
+     * @param cargo given cargo manifest
+     * @return list of operations performed
+     */
+    public List<String> getAuditTrails(String container, String cargo){
+        return null;
     }
 }

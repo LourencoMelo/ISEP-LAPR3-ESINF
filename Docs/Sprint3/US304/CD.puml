@@ -1,0 +1,42 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class ShipCap{
+
+}
+
+class User{
+
+}
+
+class UserRole{
+
+}
+
+class Company{
+
+}
+
+class AuditTrailsUI{
+    -AuditTrailsController auditTrailsController
+    +AuditTrailsUI()
+    +run()
+}
+
+class AuditTrailsController{
+    -Company company
+    +AuditTrailsController()
+    +AuditTrailsController(Company company)
+    +getCompany()
+}
+
+ShipCap --> AuditTrailsUI : Access
+AuditTrailsUI -down-> AuditTrailsController : Connects with
+ShipCap --> User : is a
+User --> UserRole : has
+AuditTrailsController -up-> AuditTrailsUI : Returns Info
+AuditTrailsController --> Company : Connects with
+Company --> AuditTrailsController : Returns Info
+Company --> DataBase : Connects
+
+@enduml

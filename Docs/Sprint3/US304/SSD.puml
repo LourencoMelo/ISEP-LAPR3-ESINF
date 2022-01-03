@@ -1,0 +1,15 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+actor ShipCaptain #red
+
+System --> ShipCaptain: Authentication Request
+ShipCaptain -> System : Another authentication Response
+System --> ShipCaptain : Authentication successful
+ShipCaptain --> System : I want to have access to audit trails for a given container of a given cargo manifest
+System --> ShipCaptain : Asks for the Cargo Manifest and the Container
+ShipCaptain --> System : Inserts the wanted data
+System --> ShipCaptain : Displays the wanted data
+@enduml

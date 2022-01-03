@@ -1,0 +1,19 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+actor ShipCaptain #red
+
+System --> ShipCaptain: Authentication Request
+ShipCaptain -> System : Another authentication Response
+System --> ShipCaptain : Authentication successful
+ShipCaptain --> AuditTrailsUI : I want to have access to audit trails for a \n given container of a given cargo manifest
+AuditTrailsUI --> ShipCaptain : Asks for the Cargo Manifest and the Container
+ShipCaptain --> AuditTrailsUI : Inserts the wanted data
+AuditTrailsUI --> AuditTrailsController : getAuditTrails(container,cargo)
+database       "DataBase"              as db
+AuditTrailsController --> db** :  getAuditTrails(container,cargo)
+db --> AuditTrailsController : list of operations
+AuditTrailsController --> AuditTrailsUI : list of operations
+AuditTrailsUI --> ShipCaptain : Displays list of operations
+@enduml

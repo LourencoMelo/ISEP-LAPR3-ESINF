@@ -232,6 +232,9 @@ class GraphGeneratorTest {
                 }
             }
         }
+        for(Country country : countryList){
+            System.out.println("Country -> " + country.getName() + " Colour -> " + country.getColour());
+        }
         assertTrue(result);
     }
 
