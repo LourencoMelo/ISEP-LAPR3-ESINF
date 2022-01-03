@@ -13,6 +13,9 @@ class GenerateGraphControllerTest {
 
     private static final String PATH_COUNTRIES_TEST = "Files/countries.csv";
     private static final String PATH_BORDERS_TEST = "Files/borders.csv";
+    private static final String PATH_SEADISTS_TEST = "Files/seadists.csv";
+
+    private static final int NUMBER_OF_CLOSEST_PORTS = 4;
 
     Company company = new Company();
 
@@ -41,7 +44,7 @@ class GenerateGraphControllerTest {
 
         importPortsController.importPorts(new File("Files/bports.csv"));
 
-        generateGraphController.generate(new File(PATH_COUNTRIES_TEST), new File(PATH_BORDERS_TEST));
+        generateGraphController.generate(new File(PATH_COUNTRIES_TEST), new File(PATH_BORDERS_TEST), new File(PATH_SEADISTS_TEST), NUMBER_OF_CLOSEST_PORTS);
 
         assertEquals(generateGraphController.getCompany().getGraphGenerator().getGraph(),company.getGraphGenerator().getGraph());
 

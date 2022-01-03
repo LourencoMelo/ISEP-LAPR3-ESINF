@@ -31,9 +31,11 @@ public class GenerateGraphController {
      * Generates graph
      * @param countriesFile file path with all countries
      * @param bordersFile file path with all borders
+     * @param seadists file path with all seadists
+     * @param n number of closest ports connections
      */
-    public void generate(File countriesFile, File bordersFile){
-        company.generateGraph(countriesFile,bordersFile);
+    public void generate(File countriesFile, File bordersFile, File seadists, int n){
+        company.generateGraph(countriesFile,bordersFile, seadists, n);
 
     }
 

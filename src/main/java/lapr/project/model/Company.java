@@ -351,7 +351,7 @@ public class Company {
      * @param countries list of countries to import
      * @param borders   list of edges to add to the graph
      */
-    public void generateGraph(File countries, File borders) {
+    public void generateGraph(File countries, File borders, File seaDists, int n) {
 
         //Fills the country list with the countries read on the file received
         graphGenerator.importCountries(countries, countryList);
@@ -373,6 +373,12 @@ public class Company {
 
         //Add edges between capitals and closest ports
         graphGenerator.addEdgesFromClosestPortToCapital(countryList);
+
+        //Imports all seadists to the map
+        graphGenerator.importSeaDists(seaDists, treeOfPorts.getListOfAllPorts());
+
+        //Add edges between closest n ports from diferent countries
+        graphGenerator.NClosestPorts(countryList, n);
     }
 
     /**

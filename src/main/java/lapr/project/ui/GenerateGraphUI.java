@@ -36,9 +36,15 @@ public class GenerateGraphUI implements Runnable{
         System.out.println("Please insert the path to the text file with borders information: ");
         String borders = in.nextLine();
 
-        System.out.println(countries + borders);
+        System.out.println("Please insert the path to the text file with sea distances information: ");
+        String seadist = in.nextLine();
 
-        generateGraphController.generate(new File(countries),new File(borders));
+        System.out.println("Please insert the number of closest ports: ");
+        int n = in.nextInt();
+
+        System.out.println(countries + borders + seadist + n);
+
+        generateGraphController.generate(new File(countries),new File(borders), new File(seadist), n);
 
         System.out.println("Files imported!\n");
 

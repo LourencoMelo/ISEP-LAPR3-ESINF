@@ -17,10 +17,19 @@ public class GraphGenerator {
     private final Graph<PortAndCapital, Double> graph;
 
     /**
+     * List of seadists
+     */
+    private final List<SeaDist> seaDistList;
+
+    private final Map<PortAndWareHouse, List<SeaDist>> seaDistancesMap;
+
+    /**
      * Constructor that initializes the graph
      */
     public GraphGenerator() {
         this.graph = new MatrixGraph<>(false);
+        this.seaDistList = new ArrayList<>();
+        this.seaDistancesMap = new HashMap<>();
     }
 
 
@@ -81,7 +90,6 @@ public class GraphGenerator {
         if (!graph.validVertex(portAndCapital)) {
             return graph.addVertex(portAndCapital);
         }
-
 
         return false;
     }
@@ -160,6 +168,79 @@ public class GraphGenerator {
         }
     }
 
+
+    /**
+     * Imports SeadDists from file and fills the map with seadists ordered for each port from the company
+     *
+     * @param file file with info
+     */
+    public void importSeaDists(File file, List<PortAndWareHouse> portList) {
+
+        try (Scanner in = new Scanner(file)) {
+
+            in.nextLine();
+
+            while (in.hasNextLine()) {
+
+                String[] line = in.nextLine().trim().split(",");
+
+                try {
+
+                    PortAndWareHouse originPort = findPortByID(Integer.parseInt(line[1].trim()), portList);
+                    PortAndWareHouse destinyPort = findPortByID(Integer.parseInt(line[4].trim()), portList);
+
+                    if (originPort != null && destinyPort != null) {
+                        SeaDist seaDist = new SeaDist(originPort, destinyPort, Double.parseDouble(line[6].trim()));
+
+                        if (seaDistancesMap.get(originPort) == null) {
+                            seaDistancesMap.put(originPort, new ArrayList<>());
+                            seaDistancesMap.get(originPort).add(seaDist);
+                        } else {
+                            seaDistancesMap.get(originPort).add(seaDist);
+                        }
+                    }
+
+                } catch (Exception exception) {
+                    Logger.getLogger(exception.getMessage());
+                }
+            }
+
+
+        } catch (FileNotFoundException e) {
+            Logger.getLogger(e.getMessage());
+        }
+
+        seaDistancesMap.values().forEach(Collections::sort);
+    }
+
+    /**
+     * Adds edges between n closest ports
+     * @param countryList list of countries from the company
+     * @param n n closest ports
+     */
+    public void NClosestPorts(List<Country> countryList, int n) {
+
+        for (Country country : countryList) {
+            for (PortAndWareHouse portAndWareHouse : country.getTree_of_ports().inOrder()) {
+                int i = 0, j= 0;
+                while (i < n){
+
+                    if (seaDistancesMap.get(portAndWareHouse) == null) break;
+
+                    if (j == seaDistancesMap.get(portAndWareHouse).size()) break;
+
+                    SeaDist seaDist = seaDistancesMap.get(portAndWareHouse).get(j);
+
+                    if (portAndWareHouse != null && seaDist.getDestinyPort() != null && !Objects.equals(portAndWareHouse.getCountry(), seaDist.getDestinyPort().getCountry())) {
+                        graph.addEdge(portAndWareHouse, seaDist.getDestinyPort(), seaDist.getSeaDistance());
+                        i++;
+                    }
+                    j++;
+                }
+            }
+        }
+
+    }
 
     /**
      * Getter method to find the capital of a country
@@ -257,4 +338,26 @@ public class GraphGenerator {
         }
     }
 
+    /**
+     * Finds a port by its id
+     *
+     * @param id       id of the port to find
+     * @param portList list of ports from the company
+     * @return port found or null if not found
+     */
+    public PortAndWareHouse findPortByID(int id, List<PortAndWareHouse> portList) {
+
+        for (PortAndWareHouse portAndWareHouse : portList) {
+
+            if (portAndWareHouse.getCode() == id) return portAndWareHouse;
+
+        }
+
+        return null;
+
+    }
+
+    public Map<PortAndWareHouse, List<SeaDist>> getSeaDistancesMap() {
+        return seaDistancesMap;
+    }
 }

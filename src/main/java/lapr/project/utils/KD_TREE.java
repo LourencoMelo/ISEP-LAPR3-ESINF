@@ -3,7 +3,9 @@ package lapr.project.utils;
 import lapr.project.model.Distance;
 
 import java.awt.geom.Point2D;
+import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.List;
 import java.util.Objects;
 
 
@@ -193,6 +195,31 @@ public class KD_TREE<E>{
         else
             return(size(node.left) + 1 + size(node.right));
     }
+
+    /*
+     * Returns an iterable collection of elements of the tree, reported in in-order.
+     * @return iterable collection of the tree's elements reported in in-order
+     */
+    public Iterable<E> inOrder(){
+        List<E> snapshot = new ArrayList<>();
+        if (root!=null)
+            inOrderSubtree(root, snapshot);   // fill the snapshot recursively
+        return snapshot;
+    }
+    /**
+     * Adds elements of the subtree rooted at Node node to the given
+     * snapshot using an in-order traversal
+     * @param node       Node serving as the root of a subtree
+     * @param snapshot  a list to which results are appended
+     */
+    private void inOrderSubtree(KD_NODE<E> node, List<E> snapshot) {
+        if (node == null)
+            return;
+        inOrderSubtree(node.left, snapshot);
+        snapshot.add(node.info);
+        inOrderSubtree(node.right, snapshot);
+    }
+
 
     /**
      * Returns a string representation of the tree.
