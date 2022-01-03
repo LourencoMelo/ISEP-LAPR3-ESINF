@@ -1,0 +1,18 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+actor PortManager #red
+
+System --> PortManager: Authentication Request
+PortManager -> System : Another authentication Response
+System --> PortManager : Authentication successful
+PortManager --> OccupancyRateUI : I want to know the occupancy rate of each warehouse and an \n estimate of the containers leaving the warehouse during the next 30 days
+OccupancyRateUI --> OccupancyRateController : getOccupancyRate()
+database       "DataBase"              as db
+OccupancyRateController --> db** :  getOccupancyRate()
+db --> OccupancyRateController : wanted data
+OccupancyRateController --> OccupancyRateUI : wanted data
+OccupancyRateUI --> PortManager : Displays the wanted data
+@enduml

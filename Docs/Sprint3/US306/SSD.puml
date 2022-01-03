@@ -1,0 +1,12 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+System --> PortManager: Authentication Request
+PortManager -> System : Another authentication Response
+System --> PortManager : Authentication successful
+PortManager --> System : I want to know the occupancy rate of each warehouse and an \n estimate of the containers leaving the warehouse during the next 30 days
+System --> PortManager : Displays the wanted data
+
+@enduml

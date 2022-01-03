@@ -1,0 +1,42 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class PortManager{
+
+}
+
+class User{
+
+}
+
+class UserRole{
+
+}
+
+class Company{
+
+}
+
+class OccupancyRateUI{
+    -OccupancyRateController occupancyRateController
+    +OccupancyRateUI()
+    +run()
+}
+
+class OccupancyRateController{
+    -Company company
+    +OccupancyRateController()
+    +OccupancyRateController(Company company)
+    +getCompany()
+}
+
+PortManager --> OccupancyRateUI : Access
+OccupancyRateUI -down-> OccupancyRateController : Connects with
+PortManager --> User : is a
+User --> UserRole : has
+OccupancyRateController -up-> OccupancyRateUI : Returns Info
+OccupancyRateController --> Company : Connects with
+Company --> OccupancyRateController : Returns Info
+Company --> DataBase : Connects
+
+@enduml

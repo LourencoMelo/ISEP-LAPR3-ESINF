@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="670px" preserveAspectRatio="none" style="width:407px;height:670px;background:#FFFFFF;" version="1.1" viewBox="0 0 407 670" width="407px" zoomAndPan="magnify"><defs><filter height="300%" id="f1dhdeeh6ctmze" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--MD5=[99d8f1361a72f685c413d1fd21efef1c]
+class PortManager--><rect codeLine="3" fill="#FEFECE" filter="url(#f1dhdeeh6ctmze)" height="48" id="PortManager" style="stroke:#A80036;stroke-width:1.5;" width="102" x="199" y="7"/><ellipse cx="214" cy="23" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M216,19.5 Q216.2031,19 216.4375,18.75 Q216.6719,18.5 216.9375,18.5 Q217.4063,18.5 217.7031,18.7813 Q218,19.0625 218,19.7188 L218,21.2813 Q218,21.9375 217.7188,22.2188 Q217.4375,22.5 217,22.5 Q216.6094,22.5 216.3594,22.3281 Q216.1094,22.1563 216,21.7031 Q215.9531,21.3906 215.7813,21.2188 Q215.4688,20.8906 214.9063,20.7031 Q214.3438,20.5 213.7813,20.5 Q213.0781,20.5 212.4844,20.7813 Q211.9063,21.0625 211.4531,21.6875 Q211,22.3125 211,23.1719 L211,24.0938 Q211,25.125 211.8438,25.8125 Q212.6875,26.5 214.1875,26.5 Q215.0781,26.5 215.7031,26.2969 Q216.0625,26.1875 216.4688,25.8281 Q216.7344,25.625 216.875,25.5625 Q217.0156,25.5 217.1875,25.5 Q217.5156,25.5 217.75,25.7656 Q218,26.0156 218,26.375 Q218,26.7188 217.6563,27.125 Q217.1563,27.7188 216.3594,28.0469 Q215.3125,28.5 214.0313,28.5 Q212.5313,28.5 211.3281,27.9063 Q210.3594,27.4375 209.6719,26.4219 Q209,25.4063 209,24.2031 L209,23.1094 Q209,21.8594 209.5938,20.7656 Q210.2031,19.6719 211.25,19.0938 Q212.3125,18.5 213.5,18.5 Q214.2188,18.5 214.8438,18.75 Q215.4688,19 216,19.5 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="70" x="228" y="27.9102">PortManager</text><line style="stroke:#A80036;stroke-width:1.5;" x1="200" x2="300" y1="39" y2="39"/><line style="stroke:#A80036;stroke-width:1.5;" x1="200" x2="300" y1="47" y2="47"/><!--MD5=[3fd616f346a44cd59a91eb10b19e157c]
+class User--><rect codeLine="7" fill="#FEFECE" filter="url(#f1dhdeeh6ctmze)" height="48" id="User" style="stroke:#A80036;stroke-width:1.5;" width="59" x="321.5" y="154"/><ellipse cx="336.5" cy="170" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M338.5,166.5 Q338.7031,166 338.9375,165.75 Q339.1719,165.5 339.4375,165.5 Q339.9063,165.5 340.2031,165.7813 Q340.5,166.0625 340.5,166.7188 L340.5,168.2813 Q340.5,168.9375 340.2188,169.2188 Q339.9375,169.5 339.5,169.5 Q339.1094,169.5 338.8594,169.3281 Q338.6094,169.1563 338.5,168.7031 Q338.4531,168.3906 338.2813,168.2188 Q337.9688,167.8906 337.4063,167.7031 Q336.8438,167.5 336.2813,167.5 Q335.5781,167.5 334.9844,167.7813 Q334.4063,168.0625 333.9531,168.6875 Q333.5,169.3125 333.5,170.1719 L333.5,171.0938 Q333.5,172.125 334.3438,172.8125 Q335.1875,173.5 336.6875,173.5 Q337.5781,173.5 338.2031,173.2969 Q338.5625,173.1875 338.9688,172.8281 Q339.2344,172.625 339.375,172.5625 Q339.5156,172.5 339.6875,172.5 Q340.0156,172.5 340.25,172.7656 Q340.5,173.0156 340.5,173.375 Q340.5,173.7188 340.1563,174.125 Q339.6563,174.7188 338.8594,175.0469 Q337.8125,175.5 336.5313,175.5 Q335.0313,175.5 333.8281,174.9063 Q332.8594,174.4375 332.1719,173.4219 Q331.5,172.4063 331.5,171.2031 L331.5,170.1094 Q331.5,168.8594 332.0938,167.7656 Q332.7031,166.6719 333.75,166.0938 Q334.8125,165.5 336,165.5 Q336.7188,165.5 337.3438,165.75 Q337.9688,166 338.5,166.5 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="27" x="350.5" y="174.9102">User</text><line style="stroke:#A80036;stroke-width:1.5;" x1="322.5" x2="379.5" y1="186" y2="186"/><line style="stroke:#A80036;stroke-width:1.5;" x1="322.5" x2="379.5" y1="194" y2="194"/><!--MD5=[45d42ff7800d812d5f83c7d3273eb427]
+class UserRole--><rect codeLine="11" fill="#FEFECE" filter="url(#f1dhdeeh6ctmze)" height="48" id="UserRole" style="stroke:#A80036;stroke-width:1.5;" width="85" x="308.5" y="328.5"/><ellipse cx="323.5" cy="344.5" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M325.5,341 Q325.7031,340.5 325.9375,340.25 Q326.1719,340 326.4375,340 Q326.9063,340 327.2031,340.2813 Q327.5,340.5625 327.5,341.2188 L327.5,342.7813 Q327.5,343.4375 327.2188,343.7188 Q326.9375,344 326.5,344 Q326.1094,344 325.8594,343.8281 Q325.6094,343.6563 325.5,343.2031 Q325.4531,342.8906 325.2813,342.7188 Q324.9688,342.3906 324.4063,342.2031 Q323.8438,342 323.2813,342 Q322.5781,342 321.9844,342.2813 Q321.4063,342.5625 320.9531,343.1875 Q320.5,343.8125 320.5,344.6719 L320.5,345.5938 Q320.5,346.625 321.3438,347.3125 Q322.1875,348 323.6875,348 Q324.5781,348 325.2031,347.7969 Q325.5625,347.6875 325.9688,347.3281 Q326.2344,347.125 326.375,347.0625 Q326.5156,347 326.6875,347 Q327.0156,347 327.25,347.2656 Q327.5,347.5156 327.5,347.875 Q327.5,348.2188 327.1563,348.625 Q326.6563,349.2188 325.8594,349.5469 Q324.8125,350 323.5313,350 Q322.0313,350 320.8281,349.4063 Q319.8594,348.9375 319.1719,347.9219 Q318.5,346.9063 318.5,345.7031 L318.5,344.6094 Q318.5,343.3594 319.0938,342.2656 Q319.7031,341.1719 320.75,340.5938 Q321.8125,340 323,340 Q323.7188,340 324.3438,340.25 Q324.9688,340.5 325.5,341 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="53" x="337.5" y="349.4102">UserRole</text><line style="stroke:#A80036;stroke-width:1.5;" x1="309.5" x2="392.5" y1="360.5" y2="360.5"/><line style="stroke:#A80036;stroke-width:1.5;" x1="309.5" x2="392.5" y1="368.5" y2="368.5"/><!--MD5=[02e4b9b7573f1156f41e60aa5b4e25a4]
+class Company--><rect codeLine="15" fill="#FEFECE" filter="url(#f1dhdeeh6ctmze)" height="48" id="Company" style="stroke:#A80036;stroke-width:1.5;" width="85" x="89.5" y="482"/><ellipse cx="104.5" cy="498" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M106.5,494.5 Q106.7031,494 106.9375,493.75 Q107.1719,493.5 107.4375,493.5 Q107.9063,493.5 108.2031,493.7813 Q108.5,494.0625 108.5,494.7188 L108.5,496.2813 Q108.5,496.9375 108.2188,497.2188 Q107.9375,497.5 107.5,497.5 Q107.1094,497.5 106.8594,497.3281 Q106.6094,497.1563 106.5,496.7031 Q106.4531,496.3906 106.2813,496.2188 Q105.9688,495.8906 105.4063,495.7031 Q104.8438,495.5 104.2813,495.5 Q103.5781,495.5 102.9844,495.7813 Q102.4063,496.0625 101.9531,496.6875 Q101.5,497.3125 101.5,498.1719 L101.5,499.0938 Q101.5,500.125 102.3438,500.8125 Q103.1875,501.5 104.6875,501.5 Q105.5781,501.5 106.2031,501.2969 Q106.5625,501.1875 106.9688,500.8281 Q107.2344,500.625 107.375,500.5625 Q107.5156,500.5 107.6875,500.5 Q108.0156,500.5 108.25,500.7656 Q108.5,501.0156 108.5,501.375 Q108.5,501.7188 108.1563,502.125 Q107.6563,502.7188 106.8594,503.0469 Q105.8125,503.5 104.5313,503.5 Q103.0313,503.5 101.8281,502.9063 Q100.8594,502.4375 100.1719,501.4219 Q99.5,500.4063 99.5,499.2031 L99.5,498.1094 Q99.5,496.8594 100.0938,495.7656 Q100.7031,494.6719 101.75,494.0938 Q102.8125,493.5 104,493.5 Q104.7188,493.5 105.3438,493.75 Q105.9688,494 106.5,494.5 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="53" x="118.5" y="502.9102">Company</text><line style="stroke:#A80036;stroke-width:1.5;" x1="90.5" x2="173.5" y1="514" y2="514"/><line style="stroke:#A80036;stroke-width:1.5;" x1="90.5" x2="173.5" y1="522" y2="522"/><!--MD5=[3290a66fbe226781d8993540d697648d]
+class OccupancyRateUI--><rect codeLine="19" fill="#FEFECE" filter="url(#f1dhdeeh6ctmze)" height="89.5078" id="OccupancyRateUI" style="stroke:#A80036;stroke-width:1.5;" width="275" x="11.5" y="133"/><ellipse cx="95.75" cy="149" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M97.75,145.5 Q97.9531,145 98.1875,144.75 Q98.4219,144.5 98.6875,144.5 Q99.1563,144.5 99.4531,144.7813 Q99.75,145.0625 99.75,145.7188 L99.75,147.2813 Q99.75,147.9375 99.4688,148.2188 Q99.1875,148.5 98.75,148.5 Q98.3594,148.5 98.1094,148.3281 Q97.8594,148.1563 97.75,147.7031 Q97.7031,147.3906 97.5313,147.2188 Q97.2188,146.8906 96.6563,146.7031 Q96.0938,146.5 95.5313,146.5 Q94.8281,146.5 94.2344,146.7813 Q93.6563,147.0625 93.2031,147.6875 Q92.75,148.3125 92.75,149.1719 L92.75,150.0938 Q92.75,151.125 93.5938,151.8125 Q94.4375,152.5 95.9375,152.5 Q96.8281,152.5 97.4531,152.2969 Q97.8125,152.1875 98.2188,151.8281 Q98.4844,151.625 98.625,151.5625 Q98.7656,151.5 98.9375,151.5 Q99.2656,151.5 99.5,151.7656 Q99.75,152.0156 99.75,152.375 Q99.75,152.7188 99.4063,153.125 Q98.9063,153.7188 98.1094,154.0469 Q97.0625,154.5 95.7813,154.5 Q94.2813,154.5 93.0781,153.9063 Q92.1094,153.4375 91.4219,152.4219 Q90.75,151.4063 90.75,150.2031 L90.75,149.1094 Q90.75,147.8594 91.3438,146.7656 Q91.9531,145.6719 93,145.0938 Q94.0625,144.5 95.25,144.5 Q95.9688,144.5 96.5938,144.75 Q97.2188,145 97.75,145.5 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="98" x="116.25" y="153.9102">OccupancyRateUI</text><line style="stroke:#A80036;stroke-width:1.5;" x1="12.5" x2="285.5" y1="165" y2="165"/><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="19.5" y="173"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="249" x="31.5" y="180.4189">OccupancyRateController occupancyRateController</text><line style="stroke:#A80036;stroke-width:1.5;" x1="12.5" x2="285.5" y1="186.8359" y2="186.8359"/><ellipse cx="22.5" cy="197.8359" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="95" x="31.5" y="202.2549">OccupancyRateUI()</text><ellipse cx="22.5" cy="211.6719" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="24" x="31.5" y="216.0908">run()</text><!--MD5=[9031d846d186f456c35bb211c48c30c0]
+class OccupancyRateController--><rect codeLine="25" fill="#FEFECE" filter="url(#f1dhdeeh6ctmze)" height="103.3438" id="OccupancyRateController" style="stroke:#A80036;stroke-width:1.5;" width="250" x="7" y="301"/><ellipse cx="57.75" cy="317" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M59.75,313.5 Q59.9531,313 60.1875,312.75 Q60.4219,312.5 60.6875,312.5 Q61.1563,312.5 61.4531,312.7813 Q61.75,313.0625 61.75,313.7188 L61.75,315.2813 Q61.75,315.9375 61.4688,316.2188 Q61.1875,316.5 60.75,316.5 Q60.3594,316.5 60.1094,316.3281 Q59.8594,316.1563 59.75,315.7031 Q59.7031,315.3906 59.5313,315.2188 Q59.2188,314.8906 58.6563,314.7031 Q58.0938,314.5 57.5313,314.5 Q56.8281,314.5 56.2344,314.7813 Q55.6563,315.0625 55.2031,315.6875 Q54.75,316.3125 54.75,317.1719 L54.75,318.0938 Q54.75,319.125 55.5938,319.8125 Q56.4375,320.5 57.9375,320.5 Q58.8281,320.5 59.4531,320.2969 Q59.8125,320.1875 60.2188,319.8281 Q60.4844,319.625 60.625,319.5625 Q60.7656,319.5 60.9375,319.5 Q61.2656,319.5 61.5,319.7656 Q61.75,320.0156 61.75,320.375 Q61.75,320.7188 61.4063,321.125 Q60.9063,321.7188 60.1094,322.0469 Q59.0625,322.5 57.7813,322.5 Q56.2813,322.5 55.0781,321.9063 Q54.1094,321.4375 53.4219,320.4219 Q52.75,319.4063 52.75,318.2031 L52.75,317.1094 Q52.75,315.8594 53.3438,314.7656 Q53.9531,313.6719 55,313.0938 Q56.0625,312.5 57.25,312.5 Q57.9688,312.5 58.5938,312.75 Q59.2188,313 59.75,313.5 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="140" x="78.25" y="321.9102">OccupancyRateController</text><line style="stroke:#A80036;stroke-width:1.5;" x1="8" x2="256" y1="333" y2="333"/><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="15" y="341"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="92" x="27" y="348.4189">Company company</text><line style="stroke:#A80036;stroke-width:1.5;" x1="8" x2="256" y1="354.8359" y2="354.8359"/><ellipse cx="18" cy="365.8359" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="132" x="27" y="370.2549">OccupancyRateController()</text><ellipse cx="18" cy="379.6719" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="224" x="27" y="384.0908">OccupancyRateController(Company company)</text><ellipse cx="18" cy="393.5078" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="68" x="27" y="397.9268">getCompany()</text><!--MD5=[837d3612090b426002fd1342fcbe6b88]
+class DataBase--><rect fill="#FEFECE" filter="url(#f1dhdeeh6ctmze)" height="48" id="DataBase" style="stroke:#A80036;stroke-width:1.5;" width="87" x="88.5" y="608"/><ellipse cx="103.5" cy="624" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M105.5,620.5 Q105.7031,620 105.9375,619.75 Q106.1719,619.5 106.4375,619.5 Q106.9063,619.5 107.2031,619.7813 Q107.5,620.0625 107.5,620.7188 L107.5,622.2813 Q107.5,622.9375 107.2188,623.2188 Q106.9375,623.5 106.5,623.5 Q106.1094,623.5 105.8594,623.3281 Q105.6094,623.1563 105.5,622.7031 Q105.4531,622.3906 105.2813,622.2188 Q104.9688,621.8906 104.4063,621.7031 Q103.8438,621.5 103.2813,621.5 Q102.5781,621.5 101.9844,621.7813 Q101.4063,622.0625 100.9531,622.6875 Q100.5,623.3125 100.5,624.1719 L100.5,625.0938 Q100.5,626.125 101.3438,626.8125 Q102.1875,627.5 103.6875,627.5 Q104.5781,627.5 105.2031,627.2969 Q105.5625,627.1875 105.9688,626.8281 Q106.2344,626.625 106.375,626.5625 Q106.5156,626.5 106.6875,626.5 Q107.0156,626.5 107.25,626.7656 Q107.5,627.0156 107.5,627.375 Q107.5,627.7188 107.1563,628.125 Q106.6563,628.7188 105.8594,629.0469 Q104.8125,629.5 103.5313,629.5 Q102.0313,629.5 100.8281,628.9063 Q99.8594,628.4375 99.1719,627.4219 Q98.5,626.4063 98.5,625.2031 L98.5,624.1094 Q98.5,622.8594 99.0938,621.7656 Q99.7031,620.6719 100.75,620.0938 Q101.8125,619.5 103,619.5 Q103.7188,619.5 104.3438,619.75 Q104.9688,620 105.5,620.5 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="55" x="117.5" y="628.9102">DataBase</text><line style="stroke:#A80036;stroke-width:1.5;" x1="89.5" x2="174.5" y1="640" y2="640"/><line style="stroke:#A80036;stroke-width:1.5;" x1="89.5" x2="174.5" y1="648" y2="648"/><!--MD5=[5c5295cabd7151a51273a70f5e958b70]
+link PortManager to OccupancyRateUI--><path codeLine="32" d="M233.77,55.3 C220.01,75.05 199.83,104.03 182.61,128.75 " fill="none" id="PortManager-to-OccupancyRateUI" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="179.65,133,188.069,127.8893,182.502,128.8932,181.4981,123.3261,179.65,133" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="44" x="213" y="99.4951">Access</text><!--MD5=[6146df68144618e66810121db03f5a39]
+link OccupancyRateUI to OccupancyRateController--><path codeLine="33" d="M88.56,223.04 C80.21,231.96 72.84,242.02 68,253 C61.48,267.8 65.13,282.88 73.29,296.65 " fill="none" id="OccupancyRateUI-to-OccupancyRateController" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="75.96,300.88,74.5348,291.1348,73.2895,296.6529,67.7714,295.4076,75.96,300.88" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="82" x="69" y="267.4951">Connects with</text><!--MD5=[bb153fe2b6d916bd68d9cb8da3721928]
+reverse link OccupancyRateUI to OccupancyRateController--><path codeLine="36" d="M156.74,228.18 C157.85,242.07 158.02,257.17 156,271 C154.57,280.81 152.2,291.09 149.5,300.9 " fill="none" id="OccupancyRateUI-backto-OccupancyRateController" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="156.3,223.12,153.112,232.4386,156.7424,228.1004,161.0806,231.7308,156.3,223.12" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="69" x="159" y="267.4951">Returns Info</text><!--MD5=[f6e70140202ab1101eb6b424775e2f43]
+link PortManager to User--><path codeLine="34" d="M266.23,55.3 C284.12,80.98 312.87,122.27 331.85,149.51 " fill="none" id="PortManager-to-User" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="334.81,153.76,332.9461,144.0891,331.9513,149.6578,326.3826,148.663,334.81,153.76" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="21" x="299" y="99.4951">is a</text><!--MD5=[1f12d177c84922ed4f166f09ee62ceaa]
+link User to UserRole--><path codeLine="35" d="M351,202.26 C351,233.6 351,289.33 351,323.11 " fill="none" id="User-to-UserRole" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="351,328.33,355,319.33,351,323.33,347,319.33,351,328.33" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="21" x="352" y="267.4951">has</text><!--MD5=[747f2d5fb3e2cfbbc9721fbe6b8b1b88]
+link OccupancyRateController to Company--><path codeLine="37" d="M82.98,404.03 C76.44,413.36 70.71,423.5 67,434 C60.94,451.14 71.77,466.53 86.22,478.57 " fill="none" id="OccupancyRateController-to-Company" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="90.39,481.87,85.8376,473.1364,86.4773,478.757,80.8567,479.3967,90.39,481.87" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="82" x="68" y="448.4951">Connects with</text><!--MD5=[2ee10480ec5c1a0d0b5f90fa09f9124b]
+link Company to OccupancyRateController--><path codeLine="38" d="M144.45,481.94 C148.69,472.88 152.88,462.21 155,452 C157.89,438.06 156.65,423.08 153.6,409.11 " fill="none" id="Company-to-OccupancyRateController" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="152.4,404.01,150.5614,413.6857,153.542,408.8778,158.3499,411.8585,152.4,404.01" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="69" x="158" y="448.4951">Returns Info</text><!--MD5=[28fa5ca211853e28b35503d2b875b2be]
+link Company to DataBase--><path codeLine="39" d="M132,530.03 C132,550.52 132,580.56 132,602.55 " fill="none" id="Company-to-DataBase" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="132,607.67,136,598.67,132,602.67,128,598.67,132,607.67" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="55" x="133" y="574.4951">Connects</text><!--MD5=[8bc6a72ef1f87f68593315d7849302c6]
+@startuml
+'https://plantuml.com/class-diagram
+
+class PortManager{
+
+}
+
+class User{
+
+}
+
+class UserRole{
+
+}
+
+class Company{
+
+}
+
+class OccupancyRateUI{
+    -OccupancyRateController occupancyRateController
+    +OccupancyRateUI()
+    +run()
+}
+
+class OccupancyRateController{
+    -Company company
+    +OccupancyRateController()
+    +OccupancyRateController(Company company)
+    +getCompany()
+}
+
+PortManager - -> OccupancyRateUI : Access
+OccupancyRateUI -down-> OccupancyRateController : Connects with
+PortManager - -> User : is a
+User - -> UserRole : has
+OccupancyRateController -up-> OccupancyRateUI : Returns Info
+OccupancyRateController - -> Company : Connects with
+Company - -> OccupancyRateController : Returns Info
+Company - -> DataBase : Connects
+
+@enduml
+
+@startuml
+
+class PortManager{
+
+}
+
+class User{
+
+}
+
+class UserRole{
+
+}
+
+class Company{
+
+}
+
+class OccupancyRateUI{
+    -OccupancyRateController occupancyRateController
+    +OccupancyRateUI()
+    +run()
+}
+
+class OccupancyRateController{
+    -Company company
+    +OccupancyRateController()
+    +OccupancyRateController(Company company)
+    +getCompany()
+}
+
+PortManager - -> OccupancyRateUI : Access
+OccupancyRateUI -down-> OccupancyRateController : Connects with
+PortManager - -> User : is a
+User - -> UserRole : has
+OccupancyRateController -up-> OccupancyRateUI : Returns Info
+OccupancyRateController - -> Company : Connects with
+Company - -> OccupancyRateController : Returns Info
+Company - -> DataBase : Connects
+
+@enduml
+
+PlantUML version 1.2021.11(Sat Oct 02 14:26:11 BST 2021)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: Cp1252
+Language: pt
+Country: PT
+--></g></svg>
