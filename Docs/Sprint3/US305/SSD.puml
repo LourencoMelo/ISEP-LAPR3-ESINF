@@ -1,0 +1,13 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+System --> Client: Authentication Request
+Client -> System : Another authentication Response
+System --> Client : Authentication successful
+Client --> System : I want to know the route of a specific container I am leasing
+System --> Client : Asks for the Container
+Client --> System : Inserts the wanted data
+System --> Client : Displays the wanted data
+@enduml

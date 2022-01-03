@@ -13,14 +13,14 @@ public class AuditTrailsController {
     Company company;
 
     /**
-     *  Constructor of GetSetOfMaterialsToContainerAtSevenController
+     *  Constructor of AuditTrailsController
      */
     public AuditTrailsController(){
         this(App.getInstance().getCompany());
     }
 
     /**
-     *  Constructor of GetSetOfMaterialsToContainerAtSevenController
+     *  Constructor of AuditTrailsController
      */
     public AuditTrailsController(Company company){
         this.company = company;

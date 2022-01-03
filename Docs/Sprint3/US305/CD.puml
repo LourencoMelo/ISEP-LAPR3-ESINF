@@ -1,0 +1,42 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Client{
+
+}
+
+class User{
+
+}
+
+class UserRole{
+
+}
+
+class Company{
+
+}
+
+class RouteOfContainerUI{
+    -RouteOfContainerController routeOfContainerController
+    +RouteOfContainerUI()
+    +run()
+}
+
+class RouteOfContainerController{
+    -Company company
+    +RouteOfContainerController()
+    +RouteOfContainerController(Company company)
+    +getCompany()
+}
+
+Client --> RouteOfContainerUI : Access
+RouteOfContainerUI -down-> RouteOfContainerController : Connects with
+Client --> User : is a
+User --> UserRole : has
+RouteOfContainerController -up-> RouteOfContainerUI : Returns Info
+RouteOfContainerController --> Company : Connects with
+Company --> RouteOfContainerController : Returns Info
+Company --> DataBase : Connects
+
+@enduml

@@ -1,0 +1,22 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+actor Client #red
+
+System --> Client: Authentication Request
+Client -> System : Another authentication Response
+System --> Client : Authentication successful
+Client --> RouteOfContainerUI : I want to know the route of a specific container I am leasing
+RouteOfContainerUI --> Client : Asks for the Container
+Client --> RouteOfContainerUI : Inserts the wanted data
+RouteOfContainerUI --> RouteOfContainerController : getRouteOfContainer(container)
+database       "DataBase"              as db
+RouteOfContainerController --> db** :  getRouteOfContainer(container)
+db --> RouteOfContainerController : wanted data
+RouteOfContainerController --> RouteOfContainerUI : wanted data
+RouteOfContainerUI --> Client : Displays the wanted data
+
+
+@enduml
