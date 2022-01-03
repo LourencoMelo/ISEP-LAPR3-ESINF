@@ -1,0 +1,6 @@
+from_country,from_port_id,from_port,to_country,to_port_id,to_port,sea_distance
+Portugal,18476,Ponta Delgada,Portugal,23428,Funchal,530
+Portugal,18476,Ponta Delgada,Spain,17386,Barcelona,1497
+Portugal,18476,Ponta Delgada,Spain,18937,Valencia,1369
+Portugal,23428,Funchal,Spain,17386,Barcelona,1123
+Portugal,23428,Funchal,Spain,18937,Valencia,995

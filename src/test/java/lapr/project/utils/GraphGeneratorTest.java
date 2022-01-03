@@ -268,4 +268,36 @@ class GraphGeneratorTest {
 
         assertEquals(lastMap, graphGenerator.topClosenessByContinent(2, "Europe"));
     }
+
+    @Test
+    void topClosenessByContinentEasy(){
+        List<Country> countryList = new ArrayList<>(); //Creates new List to be filled with countries from the file
+
+        List<PortAndWareHouse> portList = new ArrayList<>();
+
+        Company company = new Company();
+
+        company.getTreeOfPorts().generateKDTREEOfPorts(new File("Files/portsTest.csv"));
+
+        graphGenerator.importCountries(new File("Files/us303countries.csv"), countryList); //Imports the countries from the file
+
+        graphGenerator.generateCapitalVertex(countryList); //Generates vertex for all capital from all countries
+
+        graphGenerator.addEdgesFromBorders(new File("Files/us303borders.csv"), countryList); //Add new edges from the file
+
+        graphGenerator.colourMap(countryList);
+
+        graphGenerator.importSeaDists(new File("Files/us303seadists.csv"),portList );
+
+        Map<Double, PortAndCapital> lastMap = new LinkedHashMap<>();
+
+        Capital capital1 = new Capital("London", 51.5, -0.083333, "Europe");
+        Capital capital2 = new Capital("Madrid", 40.4, -3.683333, "Europe");
+
+        lastMap.put(0.0, capital1);
+        lastMap.put(167.72743290449378, capital2);
+
+        assertEquals(lastMap, graphGenerator.topClosenessByContinent(2, "Europe"));
+
+    }
 }
