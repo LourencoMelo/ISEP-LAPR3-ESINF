@@ -1,0 +1,12 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+ShipCaptain -> System : Get access exclusively to the information of \nthe containers that are loaded on my ship
+System --> ShipCaptain: Ask for login
+ShipCaptain -> System : Enters the requested data
+System --> ShipCaptain : Show the data
+ShipCaptain -> System : Confirms
+System --> ShipCaptain : Displays Container info
+@enduml

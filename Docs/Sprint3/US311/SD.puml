@@ -1,0 +1,31 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+actor       ShipCaptain             as Sc
+participant    ":AccessToInfoContainersOnShipUI"         as UI
+participant    ":AccessToInfoContainersOnShipController" as CTRL
+database DataBase as db
+
+Sc -> UI : Get access exclusively to the information of \nthe containers that are loaded on my ship
+activate UI
+
+UI -> CTRL : accessToInfoContainersOnShip(...)
+
+activate CTRL
+
+CTRL -> db : accessToInfoContainersOnShip(...)
+
+activate db
+
+db -> db : getMyShip()
+
+db -> db : getContainersMyShip()
+
+deactivate db
+
+deactivate CTRL
+
+deactivate UI
+@enduml

@@ -1,0 +1,12 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+Client -> System : Get info of a specific container
+System --> Client : Ask for container id
+Client -> System : Enters the requested data
+System --> Client : Show the data
+Client -> System : Confirms
+System --> Client : Displays Container info
+@enduml

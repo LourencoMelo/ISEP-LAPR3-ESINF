@@ -1,0 +1,12 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+database Database{
+
+}
+
+ShipCaptain --> Database : login
+Database --> Ship : contains
+Ship --> Container : contains
+
+@enduml

@@ -1,0 +1,30 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+actor       Client             as Sc
+participant    ":SituationOfSpecificContainerUI"         as UI
+participant    ":SituationOfSpecificContainerController" as CTRL
+database DataBase as db
+
+Sc -> UI : Get info of a specific container
+activate UI
+
+UI -> CTRL : situationOfSpecificContainer(...)
+
+activate CTRL
+
+CTRL -> db : situationOfSpecificContainer(...)
+
+activate db
+
+
+db -> db : getContainerInfo()
+
+deactivate db
+
+deactivate CTRL
+
+deactivate UI
+@enduml
