@@ -1,12 +1,12 @@
 package lapr.project.ui;
 
-import lapr.project.controller.OccupancyRateController;
+import lapr.project.controller.GetWarningController;
 
-public class OccupancyRateUI implements Runnable{
-    private final OccupancyRateController occupancyRateController;
+public class GetWarningUI implements Runnable{
+    private final GetWarningController getWarningController;
 
-    public OccupancyRateUI(){
-        this.occupancyRateController = new OccupancyRateController();
+    public GetWarningUI(){
+        this.getWarningController = new GetWarningController();
     }
 
     /**
@@ -22,7 +22,7 @@ public class OccupancyRateUI implements Runnable{
      */
     @Override
     public void run() {
-        System.out.println(this.occupancyRateController.getOccupancyRate());
+        System.out.println(this.getWarningController.getWarning());
         System.out.println("================================");
     }
 }

@@ -1,0 +1,12 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+System --> PortManager: Authentication Request
+PortManager -> System : Another authentication Response
+System --> PortManager : Authentication successful
+PortManager --> System : I intend to get a warning whenever I issue a cargo manifest \n destined for a warehouse whose available capacity is insufficient to accommodate the new \n manifest.
+System --> PortManager : Displays the warning
+
+@enduml

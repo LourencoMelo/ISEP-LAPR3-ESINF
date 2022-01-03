@@ -1,0 +1,42 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class PortManager{
+
+}
+
+class User{
+
+}
+
+class UserRole{
+
+}
+
+class Company{
+
+}
+
+class GetWarningUI{
+    -GetWarningController getWarningController
+    +GetWarningUI()
+    +run()
+}
+
+class GetWarningController{
+    -Company company
+    +GetWarningController()
+    +GetWarningController(Company company)
+    +getCompany()
+}
+
+PortManager --> GetWarningUI : Access
+GetWarningUI -down-> GetWarningController : Connects with
+PortManager --> User : is a
+User --> UserRole : has
+GetWarningController -up-> GetWarningUI : Returns Info
+GetWarningController --> Company : Connects with
+Company --> GetWarningController : Returns Info
+Company --> DataBase : Connects
+
+@enduml

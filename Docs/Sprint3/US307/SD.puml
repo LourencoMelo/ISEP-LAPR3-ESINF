@@ -1,0 +1,18 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+actor PortManager #red
+
+System --> PortManager: Authentication Request
+PortManager -> System : Another authentication Response
+System --> PortManager : Authentication successful
+PortManager --> GetWarningUI : I intend to get a warning whenever I issue a cargo manifest \n destined for a warehouse whose available capacity is insufficient to accommodate the new \n manifest.
+GetWarningUI --> GetWarningController : getWarning()
+database       "DataBase"              as db
+GetWarningController --> db** :  getWarning()
+db --> GetWarningController : warning
+GetWarningController --> GetWarningUI : warning
+GetWarningUI --> PortManager : Displays warning
+@enduml

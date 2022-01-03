@@ -1,4 +1,4 @@
-# US306 I want to know the occupancy rate of each warehouse 
+# US306 I want to know the occupancy rate of each warehouse and an \n estimate of the containers leaving the warehouse during the next 30 days 
 ## Brief Description
 
 I want to know the occupancy rate of each warehouse and an \n estimate of the containers leaving the warehouse during the next 30 days
