@@ -500,16 +500,26 @@ class CompanyTest {
     }
 
     @Test
-    void generateGraphTest() {
+    void generateCapitalVerticeWithoutBordersTest() {
 
         importPortsController.importPorts(new File(PATH_PORTS_TEST)); //Imports all porters from file
 
-        company.generateGraph(new File(PATH_COUNTRIES_TEST), new File(PATH_BORDERS_TEST), new File(PATH_SEADISTS_TEST), NUMBER_OF_CLOSEST_PORTS); //Generates graph
+        company.generateGraph(new File("Files/countryTestFile.csv"), new File(PATH_BORDERS_TEST), new File(PATH_SEADISTS_TEST), NUMBER_OF_CLOSEST_PORTS); //Generates graph
 
         //Test for country list
-        assertEquals(68, company.getCountryList().size());
+        assertEquals(8, company.getCountryList().size());
 
-        //Test for subTreeOfPorts
+        Country malta = null;
+
+        for (Country c : company.getCountryList()) {
+            if (c.getName().equalsIgnoreCase("Malta")){
+                malta = c;
+                break;
+            }
+        }
+
+        assert malta != null;
+        assertFalse(company.getGraphGenerator().getGraph().addVertex(malta.getCapital()));
 
         //Test for Capital Vertices
 
@@ -521,29 +531,8 @@ class CompanyTest {
 
         }
 
-        assertEquals(68, capital_counter);
+        assertEquals(8, capital_counter);
 
-        //Test for edges between capitals with Borders
-
-        int edges_between_capitals = 0;
-
-        for (Edge<PortAndCapital, Double> edge : company.getGraphGenerator().getGraph().edges()) {
-
-            if (edge.getVOrig() instanceof Capital && edge.getVDest() instanceof Capital) edges_between_capitals++;
-
-        }
-
-        assertEquals(238, edges_between_capitals);
-
-        //Test for Edges between ports from the same country
-
-        //Test for the edge between capital and closest port
-
-        //Test for all edges
-        System.out.println(company.getGraphGenerator().getGraph().edges());
-
-        //System.out.println(company.getGraphGenerator().getSeaDistancesMap());
-        assertEquals(988, company.getGraphGenerator().getGraph().numEdges());
 
     }
 
