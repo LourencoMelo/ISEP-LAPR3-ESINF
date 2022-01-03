@@ -1,0 +1,14 @@
+@startuml
+autonumber
+
+actor TrafficManager #red
+
+System --> TrafficManager: Authentication Request
+TrafficManager -> System : Another authentication Response
+System --> TrafficManager : Authentication successful
+TrafficManager --> System : Asks to know which places (cities or ports) are closest to all other places (closeness places)
+System --> TrafficManager : Asks for how much places wants to show on the top
+TrafficManager --> System : Inserts the TopN
+System --> TrafficManager : Shows all the TopN Closeness locals by Continent
+
+@enduml

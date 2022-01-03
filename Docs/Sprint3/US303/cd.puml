@@ -1,0 +1,46 @@
+@startuml
+
+class TrafficManager{
+
+}
+
+class User{
+
+}
+
+class UserRole{
+
+}
+
+class Company{
+
+}
+
+class TopClosenessByContinentUI{
+    -TopClosenessByContinentUI topClosenessByContinentUI
+    +TopClosenessByContinentUI()
+    +run()
+}
+
+class TopClosenessByContinentController{
+    -Company company
+    +TopClosenessByContinentController()
+    +TopClosenessByContinentController(Company company)
+    +topClosenessByContinentController()
+    +getCompany()
+}
+
+class GraphGenerator{
+}
+
+TrafficManager --> TopClosenessByContinentUI : Access
+TopClosenessByContinentUI -down-> TopClosenessByContinentController : Connects with
+TrafficManager --> User : is a
+User --> UserRole : has
+TopClosenessByContinentController -up-> TopClosenessByContinentUI : Returns Info
+TopClosenessByContinentController --> Company : Connects with
+Company --> TopClosenessByContinentController : Returns Info
+Company --> GraphGenerator : Generates graph
+Company --> DataBase : Connects
+
+@enduml

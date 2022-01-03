@@ -1,0 +1,23 @@
+@startuml
+
+autonumber
+
+actor TrafficManager #red
+
+System --> TrafficManager: Authentication Request
+TrafficManager -> System : Another authentication Response
+System --> TrafficManager : Authentication successful
+TrafficManager --> System : Asks to know which places (cities or ports) are closest to all other places (closeness places)
+System --> TrafficManagerUI : Connects with the respective User Interface
+TrafficManagerUI --> TopClosenessByContinentUI : Connects
+TopClosenessByContinentUI --> TrafficManager : asks for the number of TopN locals he wants to know
+TrafficManager --> TopClosenessByContinentUI : Inserts the topN
+TopClosenessByContinentUI --> TopClosenessByContinentController : Connects
+TopClosenessByContinentController --> Company : Connects
+Company --> GraphGenerator : Gets the current GraphGenerator
+GraphGenerator --> GraphGenerator : topClosenessByContinent(topN, continent)
+GraphGenerator --> TrafficManagerUI : lastmap
+TrafficManagerUI --> System : lastmap
+System --> TrafficManager : Shows all the TopN Closeness locals by Continent
+
+@enduml
