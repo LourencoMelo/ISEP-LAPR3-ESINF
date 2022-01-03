@@ -543,7 +543,165 @@ class CompanyTest {
         System.out.println(company.getGraphGenerator().getGraph().edges());
 
         //System.out.println(company.getGraphGenerator().getSeaDistancesMap());
-        //assertEquals(408, company.getGraphGenerator().getGraph().numEdges());
+        assertEquals(988, company.getGraphGenerator().getGraph().numEdges());
+
+    }
+
+    @Test
+    void generateGraphTest2() {
+
+        //Objects creation
+        Capital capital1 = new Capital("Lisbon",38.71666667,-9.133333, "Europe");
+        Capital capital2 = new Capital("Madrid",40.4,-3.683333, "Europe");
+        Capital capital3 = new Capital("London",51.5,-0.083333, "Europe");
+
+        PortAndWareHouse portAndWareHouse1 = new PortAndWareHouse("Europe","Portugal",18476,"Ponta Delgada",37.73333333,-25.66666667);
+        PortAndWareHouse portAndWareHouse2 = new PortAndWareHouse("Europe","Portugal",23428,"Funchal",32.65,-16.91666667);
+        PortAndWareHouse portAndWareHouse3 = new PortAndWareHouse("Europe","Spain",17386,"Barcelona",41.33333333,2.166666667);
+        PortAndWareHouse portAndWareHouse4 = new PortAndWareHouse("Europe","Spain",18937,"Valencia",39.45,-0.3);
+        PortAndWareHouse portAndWareHouse5 = new PortAndWareHouse("Europe","United Kingdom",29002,"Liverpool",53.46666667,-3.033333333);
+
+        Edge<PortAndCapital, Double> edge1 = new Edge<>(capital1, portAndWareHouse2, Distance.distance(capital1.getLatitude(), capital1.getLongitude(), portAndWareHouse2.getLatitude(), portAndWareHouse2.getLongitude()));
+        Edge<PortAndCapital, Double> edge2 = new Edge<>(capital2, portAndWareHouse4, Distance.distance(capital2.getLatitude(), capital2.getLongitude(), portAndWareHouse4.getLatitude(), portAndWareHouse4.getLongitude()));
+        Edge<PortAndCapital, Double> edge3 = new Edge<>(capital3, portAndWareHouse5, Distance.distance(capital3.getLatitude(), capital3.getLongitude(), portAndWareHouse5.getLatitude(), portAndWareHouse5.getLongitude()));
+
+        Edge<PortAndCapital, Double> edge4 = new Edge<>(capital1, capital2, Distance.distance(capital1.getLatitude(), capital1.getLongitude(), capital2.getLatitude(), capital2.getLongitude()));
+        Edge<PortAndCapital, Double> edge5 = new Edge<>(capital2, capital1, Distance.distance(capital2.getLatitude(), capital2.getLongitude(), capital1.getLatitude(), capital1.getLongitude()));
+
+        Edge<PortAndCapital, Double> edge6 = new Edge<>(portAndWareHouse1, portAndWareHouse2, Distance.distance(portAndWareHouse1.getLatitude(), portAndWareHouse1.getLongitude(), portAndWareHouse2.getLatitude(), portAndWareHouse2.getLongitude()));
+        Edge<PortAndCapital, Double> edge7 = new Edge<>(portAndWareHouse2, portAndWareHouse1, Distance.distance(portAndWareHouse2.getLatitude(), portAndWareHouse2.getLongitude(), portAndWareHouse1.getLatitude(), portAndWareHouse1.getLongitude()));
+        Edge<PortAndCapital, Double> edge8 = new Edge<>(portAndWareHouse3, portAndWareHouse4, Distance.distance(portAndWareHouse3.getLatitude(), portAndWareHouse3.getLongitude(), portAndWareHouse4.getLatitude(), portAndWareHouse4.getLongitude()));
+        Edge<PortAndCapital, Double> edge9 = new Edge<>(portAndWareHouse4, portAndWareHouse3, Distance.distance(portAndWareHouse4.getLatitude(), portAndWareHouse4.getLongitude(), portAndWareHouse3.getLatitude(), portAndWareHouse3.getLongitude()));
+
+
+
+        //Expected lists
+        List<Capital> expectedCapitals = new ArrayList<>();
+        List<PortAndWareHouse> expectedPorts = new ArrayList<>();
+        List<Edge<PortAndCapital, Double>> expectedEdgesClosestPortToCapital = new ArrayList<>();
+        List<Edge<PortAndCapital, Double>> expectedEdgesBetweenCapitals = new ArrayList<>();
+        List<Edge<PortAndCapital, Double>> expectedEdgesBetweenPortsSameCountry = new ArrayList<>();
+
+
+        //Actual lists
+        ArrayList<Capital> actualCapitals= new ArrayList<>();
+        ArrayList<PortAndWareHouse> actualPorts = new ArrayList<>();
+        ArrayList<Edge<PortAndCapital, Double>> actualEdgesClosestPortToCapital = new ArrayList<>();
+        ArrayList<Edge<PortAndCapital, Double>> actualEdgesBetweenCapitals = new ArrayList<>();
+        ArrayList<Edge<PortAndCapital, Double>> actualEdgesBetweenPortsSameCountry = new ArrayList<>();
+
+
+        //Expected filling
+        expectedCapitals.add(capital1);
+        expectedCapitals.add(capital2);
+        expectedCapitals.add(capital3);
+
+        expectedPorts.add(portAndWareHouse1);
+        expectedPorts.add(portAndWareHouse2);
+        expectedPorts.add(portAndWareHouse3);
+        expectedPorts.add(portAndWareHouse4);
+        expectedPorts.add(portAndWareHouse5);
+
+        expectedEdgesClosestPortToCapital.add(edge1);
+        expectedEdgesClosestPortToCapital.add(edge2);
+        expectedEdgesClosestPortToCapital.add(edge3);
+
+        expectedEdgesBetweenCapitals.add(edge4);
+        expectedEdgesBetweenCapitals.add(edge5);
+
+        expectedEdgesBetweenPortsSameCountry.add(edge6);
+        expectedEdgesBetweenPortsSameCountry.add(edge7);
+        expectedEdgesBetweenPortsSameCountry.add(edge8);
+        expectedEdgesBetweenPortsSameCountry.add(edge9);
+
+
+        importPortsController.importPorts(new File("Files/portsTest.csv")); //Imports all porters from file
+
+        company.generateGraph(new File("Files/countriesTest2File.csv"), new File(PATH_BORDERS_TEST), new File(PATH_SEADISTS_TEST), 2); //Generates graph
+
+        System.out.println(company.getGraphGenerator().getGraph().numEdges());
+
+        /////////////////////////////////////////////////////////////////NUMBER_OF_CAPITALS TEST////////////////////////////////////////////////////////////////////////////////////////
+
+
+        int capital_counter = 0;
+
+        for (Object vertex : company.getGraphGenerator().getGraph().vertices()) {
+
+            if (vertex instanceof Capital) {
+                capital_counter++;
+                actualCapitals.add((Capital) vertex);
+            }
+
+        }
+
+        assertEquals(3, capital_counter); //Checks if the capital vertices number is correct
+        assertTrue(expectedCapitals.containsAll(actualCapitals) && actualCapitals.containsAll(expectedCapitals)); //Checks if the content is the same
+
+        /////////////////////////////////////////////////////////////////NUMBER_OF_PORTS TEST////////////////////////////////////////////////////////////////////////////////////////
+
+        int ports_counter = 0;
+
+        for (Object vertex : company.getGraphGenerator().getGraph().vertices()) {
+
+            if (vertex instanceof PortAndWareHouse) {
+                ports_counter++;
+                actualPorts.add((PortAndWareHouse) vertex);
+            }
+
+        }
+
+        assertEquals(5, ports_counter); //Checks if the capital vertices number is correct
+        assertTrue(expectedPorts.containsAll(actualPorts) && actualPorts.containsAll(expectedPorts)); //Checks if the content is the same
+
+        /////////////////////////////////////////////////////////////////NUMBER_OF_EDGES_PORTANDCAPITAL TEST////////////////////////////////////////////////////////////////////////////////////////
+
+
+        int edges_portCapital_counter = 0;
+
+        for (Edge<PortAndCapital, Double> edge : company.getGraphGenerator().getGraph().edges()) {
+            if (edge.getVOrig() instanceof Capital && edge.getVDest() instanceof PortAndWareHouse) {
+                edges_portCapital_counter++;
+                actualEdgesClosestPortToCapital.add(edge);
+            }
+        }
+
+        assertEquals(3, edges_portCapital_counter);
+        assertTrue(expectedEdgesClosestPortToCapital.containsAll(actualEdgesClosestPortToCapital) && actualEdgesClosestPortToCapital.containsAll(expectedEdgesClosestPortToCapital));
+
+        /////////////////////////////////////////////////////////////////NUMBER_OF_EDGES_BETWEENCAPITALS TEST////////////////////////////////////////////////////////////////////////////////////////
+
+        int edges_betweentCapitals_counter = 0;
+
+        for (Edge<PortAndCapital, Double> edge : company.getGraphGenerator().getGraph().edges()) {
+            if (edge.getVOrig() instanceof Capital && edge.getVDest() instanceof Capital) {
+                edges_betweentCapitals_counter++;
+                actualEdgesBetweenCapitals.add(edge);
+            }
+        }
+
+        assertEquals(2, edges_betweentCapitals_counter);
+        assertTrue(expectedEdgesBetweenCapitals.containsAll(actualEdgesBetweenCapitals) && actualEdgesBetweenCapitals.containsAll(expectedEdgesBetweenCapitals));
+
+        /////////////////////////////////////////////////////////////////NUMBER_OF_EDGES_BETWEEN PORTS SAME COUNTRY TEST////////////////////////////////////////////////////////////////////////////////////////
+
+        int edges_between_ports_same_country = 0;
+
+        for (Edge<PortAndCapital, Double> edge : company.getGraphGenerator().getGraph().edges()) {
+            if (edge.getVOrig() instanceof PortAndWareHouse && edge.getVDest() instanceof PortAndWareHouse) {
+
+                String country1 = ((PortAndWareHouse) edge.getVOrig()).getCountry();
+                String country2 = ((PortAndWareHouse) edge.getVDest()).getCountry();
+
+                if (country1.equalsIgnoreCase(country2)) {
+                    edges_between_ports_same_country++;
+                    actualEdgesBetweenPortsSameCountry.add(edge);
+                }
+            }
+        }
+
+        assertEquals(4, edges_between_ports_same_country);
+        assertTrue(expectedEdgesBetweenPortsSameCountry.containsAll(actualEdgesBetweenPortsSameCountry) && actualEdgesBetweenPortsSameCountry.containsAll(expectedEdgesBetweenPortsSameCountry));
 
     }
 }

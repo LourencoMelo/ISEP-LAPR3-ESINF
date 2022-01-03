@@ -7,7 +7,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
-import java.time.LocalDateTime;
 import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -105,20 +104,20 @@ class GraphGeneratorTest {
         assertEquals(expectedCountryList.toString(), countryList.toString()); //Checks if the content of both lists is the same
     }
 
-//    @Test
-//    void capitalVertexInsertionTest() {
-//
-//        List<Country> countryList = new ArrayList<>(); //Creates new List to be filled with countries from the file
-//
-//        graphGenerator.importCountries(new File(PATH_COUNTRIES_TEST), countryList); //Imports the countries from the file
-//
-//        graphGenerator.generateCapitalVertex(countryList); //Generates vertex for all capital from all countries
-//
-//        assertEquals(graphGenerator.getGraph().vertices().size(), expectedVertices.size()); //Checks if the size of both lists is the same
-//
-//        assertEquals(graphGenerator.getGraph().vertices().toString(), expectedVertices.toString()); //Checks if the content of both lists is the same
-//
-//    }
+    @Test
+    void capitalVertexInsertionTest() {
+
+        List<Country> countryList = new ArrayList<>(); //Creates new List to be filled with countries from the file
+
+        graphGenerator.importCountries(new File(PATH_COUNTRIES_TEST), countryList); //Imports the countries from the file
+
+        graphGenerator.generateCapitalVertex(countryList); //Generates vertex for all capital from all countries
+
+        assertEquals(graphGenerator.getGraph().vertices().size(), expectedVertices.size()); //Checks if the size of both lists is the same
+
+        assertEquals(graphGenerator.getGraph().vertices().toString(), expectedVertices.toString()); //Checks if the content of both lists is the same
+
+    }
 
     @Test
     void insertTest() {
@@ -127,8 +126,6 @@ class GraphGeneratorTest {
         Capital same_capital = new Capital("Nicosia", 35.16666667, 33.366667, "Europe");
 
         PortAndWareHouse portAndWareHouse1 = new PortAndWareHouse("Europe", "United Kingdom", 29002, "Liverpool", 53.46666667, -3.033333333);
-
-        PositionData positionDataTest = new PositionData(LocalDateTime.of(2021, 11, 8, 13, 39), 10, 10, 3, 4, 5, "1", "Sopa");
 
         assertTrue(graphGenerator.insert(capital1)); //Inserts new capital vertex
 
@@ -146,7 +143,7 @@ class GraphGeneratorTest {
 
         graphGenerator.importCountries(new File(PATH_COUNTRIES_TEST), countryList); //Imports the countries from the file
 
-        //graphGenerator.generateCapitalVertex(countryList); //Generates vertex for all capital from all countries
+        graphGenerator.generateCapitalVertex(countryList); //Generates vertex for all capital from all countries
 
         graphGenerator.addEdgesFromBorders(new File(PATH_BORDERS_TEST), countryList); //Add new edges from the file
 
@@ -155,6 +152,32 @@ class GraphGeneratorTest {
         assertTrue(collection.containsAll(graphGenerator.getGraph().edges()) && graphGenerator.getGraph().edges().containsAll(collection));
 
     }
+
+    @Test
+    void addEdgesPortToCapitalTestNull() {
+
+        List<Country> countryList = new ArrayList<>(); //Creates new List to be filled with countries from the file
+
+        TreeOfPorts treeOfPorts = new TreeOfPorts(); //Creates new tree of ports object
+
+        treeOfPorts.createListOfPorts(new File("Files/sports.csv")); //Import ports from file
+
+        graphGenerator.importCountries(new File(PATH_COUNTRIES_TEST), countryList); //Imports the countries from the file
+
+        graphGenerator.generateCapitalVertex(countryList); //Generates vertex for all capital from all countries
+
+        graphGenerator.addPortsToGraph(treeOfPorts.getListOfAllPorts()); //Add ports to the graph
+
+        graphGenerator.addEdgesFromClosestPortToCapital(countryList); //Add edges between the closest port and capital
+
+        System.out.println(graphGenerator.getGraph().edges());
+
+        assertEquals(0, graphGenerator.getGraph().numEdges());
+
+        assertEquals(Collections.emptyList(), graphGenerator.getGraph().edges());
+
+    }
+
 
     @Test
     void getCapitalByCountryNameTest() {
@@ -188,7 +211,7 @@ class GraphGeneratorTest {
     }
 
     @Test
-    void colourCountries(){
+    void colourCountries() {
         List<Country> countryList = new ArrayList<>(); //Creates new List to be filled with countries from the file
 
         graphGenerator.importCountries(new File("Files/countries.csv"), countryList); //Imports the countries from the file
@@ -201,10 +224,10 @@ class GraphGeneratorTest {
 
         boolean result = true;
 
-        for(Capital capital : graphGenerator.getVertexCapital()) {
-            int countryColor = graphGenerator.getCountryByCapitalName(capital.getName(),countryList).getColour();
-            for(Capital capitalAdj : graphGenerator.getAdjVertexCapital(capital)) {
-                if(countryColor == graphGenerator.getCountryByCapitalName(capitalAdj.getName(),countryList).getColour()){
+        for (Capital capital : graphGenerator.getVertexCapital()) {
+            int countryColor = graphGenerator.getCountryByCapitalName(capital.getName(), countryList).getColour();
+            for (Capital capitalAdj : graphGenerator.getAdjVertexCapital(capital)) {
+                if (countryColor == graphGenerator.getCountryByCapitalName(capitalAdj.getName(), countryList).getColour()) {
                     result = false;
                 }
             }

@@ -16,11 +16,6 @@ public class GraphGenerator {
      */
     private final Graph<PortAndCapital, Double> graph;
 
-    /**
-     * List of seadists
-     */
-    private final List<SeaDist> seaDistList;
-
     private final Map<PortAndWareHouse, List<SeaDist>> seaDistancesMap;
 
     /**
@@ -28,7 +23,6 @@ public class GraphGenerator {
      */
     public GraphGenerator() {
         this.graph = new MatrixGraph<>(false);
-        this.seaDistList = new ArrayList<>();
         this.seaDistancesMap = new HashMap<>();
     }
 
