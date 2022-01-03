@@ -1,5 +1,7 @@
 package lapr.project.model;
 
+import java.util.Objects;
+
 public class SeaDist implements Comparable<SeaDist>{
 
 
@@ -57,6 +59,19 @@ public class SeaDist implements Comparable<SeaDist>{
     @Override
     public int compareTo(SeaDist o) {
         return Double.compare(this.SeaDistance, o.SeaDistance);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        SeaDist seaDist = (SeaDist) o;
+        return originPort.equals(seaDist.originPort) && destinyPort.equals(seaDist.destinyPort) && SeaDistance.equals(seaDist.SeaDistance);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(originPort, destinyPort, SeaDistance);
     }
 
     @Override

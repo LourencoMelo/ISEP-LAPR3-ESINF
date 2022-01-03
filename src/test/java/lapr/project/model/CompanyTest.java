@@ -551,15 +551,15 @@ class CompanyTest {
     void generateGraphTest2() {
 
         //Objects creation
-        Capital capital1 = new Capital("Lisbon",38.71666667,-9.133333, "Europe");
-        Capital capital2 = new Capital("Madrid",40.4,-3.683333, "Europe");
-        Capital capital3 = new Capital("London",51.5,-0.083333, "Europe");
+        Capital capital1 = new Capital("Lisbon", 38.71666667, -9.133333, "Europe");
+        Capital capital2 = new Capital("Madrid", 40.4, -3.683333, "Europe");
+        Capital capital3 = new Capital("London", 51.5, -0.083333, "Europe");
 
-        PortAndWareHouse portAndWareHouse1 = new PortAndWareHouse("Europe","Portugal",18476,"Ponta Delgada",37.73333333,-25.66666667);
-        PortAndWareHouse portAndWareHouse2 = new PortAndWareHouse("Europe","Portugal",23428,"Funchal",32.65,-16.91666667);
-        PortAndWareHouse portAndWareHouse3 = new PortAndWareHouse("Europe","Spain",17386,"Barcelona",41.33333333,2.166666667);
-        PortAndWareHouse portAndWareHouse4 = new PortAndWareHouse("Europe","Spain",18937,"Valencia",39.45,-0.3);
-        PortAndWareHouse portAndWareHouse5 = new PortAndWareHouse("Europe","United Kingdom",29002,"Liverpool",53.46666667,-3.033333333);
+        PortAndWareHouse portAndWareHouse1 = new PortAndWareHouse("Europe", "Portugal", 18476, "Ponta Delgada", 37.73333333, -25.66666667);
+        PortAndWareHouse portAndWareHouse2 = new PortAndWareHouse("Europe", "Portugal", 23428, "Funchal", 32.65, -16.91666667);
+        PortAndWareHouse portAndWareHouse3 = new PortAndWareHouse("Europe", "Spain", 17386, "Barcelona", 41.33333333, 2.166666667);
+        PortAndWareHouse portAndWareHouse4 = new PortAndWareHouse("Europe", "Spain", 18937, "Valencia", 39.45, -0.3);
+        PortAndWareHouse portAndWareHouse5 = new PortAndWareHouse("Europe", "United Kingdom", 29002, "Liverpool", 53.46666667, -3.033333333);
 
         Edge<PortAndCapital, Double> edge1 = new Edge<>(capital1, portAndWareHouse2, Distance.distance(capital1.getLatitude(), capital1.getLongitude(), portAndWareHouse2.getLatitude(), portAndWareHouse2.getLongitude()));
         Edge<PortAndCapital, Double> edge2 = new Edge<>(capital2, portAndWareHouse4, Distance.distance(capital2.getLatitude(), capital2.getLongitude(), portAndWareHouse4.getLatitude(), portAndWareHouse4.getLongitude()));
@@ -573,6 +573,19 @@ class CompanyTest {
         Edge<PortAndCapital, Double> edge8 = new Edge<>(portAndWareHouse3, portAndWareHouse4, Distance.distance(portAndWareHouse3.getLatitude(), portAndWareHouse3.getLongitude(), portAndWareHouse4.getLatitude(), portAndWareHouse4.getLongitude()));
         Edge<PortAndCapital, Double> edge9 = new Edge<>(portAndWareHouse4, portAndWareHouse3, Distance.distance(portAndWareHouse4.getLatitude(), portAndWareHouse4.getLongitude(), portAndWareHouse3.getLatitude(), portAndWareHouse3.getLongitude()));
 
+        SeaDist seaDist1 = new SeaDist(portAndWareHouse2, portAndWareHouse4, 995.0);
+        SeaDist seaDist2 = new SeaDist(portAndWareHouse2, portAndWareHouse3, 1123.0);
+        SeaDist seaDist3 = new SeaDist(portAndWareHouse2, portAndWareHouse5, 1429.0);
+
+        SeaDist seaDist4 = new SeaDist(portAndWareHouse4, portAndWareHouse5, 1653.0);
+
+        SeaDist seaDist5 = new SeaDist(portAndWareHouse3, portAndWareHouse4, 164.0);
+        SeaDist seaDist6 = new SeaDist(portAndWareHouse3, portAndWareHouse5, 1781.0);
+
+        SeaDist seaDist7 = new SeaDist(portAndWareHouse1, portAndWareHouse2, 530.0);
+        SeaDist seaDist8 = new SeaDist(portAndWareHouse1, portAndWareHouse5, 1358.0);
+        SeaDist seaDist9 = new SeaDist(portAndWareHouse1, portAndWareHouse4, 1369.0);
+        SeaDist seaDist10 = new SeaDist(portAndWareHouse1, portAndWareHouse3, 1497.0);
 
 
         //Expected lists
@@ -581,10 +594,15 @@ class CompanyTest {
         List<Edge<PortAndCapital, Double>> expectedEdgesClosestPortToCapital = new ArrayList<>();
         List<Edge<PortAndCapital, Double>> expectedEdgesBetweenCapitals = new ArrayList<>();
         List<Edge<PortAndCapital, Double>> expectedEdgesBetweenPortsSameCountry = new ArrayList<>();
+        Collection<SeaDist> collection1 = new ArrayList<>();
+        Collection<SeaDist> collection2 = new ArrayList<>();
+        Collection<SeaDist> collection3 = new ArrayList<>();
+        Collection<SeaDist> collection4 = new ArrayList<>();
+        Map<PortAndWareHouse, List<SeaDist>> expectedMap = new HashMap<>();
 
 
         //Actual lists
-        ArrayList<Capital> actualCapitals= new ArrayList<>();
+        ArrayList<Capital> actualCapitals = new ArrayList<>();
         ArrayList<PortAndWareHouse> actualPorts = new ArrayList<>();
         ArrayList<Edge<PortAndCapital, Double>> actualEdgesClosestPortToCapital = new ArrayList<>();
         ArrayList<Edge<PortAndCapital, Double>> actualEdgesBetweenCapitals = new ArrayList<>();
@@ -614,6 +632,19 @@ class CompanyTest {
         expectedEdgesBetweenPortsSameCountry.add(edge8);
         expectedEdgesBetweenPortsSameCountry.add(edge9);
 
+        collection1.add(seaDist1);
+        collection1.add(seaDist2);
+        collection1.add(seaDist3);
+
+        collection2.add(seaDist4);
+
+        collection3.add(seaDist5);
+        collection3.add(seaDist6);
+
+        collection4.add(seaDist7);
+        collection4.add(seaDist8);
+        collection4.add(seaDist9);
+        collection4.add(seaDist10);
 
         importPortsController.importPorts(new File("Files/portsTest.csv")); //Imports all porters from file
 
@@ -703,5 +734,35 @@ class CompanyTest {
         assertEquals(4, edges_between_ports_same_country);
         assertTrue(expectedEdgesBetweenPortsSameCountry.containsAll(actualEdgesBetweenPortsSameCountry) && actualEdgesBetweenPortsSameCountry.containsAll(expectedEdgesBetweenPortsSameCountry));
 
+        /////////////////////////////////////////////////////////////////NUMBER_OF_EDGES_BETWEEN N CLOSEST PORTS ////////////////////////////////////////////////////////////////////////////////////////
+
+        expectedMap.put(portAndWareHouse1, new ArrayList<>(collection4));
+        expectedMap.put(portAndWareHouse2, new ArrayList<>(collection1));
+        expectedMap.put(portAndWareHouse4, new ArrayList<>(collection2));
+        expectedMap.put(portAndWareHouse3, new ArrayList<>(collection3));
+
+        expectedMap.values().forEach(Collections::sort);
+
+        //**************
+
+
+        List<Integer> expectedPortsID = new ArrayList<>();
+        List<Integer> actualPortsID = new ArrayList<>();
+
+        for (PortAndWareHouse portAndWareHouse : expectedMap.keySet()) {
+            expectedPortsID.add(portAndWareHouse.getCode());
+        }
+
+        for (PortAndWareHouse portAndWareHouse : company.getGraphGenerator().getSeaDistancesMap().keySet()) {
+            actualPortsID.add(portAndWareHouse.getCode());
+        }
+
+        Collection<List<SeaDist>> expectedLists = expectedMap.values();
+        Collection<List<SeaDist>> actualLists = company.getGraphGenerator().getSeaDistancesMap().values();
+
+
+        assertTrue(expectedPortsID.containsAll(actualPortsID) && actualPortsID.containsAll(expectedPortsID));
+
+        assertTrue(expectedLists.containsAll(actualLists) && actualLists.containsAll(expectedLists));
     }
 }
