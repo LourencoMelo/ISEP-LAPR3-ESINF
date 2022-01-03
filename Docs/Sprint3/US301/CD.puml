@@ -1,27 +1,55 @@
 @startuml
 'https://plantuml.com/class-diagram
 
-abstract class AbstractList
-abstract AbstractCollection
-interface List
-interface Collection
 
-List <|-- AbstractList
-Collection <|-- AbstractCollection
-
-Collection <|- List
-AbstractCollection <|- AbstractList
-AbstractList <|-- ArrayList
-
-class ArrayList {
-Object[] elementData
-size()
+class Company {
++generateGraph(File countries, File borders, File seaDists, int n)
 }
 
-enum TimeUnit {
-DAYS
-HOURS
-MINUTES
+class Country{
+-String continent
+-String alpha2
+-String alpha3
+-String name
+-double population
+-Capital capital
+-int colour
 }
+
+class PortAndWareHouse{
+-String continent
+-String country
+-int code
+-String port
+-double lat
+-double log
+}
+
+class Capital{
+-String name;
+-double latitude;
+-double longitude;
+-String continent;
+}
+
+class Seadist{
+-PortAndWareHouse originPort
+-PortAndWareHouse destinyPort
+-Double seaDistance
+}
+
+interface PortAndCapital {
++getLatitude()
++getLongitude()
++getContinent()
+}
+
+Capital -.-> PortAndCapital
+Country -.-> PortAndCapital
+Country -o Capital
+Company -* PortAndCapital
+Seadist -o PortAndWareHouse
+Country -* PortAndWareHouse
+
 
 @enduml

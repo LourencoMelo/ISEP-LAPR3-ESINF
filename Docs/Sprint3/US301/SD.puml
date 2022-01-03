@@ -3,9 +3,39 @@
 
 autonumber
 
-Alice -> Bob: Authentication Request
-Bob --> Alice: Authentication Response
+actor       TrafficManager             as TM
+participant    ":GenerateGraphUI"         as UI
+participant    ":GenerateGraphController" as CTRL
+participant    ":Company"              as Company
+participant    ":GraphGenerator"              as GG
 
-Alice -> Bob: Another authentication Request
-Alice <-- Bob: another authentication Response
+TM ->UI: I wish to build a freight network.
+activate UI
+UI --> TM: Asks for information needed
+deactivate UI
+
+TM -> UI : Gives information
+activate UI
+
+UI -> CTRL : generate(File countriesFile, File bordersFile, File seadists, int n)
+activate CTRL
+CTRL -> Company : generateGraph(countriesFile,bordersFile, seadists, n)
+activate Company
+
+activate GG
+
+Company -> GG : importCountries(countries, countryList)
+Company -> Company : fillCountriesSubTreesOfPorts()
+Company -> GG : generateCapitalVertex(countryList)
+Company -> GG : addEdgesFromBorders(borders, countryList)
+Company -> GG : addPortsToGraph(treeOfPorts.getListOfAllPorts())
+Company -> GG : addEdgesForPortsSameCountry()
+Company -> GG : addEdgesFromClosestPortToCapital(countryList)
+Company -> GG : importSeaDists(seaDists, treeOfPorts.getListOfAllPorts())
+Company -> GG : NClosestPorts(countryList, n)
+
+deactivate GG
+
+UI --> TM : The operation was realised with success
+
 @enduml

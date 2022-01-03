@@ -1,0 +1,9 @@
+@startuml
+'https://plantuml.com/use-case-diagram
+
+:Main Admin: as Admin
+:Traffic Manager: as TrafficManager
+
+Admin -> (Regist new Staff)
+TrafficManager -> (I wish to build a freight network with information from the files imported)
+@enduml

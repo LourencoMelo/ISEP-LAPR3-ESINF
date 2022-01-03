@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="115px" preserveAspectRatio="none" style="width:912px;height:115px;background:#FFFFFF;" version="1.1" viewBox="0 0 912 115" width="912px" zoomAndPan="magnify"><defs><filter height="300%" id="fqawmika78131" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--MD5=[97ab183161fd5d1db7fba7485cf76add]
+entity Admin--><ellipse cx="42.5" cy="23" fill="#FEFECE" filter="url(#fqawmika78131)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><path d="M42.5,31 L42.5,58 M29.5,39 L55.5,39 M42.5,58 L29.5,73 M42.5,58 L55.5,73 " fill="none" filter="url(#fqawmika78131)" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="73" x="6" y="93.0332">Main Admin</text><!--MD5=[566a1df68487c1fb1cc09ccf1a09a80e]
+entity TrafficManager--><ellipse cx="349.5" cy="23" fill="#FEFECE" filter="url(#fqawmika78131)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><path d="M349.5,31 L349.5,58 M336.5,39 L362.5,39 M349.5,58 L336.5,73 M349.5,58 L362.5,73 " fill="none" filter="url(#fqawmika78131)" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="100" x="299.5" y="93.0332">Traffic Manager</text><ellipse cx="189.7256" cy="54.9451" fill="#FEFECE" filter="url(#fqawmika78131)" rx="75.2256" ry="17.4451" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="102" x="135.7256" y="59.4617">Regist new Staff</text><ellipse cx="667.2571" cy="54.9514" fill="#FEFECE" filter="url(#fqawmika78131)" rx="232.7571" ry="48.9514" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="439" x="447.7571" y="58.6799">I wish to build a freight network with information from the files imported</text><!--MD5=[e7a0d0f4fa0cf58bcb7420c86b20f03c]
+link Admin to Regist new Staff--><path d="M79.25,55 C89.15,55 99.05,55 108.96,55 " fill="none" id="Admin-to-Regist new Staff" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="114.13,55,105.13,51,109.13,55,105.13,59,114.13,55" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[40d48db4f8fdf3103a1a2f1b58ae3e8d]
+link TrafficManager to I wish to build a freight network with information from the files imported--><path d="M399.81,55 C409.6,55 419.4,55 429.19,55 " fill="none" id="TrafficManager-to-I wish to build a freight network with information from the files imported" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="434.32,55,425.32,51,429.32,55,425.32,59,434.32,55" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[36676fad7d12dd221009946699be0f59]
+@startuml
+'https://plantuml.com/use-case-diagram
+
+:Main Admin: as Admin
+:Traffic Manager: as TrafficManager
+
+Admin -> (Regist new Staff)
+TrafficManager -> (I wish to build a freight network with information from the files imported)
+@enduml
+
+@startuml
+
+:Main Admin: as Admin
+:Traffic Manager: as TrafficManager
+
+Admin -> (Regist new Staff)
+TrafficManager -> (I wish to build a freight network with information from the files imported)
+@enduml
+
+PlantUML version 1.2021.16(Wed Dec 08 17:25:22 GMT 2021)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: Cp1252
+Language: pt
+Country: PT
+--></g></svg>

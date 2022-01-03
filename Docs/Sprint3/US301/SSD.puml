@@ -2,10 +2,14 @@
 'https://plantuml.com/sequence-diagram
 
 autonumber
+skinparam sequenceMessageAlign center
 
-Alice -> Bob: Authentication Request
-Bob --> Alice: Authentication Response
+TrafficManager -> System: Authentication Request
+System --> TrafficManager: Authentication Response
 
-Alice -> Bob: Another authentication Request
-Alice <-- Bob: another authentication Response
+TrafficManager -> System: Build a freight network
+TrafficManager <-- System: ask for files pathes
+
+TrafficManager -> System: Inserts files pathes
+TrafficManager <-- System: Generates freight network and informs about the success of the operation.
 @enduml
