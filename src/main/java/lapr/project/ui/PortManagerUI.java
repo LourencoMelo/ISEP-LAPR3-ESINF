@@ -27,9 +27,8 @@ public class PortManagerUI implements Runnable{
 
             options.add(new MenuItem("Import Ports into a 2D-tree with port locations.", new ImportPortsUI()));
             options.add(new MenuItem("I want to know the occupancy rate of each warehouse.", new OccupancyRateUI()));
-            options.add(new MenuItem(", I intend to get a warning whenever I issue a cargo manifest\n" +
-                    "destined for a warehouse whose available capacity is insufficient to accommodate the new\n" +
-                    "manifest.\n", new GetWarningUI()));
+            options.add(new MenuItem("I intend to get a warning whenever I issue a cargo manifest destined for a warehouse whose available capacity is insufficient to accommodate the new manifest", new GetWarningUI()));
+            options.add(new MenuItem("I intend to generate, a week in advance, the loading and unloading map based on ships and trucks load manifests and corresponding travel plans", new GenerateLoadingSufficientResourcesUI()));
 
 
             int option = 0;

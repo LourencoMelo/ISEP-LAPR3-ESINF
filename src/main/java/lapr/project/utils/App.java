@@ -15,6 +15,7 @@ public class App {
     private final String PortManagerID = "PortManager";
     private final String ShipChiefElectricalEngineer = "ShipChiefElectricalEngineer";
     private final String PortStaff = "PortStaff";
+    private final String FleetManager = "FleetManager";
 
     private App() {
         this.company = new Company();
@@ -54,6 +55,7 @@ public class App {
         this.authFacade.addUserRole(PortManagerID, PortManagerID);
         this.authFacade.addUserRole(ShipChiefElectricalEngineer, ShipChiefElectricalEngineer);
         this.authFacade.addUserRole(PortStaff, PortStaff);
+        this.authFacade.addUserRole(FleetManager, FleetManager);
 
         this.authFacade.addUserWithRole("João", "joao@gmail.com", "12345", ID);
         this.authFacade.addUserWithRole("Client", "client@gmail.com", "12345", ClientRole);
@@ -61,6 +63,8 @@ public class App {
         this.authFacade.addUserWithRole("José", "jose@gmail.com", "ola", PortManagerID);
         this.authFacade.addUserWithRole("Pedro", "scee@gmail.com", "12345", ShipChiefElectricalEngineer);
         this.authFacade.addUserWithRole("Joana", "portstaff@gmail.com", "12345", PortStaff);
+        this.authFacade.addUserWithRole("Samuel", "fleet@gmail.com", "12345", FleetManager);
+
     }
 
 
