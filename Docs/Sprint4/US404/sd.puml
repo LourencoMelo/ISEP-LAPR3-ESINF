@@ -1,0 +1,19 @@
+@startuml
+
+autonumber
+
+actor FleetManager #red
+
+System --> FleetManager: Authentication Request
+FleetManager -> System : Another authentication Response
+System --> FleetManager : Authentication successful
+FleetManager --> FleetManagerUI : Asks to know the number of days each ship has been idle since the beginning of the current year.
+FleetManagerUI --> GetShipIdleDaysOfYearUI : Connects
+GetShipIdleDaysOfYearUI --> GetSetOfMaterialsToContainerAtSevenController : asks for the info
+database       "DataBase"              as db
+GetSetOfMaterialsToContainerAtSevenController --> db** : getShipIdleDaysOfYearController()
+db --> GetSetOfMaterialsToContainerAtSevenController : Map<Ship, Integer>
+GetSetOfMaterialsToContainerAtSevenController --> GetShipIdleDaysOfYearUI : Map<Ship, Integer>
+GetShipIdleDaysOfYearUI --> FleetManager : Delivers the information asked
+
+@enduml

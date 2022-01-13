@@ -1,0 +1,19 @@
+@startuml
+
+autonumber
+
+actor FleetManager #red
+
+System --> FleetManager: Authentication Request
+FleetManager -> System : Another authentication Response
+System --> FleetManager : Authentication successful
+FleetManager --> FleetManagerUI : I want to know which ship voyages had an occupancy rate below a certain threshold
+FleetManagerUI --> GetShipVoyagesBelowThresholdUI : Connects
+GetShipVoyagesBelowThresholdUI --> GetShipVoyagesBelowThresholdController : asks for the info
+database       "DataBase"              as db
+GetShipVoyagesBelowThresholdController --> db** : getShipVoyagesBelowThresholdController()
+db --> GetShipVoyagesBelowThresholdController : Map<List<PortAndCapital>,List<LocalDateTime>>
+GetShipVoyagesBelowThresholdController --> GetShipVoyagesBelowThresholdUI : Map<List<PortAndCapital>,List<LocalDateTime>>
+GetShipVoyagesBelowThresholdUI --> FleetManager : Delivers the information asked
+
+@enduml

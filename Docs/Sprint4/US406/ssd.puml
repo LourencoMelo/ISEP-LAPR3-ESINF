@@ -1,0 +1,12 @@
+@startuml
+autonumber
+
+actor FleetManager #red
+
+System --> FleetManager: Authentication Request
+FleetManager -> System : Another authentication Response
+System --> FleetManager : Authentication successful
+FleetManager --> System : I want to know which ship voyages – place and date of origin and destination – had an occupancy rate below a certain threshold
+System --> FleetManager : Delivers the information asked
+
+@enduml

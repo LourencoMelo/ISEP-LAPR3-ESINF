@@ -1,0 +1,19 @@
+@startuml
+
+autonumber
+
+actor FleetManager #red
+
+System --> FleetManager: Authentication Request
+FleetManager -> System : Another authentication Response
+System --> FleetManager : Authentication successful
+FleetManager --> FleetManagerUI : I want to know the average occupancy rate per manifest of a given ship during a given period.
+FleetManagerUI --> GetAverageOccupancyRatePeriodUI : Connects
+GetAverageOccupancyRatePeriodUI --> GetAverageOccupancyRatePeriodController : asks for the info
+database       "DataBase"              as db
+GetAverageOccupancyRatePeriodController --> db** : getShipIdleDaysOfYearController()
+db --> GetAverageOccupancyRatePeriodController : double
+GetAverageOccupancyRatePeriodController --> GetAverageOccupancyRatePeriodUI : double
+GetAverageOccupancyRatePeriodUI --> FleetManager : Delivers the information asked
+
+@enduml

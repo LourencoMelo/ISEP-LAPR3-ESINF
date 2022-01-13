@@ -1,0 +1,12 @@
+@startuml
+autonumber
+
+actor FleetManager #red
+
+System --> FleetManager: Authentication Request
+FleetManager -> System : Another authentication Response
+System --> FleetManager : Authentication successful
+FleetManager --> System : I want to know the average occupancy rate per manifest of a given ship during a given period.
+System --> FleetManager : Delivers the information asked
+
+@enduml

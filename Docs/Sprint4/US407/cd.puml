@@ -1,0 +1,42 @@
+@startuml
+
+class PortManager{
+
+}
+
+class User{
+
+}
+
+class UserRole{
+
+}
+
+class Company{
+
+}
+
+class GenerateLoadingSufficientResourcesUI{
+    -GenerateLoadingSufficientResourcesController generateLoadingSufficientResourcesController
+    +GenerateLoadingSufficientResourcesUI()
+    +run()
+}
+
+class GenerateLoadingSufficientResourcesController{
+    -Company company
+    +GenerateLoadingSufficientResourcesController()
+    +GenerateLoadingSufficientResourcesController(Company company)
+    +generateLoadingSufficientResourcesController()
+    +getCompany()
+}
+
+FleetManager --> GenerateLoadingSufficientResourcesUI : Access
+GenerateLoadingSufficientResourcesUI -down-> GenerateLoadingSufficientResourcesController : Connects with
+FleetManager --> User : is a
+User --> UserRole : has
+GenerateLoadingSufficientResourcesController -up-> GenerateLoadingSufficientResourcesUI : Returns Info
+GenerateLoadingSufficientResourcesController --> Company : Connects with
+Company --> GenerateLoadingSufficientResourcesController : Returns Info
+Company --> DataBase : Connects
+
+@enduml

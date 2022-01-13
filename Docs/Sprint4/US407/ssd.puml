@@ -1,0 +1,12 @@
+@startuml
+autonumber
+
+actor PortManager #red
+
+System --> PortManager: Authentication Request
+PortManager -> System : Another authentication Response
+System --> PortManager : Authentication successful
+PortManager --> System : I intend to generate, a week in advance, the loading and unloading map based on ships and trucks load manifests and corresponding travel plans
+System --> PortManager : Delivers the information asked
+
+@enduml

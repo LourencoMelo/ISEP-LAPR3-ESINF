@@ -1,0 +1,42 @@
+@startuml
+
+class FleetManager{
+
+}
+
+class User{
+
+}
+
+class UserRole{
+
+}
+
+class Company{
+
+}
+
+class GetShipIdleDaysOfYearUI{
+    -GetShipIdleDaysOfYearController getShipIdleDaysOfYearController
+    +GetShipIdleDaysOfYearUI()
+    +run()
+}
+
+class GetShipIdleDaysOfYearController{
+    -Company company
+    +GetShipIdleDaysOfYearController()
+    +GetShipIdleDaysOfYearController(Company company)
+    +getShipIdleDaysOfYearController()
+    +getCompany()
+}
+
+FleetManager --> GetShipIdleDaysOfYearUI : Access
+GetShipIdleDaysOfYearUI -down-> GetShipIdleDaysOfYearController : Connects with
+FleetManager --> User : is a
+User --> UserRole : has
+GetShipIdleDaysOfYearController -up-> GetShipIdleDaysOfYearUI : Returns Info
+GetShipIdleDaysOfYearController --> Company : Connects with
+Company --> GetShipIdleDaysOfYearController : Returns Info
+Company --> DataBase : Connects
+
+@enduml

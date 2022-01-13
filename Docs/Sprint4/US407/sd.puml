@@ -1,0 +1,19 @@
+@startuml
+
+autonumber
+
+actor PortManager #red
+
+System --> PortManager: Authentication Request
+PortManager -> System : Another authentication Response
+System --> PortManager : Authentication successful
+PortManager --> PortManagerUI : I intend to generate, a week in advance, the loading and unloading map based on ships and trucks load manifests and corresponding travel plans
+PortManagerUI --> GenerateLoadingSufficientResourcesUI : Connects
+GenerateLoadingSufficientResourcesUI --> GenerateLoadingSufficientResourcesController : asks for the info
+database       "DataBase"              as db
+GenerateLoadingSufficientResourcesController --> db** : generateLoadingSufficientResourcesController()
+db --> GenerateLoadingSufficientResourcesController : Map<Object, Object>
+GenerateLoadingSufficientResourcesController --> GenerateLoadingSufficientResourcesUI : Map<Object, Object>
+GenerateLoadingSufficientResourcesUI --> PortManager : Delivers the information asked
+
+@enduml

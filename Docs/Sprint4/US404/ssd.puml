@@ -1,0 +1,12 @@
+@startuml
+autonumber
+
+actor FleetManager #red
+
+System --> FleetManager: Authentication Request
+FleetManager -> System : Another authentication Response
+System --> FleetManager : Authentication successful
+FleetManager --> System : Asks to know the number of days each ship has been idle since the beginning of the current year.
+System --> FleetManager : Delivers the information asked
+
+@enduml

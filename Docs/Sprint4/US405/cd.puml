@@ -1,0 +1,42 @@
+@startuml
+
+class FleetManager{
+
+}
+
+class User{
+
+}
+
+class UserRole{
+
+}
+
+class Company{
+
+}
+
+class GetAverageOccupancyRatePeriodUI{
+    -GetAverageOccupancyRatePeriodController getAverageOccupancyRatePeriodController
+    +GetAverageOccupancyRatePeriodUI()
+    +run()
+}
+
+class GetAverageOccupancyRatePeriodController{
+    -Company company
+    +GetAverageOccupancyRatePeriodController()
+    +GetAverageOccupancyRatePeriodController(Company company)
+    +getAverageOccupancyRatePeriodController()
+    +getCompany()
+}
+
+FleetManager --> GetAverageOccupancyRatePeriodUI : Access
+GetAverageOccupancyRatePeriodUI -down-> GetAverageOccupancyRatePeriodController : Connects with
+FleetManager --> User : is a
+User --> UserRole : has
+GetAverageOccupancyRatePeriodController -up-> GetAverageOccupancyRatePeriodUI : Returns Info
+GetAverageOccupancyRatePeriodController --> Company : Connects with
+Company --> GetAverageOccupancyRatePeriodController : Returns Info
+Company --> DataBase : Connects
+
+@enduml

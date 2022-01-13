@@ -1,0 +1,42 @@
+@startuml
+
+class FleetManager{
+
+}
+
+class User{
+
+}
+
+class UserRole{
+
+}
+
+class Company{
+
+}
+
+class GetShipVoyagesBelowThresholdUI{
+    -GetShipVoyagesBelowThresholdController getShipVoyagesBelowThresholdController
+    +GetShipVoyagesBelowThresholdUI()
+    +run()
+}
+
+class GetShipVoyagesBelowThresholdController{
+    -Company company
+    +GetShipVoyagesBelowThresholdController()
+    +GetShipVoyagesBelowThresholdController(Company company)
+    +getShipVoyagesBelowThresholdController()
+    +getCompany()
+}
+
+FleetManager --> GetShipVoyagesBelowThresholdUI : Access
+GetShipVoyagesBelowThresholdUI -down-> GetShipVoyagesBelowThresholdController : Connects with
+FleetManager --> User : is a
+User --> UserRole : has
+GetShipVoyagesBelowThresholdController -up-> GetShipVoyagesBelowThresholdUI : Returns Info
+GetShipVoyagesBelowThresholdController --> Company : Connects with
+Company --> GetShipVoyagesBelowThresholdController : Returns Info
+Company --> DataBase : Connects
+
+@enduml
