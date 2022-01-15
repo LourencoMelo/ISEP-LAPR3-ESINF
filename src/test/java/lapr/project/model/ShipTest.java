@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.text.DecimalFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.LinkedList;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -291,9 +292,17 @@ class ShipTest {
         assertEquals(expected, actual);
     }
 
+    /**
+     *Testing the setContainers
+     */
     @Test
-    void addPositionData() {
+    void setContainers(){
+        LinkedList<Container> linkedList = new LinkedList<>();
+        Container container = new Container("BICU1234567", "G234", 9000, 4000, 2400, 1000, 16);
+        linkedList.add(container);
+        shipTest.setContainers(linkedList);
 
+        assertEquals(linkedList, shipTest.getLinkedListContainers());
     }
 
     /**
@@ -312,8 +321,9 @@ class ShipTest {
                 ", length=" + shipTest.getLength() +
                 ", width=" + shipTest.getWidth() +
                 ", draft=" + shipTest.getDraft() +
-                '}' + "\nPositionData{" + "baseDateTime=" + positionDataTest2.getBaseDateTime() + ", latitude=" + positionDataTest2.getLatitude() + ", longitude=" + positionDataTest2.getLongitude() + ", sog=" + positionDataTest2.getSog() + ", cog=" + positionDataTest2.getCog() + ", heading=" + positionDataTest2.getHeading() + ", position=" + positionDataTest2.getPosition() + "}\n";
+                '}' + "\nPositionData{" + "baseDateTime=" + positionDataTest2.getBaseDateTime() + ", latitude=" + positionDataTest2.getLatitude() + ", longitude=" + positionDataTest2.getLongitude() + ", sog=" + positionDataTest2.getSog() + ", cog=" + positionDataTest2.getCog() + ", heading=" + positionDataTest2.getHeading() + ", position=" + positionDataTest2.getPosition() + "}\nContainers Allocated:"+ shipTest.getLinkedListContainers();
         String actual = shipTest.toString();
+        System.out.println(shipTest.toString());
         assertTrue(shipTest.toString().equalsIgnoreCase(expected));
     }
 

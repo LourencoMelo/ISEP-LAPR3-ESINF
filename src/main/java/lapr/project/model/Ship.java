@@ -3,6 +3,7 @@ package lapr.project.model;
 import lapr.project.utils.TreeOfPositionData;
 
 import java.time.LocalDateTime;
+import java.util.LinkedList;
 
 public abstract class Ship implements Comparable<Ship> {
 
@@ -55,6 +56,8 @@ public abstract class Ship implements Comparable<Ship> {
      */
     private TreeOfPositionData treeOfPositionData;
 
+    private LinkedList<Container> linkedListContainer;
+
     /**
      * -------------------------------------------------------------------------------------------------------------
      *                                               CONSTRUCTOR
@@ -84,6 +87,7 @@ public abstract class Ship implements Comparable<Ship> {
         setWidth(width);
         setDraft(draft);
         treeOfPositionData = new TreeOfPositionData();
+        linkedListContainer = new LinkedList<>();
     }
 
     /**
@@ -281,6 +285,22 @@ public abstract class Ship implements Comparable<Ship> {
         return treeOfPositionData;
     }
 
+    /**
+     * Adding the Containers to the Ship
+     * @param linkedListImported
+     */
+    public void setContainers(LinkedList<Container> linkedListImported){
+        this.linkedListContainer = linkedListImported;
+    }
+
+    /**
+     * Returning the LinkedList with the Containers
+     * @return linkedListContainer
+     */
+    public LinkedList<Container> getLinkedListContainers(){
+        return linkedListContainer;
+    }
+
 
     //////////////////////////////////////////////////////////// SHIP INFO ///////////////////////////////////////////////////////////////////////
 
@@ -443,7 +463,7 @@ public abstract class Ship implements Comparable<Ship> {
                 ", length=" + length +
                 ", width=" + width +
                 ", draft=" + draft +
-                '}' + '\n' + treeOfPositionData;
+                '}' + '\n' + treeOfPositionData + "Containers Allocated:" + linkedListContainer;
     }
 
     public String toStringMMSIMovementsTravelledDistanceDeltaDistance() {
