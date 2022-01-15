@@ -1,0 +1,15 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+skinparam sequenceMessageAlign center
+
+TrafficManager -> System: Authentication Request
+System --> TrafficManager: Authentication Response
+
+TrafficManager -> System: I want to see the n ports with greater centrality in the freight network
+TrafficManager <-- System: ask for the value of n
+
+TrafficManager -> System: Inserts the value of n
+TrafficManager <-- System: Returns the n ports with greater centrality in the freight network.
+@enduml

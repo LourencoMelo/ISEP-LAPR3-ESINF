@@ -1,0 +1,14 @@
+@startuml
+'https://plantuml.com/use-case-diagram
+
+:Traffic Manager: as TM
+(Use the application) as (Use)
+
+TM -> (Start)
+TM --> (Use)
+TM --> (See the n ports with greater centrality in the freight network)
+
+Admin ---> (Use)
+Admin -> (Regist new Staff)
+
+@enduml
