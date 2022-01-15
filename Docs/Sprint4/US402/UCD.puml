@@ -1,0 +1,9 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+:Main Admin: as Admin
+:Traffic Manager: as TrafficManager
+
+Admin -> (Register new Staff)
+TrafficManager -> (I wish to know the shortest path between two locals)
+@enduml

@@ -1,0 +1,58 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class TrafficManager{
+}
+
+class Company {
+
+}
+
+class country{
+-String continent
+-String alpha2
+-String alpha3
+-String name
+-double population
+-int colour
+}
+
+class PortAndWareHouse{
+-String continent
+-String country
+-int code
+-String port
+-double lat
+-double log
+}
+
+class Seadist{
+-PortAndWareHouse originPort
+-PortAndWareHouse destinyPort
+-Double seaDistance
+}
+
+interface PortAndCapital {
++getLatitude()
++getLongitude()
++getContinent()
+}
+
+class capital{
+-String name;
+-double latitude;
+-double longitude;
+}
+
+TrafficManager --> Company
+Company --> country
+Company --> capital
+country --> capital
+country --> PortAndWareHouse
+capital -.-> PortAndCapital
+country -.-> PortAndCapital
+Seadist -o PortAndWareHouse
+
+
+
+@enduml
