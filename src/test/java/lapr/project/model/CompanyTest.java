@@ -765,4 +765,34 @@ class CompanyTest {
 
         assertTrue(expectedLists.containsAll(actualLists) && actualLists.containsAll(expectedLists));
     }
+
+    @Test
+    void fileErrorsImportingContainers(){
+        String expected = "File Not Found!";
+        Ship shipTest = new ShipByMMSI(123456788, "WarCraft", "1023456787", "Roger", 2, 5.0, 3.0, 20.9);
+
+        try{
+            company.containerImport(new File("error"), shipTest);
+        }catch (Exception e){
+            assertEquals(expected, e.getMessage());
+        }
+
+        try{
+            company.containerImport(new File("Files/containerError.csv"), shipTest);
+        }catch (IllegalArgumentException illegalArgumentException){
+            assertEquals(expected, illegalArgumentException.getMessage());
+        }
+
+    }
+
+    @Test
+    void fileImportingContainers(){
+        Ship shipTest = new ShipByMMSI(123456788, "WarCraft", "1023456787", "Roger", 2, 5.0, 3.0, 20.9);
+
+        company.containerImport(new File("Files/containerFew.csv"), shipTest);
+        String expected = "[Container{containerID='74272480223', checkDigit=3, iso='4309', gross=30480, tare=3697, payload=6958, maxVolume=2, repairRecommendation=10}, Container{containerID='83410851157', checkDigit=7, iso='4056', gross=30480, tare=3528, payload=22146, maxVolume=1, repairRecommendation=1}, Container{containerID='41154073316', checkDigit=6, iso='4776', gross=30480, tare=3312, payload=16219, maxVolume=2, repairRecommendation=5}, Container{containerID='33221151821', checkDigit=1, iso='8860', gross=30480, tare=3348, payload=21889, maxVolume=1, repairRecommendation=1}, Container{containerID='94277554381', checkDigit=1, iso='3206', gross=30480, tare=2606, payload=17660, maxVolume=1, repairRecommendation=2}, Container{containerID='67374762847', checkDigit=7, iso='8363', gross=30480, tare=3168, payload=12183, maxVolume=2, repairRecommendation=7}, Container{containerID='26610961779', checkDigit=9, iso='2379', gross=30480, tare=3718, payload=25135, maxVolume=1, repairRecommendation=2}, Container{containerID='45609614550', checkDigit=0, iso='8433', gross=30480, tare=2745, payload=16059, maxVolume=2, repairRecommendation=8}, Container{containerID='52284563239', checkDigit=9, iso='8822', gross=30480, tare=3361, payload=13769, maxVolume=2, repairRecommendation=5}, Container{containerID='60675276575', checkDigit=5, iso='4967', gross=30480, tare=3007, payload=44, maxVolume=1, repairRecommendation=10}]";
+
+        assertEquals(expected, shipTest.getLinkedListContainers().toString());
+    }
+
 }

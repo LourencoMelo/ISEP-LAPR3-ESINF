@@ -6,10 +6,12 @@ import lapr.project.utils.TreeOfPorts;
 import lapr.project.utils.TreeOfShips;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.List;
 
 import java.time.LocalDateTime;
 import java.util.*;
+import java.util.logging.Logger;
 
 public class Company {
 
@@ -406,5 +408,41 @@ public class Company {
         graphGenerator.colourMap(countryList);
     }
 
+
+    /**
+     * Importing the Containers by a file(.csv) and adding them to the ship
+     * @param file file introduced by the user
+     * @param ship ship previous entered by the user to add the containers
+     */
+    public void containerImport(File file, Ship ship){
+
+        try(Scanner in = new Scanner(file)) {
+
+            in.nextLine();
+
+            LinkedList<Container> linkedListContainersExist = new LinkedList<>();
+
+            while (in.hasNextLine()){
+                String[] container_info = in.nextLine().trim().split(",");
+
+                try{
+                    Container container = new Container(container_info[0].trim(),container_info[1].trim(),Integer.parseInt(container_info[2].trim()),Integer.parseInt(container_info[3].trim()),Integer.parseInt(container_info[4]),Integer.parseInt(container_info[5].trim()),Integer.parseInt(container_info[6].trim()));
+
+                    if(!linkedListContainersExist.contains(container)){
+                        linkedListContainersExist.add(container);
+                    }
+
+                }catch (IllegalArgumentException exception){
+                    Logger.getLogger(exception.getMessage());
+                }
+            }
+
+            ship.setContainers(linkedListContainersExist);
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+    }
 
 }
