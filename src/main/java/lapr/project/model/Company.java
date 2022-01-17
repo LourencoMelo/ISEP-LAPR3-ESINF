@@ -410,6 +410,11 @@ public class Company {
 
 
     /**
+     * ========================US 419 & US420 =========================================
+     */
+
+
+    /**
      * Importing the Containers by a file(.csv) and adding them to the ship
      * @param file file introduced by the user
      * @param ship ship previous entered by the user to add the containers
@@ -443,6 +448,108 @@ public class Company {
             e.printStackTrace();
         }
 
+    }
+
+    /**
+     * Calculates the total mass of the ship
+     * (Ship deadweight and containers)
+     * @param ship
+     * @return totalmass
+     */
+    public double calculateTotalMass(Ship ship){
+        int size = ship.getLinkedListContainers().size();
+        double weightByDefault = 200.0;
+        double totalWeightContainers = size * weightByDefault;
+        double shipDeadWeight = 3000;
+
+        double totalMass = shipDeadWeight + totalWeightContainers;
+
+        return totalMass;
+    }
+
+    /**
+     * Calculates the difference of the heights
+     * When the containers are not loaded
+     * Compared when they are loaded
+     * @param ship
+     * @param totalMass
+     * @param shipDeadWeight
+     * @param typeOfWater
+     * @return difference
+     */
+    public double calculateDiffHeights(Ship ship, double totalMass, double shipDeadWeight, int typeOfWater){
+        //Density Liquids
+        double liquidDensity;
+        if(typeOfWater == 1){
+            liquidDensity = 1026.0;
+        }else{
+            liquidDensity = 1000.0;
+        }
+
+        //Measurements
+        double width = ship.getWidth();
+        double length = ship.getLength();
+        double height = 10.0;
+
+        //Sink and Height Volume With Containers
+        double volumeSinkWithContainers = (totalMass/liquidDensity);
+        double heightSinkWithContainersAux = (volumeSinkWithContainers*2*height)/(length*width);
+        double heightSinkWithContainers = Math.sqrt(heightSinkWithContainersAux);
+
+        //Sink and Height Volume Dead Weight
+        double volumeSinkDead = (shipDeadWeight/liquidDensity);
+        double heightSinkDeadAux = (volumeSinkDead*2*height)/(length*width);
+        double heightSinkDead = Math.sqrt(heightSinkDeadAux);
+
+        //Calculating the difference
+        double difference = heightSinkDead - heightSinkWithContainers;
+
+        return difference;
+    }
+
+    /**
+     * Calculating Pressure on water By area
+     * N/m^2
+     * @param ship
+     * @param totalMass
+     * @param typeOfWater
+     * @return
+     */
+    public double calculatePressureOnWater(Ship ship, double totalMass, int typeOfWater){
+        //Density Liquids
+        double liquidDensity;
+        if(typeOfWater == 1){
+            liquidDensity = 1026.0;
+        }else{
+            liquidDensity = 1000.0;
+        }
+
+        //Gravity
+        double gravity = 9.8;
+
+        //Measurements
+        double width = ship.getWidth();
+        double length = ship.getLength();
+        double height = 10.0;
+
+        //Sink and Height and Width Volume With Containers
+        double volumeSinkWithContainers = (totalMass/liquidDensity);
+        double heightSinkWithContainersAux = (volumeSinkWithContainers*2*height)/(length*width);
+        double heightSinkWithContainers = Math.sqrt(heightSinkWithContainersAux);
+
+        double widthSinkWithContainers = (volumeSinkWithContainers*2)/(length*heightSinkWithContainers);
+
+        //Calculate hypotenuse
+        double sum = (heightSinkWithContainers * heightSinkWithContainers) + (widthSinkWithContainers * widthSinkWithContainers);
+        double hypotenuse = Math.sqrt(sum);
+
+        //Calculate Total Area
+        double totalArea = (widthSinkWithContainers * heightSinkWithContainers) + (hypotenuse * length * 2);
+
+        //Calculate Pressure
+        double pressure = (totalMass*gravity)/(totalArea);
+
+        return pressure;
     }
 
 }

@@ -785,6 +785,13 @@ class CompanyTest {
 
     }
 
+    /**
+     *==================   US 419 & US 420 =====================
+     */
+
+    /**
+     * Tests if the Containres are correctly imported
+     */
     @Test
     void fileImportingContainers(){
         Ship shipTest = new ShipByMMSI(123456788, "WarCraft", "1023456787", "Roger", 2, 5.0, 3.0, 20.9);
@@ -794,5 +801,52 @@ class CompanyTest {
 
         assertEquals(expected, shipTest.getLinkedListContainers().toString());
     }
+
+    /**
+     * Calculates the total Mass of the ship when has the containers
+     */
+    @Test
+    void calculateTotalMass(){
+        Ship shipTest = new ShipByMMSI(123456788, "WarCraft", "1023456787", "Roger", 2, 5.0, 3.0, 20.9);
+
+        company.containerImport(new File("Files/containerFew.csv"), shipTest);
+
+        double expected = 5000;
+
+        assertEquals(expected, company.calculateTotalMass(shipTest));
+    }
+
+    /**
+     * Calculates the height Difference when the containers are loaded
+     * Compared with they are not loaded
+     */
+    @Test
+    void calculateHeightDifference(){
+        Ship shipTest = new ShipByMMSI(123456788, "WarCraft", "1023456787", "Roger", 2, 5.0, 3.0, 20.9);
+
+        company.containerImport(new File("Files/containerFew.csv"), shipTest);
+
+        double diff = -0.5745674504759337;
+
+        double diff1 = -0.5819888974716112;
+
+        assertEquals(diff, company.calculateDiffHeights(shipTest,5000.0,3000.0,1));
+        assertEquals(diff1, company.calculateDiffHeights(shipTest,5000.0,3000.0,2));
+    }
+
+    @Test
+    void calculatePressureOnWater(){
+        Ship shipTest = new ShipByMMSI(123456788, "WarCraft", "1023456787", "Roger", 2, 5.0, 3.0, 20.9);
+
+        company.containerImport(new File("Files/containerFew.csv"), shipTest);
+
+        double pressure = 1715.5466653814824;
+        double pressure1 = 1692.1785319900937;
+
+        assertEquals(pressure, company.calculatePressureOnWater(shipTest,5000.0,1));
+        assertEquals(pressure1, company.calculatePressureOnWater(shipTest,5000.0,2));
+
+    }
+
 
 }

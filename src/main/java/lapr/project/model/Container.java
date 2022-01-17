@@ -1,6 +1,6 @@
 package lapr.project.model;
 
-public class Container {
+public class Container{
 
 /**
  * -------------------------------------------------------------------------------------------------------------
@@ -249,4 +249,5 @@ public class Container {
                 ", repairRecommendation=" + repairRecommendation +
                 '}';
     }
+
 }
