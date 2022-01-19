@@ -469,7 +469,18 @@ public class Company {
         //counter to walk through the linked list
         int counter = 0;
         int level = 0;
-        int maxLevel = ship.getLinkedListContainers().size() / (widthSize*lengthSize) +1 ;
+        float maxLevel = (float) ship.getLinkedListContainers().size() / (widthSize*lengthSize);
+        float maxLevelAux = maxLevel;
+
+        //Calculating how many levels are needed
+        if(Math.round(maxLevelAux) > maxLevel){
+            maxLevel = Math.round(maxLevel);
+        }else if (Math.round(maxLevelAux) == maxLevel){
+            System.out.println("Perfect Allocation");
+        }else{
+            maxLevel = Math.round(maxLevel);
+            maxLevel ++;
+        }
 
         //filling the matrix
         for(int k= 0; k <maxLevel; k++){
