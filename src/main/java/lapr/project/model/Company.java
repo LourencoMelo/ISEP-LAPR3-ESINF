@@ -450,6 +450,45 @@ public class Company {
 
     }
 
+
+    /**
+     * Allocates the ships into a matrix
+     * Each level has a matrix
+     * @param ship
+     * @return matrixLevels
+     */
+    public Map<Integer, double[][]> allocatingContainers(Ship ship){
+        //Creating the map to return
+        Map<Integer, double[][]> matrixLevels = new LinkedHashMap<>();
+
+        //Creating the matrix based on ship size
+        int widthSize = (int) ship.getWidth();
+        int lengthSize = (int) ship.getLength();
+
+
+        //counter to walk through the linked list
+        int counter = 0;
+        int level = 0;
+        int maxLevel = ship.getLinkedListContainers().size() / (widthSize*lengthSize) +1 ;
+
+        //filling the matrix
+        for(int k= 0; k <maxLevel; k++){
+            double[][] matrix = new double[lengthSize][widthSize];
+            for(int i = 0; i < lengthSize; i++){
+                for(int j = 0; j < widthSize; j++){
+                    if(counter < ship.getLinkedListContainers().size()){
+                        matrix[i][j] = ship.getLinkedListContainers().get(counter).getTare() + ship.getLinkedListContainers().get(counter).getPayload();
+                        counter ++;
+                    }
+                }
+            }
+            matrixLevels.put(level, matrix);
+            level ++;
+        }
+
+        return matrixLevels;
+    }
+
     /**
      * Calculates the total mass of the ship
      * (Ship deadweight and containers)

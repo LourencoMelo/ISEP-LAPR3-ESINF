@@ -803,6 +803,49 @@ class CompanyTest {
     }
 
     /**
+     * Testing if the matrix values are the same
+     */
+    @Test
+    void allocatingContainers(){
+        Ship shipTest = new ShipByMMSI(123456788, "WarCraft", "1023456787", "Roger", 2, 5.0, 3.0, 20.9);
+
+        company.containerImport(new File("Files/containerFew.csv"), shipTest);
+
+        Map<Integer, double[][]> matrixLevelsTest = new LinkedHashMap<>();
+
+        double matrix[][] = new double[5][3];
+
+        matrix[0][0] = 10655.0;
+        matrix[0][1] = 25674.0;
+        matrix[0][2] = 19531.0;
+        matrix[1][0] = 25237.0;
+        matrix[1][1] = 20266.0;
+        matrix[1][2] = 15351.0;
+        matrix[2][0] = 28853.0;
+        matrix[2][1] = 18804.0;
+        matrix[2][2] = 17130.0;
+        matrix[3][0] = 3051.0;
+        matrix[3][1] = 0.0;
+        matrix[3][2] = 0.0;
+        matrix[4][0] = 0.0;
+        matrix[4][1] = 0.0;
+        matrix[4][2] = 0.0;
+
+        matrixLevelsTest.put(0,matrix);
+
+        Map<Integer, double[][]> matrixLevelsCompany = company.allocatingContainers(shipTest);
+
+        for(Map.Entry<Integer, double[][]> mapObject : matrixLevelsCompany.entrySet()){
+            double matrixTest[][] = mapObject.getValue();
+            for(int i = 0; i <5; i++){
+                for(int j = 0; j < 3; j++){
+                    assertEquals(matrix[i][j], matrixTest[i][j]);
+                }
+            }
+        }
+    }
+
+    /**
      * Calculates the total Mass of the ship when has the containers
      */
     @Test
