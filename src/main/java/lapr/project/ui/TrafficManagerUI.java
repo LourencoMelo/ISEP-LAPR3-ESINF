@@ -3,7 +3,7 @@ package lapr.project.ui;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TrafficManagerUI implements Runnable{
+public class TrafficManagerUI implements Runnable {
 
 
     public TrafficManagerUI() {
@@ -24,7 +24,7 @@ public class TrafficManagerUI implements Runnable{
     @Override
     public void run() {
 
-        try{
+        try {
             List<MenuItem> options = new ArrayList<>();
 
             options.add(new MenuItem("Import Ships from a text file into a BST", new ImportFileUI()));
@@ -39,17 +39,18 @@ public class TrafficManagerUI implements Runnable{
             options.add(new MenuItem("Know which places (cities or ports) are closest to all other places (closeness places).", new TopClosenessByContinentUI()));
             options.add(new MenuItem("Import data from countries, ports, borders and seadists to build a freight network", new GenerateGraphUI()));
             options.add(new MenuItem("Colour the map", new ColourMapUI()));
+            options.add(new MenuItem("I wish to know which ports are more critical", new ListNCentralityPortsUI()));
             int option = 0;
 
-            do{
+            do {
                 option = Utils.showAndSelectIndex(options, "\n\n\t\t\t\t\t\t\t\t======================== Traffic Manager Menu ========================\n\n");
 
-                if ((option >= 0) && (option < options.size())){
+                if ((option >= 0) && (option < options.size())) {
                     options.get(option).run();
                 }
-            }while (option != -1);
+            } while (option != -1);
 
-        }catch (Exception exception){
+        } catch (Exception exception) {
             System.out.println(exception.getMessage());
         }
     }
