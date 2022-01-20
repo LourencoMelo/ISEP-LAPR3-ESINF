@@ -540,7 +540,7 @@ class CompanyTest {
         //Test for the edge between capital and closest port
 
         //Test for all edges
-        System.out.println(company.getGraphGenerator().getGraph().edges());
+        //System.out.println(company.getGraphGenerator().getGraph().edges());
 
         //System.out.println(company.getGraphGenerator().getSeaDistancesMap());
         assertEquals(988, company.getGraphGenerator().getGraph().numEdges());
@@ -766,22 +766,16 @@ class CompanyTest {
         assertTrue(expectedLists.containsAll(actualLists) && actualLists.containsAll(expectedLists));
     }
 
-//    @Test
-//    void centralityMapTest() {
-//
-//        importPortsController.importPorts(new File("Files/bports.csv")); //Imports all ports from file
-//
-//        company.generateGraph(new File("Files/countries.csv"), new File("Files/borders.csv"), new File("Files/seadists.csv"), 0); //Generates graph
-//
-//        System.out.println(company.getGraphGenerator().getGraph().numEdges());
-//
-//        System.out.println(company.getGraphGenerator().getGraph().numVertices());
-//
-//        for (Map.Entry<PortAndWareHouse, Integer> portAndWareHouseIntegerEntry : company.getGraphGenerator().getCentralitys().entrySet()) {
-//            System.out.printf("Port's Name : %s   ||    Centrality : %d ;\n", portAndWareHouseIntegerEntry.getKey().getPort(), portAndWareHouseIntegerEntry.getValue());
-//        }
-//
-//    }
+    @Test
+    void nBiggerThanPortsExistent() {
+
+        importPortsController.importPorts(new File("Files/bports.csv")); //Imports all ports from file
+
+        company.generateGraph(new File("Files/countries.csv"), new File("Files/borders.csv"), new File("Files/seadists.csv"), 0); //Generates graph
+
+        assertEquals(77, company.getGraphGenerator().listOfNPortsCentrality(300).size());
+
+    }
 
     @Test
     void centralityTest() {
@@ -804,18 +798,6 @@ class CompanyTest {
         expected_map.put(portAndWareHouse2, 19);
         expected_map.put(portAndWareHouse1, 11);
         expected_map.put(portAndWareHouse3, 11);
-
-
-        for (Map.Entry<PortAndWareHouse, Integer> entry : expected_map.entrySet()) {
-            System.out.printf("Name : %s   || Centrality: %d ;\n", entry.getKey().getPort(), entry.getValue());
-        }
-
-        System.out.println("||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
-
-        for (Map.Entry<PortAndWareHouse, Integer> entry : company1.getGraphGenerator().listOfNPortsCentrality(4).entrySet()) {
-            System.out.printf("Name : %s   || Centrality: %d ;\n", entry.getKey().getPort(), entry.getValue());
-        }
-
 
         assertEquals(expected_map.toString(), company1.getGraphGenerator().listOfNPortsCentrality(4).toString());
     }
