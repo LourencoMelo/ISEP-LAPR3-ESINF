@@ -1,7 +1,6 @@
 package lapr.project.utils;
 
 import lapr.project.model.*;
-import lapr.project.model.*;
 import lapr.project.utils.graph.Algorithms;
 import lapr.project.utils.graph.Graph;
 import lapr.project.utils.graph.matrix.MatrixGraph;
@@ -211,15 +210,16 @@ public class GraphGenerator {
 
     /**
      * Adds edges between n closest ports
+     *
      * @param countryList list of countries from the company
-     * @param n n closest ports
+     * @param n           n closest ports
      */
     public void NClosestPorts(List<Country> countryList, int n) {
 
         for (Country country : countryList) {
             for (PortAndWareHouse portAndWareHouse : country.getTree_of_ports().inOrder()) {
-                int i = 0, j= 0;
-                while (i < n){
+                int i = 0, j = 0;
+                while (i < n) {
 
                     if (seaDistancesMap.get(portAndWareHouse) == null) break;
 
@@ -266,7 +266,6 @@ public class GraphGenerator {
         }
         return null;
     }
-
 
 
     /**
@@ -355,11 +354,16 @@ public class GraphGenerator {
 
     }
 
+    /**
+     * Map of seadistances
+     *
+     * @return map
+     */
     public Map<PortAndWareHouse, List<SeaDist>> getSeaDistancesMap() {
         return seaDistancesMap;
     }
 
-    public Map<Double, PortAndCapital> topClosenessByContinent(int topN, String continent){
+    public Map<Double, PortAndCapital> topClosenessByContinent(int topN, String continent) {
 
         //Creates the map to aux
         Map<Double, PortAndCapital> auxMap = new TreeMap<>(Double::compare);
@@ -371,27 +375,26 @@ public class GraphGenerator {
         List<PortAndCapital> listLocations = new ArrayList<>();
 
         //Adds in the "listLocations" if is in the same continent
-        for(PortAndCapital location : graph.vertices()){
-            if(location.getContinent().compareTo(continent) == 0){
+        for (PortAndCapital location : graph.vertices()) {
+            if (location.getContinent().compareTo(continent) == 0) {
                 listLocations.add(location);
             }
         }
 
-        //
-        for(PortAndCapital location1 : listLocations){
+        for (PortAndCapital location1 : listLocations) {
             double averageCloseness = 0;
             double sum = 0;
-            for(PortAndCapital location2 : listLocations){
+            for (PortAndCapital location2 : listLocations) {
                 LinkedList<PortAndCapital> path = new LinkedList<>(); //To save the sequence of the paths
                 Algorithms.shortestPath(graph, location1, location2, Double::compare, Double::sum, 0.0, path); //Saves the shortestPath on path
-                for(int i = 0; i < path.size(); i++){ //Gets the weight of the path between location1 & location 2
-                    if(i + 1 == path.size()){
+                for (int i = 0; i < path.size(); i++) { //Gets the weight of the path between location1 & location 2
+                    if (i + 1 == path.size()) {
                         break;
                     }
-                    sum += graph.edge(path.get(i), path.get(i+1)).getWeight();
+                    sum += graph.edge(path.get(i), path.get(i + 1)).getWeight();
                 }
             }
-            averageCloseness = sum/listLocations.size();
+            averageCloseness = sum / listLocations.size();
             auxMap.put(averageCloseness, location1);
         }
 
@@ -400,15 +403,93 @@ public class GraphGenerator {
 
         //Limiting the return to the TopN Places in closeness
         int limitTopN = 0;
-        for(Map.Entry<Double, PortAndCapital> mapObject : auxMap.entrySet()){
-            if(limitTopN == topN){
+        for (Map.Entry<Double, PortAndCapital> mapObject : auxMap.entrySet()) {
+            if (limitTopN == topN) {
                 return lastMap;
             }
             lastMap.put(mapObject.getKey(), mapObject.getValue());
-            limitTopN ++;
+            limitTopN++;
         }
 
         return lastMap;
     }
+
+
+    /**
+     * Iterates through the graph and fills the centralitys
+     * @return ordered map by centralitys
+     */
+    public Map<PortAndWareHouse, Integer> getCentralitys() {
+
+        Map<PortAndWareHouse, Integer> centrality_map = new HashMap<>(); //Map to be filled with all the ports present on the graph and his respective centralitys
+
+        for (PortAndCapital local : graph.vertices()) {
+            ArrayList<LinkedList<PortAndCapital>> paths = new ArrayList<>(); //Array of the shortest paths for each vertex of the graph
+
+            ArrayList<Double> dists = new ArrayList<>(); //Array of distances of the shortest paths
+
+            Algorithms.shortestPaths(graph, local, Double::compare, Double::sum, 0.0, paths, dists); //Calculates all shortest paths to the respective local
+
+            for (LinkedList<PortAndCapital> path : paths) {  //For each
+
+                if (path != null) {
+
+                    for (PortAndCapital local1 : path) {
+
+                        if (local1 instanceof PortAndWareHouse) {
+
+                            Integer count = centrality_map.get(local1);
+
+                            if (count == null) {
+                                count = 0;
+                            }
+
+                            centrality_map.put((PortAndWareHouse) local1, count + 1);
+
+                        }
+                    }
+                }
+
+            }
+
+        }
+
+        return centrality_map;
+
+    }
+
+    /**
+     * List with the n porter with greater centrality
+     *
+     * @param n number of ports pretended
+     * @return list of ports
+     */
+    public Map<PortAndWareHouse, Integer> listOfNPortsCentrality(int n) {
+
+        List<Map.Entry<PortAndWareHouse, Integer>> list_of_entry = new ArrayList<>(getCentralitys().entrySet());
+
+        list_of_entry.sort(new Comparator<Map.Entry<PortAndWareHouse, Integer>>() {
+            @Override
+            public int compare(Map.Entry<PortAndWareHouse, Integer> o1, Map.Entry<PortAndWareHouse, Integer> o2) {
+                return o2.getValue() - o1.getValue();
+            }
+        }.thenComparing(new Comparator<Map.Entry<PortAndWareHouse, Integer>>() {
+            @Override
+            public int compare(Map.Entry<PortAndWareHouse, Integer> o1, Map.Entry<PortAndWareHouse, Integer> o2) {
+                return o2.getKey().getPort().compareTo(o1.getKey().getPort());
+            }
+        }));  //Sorts the List of entries by values
+
+        Map<PortAndWareHouse, Integer> mapOfNPorts = new LinkedHashMap<>(); //Keeps the order from the sorted list
+
+        for (int i = 0; i < n; i++) {
+            if (i > list_of_entry.size() -1) break;
+            mapOfNPorts.put(list_of_entry.get(i).getKey(), list_of_entry.get(i).getValue());
+        }
+
+
+        return mapOfNPorts;
+    }
+
 
 }

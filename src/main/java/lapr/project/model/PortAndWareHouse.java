@@ -1,6 +1,6 @@
 package lapr.project.model;
 
-public class PortAndWareHouse implements PortAndCapital{
+public class PortAndWareHouse implements PortAndCapital {
 
     /**
      * -------------------------------------------------------------------------------------------------------------
@@ -49,15 +49,14 @@ public class PortAndWareHouse implements PortAndCapital{
      */
 
     /**
-     *
      * @param continent continent of the port
-     * @param country country of the port
-     * @param code code pf the port
-     * @param port name of the port
-     * @param lat latitude of the port
-     * @param log longitude of the port
+     * @param country   country of the port
+     * @param code      code pf the port
+     * @param port      name of the port
+     * @param lat       latitude of the port
+     * @param log       longitude of the port
      */
-    public PortAndWareHouse(String continent, String country, int code,String port,double lat, double log){
+    public PortAndWareHouse(String continent, String country, int code, String port, double lat, double log) {
         setContinent(continent);
         setCountry(country);
         setCode(code);
@@ -68,6 +67,7 @@ public class PortAndWareHouse implements PortAndCapital{
 
     /**
      * Sets the code of the port
+     *
      * @param code new code
      */
     public void setCode(int code) {
@@ -76,6 +76,7 @@ public class PortAndWareHouse implements PortAndCapital{
 
     /**
      * Sets the continent of the port
+     *
      * @param continent new continent
      */
     public void setContinent(String continent) {
@@ -84,6 +85,7 @@ public class PortAndWareHouse implements PortAndCapital{
 
     /**
      * Sets the country of the port
+     *
      * @param country new country
      */
     public void setCountry(String country) {
@@ -92,6 +94,7 @@ public class PortAndWareHouse implements PortAndCapital{
 
     /**
      * Sets the latitude of the port
+     *
      * @param lat new latitude
      */
     public void setLat(double lat) {
@@ -100,6 +103,7 @@ public class PortAndWareHouse implements PortAndCapital{
 
     /**
      * Sets the longitude of the port
+     *
      * @param log new longitude
      */
     public void setLog(double log) {
@@ -108,6 +112,7 @@ public class PortAndWareHouse implements PortAndCapital{
 
     /**
      * Sets the name of the port
+     *
      * @param port new port
      */
     public void setPort(String port) {
@@ -116,6 +121,7 @@ public class PortAndWareHouse implements PortAndCapital{
 
     /**
      * Returns the code
+     *
      * @return code
      */
     public int getCode() {
@@ -124,6 +130,7 @@ public class PortAndWareHouse implements PortAndCapital{
 
     /**
      * Returns the continent
+     *
      * @return continent
      */
     @Override
@@ -133,6 +140,7 @@ public class PortAndWareHouse implements PortAndCapital{
 
     /**
      * Returns the latitude
+     *
      * @return latitude
      */
     @Override
@@ -142,6 +150,7 @@ public class PortAndWareHouse implements PortAndCapital{
 
     /**
      * Returns the longitude
+     *
      * @return longitude
      */
     @Override
@@ -151,6 +160,7 @@ public class PortAndWareHouse implements PortAndCapital{
 
     /**
      * Returns the country
+     *
      * @return country
      */
     public String getCountry() {
@@ -159,6 +169,7 @@ public class PortAndWareHouse implements PortAndCapital{
 
     /**
      * Returns the name
+     *
      * @return port
      */
     public String getPort() {
@@ -166,7 +177,7 @@ public class PortAndWareHouse implements PortAndCapital{
     }
 
     /**
-     * Tos String
+     * To String
      */
     @Override
     public String toString() {

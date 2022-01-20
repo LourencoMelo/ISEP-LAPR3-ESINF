@@ -766,6 +766,60 @@ class CompanyTest {
         assertTrue(expectedLists.containsAll(actualLists) && actualLists.containsAll(expectedLists));
     }
 
+//    @Test
+//    void centralityMapTest() {
+//
+//        importPortsController.importPorts(new File("Files/bports.csv")); //Imports all ports from file
+//
+//        company.generateGraph(new File("Files/countries.csv"), new File("Files/borders.csv"), new File("Files/seadists.csv"), 0); //Generates graph
+//
+//        System.out.println(company.getGraphGenerator().getGraph().numEdges());
+//
+//        System.out.println(company.getGraphGenerator().getGraph().numVertices());
+//
+//        for (Map.Entry<PortAndWareHouse, Integer> portAndWareHouseIntegerEntry : company.getGraphGenerator().getCentralitys().entrySet()) {
+//            System.out.printf("Port's Name : %s   ||    Centrality : %d ;\n", portAndWareHouseIntegerEntry.getKey().getPort(), portAndWareHouseIntegerEntry.getValue());
+//        }
+//
+//    }
+
+    @Test
+    void centralityTest() {
+
+        Company company1 = new Company();
+        ImportPortsController importPortsController = new ImportPortsController(company1);
+
+        importPortsController.importPorts(new File("Files/portsTest.csv")); //Imports all ports from file
+
+        company1.generateGraph(new File("Files/us303countries.csv"), new File("Files/us303borders.csv"), new File("Files/us303seadists.csv"), 0); //Generates graph
+
+        Map<PortAndWareHouse, Integer> expected_map = new LinkedHashMap<>(); //Map with expected results
+
+        PortAndWareHouse portAndWareHouse1 = new PortAndWareHouse("Europe","Portugal",18476,"Ponta Delgada",37.73333333,-25.66666667);
+        PortAndWareHouse portAndWareHouse2 = new PortAndWareHouse("Europe","Portugal",23428,"Funchal",32.65,-16.91666667);
+        PortAndWareHouse portAndWareHouse3 = new PortAndWareHouse("Europe","Spain",17386,"Barcelona",41.33333333,2.166666667);
+        PortAndWareHouse portAndWareHouse4 = new PortAndWareHouse("Europe","Spain",18937,"Valencia",39.45,-0.3);
+
+        expected_map.put(portAndWareHouse4, 19);
+        expected_map.put(portAndWareHouse2, 19);
+        expected_map.put(portAndWareHouse1, 11);
+        expected_map.put(portAndWareHouse3, 11);
+
+
+        for (Map.Entry<PortAndWareHouse, Integer> entry : expected_map.entrySet()) {
+            System.out.printf("Name : %s   || Centrality: %d ;\n", entry.getKey().getPort(), entry.getValue());
+        }
+
+        System.out.println("||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
+
+        for (Map.Entry<PortAndWareHouse, Integer> entry : company1.getGraphGenerator().listOfNPortsCentrality(4).entrySet()) {
+            System.out.printf("Name : %s   || Centrality: %d ;\n", entry.getKey().getPort(), entry.getValue());
+        }
+
+
+        assertEquals(expected_map.toString(), company1.getGraphGenerator().listOfNPortsCentrality(4).toString());
+    }
+
     @Test
     void fileErrorsImportingContainers(){
         String expected = "File Not Found!";
