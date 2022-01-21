@@ -1,0 +1,40 @@
+@startuml
+
+class GraphGenerator{
+- Graph<PortAndCapital, Double> graph;
++ getCentralitys();
++ listOfNPortsCentrality(int n);
+}
+
+class Company{
+- TreeOfPorts treeOfPorts;
+- List<Country> countryList;
+- GraphGenerator graphGenerator;
++ generateGraph(File countries, File borders, File seaDists, int n);
++ getGraphGenerator();
+}
+
+class User
+
+class UserRole
+
+class ListNCentralityPortsUI
+
+class TrafficManager
+
+class ListNCentralityPortsController
+
+TrafficManager -down-> User : is a
+
+User -down-> UserRole : has
+
+TrafficManager -down-> ListNCentralityPortsUI : access
+
+ListNCentralityPortsUI -down-> ListNCentralityPortsController : connects with
+
+ListNCentralityPortsController -down-> Company : calls method
+
+Company -down-> GraphGenerator : gets methods from
+
+
+@enduml

@@ -1,0 +1,40 @@
+@startuml
+
+autonumber
+
+actor       TrafficManager             as TM
+participant    ":ListNCentralityPortsUI"         as UI
+participant    ":ListNCentralityPortsController" as CTRL
+participant    ":Company"              as Company
+participant    ":GraphGenerator"              as GG
+
+
+TM -> UI : I want to know the n ports with greater centrality from the freight network
+activate UI
+UI --> TM : Please insert the value of the n
+deactivate UI
+
+TM -> UI : Inserts the value of n
+activate UI
+
+UI -> CTRL : getNPorts(int n)
+activate CTRL
+
+CTRL -> Company : getGraphGenerator()
+activate Company
+
+Company -> GG : listOfNPortsCentrality(n)
+activate GG
+
+GG -> Company : listOfNports
+deactivate GG
+
+Company -> CTRL : listOfNports
+deactivate Company
+
+CTRL -> UI : listOfNports
+deactivate CTRL
+
+UI -> TM : return list of n ports with greater centrality
+
+@enduml
