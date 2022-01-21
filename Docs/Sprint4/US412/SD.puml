@@ -1,0 +1,40 @@
+@startuml
+
+autonumber
+
+actor       "Ship Chief Electrical Engineer"             as SC
+participant    ":AmountEnergyUI"         as UI
+participant    ":AmountEnergyController" as CTRL
+participant    ":Company"              as Company
+participant    ":GraphGenerator"              as GG
+
+
+SC -> UI : I want to know the amount of energy needed
+activate UI
+UI --> SC : Please insert the trip and the operating temperature
+deactivate UI
+
+SC -> UI : Inserts the data required
+activate UI
+
+UI -> CTRL : getTotalEnergy(trip,operating_temperature)
+activate CTRL
+
+CTRL -> Company : getGraphGenerator()
+activate Company
+
+Company -> GG : calculateTotalEnergy(trip,operating_temperature)
+activate GG
+
+GG -> Company : total_energy
+deactivate GG
+
+Company -> CTRL : total_energy
+deactivate Company
+
+CTRL -> UI : total_energy
+deactivate CTRL
+
+UI -> SC : return total_energy needed for the inserted operating temperature
+
+@enduml

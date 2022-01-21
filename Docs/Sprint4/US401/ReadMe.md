@@ -1,4 +1,4 @@
-# US301 - I wish to build a freight network
+# US401 - I wish to build a freight network
 
 ## Brief description
 

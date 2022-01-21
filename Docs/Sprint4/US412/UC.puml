@@ -1,0 +1,14 @@
+@startuml
+'https://plantuml.com/use-case-diagram
+
+:Ship Chief Electrical Engineer: as SC
+(Use the application) as (Use)
+
+SC -> (Start)
+SC --> (Use)
+SC --> (See the amount of energy needed per container)
+
+Admin ---> (Use)
+Admin -> (Regist new Staff)
+
+@enduml

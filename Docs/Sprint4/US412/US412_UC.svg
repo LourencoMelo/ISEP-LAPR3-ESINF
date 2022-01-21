@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="374px" preserveAspectRatio="none" style="width:552px;height:374px;background:#FFFFFF;" version="1.1" viewBox="0 0 552 374" width="552px" zoomAndPan="magnify"><defs><filter height="300%" id="f19zu0190yiwvy" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--MD5=[8b944653c655024075d894af29a33c78]
+entity SC--><ellipse cx="304.5" cy="157" fill="#FEFECE" filter="url(#f19zu0190yiwvy)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><path d="M304.5,165 L304.5,192 M291.5,173 L317.5,173 M304.5,192 L291.5,207 M304.5,192 L317.5,207 " fill="none" filter="url(#f19zu0190yiwvy)" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="187" x="211" y="227.0332">Ship Chief Electrical Engineer</text><ellipse cx="88.3351" cy="326.367" fill="#FEFECE" filter="url(#f19zu0190yiwvy)" rx="82.3351" ry="18.867" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="120" x="28.3351" y="330.0955">Use the application</text><ellipse cx="465.6985" cy="188.9517" fill="#FEFECE" filter="url(#f19zu0190yiwvy)" rx="32.6985" ry="15.4517" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="30" x="450.6985" y="192.6802">Start</text><ellipse cx="373.5185" cy="326.3037" fill="#FEFECE" filter="url(#f19zu0190yiwvy)" rx="167.0185" ry="35.8037" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="304" x="221.5185" y="330.0322">See the amount of energy needed per container</text><!--MD5=[97ab183161fd5d1db7fba7485cf76add]
+entity Admin--><ellipse cx="88.5" cy="14" fill="#FEFECE" filter="url(#f19zu0190yiwvy)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><path d="M88.5,22 L88.5,49 M75.5,30 L101.5,30 M88.5,49 L75.5,64 M88.5,49 L101.5,64 " fill="none" filter="url(#f19zu0190yiwvy)" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="39" x="69" y="84.0332">Admin</text><ellipse cx="218.7256" cy="45.9451" fill="#FEFECE" filter="url(#f19zu0190yiwvy)" rx="75.2256" ry="17.4451" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="102" x="164.7256" y="50.4617">Regist new Staff</text><!--MD5=[7399037b63b331d944ce8bff64f92e6f]
+link SC to Start--><path d="M398.21,189 C408.06,189 417.91,189 427.75,189 " fill="none" id="SC-to-Start" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="432.9,189,423.9115,184.9743,427.9,188.9857,423.8886,192.9743,432.9,189" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[1f58a08cc5dd49b85ffaa7505db96a07]
+link SC to Use--><path d="M239.69,230.65 C200.13,255.47 151.32,286.09 120.05,305.71 " fill="none" id="SC-to-Use" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="115.57,308.52,125.3207,307.1332,119.8076,305.8662,121.0746,300.353,115.57,308.52" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[275d117f0fbfd47f5655eba32995dcd1]
+link SC to See the amount of energy needed per container--><path d="M325.2,230.65 C334.06,248.04 344.36,268.28 353.17,285.58 " fill="none" id="SC-to-See the amount of energy needed per container" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="355.62,290.38,355.0974,280.545,353.3497,285.9251,347.9696,284.1774,355.62,290.38" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[eedd4bf29063d6184eb2b121c1f53f26]
+link Admin to Use--><path d="M88.5,87.79 C88.5,147 88.5,254.84 88.5,302.17 " fill="none" id="Admin-to-Use" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="88.5,307.37,92.5,298.37,88.5,302.37,84.5,298.37,88.5,307.37" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[e7a0d0f4fa0cf58bcb7420c86b20f03c]
+link Admin to Regist new Staff--><path d="M108.05,46 C118.09,46 128.14,46 138.18,46 " fill="none" id="Admin-to-Regist new Staff" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="143.43,46,134.43,42,138.43,46,134.43,50,143.43,46" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[5c7bfc8d0795e7c60628d9dd2be5a562]
+@startuml
+'https://plantuml.com/use-case-diagram
+
+:Ship Chief Electrical Engineer: as SC
+(Use the application) as (Use)
+
+SC -> (Start)
+SC - -> (Use)
+SC - -> (See the amount of energy needed per container)
+
+Admin - - -> (Use)
+Admin -> (Regist new Staff)
+
+@enduml
+
+@startuml
+
+:Ship Chief Electrical Engineer: as SC
+(Use the application) as (Use)
+
+SC -> (Start)
+SC - -> (Use)
+SC - -> (See the amount of energy needed per container)
+
+Admin - - -> (Use)
+Admin -> (Regist new Staff)
+
+@enduml
+
+PlantUML version 1.2021.16(Wed Dec 08 17:25:22 GMT 2021)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: Cp1252
+Language: pt
+Country: PT
+--></g></svg>
