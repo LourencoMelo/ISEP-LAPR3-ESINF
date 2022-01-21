@@ -177,6 +177,16 @@ public class PortAndWareHouse implements PortAndCapital {
     }
 
     /**
+     * Returns the name
+     *
+     * @return port
+     */
+    @Override
+    public String getName() {
+        return port;
+    }
+
+    /**
      * To String
      */
     @Override

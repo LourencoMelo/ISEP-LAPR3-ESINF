@@ -19,4 +19,11 @@ public interface PortAndCapital {
      * @return continent of object
      */
     String getContinent();
+
+    /**
+     * Gets the name of the object
+     * @return name
+     */
+    String getName();
+
 }

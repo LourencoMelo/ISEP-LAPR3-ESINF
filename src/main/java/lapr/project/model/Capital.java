@@ -49,6 +49,7 @@ public class Capital implements PortAndCapital{
      * Getter for the name
      * @return name of capital
      */
+    @Override
     public String getName() {
         return name;
     }

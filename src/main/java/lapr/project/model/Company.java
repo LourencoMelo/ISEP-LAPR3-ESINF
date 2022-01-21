@@ -4,6 +4,7 @@ import lapr.project.auth.AuthFacade;
 import lapr.project.utils.GraphGenerator;
 import lapr.project.utils.TreeOfPorts;
 import lapr.project.utils.TreeOfShips;
+import lapr.project.utils.graph.Algorithms;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -601,5 +602,64 @@ public class Company {
 
         return pressure;
     }
+
+
+    /////////////////////////////////////////////////////////// SHORTEST PATHS ///////////////////////////////////////////////////////////////////
+
+    /**
+     * Returns the object PortAndCapital by name
+     * @param name name
+     * @return PortAndCapital
+     */
+    public PortAndCapital getVerticesByName(String name){
+        return graphGenerator.getVerticesByName(name);
+    }
+
+    //////////////////////////////// LAND PATH
+
+    /**
+     * Returns the closest Land Path between to places
+     * @param lc1 location 1
+     * @param lc2 location 2
+     * @return shortest path
+     */
+    public List<PortAndCapital> closestLandPath(PortAndCapital lc1, PortAndCapital lc2) {
+        return graphGenerator.closestLandPath(lc1,lc2);
+    }
+
+    ////////////////////////////////// Maritime path
+
+    /**
+     * Returns if the PortAndCapital is a port
+     * @param port port
+     * @return true or false
+     */
+    public boolean isPort(PortAndCapital port){
+        return graphGenerator.isPort(port);
+    }
+
+    /**
+     * Gets the Shortest Maritime Path
+     * @param lc1 location 1
+     * @param lc2 location 2
+     * @return closest maritime path
+     */
+    public List<PortAndWareHouse> closestPathMaritime(PortAndWareHouse lc1, PortAndWareHouse lc2){
+        return graphGenerator.closestPathMaritime(lc1,lc2);
+    }
+
+    ////////////////////////////////// Maritime or land path
+
+    /**
+     * Finds the closest Land or Sea Path
+     *
+     * @param lc1 location 1
+     * @param lc2 location 2
+     * @return path
+     */
+    public List<PortAndCapital> closestPathLandOrSea(PortAndCapital lc1, PortAndCapital lc2) {
+       return graphGenerator.closestPathLandOrSea(lc1,lc2);
+    }
+
 
 }

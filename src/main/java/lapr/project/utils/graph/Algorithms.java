@@ -268,7 +268,6 @@ public class Algorithms {
             vDest = pathKeys[g.key(vDest)];     //Vai buscar o vértice antecessor do vértice destino atual. Desta maneira vamos percorrer o path do fim para o início
             getPath(g, vOrig, vDest, pathKeys, path); //Chama o método recursivamente atualizando apenas o vértice de destino
         }
-
     }
 
     /**

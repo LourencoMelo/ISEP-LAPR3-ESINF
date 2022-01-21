@@ -2,9 +2,11 @@ package lapr.project.utils;
 
 import lapr.project.model.*;
 import lapr.project.utils.graph.Algorithms;
+import lapr.project.utils.graph.Edge;
 import lapr.project.utils.graph.Graph;
 import lapr.project.utils.graph.matrix.MatrixGraph;
 
+import javax.print.DocFlavor;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.*;
@@ -16,6 +18,7 @@ public class GraphGenerator {
      * Graph of capitals and ports
      */
     private final Graph<PortAndCapital, Double> graph;
+
 
     private final Map<PortAndWareHouse, List<SeaDist>> seaDistancesMap;
 
@@ -368,7 +371,7 @@ public class GraphGenerator {
         //Creates the map to aux
         Map<Double, PortAndCapital> auxMap = new TreeMap<>(Double::compare);
 
-        //Creates the map that is goint to be returned
+        //Creates the map that is going to be returned
         Map<Double, PortAndCapital> lastMap = new LinkedHashMap<>();
 
         //Creates a List of that specific continent
@@ -491,5 +494,148 @@ public class GraphGenerator {
         return mapOfNPorts;
     }
 
+
+    /**
+     * Returns the object PortAndCapital by name
+     *
+     * @param name name
+     * @return PortAndCapital
+     */
+    public PortAndCapital getVerticesByName(String name) {
+        for (PortAndCapital portAndCapital : graph.vertices()) {
+            if (portAndCapital.getName().compareTo(name) == 0) {
+                return portAndCapital;
+            }
+        }
+        return null;
+    }
+
+    /**
+     * Returns if the PortAndCapital is a port
+     *
+     * @param port port
+     * @return true or false
+     */
+    public boolean isPort(PortAndCapital port) {
+        return port instanceof PortAndWareHouse;
+    }
+
+    /**
+     * Returns the closest Land Path between to places
+     *
+     * @param lc1 location 1
+     * @param lc2 location 2
+     * @return shortest path
+     */
+    public List<PortAndCapital> closestLandPath(PortAndCapital lc1, PortAndCapital lc2) {
+        LinkedList<PortAndCapital> path = new LinkedList<>(); //To save the sequence of the paths
+        Graph<PortAndCapital, Double> landOnlyGraph = new MatrixGraph<>(false);
+
+        for (PortAndCapital place : graph.vertices()) {
+            landOnlyGraph.addVertex(place);
+        }
+
+        for (Edge<PortAndCapital, Double> edge : graph.edges()) {
+            if (!((edge.getVOrig() instanceof PortAndWareHouse) && (edge.getVDest() instanceof PortAndWareHouse))) {
+                landOnlyGraph.addEdge(edge.getVOrig(), edge.getVDest(), edge.getWeight());
+            }
+        }
+        Algorithms.shortestPath(landOnlyGraph, lc1, lc2, Double::compare, Double::sum, 0.0, path);
+
+        return path;
+
+    }
+
+    /**
+     * Finds the closest Land or Sea Path
+     *
+     * @param lc1 location 1
+     * @param lc2 location 2
+     * @return path
+     */
+    public List<PortAndCapital> closestPathLandOrSea(PortAndCapital lc1, PortAndCapital lc2) {
+        LinkedList<PortAndCapital> path = new LinkedList<>(); //To save the sequence of the paths
+        Algorithms.shortestPath(graph, lc1, lc2, Double::compare, Double::sum, 0.0, path);
+        return path;
+    }
+
+    /**
+     * Gets the Shortest Maritime Path
+     *
+     * @param lc1 location 1
+     * @param lc2 location 2
+     * @return closest maritime path
+     */
+    public List<PortAndWareHouse> closestPathMaritime(PortAndWareHouse lc1, PortAndWareHouse lc2) {
+        LinkedList<PortAndWareHouse> path = new LinkedList<>(); //To save the sequence of the paths
+        Graph<PortAndWareHouse, Double> portGraph = new MatrixGraph<>(false);
+
+        for (PortAndCapital porto : graph.vertices()) {
+            if (isPort(porto)) {
+                portGraph.addVertex((PortAndWareHouse) porto);
+            }
+        }
+
+        for (Edge<PortAndCapital, Double> edge : graph.edges()) {
+            if ((edge.getVOrig() instanceof PortAndWareHouse) && (edge.getVDest() instanceof PortAndWareHouse)) {
+                portGraph.addEdge((PortAndWareHouse) edge.getVOrig(), (PortAndWareHouse) edge.getVDest(), edge.getWeight());
+            }
+        }
+        Algorithms.shortestPath(portGraph, lc1, lc2, Double::compare, Double::sum, 0.0, path);
+
+        return path;
+    }
+
+    /*
+     * Gets the shortest path between two
+     *
+     * @param list
+     * @return
+     */
+    /*public List<PortAndCapital> closestPathPassingThroughNPoint(PortAndCapital lc1, PortAndCapital lc2, List<PortAndCapital> list) {
+        LinkedList<PortAndCapital> totalPath = new LinkedList<>();
+        Graph<PortAndCapital, Double> minGraph = new MatrixGraph<>(false);
+        List<PortAndCapital> minimumList = new ArrayList<>();
+        minGraph = Algorithms.minDistGraph(graph, Double::compare, Double::sum);
+
+        int n = list.size();
+        double minWeight = 60000;
+        minimumList = permute(list, 0, n - 1,lc1,lc2,minWeight,minGraph);
+
+        System.out.println(minimumList);
+
+        return totalPath;
+    }
+
+    private List permute(List<PortAndCapital> str, int l, int r,PortAndCapital lc1, PortAndCapital lc2,double min, Graph<PortAndCapital, Double> minGraph) {
+        List<PortAndCapital> result = new ArrayList<>();
+        if (l == r){
+            System.out.println(str);
+            double peso = minGraph.edge(lc1,str.get(0)).getWeight();
+
+            for(int i = 0;i < str.size() - 1; i++){
+                peso += minGraph.edge(str.get(i),str.get(i + 1)).getWeight();
+            }
+            peso += minGraph.edge(str.get(str.size() - 1),lc2).getWeight();
+            System.out.println(peso);
+            if(peso < min){
+                min = peso;
+                result = str;
+            }
+        }
+        for (int i = l; i <= r; i++)
+        {
+            swap(str,l,i);
+            permute(str, l+1, r,lc1,lc2,min,minGraph);
+            swap(str,l,i);
+        }
+        return result;
+    }
+
+    private void swap(List<PortAndCapital> list, int a, int b) {
+        PortAndCapital tmp = list.get(a);
+        list.set(a, list.get(b));
+        list.set(b, tmp);
+    }*/
 
 }

@@ -65,8 +65,8 @@ class ClosestPortControllerTest {
         String callSignTest = "C4SQ2";
         LocalDateTime dateTest = LocalDateTime.of(2020, 12, 31, 17, 07);
 
-        String port1 = closestPortController.getClosest(callSignTest,dateTest).getPort();
-        String port2 = company.getClosest(callSignTest,dateTest).getPort();
+        String port1 = closestPortController.getClosest(callSignTest,dateTest).getName();
+        String port2 = company.getClosest(callSignTest,dateTest).getName();
 
         assertEquals(port1,port2);
     }

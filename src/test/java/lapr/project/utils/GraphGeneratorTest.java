@@ -300,4 +300,200 @@ class GraphGeneratorTest {
         assertEquals(lastMap, graphGenerator.topClosenessByContinent(2, "Europe"));
 
     }
+
+    @Test
+    void getVerticesByName(){
+        List<Country> countryList = new ArrayList<>(); //Creates new List to be filled with countries from the file
+
+        TreeOfPorts treeOfPorts = new TreeOfPorts(); //Creates new tree of ports object
+
+        treeOfPorts.createListOfPorts(new File("Files/sports.csv")); //Import ports from file
+
+        graphGenerator.importCountries(new File("Files/countries.csv"), countryList); //Imports the countries from the file
+
+        graphGenerator.generateCapitalVertex(countryList); //Generates vertex for all capital from all countries
+
+        graphGenerator.addEdgesFromBorders(new File("Files/borders.csv"), countryList); //Add new edges from the file
+
+        graphGenerator.addPortsToGraph(treeOfPorts.getListOfAllPorts()); //Add ports to the graph
+
+        graphGenerator.addEdgesFromClosestPortToCapital(countryList); //Add edges between the closest port and capital
+
+        String name = "Liverpool";
+
+        assertEquals(name,graphGenerator.getVerticesByName(name).getName());
+    }
+
+    @Test
+    void getVerticesByNameNull(){
+        List<Country> countryList = new ArrayList<>(); //Creates new List to be filled with countries from the file
+
+        TreeOfPorts treeOfPorts = new TreeOfPorts(); //Creates new tree of ports object
+
+        treeOfPorts.createListOfPorts(new File("Files/sports.csv")); //Import ports from file
+
+        graphGenerator.importCountries(new File("Files/countries.csv"), countryList); //Imports the countries from the file
+
+        graphGenerator.generateCapitalVertex(countryList); //Generates vertex for all capital from all countries
+
+        graphGenerator.addEdgesFromBorders(new File("Files/borders.csv"), countryList); //Add new edges from the file
+
+        graphGenerator.addPortsToGraph(treeOfPorts.getListOfAllPorts()); //Add ports to the graph
+
+        graphGenerator.addEdgesFromClosestPortToCapital(countryList); //Add edges between the closest port and capital
+
+        String name = "Milheiros";
+
+        assertEquals(null,graphGenerator.getVerticesByName(name));
+    }
+
+    /*@Test
+    void closestPathPassingThroughNPoint(){
+        List<Country> countryList = new ArrayList<>(); //Creates new List to be filled with countries from the file
+
+        TreeOfPorts treeOfPorts = new TreeOfPorts(); //Creates new tree of ports object
+
+        treeOfPorts.createListOfPorts(new File("Files/sports.csv")); //Import ports from file
+
+        graphGenerator.importCountries(new File("Files/countries.csv"), countryList); //Imports the countries from the file
+
+        graphGenerator.generateCapitalVertex(countryList); //Generates vertex for all capital from all countries
+
+        graphGenerator.addEdgesFromBorders(new File("Files/borders.csv"), countryList); //Add new edges from the file
+
+        graphGenerator.addPortsToGraph(treeOfPorts.getListOfAllPorts()); //Add ports to the graph
+
+        graphGenerator.addEdgesFromClosestPortToCapital(countryList); //Add edges between the closest port and capital
+
+
+        PortAndCapital lc1 = graphGenerator.getVerticesByName("New Jersey");
+        PortAndCapital lc2 = graphGenerator.getVerticesByName("Valparaiso");
+        List<PortAndCapital> listTest = new ArrayList<>();
+        listTest.add(graphGenerator.getVerticesByName("Cartagena"));
+        listTest.add(graphGenerator.getVerticesByName("San Vicente"));
+
+        List<PortAndCapital> result = graphGenerator.closestPathPassingThroughNPoint(lc1,lc2,listTest);
+
+        assertEquals(null,listTest);
+
+    }*/
+
+    @Test
+    void closestPathLandOrSea(){
+        List<Country> countryList = new ArrayList<>(); //Creates new List to be filled with countries from the file
+
+        TreeOfPorts treeOfPorts = new TreeOfPorts(); //Creates new tree of ports object
+
+        treeOfPorts.createListOfPorts(new File("Files/sports.csv")); //Import ports from file
+
+        graphGenerator.importCountries(new File("Files/countries.csv"), countryList); //Imports the countries from the file
+
+        graphGenerator.generateCapitalVertex(countryList); //Generates vertex for all capital from all countries
+
+        graphGenerator.addEdgesFromBorders(new File("Files/borders.csv"), countryList); //Add new edges from the file
+
+        graphGenerator.addPortsToGraph(treeOfPorts.getListOfAllPorts()); //Add ports to the graph
+
+        graphGenerator.addEdgesFromClosestPortToCapital(countryList); //Add edges between the closest port and capital
+
+        PortAndCapital lc1 = graphGenerator.getVerticesByName("Lisbon");
+        PortAndCapital lc2 = graphGenerator.getVerticesByName("Rome");
+
+        List<PortAndCapital> actual = new LinkedList<PortAndCapital>();
+        List<PortAndCapital> expected = new LinkedList<>();
+
+        expected.add(lc1);
+        expected.add(graphGenerator.getVerticesByName("Madrid"));
+        expected.add(graphGenerator.getVerticesByName("Paris"));
+        expected.add(lc2);
+
+        actual = graphGenerator.closestPathLandOrSea(lc1,lc2);
+
+        assertEquals(expected,actual);
+    }
+
+
+    @Test
+    void closestPathLand(){
+        List<Country> countryList = new ArrayList<>(); //Creates new List to be filled with countries from the file
+
+        TreeOfPorts treeOfPorts = new TreeOfPorts(); //Creates new tree of ports object
+
+        treeOfPorts.createListOfPorts(new File("Files/sports.csv")); //Import ports from file
+
+        graphGenerator.importCountries(new File("Files/countries.csv"), countryList); //Imports the countries from the file
+
+        graphGenerator.generateCapitalVertex(countryList); //Generates vertex for all capital from all countries
+
+        graphGenerator.addEdgesFromBorders(new File("Files/borders.csv"), countryList); //Add new edges from the file
+
+        graphGenerator.addPortsToGraph(treeOfPorts.getListOfAllPorts()); //Add ports to the graph
+
+        graphGenerator.addEdgesFromClosestPortToCapital(countryList); //Add edges between the closest port and capital
+
+        PortAndCapital lc1 = graphGenerator.getVerticesByName("Lisbon");
+        PortAndCapital lc2 = graphGenerator.getVerticesByName("Rome");
+
+        List<PortAndCapital> actual = new LinkedList<PortAndCapital>();
+        List<PortAndCapital> expected = new LinkedList<>();
+
+        expected.add(lc1);
+        expected.add(graphGenerator.getVerticesByName("Madrid"));
+        expected.add(graphGenerator.getVerticesByName("Paris"));
+        expected.add(lc2);
+
+        actual = graphGenerator.closestLandPath(lc1,lc2);
+
+        assertEquals(expected,actual);
+    }
+
+    @Test
+    void isPortTest(){
+        List<Country> countryList = new ArrayList<>(); //Creates new List to be filled with countries from the file
+
+        TreeOfPorts treeOfPorts = new TreeOfPorts(); //Creates new tree of ports object
+
+        treeOfPorts.createListOfPorts(new File("Files/sports.csv")); //Import ports from file
+
+        graphGenerator.importCountries(new File("Files/countries.csv"), countryList); //Imports the countries from the file
+
+        graphGenerator.generateCapitalVertex(countryList); //Generates vertex for all capital from all countries
+
+        graphGenerator.addEdgesFromBorders(new File("Files/borders.csv"), countryList); //Add new edges from the file
+
+        graphGenerator.addPortsToGraph(treeOfPorts.getListOfAllPorts()); //Add ports to the graph
+
+        graphGenerator.addEdgesFromClosestPortToCapital(countryList); //Add edges between the closest port and capital
+        PortAndCapital test = graphGenerator.getVerticesByName("Lisbon");
+
+        boolean actual = graphGenerator.isPort(test);
+
+        assertFalse(actual);
+    }
+
+    @Test
+    void isPortTest2(){
+        List<Country> countryList = new ArrayList<>(); //Creates new List to be filled with countries from the file
+
+        TreeOfPorts treeOfPorts = new TreeOfPorts(); //Creates new tree of ports object
+
+        treeOfPorts.createListOfPorts(new File("Files/sports.csv")); //Import ports from file
+
+        graphGenerator.importCountries(new File("Files/countries.csv"), countryList); //Imports the countries from the file
+
+        graphGenerator.generateCapitalVertex(countryList); //Generates vertex for all capital from all countries
+
+        graphGenerator.addEdgesFromBorders(new File("Files/borders.csv"), countryList); //Add new edges from the file
+
+        graphGenerator.addPortsToGraph(treeOfPorts.getListOfAllPorts()); //Add ports to the graph
+
+        graphGenerator.addEdgesFromClosestPortToCapital(countryList); //Add edges between the closest port and capital
+        PortAndCapital test = graphGenerator.getVerticesByName("Setubal");
+
+        boolean actual = graphGenerator.isPort(test);
+
+        assertTrue(actual);
+    }
+
+
 }

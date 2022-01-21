@@ -37,7 +37,7 @@ public class ClosestPortUI implements Runnable {
 
         System.out.println("------------------------------");
         PortAndWareHouse result = closestPortController.getClosest(cs,formatter(date));
-        System.out.println("Port : " + result.getPort());
+        System.out.println("Port : " + result.getName());
     }
 
     /**

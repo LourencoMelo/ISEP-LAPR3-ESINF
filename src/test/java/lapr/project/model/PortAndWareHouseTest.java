@@ -40,7 +40,7 @@ class PortAndWareHouseTest {
 
     @Test
     void getPort() {
-        assertEquals("Liverpool",portAndWareHouse.getPort());
+        assertEquals("Liverpool",portAndWareHouse.getName());
     }
 
     @Test
@@ -71,7 +71,7 @@ class PortAndWareHouseTest {
                 "continent='" + portAndWareHouse.getContinent() + '\'' +
                 ", country='" + portAndWareHouse.getCountry() + '\'' +
                 ", code=" + portAndWareHouse.getCode() +
-                ", port='" + portAndWareHouse.getPort() + '\'' +
+                ", port='" + portAndWareHouse.getName() + '\'' +
                 ", lat=" + portAndWareHouse.getLatitude() +
                 ", log=" + portAndWareHouse.getLongitude() +
                 '}';
