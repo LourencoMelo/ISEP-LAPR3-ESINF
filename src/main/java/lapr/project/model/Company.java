@@ -466,7 +466,6 @@ public class Company {
         int widthSize = (int) ship.getWidth();
         int lengthSize = (int) ship.getLength();
 
-
         //counter to walk through the linked list
         int counter = 0;
         int level = 0;
@@ -500,6 +499,110 @@ public class Company {
 
         return matrixLevels;
     }
+
+    /**
+     * Calculate the Center of Gravity
+     * Put the results into a list
+     * @param ship
+     * @param matrixLevels
+     * @return list with values
+     */
+    public List<Double> calculateCenterGravity(Ship ship, Map<Integer, double[][]> matrixLevels){
+
+        double widthSizeRef = ship.getWidth()/2;
+        double lengthSizeRef = ship.getLength()/2;
+        double positionMassX = 0;
+        double positionMassY = 0;
+        double totalMass = 0;
+
+        for(Map.Entry<Integer, double[][]> mapObject : matrixLevels.entrySet()){
+            double [][] matrix = mapObject.getValue();
+            widthSizeRef = widthSizeRef - 0.5;
+            lengthSizeRef = lengthSizeRef - 0.5;
+
+            for(int i = 0; i < ship.getLength(); i++){
+                for(int j = 0; j < ship.getWidth(); j++){
+                    positionMassX += matrix[i][j] * (j - widthSizeRef);
+                    positionMassY += matrix[i][j] * (lengthSizeRef - i);
+                    totalMass += matrix[i][j];
+                }
+            }
+        }
+
+        double resultX = positionMassX/totalMass;
+        double resultY = positionMassY/totalMass;
+
+
+        List<Double> list = new ArrayList<>();
+        list.add(resultX);
+        list.add(resultY);
+
+        return list;
+    }
+
+    /**
+     * Shows in a matrix
+     * Where is the center of gravity
+     * With a "X"
+     * @param ship
+     * @param matrixLevels
+     */
+    public Map<List<Double>, String[][]> showCenterOfGravity(Ship ship, Map<Integer, double[][]> matrixLevels){
+        //Calls the method calculateCenterGravity
+        List<Double> list = calculateCenterGravity(ship, matrixLevels);
+        Map<List<Double>, String[][]> mapShowCenter= new  HashMap<>();
+
+        //Prints the results
+        System.out.println("Center Gravity X:" + list.get(0));
+        System.out.println("Center Gravity Y:" + list.get(1));
+
+        //Gets the dimensions of the ship
+        int length = (int) ship.getLength();
+        int width = (int) ship.getWidth();
+
+        //Creates and fills the String matrix
+        String[][] matrixShow = new String[length][width];
+        for(String[] row : matrixShow){
+            Arrays.fill(row, "0");
+        }
+
+        int widthAux;
+        int lengthAux;
+        int whereIsX;
+        int whereIsY;
+
+        widthAux = (int) (width/2);
+        lengthAux = (int) (length/2);
+
+        //Discovering where is the Y of "X"
+        whereIsX = (int) Math.round(list.get(0));
+        whereIsY = (int) Math.round(list.get(1));
+
+        whereIsX += widthAux;
+        whereIsY = lengthAux - whereIsY;
+
+        //Searches where is the center of gravity in the matrix
+        for(int i = 0; i < ship.getLength(); i++){
+            if(i == whereIsY){
+                for(int j = 0; j < ship.getWidth(); j++){
+                    if(j == whereIsX) {
+                        matrixShow[i][j] = "X";
+                    }
+                }
+            }
+        }
+
+        mapShowCenter.put(list, matrixShow);
+
+        //Printing the results
+        for(String[] row: matrixShow){
+            System.out.println(Arrays.toString(row));
+        }
+
+        return mapShowCenter;
+
+    }
+
 
     /**
      * Calculates the total mass of the ship

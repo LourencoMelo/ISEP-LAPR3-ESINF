@@ -881,6 +881,70 @@ class CompanyTest {
     }
 
     /**
+     * Testing Calculating Center Gravity
+     */
+    @Test
+    void calculateCenterGravity(){
+        Ship shipTest = new ShipByMMSI(123456788, "WarCraft", "1023456787", "Roger", 2, 5.0, 3.0, 20.9);
+
+        company.containerImport(new File("Files/containerFew.csv"), shipTest);
+
+        Map<Integer, double[][]> matrixLevelsCompany = company.allocatingContainers(shipTest);
+
+        List<Double> list = new ArrayList<>();
+        list.add(-0.08552603060384065);
+        list.add(0.918564957302007);
+
+        assertEquals(list.toString(), company.calculateCenterGravity(shipTest, matrixLevelsCompany).toString());
+    }
+
+    /**
+     * Testing
+     */
+    @Test
+    void showCenterOfGravity(){
+        Ship shipTest = new ShipByMMSI(123456788, "WarCraft", "1023456787", "Roger", 2, 5.0, 3.0, 20.9);
+
+        company.containerImport(new File("Files/containerFew.csv"), shipTest);
+
+        Map<Integer, double[][]> matrixLevelsCompany = company.allocatingContainers(shipTest);
+
+        Map<List<Double>, String[][]> mapTest = new HashMap<>();
+
+        List<Double> list = new ArrayList<>();
+        list.add(-0.08552603060384065);
+        list.add(0.918564957302007);
+
+        int length = (int) shipTest.getLength();
+        int width = (int) shipTest.getWidth();
+
+        String[][] matrixTest = new String[length][width];
+        for(String[] row : matrixTest){
+            Arrays.fill(row, "0");
+        }
+
+        matrixTest[1][1] = "X";
+
+        Map<List<Double>, String[][]> mapCompany = company.showCenterOfGravity(shipTest, matrixLevelsCompany);
+        String[][] matrixCompany = mapCompany.get(list);
+
+        //Checking if the lists are equal
+        for(List<Double> keyTest : mapTest.keySet()){
+            for(List<Double> keyCompany : mapCompany.keySet()){
+                assertEquals(keyTest, keyCompany);
+            }
+        }
+
+        //Checking if the matrix are equal
+        for(int i = 0 ; i < length; i++){
+            for(int j = 0; j < width; j++){
+                assertEquals(matrixTest[i][j], matrixCompany[i][j]);
+            }
+        }
+
+    }
+
+    /**
      * Calculates the total Mass of the ship when has the containers
      */
     @Test
