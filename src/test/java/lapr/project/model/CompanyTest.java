@@ -1316,7 +1316,7 @@ class CompanyTest {
         assertTrue(actual);
     }
 
-    /*@Test
+    @Test
     void getWeightTest(){
         Company company1 = new Company();
         ImportPortsController importPortsController = new ImportPortsController(company1);
@@ -1336,6 +1336,6 @@ class CompanyTest {
         double actual = company1.graphGenerator.getWeight(str,lc1,lc2,minGraph);
         double expected = 1557.297239062431;
         assertEquals(expected,actual);
-    }*/
+    }
 
 }
