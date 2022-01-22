@@ -2,7 +2,9 @@ package lapr.project.model;
 
 import lapr.project.controller.ImportFileController;
 import lapr.project.controller.ImportPortsController;
+import lapr.project.utils.graph.Algorithms;
 import lapr.project.utils.graph.Edge;
+import lapr.project.utils.graph.Graph;
 import org.junit.jupiter.api.Test;
 
 
@@ -1159,5 +1161,181 @@ class CompanyTest {
 
         assertEquals(expected,actual);
     }
+
+    @Test
+    void closestPathSea2(){
+        Company company1 = new Company();
+        ImportPortsController importPortsController = new ImportPortsController(company1);
+
+        importPortsController.importPorts(new File("Files/bports.csv")); //Imports all ports from file
+
+        company1.generateGraph(new File("Files/countries.csv"), new File("Files/borders.csv"), new File("Files/seadists.csv"), 3); //Generates graph
+
+        PortAndCapital lc1 = company1.getVerticesByName("Setubal");
+        PortAndCapital lc2 = company1.getVerticesByName("Feodosia");
+
+        List<PortAndWareHouse> actual = new LinkedList<>();
+        List<PortAndWareHouse> expected = new LinkedList<>();
+
+
+        expected.add((PortAndWareHouse)lc1);
+        expected.add((PortAndWareHouse) company1.getVerticesByName("Valencia"));
+        expected.add((PortAndWareHouse) company1.getVerticesByName("Ambarli"));
+        expected.add((PortAndWareHouse)lc2);
+
+        actual = company1.closestPathMaritime((PortAndWareHouse) lc1,(PortAndWareHouse) lc2);
+
+        assertEquals(expected,actual);
+    }
+
+    @Test
+    void closestPathSea3(){
+        Company company1 = new Company();
+        ImportPortsController importPortsController = new ImportPortsController(company1);
+
+        importPortsController.importPorts(new File("Files/bports.csv")); //Imports all ports from file
+
+        company1.generateGraph(new File("Files/countries.csv"), new File("Files/borders.csv"), new File("Files/seadists.csv"), 1); //Generates graph
+
+        PortAndCapital lc1 = company1.getVerticesByName("Setubal");
+        PortAndCapital lc2 = company1.getVerticesByName("San Juan");
+
+        List<PortAndWareHouse> actual = new LinkedList<>();
+        List<PortAndWareHouse> expected = new LinkedList<>();
+
+        actual = company1.closestPathMaritime((PortAndWareHouse) lc1,(PortAndWareHouse) lc2);
+
+        assertEquals(expected,actual);
+    }
+
+    ///////////////////// SHORTEST THROW N POINTS
+
+    @Test
+    void closestPathThroughNPoints(){
+        Company company1 = new Company();
+        ImportPortsController importPortsController = new ImportPortsController(company1);
+
+        importPortsController.importPorts(new File("Files/bports.csv")); //Imports all ports from file
+
+        company1.generateGraph(new File("Files/countries.csv"), new File("Files/borders.csv"), new File("Files/seadists.csv"), 1); //Generates graph
+
+        List<PortAndCapital> listN = new LinkedList<>();
+
+        PortAndCapital lc1 = company1.getVerticesByName("Lisbon");
+        PortAndCapital lc2 = company1.getVerticesByName("Zagreb");
+
+        listN.add(company1.getVerticesByName("Paris"));
+        listN.add(company1.getVerticesByName("Berlin"));
+
+        List<PortAndCapital> actual = new LinkedList<>();
+        List<PortAndCapital> expected = new LinkedList<>();
+
+        expected.add(company1.getVerticesByName("Lisbon"));
+        expected.add(company1.getVerticesByName("Madrid"));
+        expected.add(company1.getVerticesByName("Paris"));
+        expected.add(company1.getVerticesByName("Paris"));
+        expected.add(company1.getVerticesByName("Berlin"));
+        expected.add(company1.getVerticesByName("Berlin"));
+        expected.add(company1.getVerticesByName("Vienna"));
+        expected.add(company1.getVerticesByName("Ljubljana"));
+        expected.add(company1.getVerticesByName("Zagreb"));
+
+        actual = company1.closestPathPassingThroughNPoint(lc1,lc2,listN);
+
+        assertEquals(expected,actual);
+    }
+
+    @Test
+    void closestPathThroughNPoints2(){
+        Company company1 = new Company();
+        ImportPortsController importPortsController = new ImportPortsController(company1);
+
+        importPortsController.importPorts(new File("Files/bports.csv")); //Imports all ports from file
+
+        company1.generateGraph(new File("Files/countries.csv"), new File("Files/borders.csv"), new File("Files/seadists.csv"), 3); //Generates graph
+
+        List<PortAndCapital> listN = new LinkedList<>();
+
+        PortAndCapital lc1 = company1.getVerticesByName("Brasilia");
+        PortAndCapital lc2 = company1.getVerticesByName("Washington");
+
+        listN.add(company1.getVerticesByName("Mexico City"));
+        listN.add(company1.getVerticesByName("Ottawa"));
+
+        List<PortAndCapital> actual = new LinkedList<>();
+        List<PortAndCapital> expected = new LinkedList<>();
+
+        expected.add(company1.getVerticesByName("Brasilia"));
+        expected.add(company1.getVerticesByName("Bogota"));
+        expected.add(company1.getVerticesByName("Buenaventura"));
+        expected.add(company1.getVerticesByName("Balboa"));
+        expected.add(company1.getVerticesByName("Veracruz"));
+        expected.add(company1.getVerticesByName("Mexico City"));
+        expected.add(company1.getVerticesByName("Mexico City"));
+        expected.add(company1.getVerticesByName("Veracruz"));
+        expected.add(company1.getVerticesByName("New Jersey"));
+        expected.add(company1.getVerticesByName("Washington"));
+        expected.add(company1.getVerticesByName("Ottawa"));
+        expected.add(company1.getVerticesByName("Ottawa"));
+        expected.add(company1.getVerticesByName("Washington"));
+
+        actual = company1.closestPathPassingThroughNPoint(lc1,lc2,listN);
+
+        assertEquals(expected,actual);
+    }
+
+    @Test
+    void isPortTest(){
+        Company company1 = new Company();
+        ImportPortsController importPortsController = new ImportPortsController(company1);
+
+        importPortsController.importPorts(new File("Files/bports.csv")); //Imports all ports from file
+
+        company1.generateGraph(new File("Files/countries.csv"), new File("Files/borders.csv"), new File("Files/seadists.csv"), 0); //Generates graph
+
+        PortAndCapital test = company1.getVerticesByName("Lisbon");
+
+        boolean actual = company1.isPort(test);
+
+        assertFalse(actual);
+    }
+
+    @Test
+    void isPortTest2(){
+        Company company1 = new Company();
+        ImportPortsController importPortsController = new ImportPortsController(company1);
+
+        importPortsController.importPorts(new File("Files/bports.csv")); //Imports all ports from file
+
+        company1.generateGraph(new File("Files/countries.csv"), new File("Files/borders.csv"), new File("Files/seadists.csv"), 0); //Generates graph
+
+        PortAndCapital test = company1.getVerticesByName("Setubal");
+
+        boolean actual = company1.isPort(test);
+
+        assertTrue(actual);
+    }
+
+    /*@Test
+    void getWeightTest(){
+        Company company1 = new Company();
+        ImportPortsController importPortsController = new ImportPortsController(company1);
+
+        importPortsController.importPorts(new File("Files/bports.csv")); //Imports all ports from file
+
+        company1.generateGraph(new File("Files/countries.csv"), new File("Files/borders.csv"), new File("Files/seadists.csv"), 3); //Generates graph
+
+        List<PortAndCapital> str = new LinkedList<>();
+        str.add(company1.getVerticesByName("Madrid"));
+
+        Graph<PortAndCapital, Double> minGraph = Algorithms.minDistGraph(company1.graphGenerator.getGraph(), Double::compare, Double::sum);
+
+        PortAndCapital lc1 = company1.getVerticesByName("Lisbon");
+        PortAndCapital lc2 = company1.getVerticesByName("Paris");
+
+        double actual = company1.graphGenerator.getWeight(str,lc1,lc2,minGraph);
+        double expected = 1557.297239062431;
+        assertEquals(expected,actual);
+    }*/
 
 }

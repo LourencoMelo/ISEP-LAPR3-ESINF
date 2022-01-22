@@ -764,5 +764,11 @@ public class Company {
        return graphGenerator.closestPathLandOrSea(lc1,lc2);
     }
 
+    ////////////////////////////////// Maritime or land path passing throw N points
+
+    public List<PortAndCapital> closestPathPassingThroughNPoint(PortAndCapital lc1, PortAndCapital lc2, List<PortAndCapital> list) {
+        return graphGenerator.closestPathPassingThroughNPoint(lc1,lc2,list);
+    }
+
 
 }

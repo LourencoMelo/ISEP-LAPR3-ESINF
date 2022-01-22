@@ -6,7 +6,6 @@ import lapr.project.utils.graph.Edge;
 import lapr.project.utils.graph.Graph;
 import lapr.project.utils.graph.matrix.MatrixGraph;
 
-import javax.print.DocFlavor;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.*;
@@ -420,6 +419,7 @@ public class GraphGenerator {
 
     /**
      * Iterates through the graph and fills the centralitys
+     *
      * @return ordered map by centralitys
      */
     public Map<PortAndWareHouse, Integer> getCentralitys() {
@@ -486,7 +486,7 @@ public class GraphGenerator {
         Map<PortAndWareHouse, Integer> mapOfNPorts = new LinkedHashMap<>(); //Keeps the order from the sorted list
 
         for (int i = 0; i < n; i++) {
-            if (i > list_of_entry.size() -1) break;
+            if (i > list_of_entry.size() - 1) break;
             mapOfNPorts.put(list_of_entry.get(i).getKey(), list_of_entry.get(i).getValue());
         }
 
@@ -586,56 +586,103 @@ public class GraphGenerator {
         return path;
     }
 
-    /*
-     * Gets the shortest path between two
+    /**
+     * Gets the shortest path between two locals passing through N places
      *
-     * @param list
-     * @return
+     * @param list list of places
+     * @return shortest path
      */
-    /*public List<PortAndCapital> closestPathPassingThroughNPoint(PortAndCapital lc1, PortAndCapital lc2, List<PortAndCapital> list) {
+    public List<PortAndCapital> closestPathPassingThroughNPoint(PortAndCapital lc1, PortAndCapital lc2, List<PortAndCapital> list) {
         LinkedList<PortAndCapital> totalPath = new LinkedList<>();
         Graph<PortAndCapital, Double> minGraph = new MatrixGraph<>(false);
-        List<PortAndCapital> minimumList = new ArrayList<>();
         minGraph = Algorithms.minDistGraph(graph, Double::compare, Double::sum);
+        double minWeight = getWeight(list,lc1,lc2,minGraph);
+        List<PortAndCapital> auxList = new LinkedList<>(list);
 
-        int n = list.size();
-        double minWeight = 60000;
-        minimumList = permute(list, 0, n - 1,lc1,lc2,minWeight,minGraph);
+        List<PortAndCapital> shortestComb = permute(list,minWeight,lc1, lc2, minGraph);
 
-        System.out.println(minimumList);
+        if(shortestComb.isEmpty()){
+            shortestComb = auxList;
+        }
 
+        /////////////////// Getting the shortest path ///////////////////////////
+        Algorithms.shortestPath(graph, lc1, shortestComb.get(0), Double::compare, Double::sum, 0.0, totalPath);
+
+        for (int i = 0; i < list.size() - 1; i++) {
+            LinkedList<PortAndCapital> aux = new LinkedList<>();
+            Algorithms.shortestPath(graph, shortestComb.get(i), shortestComb.get(i + 1), Double::compare, Double::sum, 0.0, aux);
+            totalPath.addAll(aux);
+        }
+        LinkedList<PortAndCapital> aux2 = new LinkedList<>();
+        Algorithms.shortestPath(graph, shortestComb.get(shortestComb.size() - 1), lc2, Double::compare, Double::sum, 0.0, aux2);
+        totalPath.addAll(aux2);
+
+        System.out.println(totalPath);
         return totalPath;
     }
 
-    private List permute(List<PortAndCapital> str, int l, int r,PortAndCapital lc1, PortAndCapital lc2,double min, Graph<PortAndCapital, Double> minGraph) {
-        List<PortAndCapital> result = new ArrayList<>();
-        if (l == r){
-            System.out.println(str);
-            double peso = minGraph.edge(lc1,str.get(0)).getWeight();
-
-            for(int i = 0;i < str.size() - 1; i++){
-                peso += minGraph.edge(str.get(i),str.get(i + 1)).getWeight();
+    /**
+     * Permutes the list and returns the shortest combination
+     *
+     * @param str list
+     * @param minWeight minimum weight
+     * @param lc1 local 1
+     * @param lc2 local 2
+     * @param minGraph warshall graph
+     * @return shortest combination
+     */
+    private List<PortAndCapital> permute(List<PortAndCapital> str,double minWeight,PortAndCapital lc1, PortAndCapital lc2, Graph<PortAndCapital, Double> minGraph){
+        int[] indexes = new int[str.size()];
+        List<PortAndCapital> shortestComb = new LinkedList<>();
+        for (int i = 0; i < str.size(); i++) {
+            indexes[i] = 0;
+        }
+        int i = 0;
+        while (i < str.size()) {
+            if (indexes[i] < i) {
+                swap(str, i % 2 == 0 ?  0: indexes[i], i);
+                double peso = getWeight(str,lc1,lc2,minGraph);
+                if(peso < minWeight){
+                    minWeight = peso;
+                    shortestComb = str;
+                }
+                indexes[i]++;
+                i = 0;
             }
-            peso += minGraph.edge(str.get(str.size() - 1),lc2).getWeight();
-            System.out.println(peso);
-            if(peso < min){
-                min = peso;
-                result = str;
+            else {
+                indexes[i] = 0;
+                i++;
             }
         }
-        for (int i = l; i <= r; i++)
-        {
-            swap(str,l,i);
-            permute(str, l+1, r,lc1,lc2,min,minGraph);
-            swap(str,l,i);
-        }
-        return result;
+        return shortestComb;
     }
 
+    /**
+     * Calculates the weight of a path
+     * @param str list
+     * @param lc1 local 1
+     * @param lc2 local 2
+     * @param minGraph warshall graph
+     * @return
+     */
+    public double getWeight(List<PortAndCapital> str,PortAndCapital lc1, PortAndCapital lc2, Graph<PortAndCapital, Double> minGraph){
+        double peso = minGraph.edge(lc1, str.get(0)).getWeight();
+        for (int i = 0; i < str.size() - 1; i++) {
+            peso += minGraph.edge(str.get(i), str.get(i + 1)).getWeight();
+        }
+        peso += minGraph.edge(str.get(str.size() - 1), lc2).getWeight();
+        return peso;
+    }
+
+    /**
+     * Swaps elements
+     * @param list list of places
+     * @param a a
+     * @param b b
+     */
     private void swap(List<PortAndCapital> list, int a, int b) {
         PortAndCapital tmp = list.get(a);
         list.set(a, list.get(b));
         list.set(b, tmp);
-    }*/
-
+    }
 }

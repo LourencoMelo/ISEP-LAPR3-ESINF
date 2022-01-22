@@ -347,37 +347,6 @@ class GraphGeneratorTest {
         assertEquals(null,graphGenerator.getVerticesByName(name));
     }
 
-    /*@Test
-    void closestPathPassingThroughNPoint(){
-        List<Country> countryList = new ArrayList<>(); //Creates new List to be filled with countries from the file
-
-        TreeOfPorts treeOfPorts = new TreeOfPorts(); //Creates new tree of ports object
-
-        treeOfPorts.createListOfPorts(new File("Files/sports.csv")); //Import ports from file
-
-        graphGenerator.importCountries(new File("Files/countries.csv"), countryList); //Imports the countries from the file
-
-        graphGenerator.generateCapitalVertex(countryList); //Generates vertex for all capital from all countries
-
-        graphGenerator.addEdgesFromBorders(new File("Files/borders.csv"), countryList); //Add new edges from the file
-
-        graphGenerator.addPortsToGraph(treeOfPorts.getListOfAllPorts()); //Add ports to the graph
-
-        graphGenerator.addEdgesFromClosestPortToCapital(countryList); //Add edges between the closest port and capital
-
-
-        PortAndCapital lc1 = graphGenerator.getVerticesByName("New Jersey");
-        PortAndCapital lc2 = graphGenerator.getVerticesByName("Valparaiso");
-        List<PortAndCapital> listTest = new ArrayList<>();
-        listTest.add(graphGenerator.getVerticesByName("Cartagena"));
-        listTest.add(graphGenerator.getVerticesByName("San Vicente"));
-
-        List<PortAndCapital> result = graphGenerator.closestPathPassingThroughNPoint(lc1,lc2,listTest);
-
-        assertEquals(null,listTest);
-
-    }*/
-
     @Test
     void closestPathLandOrSea(){
         List<Country> countryList = new ArrayList<>(); //Creates new List to be filled with countries from the file
