@@ -1,0 +1,40 @@
+@startuml
+
+autonumber
+
+actor       "Ship Chief Electrical Engineer"             as SC
+participant    ":AmountEnergySetOfContainersUI"         as UI
+participant    ":AmountEnergySetOfContainersController" as CTRL
+participant    ":Company"              as Company
+participant    ":GraphGenerator"              as GG
+
+
+SC -> UI : I want to know the amount of energy needed for set of containters
+activate UI
+UI --> SC : Please insert the trip and the operating temperature
+deactivate UI
+
+SC -> UI : Inserts the data required
+activate UI
+
+UI -> CTRL : getTotalEnergyForSetOfContainers(trip,operating_temperature)
+activate CTRL
+
+CTRL -> Company : getGraphGenerator()
+activate Company
+
+Company -> GG : calculateTotalEnergyForSetOfContainers(trip,operating_temperature)
+activate GG
+
+GG -> Company : total_energy_set
+deactivate GG
+
+Company -> CTRL : total_energy_set
+deactivate Company
+
+CTRL -> UI : total_energy_set
+deactivate CTRL
+
+UI -> SC : return total energy needed for the set of the containers with the inserted operating temperature
+
+@enduml

@@ -1,0 +1,19 @@
+@startuml
+
+autonumber
+skinparam sequenceMessageAlign center
+
+actor "Ship Chief Electrical Engineer" as SC
+
+activate SC
+
+SC -> System : Authentication Request
+System --> SC : Authentication Response
+
+SC -> System: I want to see the amount of how much energy is needed to supply for the set of containers
+SC <-- System: Please insert the operating temperature(7 °C or -5 °C)
+
+SC -> System: Insert the operating temperature
+SC <-- System: Return the amount of energy
+
+@enduml

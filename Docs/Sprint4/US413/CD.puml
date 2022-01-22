@@ -1,0 +1,43 @@
+@startuml
+
+class GraphGenerator{
+- Graph<PortAndCapital, Double> graph;
++ calculateTotalEnergyForSetOfContainers(trip,operating_temperature);
+}
+
+class Company{
+- TreeOfPorts treeOfPorts;
+- List<Country> countryList;
+- GraphGenerator graphGenerator;
++ generateGraph(File countries, File borders, File seaDists, int n);
++ getGraphGenerator();
+}
+
+class User
+
+class UserRole
+
+class AmountEnergySetOfContainersUI{
+-ShipChiefElectricalEngineer controller;
+}
+
+class ShipChiefElectricalEngineer
+
+class AmountEnergySetOfContainersController{
+- getTotalEnergyForSetOfContainers(trip,operating_temperature);
+}
+
+ShipChiefElectricalEngineer -down-> User : is a
+
+User -down-> UserRole : has a
+
+ShipChiefElectricalEngineer -down-> AmountEnergySetOfContainersUI : access
+
+AmountEnergySetOfContainersUI -down-> AmountEnergySetOfContainersController : connects with
+
+AmountEnergySetOfContainersController -down-> Company : calls method
+
+Company -down-> GraphGenerator : gets methods from
+
+
+@enduml
