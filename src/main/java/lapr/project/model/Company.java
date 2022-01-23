@@ -395,6 +395,7 @@ public class Company {
 
     /**
      * Gets all the countries from the company
+     *
      * @return list of countries
      */
     public List<Country> getCountryList() {
@@ -403,9 +404,10 @@ public class Company {
 
     /**
      * Colour the map of countries
+     *
      * @param countryList list of countries
      */
-    public void colourMap(List<Country> countryList){
+    public void colourMap(List<Country> countryList) {
         graphGenerator.colourMap(countryList);
     }
 
@@ -464,28 +466,29 @@ public class Company {
 
     /**
      * Importing the Containers by a file(.csv) and adding them to the ship
+     *
      * @param file file introduced by the user
      * @param ship ship previous entered by the user to add the containers
      */
-    public void containerImport(File file, Ship ship){
+    public void containerImport(File file, Ship ship) {
 
-        try(Scanner in = new Scanner(file)) {
+        try (Scanner in = new Scanner(file)) {
 
             in.nextLine();
 
             LinkedList<Container> linkedListContainersExist = new LinkedList<>();
 
-            while (in.hasNextLine()){
+            while (in.hasNextLine()) {
                 String[] container_info = in.nextLine().trim().split(",");
 
-                try{
-                    Container container = new Container(container_info[0].trim(),container_info[1].trim(),Integer.parseInt(container_info[2].trim()),Integer.parseInt(container_info[3].trim()),Integer.parseInt(container_info[4]),Integer.parseInt(container_info[5].trim()),Integer.parseInt(container_info[6].trim()));
+                try {
+                    Container container = new Container(container_info[0].trim(), container_info[1].trim(), Integer.parseInt(container_info[2].trim()), Integer.parseInt(container_info[3].trim()), Integer.parseInt(container_info[4]), Integer.parseInt(container_info[5].trim()), Integer.parseInt(container_info[6].trim()));
 
-                    if(!linkedListContainersExist.contains(container)){
+                    if (!linkedListContainersExist.contains(container)) {
                         linkedListContainersExist.add(container);
                     }
 
-                }catch (IllegalArgumentException exception){
+                } catch (IllegalArgumentException exception) {
                     Logger.getLogger(exception.getMessage());
                 }
             }
@@ -502,10 +505,11 @@ public class Company {
     /**
      * Allocates the ships into a matrix
      * Each level has a matrix
+     *
      * @param ship
      * @return matrixLevels
      */
-    public Map<Integer, double[][]> allocatingContainers(Ship ship){
+    public Map<Integer, double[][]> allocatingContainers(Ship ship) {
         //Creating the map to return
         Map<Integer, double[][]> matrixLevels = new LinkedHashMap<>();
 
@@ -516,32 +520,32 @@ public class Company {
         //counter to walk through the linked list
         int counter = 0;
         int level = 0;
-        float maxLevel = (float) ship.getLinkedListContainers().size() / (widthSize*lengthSize);
+        float maxLevel = (float) ship.getLinkedListContainers().size() / (widthSize * lengthSize);
         float maxLevelAux = maxLevel;
 
         //Calculating how many levels are needed
-        if(Math.round(maxLevelAux) > maxLevel){
+        if (Math.round(maxLevelAux) > maxLevel) {
             maxLevel = Math.round(maxLevel);
-        }else if (Math.round(maxLevelAux) == maxLevel){
+        } else if (Math.round(maxLevelAux) == maxLevel) {
             System.out.println("Perfect Allocation");
-        }else{
+        } else {
             maxLevel = Math.round(maxLevel);
-            maxLevel ++;
+            maxLevel++;
         }
 
         //filling the matrix
-        for(int k= 0; k <maxLevel; k++){
+        for (int k = 0; k < maxLevel; k++) {
             double[][] matrix = new double[lengthSize][widthSize];
-            for(int i = 0; i < lengthSize; i++){
-                for(int j = 0; j < widthSize; j++){
-                    if(counter < ship.getLinkedListContainers().size()){
+            for (int i = 0; i < lengthSize; i++) {
+                for (int j = 0; j < widthSize; j++) {
+                    if (counter < ship.getLinkedListContainers().size()) {
                         matrix[i][j] = ship.getLinkedListContainers().get(counter).getTare() + ship.getLinkedListContainers().get(counter).getPayload();
-                        counter ++;
+                        counter++;
                     }
                 }
             }
             matrixLevels.put(level, matrix);
-            level ++;
+            level++;
         }
 
         return matrixLevels;
@@ -659,10 +663,11 @@ public class Company {
     /**
      * Calculates the total mass of the ship
      * (Ship deadweight and containers)
+     *
      * @param ship
      * @return totalmass
      */
-    public double calculateTotalMass(Ship ship){
+    public double calculateTotalMass(Ship ship) {
         int size = ship.getLinkedListContainers().size();
         double weightByDefault = 200.0;
         double totalWeightContainers = size * weightByDefault;
@@ -677,18 +682,19 @@ public class Company {
      * Calculates the difference of the heights
      * When the containers are not loaded
      * Compared when they are loaded
+     *
      * @param ship
      * @param totalMass
      * @param shipDeadWeight
      * @param typeOfWater
      * @return difference
      */
-    public double calculateDiffHeights(Ship ship, double totalMass, double shipDeadWeight, int typeOfWater){
+    public double calculateDiffHeights(Ship ship, double totalMass, double shipDeadWeight, int typeOfWater) {
         //Density Liquids
         double liquidDensity;
-        if(typeOfWater == 1){
+        if (typeOfWater == 1) {
             liquidDensity = 1026.0;
-        }else{
+        } else {
             liquidDensity = 1000.0;
         }
 
@@ -698,13 +704,13 @@ public class Company {
         double height = 10.0;
 
         //Sink and Height Volume With Containers
-        double volumeSinkWithContainers = (totalMass/liquidDensity);
-        double heightSinkWithContainersAux = (volumeSinkWithContainers*2*height)/(length*width);
+        double volumeSinkWithContainers = (totalMass / liquidDensity);
+        double heightSinkWithContainersAux = (volumeSinkWithContainers * 2 * height) / (length * width);
         double heightSinkWithContainers = Math.sqrt(heightSinkWithContainersAux);
 
         //Sink and Height Volume Dead Weight
-        double volumeSinkDead = (shipDeadWeight/liquidDensity);
-        double heightSinkDeadAux = (volumeSinkDead*2*height)/(length*width);
+        double volumeSinkDead = (shipDeadWeight / liquidDensity);
+        double heightSinkDeadAux = (volumeSinkDead * 2 * height) / (length * width);
         double heightSinkDead = Math.sqrt(heightSinkDeadAux);
 
         //Calculating the difference
@@ -716,17 +722,18 @@ public class Company {
     /**
      * Calculating Pressure on water By area
      * N/m^2
+     *
      * @param ship
      * @param totalMass
      * @param typeOfWater
      * @return
      */
-    public double calculatePressureOnWater(Ship ship, double totalMass, int typeOfWater){
+    public double calculatePressureOnWater(Ship ship, double totalMass, int typeOfWater) {
         //Density Liquids
         double liquidDensity;
-        if(typeOfWater == 1){
+        if (typeOfWater == 1) {
             liquidDensity = 1026.0;
-        }else{
+        } else {
             liquidDensity = 1000.0;
         }
 
@@ -739,11 +746,11 @@ public class Company {
         double height = 10.0;
 
         //Sink and Height and Width Volume With Containers
-        double volumeSinkWithContainers = (totalMass/liquidDensity);
-        double heightSinkWithContainersAux = (volumeSinkWithContainers*2*height)/(length*width);
+        double volumeSinkWithContainers = (totalMass / liquidDensity);
+        double heightSinkWithContainersAux = (volumeSinkWithContainers * 2 * height) / (length * width);
         double heightSinkWithContainers = Math.sqrt(heightSinkWithContainersAux);
 
-        double widthSinkWithContainers = (volumeSinkWithContainers*2)/(length*heightSinkWithContainers);
+        double widthSinkWithContainers = (volumeSinkWithContainers * 2) / (length * heightSinkWithContainers);
 
         //Calculate hypotenuse
         double sum = (heightSinkWithContainers * heightSinkWithContainers) + (widthSinkWithContainers * widthSinkWithContainers);
@@ -753,7 +760,7 @@ public class Company {
         double totalArea = (widthSinkWithContainers * heightSinkWithContainers) + (hypotenuse * length * 2);
 
         //Calculate Pressure
-        double pressure = (totalMass*gravity)/(totalArea);
+        double pressure = (totalMass * gravity) / (totalArea);
 
         return pressure;
     }
@@ -763,10 +770,11 @@ public class Company {
 
     /**
      * Returns the object PortAndCapital by name
+     *
      * @param name name
      * @return PortAndCapital
      */
-    public PortAndCapital getVerticesByName(String name){
+    public PortAndCapital getVerticesByName(String name) {
         return graphGenerator.getVerticesByName(name);
     }
 
@@ -774,33 +782,36 @@ public class Company {
 
     /**
      * Returns the closest Land Path between to places
+     *
      * @param lc1 location 1
      * @param lc2 location 2
      * @return shortest path
      */
     public List<PortAndCapital> closestLandPath(PortAndCapital lc1, PortAndCapital lc2) {
-        return graphGenerator.closestLandPath(lc1,lc2);
+        return graphGenerator.closestLandPath(lc1, lc2);
     }
 
     ////////////////////////////////// Maritime path
 
     /**
      * Returns if the PortAndCapital is a port
+     *
      * @param port port
      * @return true or false
      */
-    public boolean isPort(PortAndCapital port){
+    public boolean isPort(PortAndCapital port) {
         return graphGenerator.isPort(port);
     }
 
     /**
      * Gets the Shortest Maritime Path
+     *
      * @param lc1 location 1
      * @param lc2 location 2
      * @return closest maritime path
      */
-    public List<PortAndWareHouse> closestPathMaritime(PortAndWareHouse lc1, PortAndWareHouse lc2){
-        return graphGenerator.closestPathMaritime(lc1,lc2);
+    public List<PortAndWareHouse> closestPathMaritime(PortAndWareHouse lc1, PortAndWareHouse lc2) {
+        return graphGenerator.closestPathMaritime(lc1, lc2);
     }
 
     ////////////////////////////////// Maritime or land path
@@ -813,7 +824,7 @@ public class Company {
      * @return path
      */
     public List<PortAndCapital> closestPathLandOrSea(PortAndCapital lc1, PortAndCapital lc2) {
-       return graphGenerator.closestPathLandOrSea(lc1,lc2);
+        return graphGenerator.closestPathLandOrSea(lc1, lc2);
     }
 
     ////////////////////////////////// Maritime or land path passing throw N points
