@@ -1,0 +1,48 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+actor       TrafficManager             as TM
+participant    ":ShortestPathsUI"         as UI
+participant    ":ShortestPathsController" as CTRL
+participant    ":Company"              as Company
+participant    ":GraphGenerator"              as GG
+
+TM ->UI: I wish to know the shortest path between \n two locals (city and/or port).
+activate UI
+UI --> TM: Asks which of the paths the user wants
+deactivate UI
+
+TM -> UI : Chooses one of the options
+activate UI
+UI --> TM: Asks for the needed data
+deactivate UI
+
+TM -> UI : Enters the data
+activate UI
+UI --> TM: Validates the data and asks for confirmation
+deactivate UI
+
+TM -> UI : Confirms
+activate UI
+
+UI -> CTRL : closestLand/Maritime/LandOrSea/PassingThroughNPlaces(...)
+activate CTRL
+
+CTRL -> Company : closestLand/Maritime/LandOrSea/PassingThroughNPlaces(...)
+activate Company
+
+Company -> GG : closestLand/Maritime/LandOrSea/PassingThroughNPlaces(...)
+activate GG
+GG -> Company : List<> ShortestPath
+deactivate GG
+
+Company -> CTRL : List<> ShortestPath
+deactivate Company
+
+CTRL -> UI : List<> ShortestPath
+UI -> TM : List<> ShortestPath
+deactivate UI
+
+@enduml

@@ -3,9 +3,7 @@ package lapr.project.ui;
 import lapr.project.controller.ShortestPathsController;
 import lapr.project.model.PortAndCapital;
 import lapr.project.model.PortAndWareHouse;
-import lapr.project.model.Ship;
 
-import java.sql.SQLOutput;
 import java.util.*;
 
 public class ShortestPahtsUI implements Runnable{
@@ -58,11 +56,33 @@ public class ShortestPahtsUI implements Runnable{
             }
             System.out.println("The locations you entered are eligible!");
         }else if(n == 3){
-            System.out.println("Not done yet");
+            System.out.println("Please write the first location!");
+            String location1 = in.nextLine();
+            System.out.println("Please write the second location!");
+            String location2 = in.nextLine();
+            PortAndCapital lct1 = shortestPathsController.getVerticesByName(location1);
+            PortAndCapital lct2 = shortestPathsController.getVerticesByName(location2);
+            List<PortAndCapital> path = shortestPathsController.closestPathLandOrSea(lct1,lct2);
+            System.out.println(path);
         }else if(n == 4){
-            System.out.println("Not done yet");
+            System.out.println("Please write the first location!");
+            String location1 = in.nextLine();
+            System.out.println("Please write the second location!");
+            String location2 = in.nextLine();
+            System.out.println("How many locations do you want the path to go through?");
+            int nLocations = in.nextInt();
+            in.nextLine();
+            PortAndCapital lct1 = shortestPathsController.getVerticesByName(location1);
+            PortAndCapital lct2 = shortestPathsController.getVerticesByName(location2);
+            List<PortAndCapital> listNLocals = new LinkedList<>();
+            for(int i = 0;i < nLocations;i++){
+                System.out.println("Please write the location!");
+                String location = in.nextLine();
+                listNLocals.add(shortestPathsController.getVerticesByName(location));
+            }
+            List<PortAndCapital> path = shortestPathsController.closestPathPassingThroughNPoint(lct1,lct2,listNLocals);
+            System.out.println(path);
         }
-
     }
 
 }

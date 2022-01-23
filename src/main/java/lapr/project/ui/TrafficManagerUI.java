@@ -40,6 +40,7 @@ public class TrafficManagerUI implements Runnable {
             options.add(new MenuItem("Import data from countries, ports, borders and seadists to build a freight network", new GenerateGraphUI()));
             options.add(new MenuItem("Colour the map", new ColourMapUI()));
             options.add(new MenuItem("I wish to know which ports are more critical", new ListNCentralityPortsUI()));
+            options.add(new MenuItem("I wish to know the shortest path between two locals", new ShortestPahtsUI()));
             int option = 0;
 
             do {

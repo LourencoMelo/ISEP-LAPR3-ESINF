@@ -594,8 +594,7 @@ public class GraphGenerator {
      */
     public List<PortAndCapital> closestPathPassingThroughNPoint(PortAndCapital lc1, PortAndCapital lc2, List<PortAndCapital> list) {
         LinkedList<PortAndCapital> totalPath = new LinkedList<>();
-        Graph<PortAndCapital, Double> minGraph = new MatrixGraph<>(false);
-        minGraph = Algorithms.minDistGraph(graph, Double::compare, Double::sum);
+        Graph<PortAndCapital, Double> minGraph = Algorithms.minDistGraph(graph, Double::compare, Double::sum);
         double minWeight = getWeight(list,lc1,lc2,minGraph);
         List<PortAndCapital> auxList = new LinkedList<>(list);
 
@@ -617,7 +616,6 @@ public class GraphGenerator {
         Algorithms.shortestPath(graph, shortestComb.get(shortestComb.size() - 1), lc2, Double::compare, Double::sum, 0.0, aux2);
         totalPath.addAll(aux2);
 
-        System.out.println(totalPath);
         return totalPath;
     }
 

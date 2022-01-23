@@ -4,7 +4,7 @@
 autonumber
 
 TrafficManager -> System :  I wish to know the shortest path between two locals (city and/or port).
-System --> TrafficManager: Asks for confirmation
+System --> TrafficManager: Asks which one of the paths
 TrafficManager -> System : Confirms
 System --> TrafficManager : Displays the shortest path
 

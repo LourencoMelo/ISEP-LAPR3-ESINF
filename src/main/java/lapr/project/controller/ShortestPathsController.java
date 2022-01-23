@@ -80,4 +80,22 @@ public class ShortestPathsController {
         return company.closestPathMaritime(lc1,lc2);
     }
 
+    ////////////////////////////// LAND OR MARITIME
+
+    /**
+     * Finds the closest Land or Sea Path
+     *
+     * @param lc1 location 1
+     * @param lc2 location 2
+     * @return path
+     */
+    public List<PortAndCapital> closestPathLandOrSea(PortAndCapital lc1, PortAndCapital lc2) {
+        return company.closestPathLandOrSea(lc1,lc2);
+    }
+
+    ///////////////////// PASSING THROUGH N PLACES
+
+    public List<PortAndCapital> closestPathPassingThroughNPoint(PortAndCapital lc1, PortAndCapital lc2, List<PortAndCapital> list) {
+        return company.closestPathPassingThroughNPoint(lc1,lc2,list);
+    }
 }
