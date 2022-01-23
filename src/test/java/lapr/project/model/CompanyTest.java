@@ -832,30 +832,47 @@ class CompanyTest {
 
         company.containerImport(new File("Files/containerFew.csv"), shipTest);
 
-        Map<String[][], String[]> mapCompany = company.centerOfGravityEmptyShip(shipTest);
+        //Creating the lists
+        List<String[][]> listCompany = company.centerOfGravityEmptyShip(shipTest);
 
-        Map<String[][], String[]> mapTest = new HashMap<>();
+        List<String[][]> listTest = new ArrayList<>();
 
-        for(String[][] keyTest : mapTest.keySet()){
-            for(String[][] keyCompany : mapCompany.keySet()){
-                for(int i = 0; i < shipTest.getLength(); i++){
-                    for(int j = 0; j < shipTest.getWidth(); j++){
-                        assertEquals(keyTest[i][j], keyCompany[i][j]);
-                    }
-                }
+        //Receiving the returns
+        String[][] matrixRectCompany = listCompany.get(0);
+        String[][] matrixTriaCompany = listCompany.get(1);
+
+        //Creating the matrix of Test
+        String[][] matrixRectTest = new String[(int) shipTest.getLength()][(int) shipTest.getWidth()];
+        String[][] matrixTriaTest = new String[4][];
+
+        //Filling arrays of Test
+        for(String[] row : matrixRectTest){
+            Arrays.fill(row, "0");
+        }
+        matrixRectTest[2][1] = "X";
+
+        for (int i = 0; i < 4; i++){
+            matrixTriaTest[i] = new String[i+1];
+            for (int j = 0; j <= i; j++){
+                matrixTriaTest[i][j] = "0";
+            }
+        }
+        matrixTriaTest[2][1] = "X";
+
+        //Checking values
+        for(int i = 0; i < shipTest.getLength(); i++){
+            for(int j = 0; j < shipTest.getWidth(); j++){
+                assertEquals(matrixRectCompany[i][j], matrixRectTest[i][j]);
             }
         }
 
-        String[] array = new String[10];
-        Arrays.fill(array, "0");
-        array[4] = "X";
+        for (int i = 0; i < 4; i++){
+            for (int j = 0; j <= i; j++){
+                assertEquals(matrixTriaCompany[i][j], matrixTriaTest[i][j]);
+            }
+        }
 
     }
-
-
-
-
-
 
     /**
      * Tests if the Containres are correctly imported

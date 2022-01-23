@@ -413,7 +413,7 @@ public class Company {
      * ===========================US 418 =================================================
      */
 
-    public Map<String[][], String[]> centerOfGravityEmptyShip(Ship ship){
+    public List<String[][]> centerOfGravityEmptyShip(Ship ship){
         int width = (int) ship.getWidth();
         int length = (int) ship.getLength();
         int defHeight = 4;
@@ -439,18 +439,23 @@ public class Company {
             }
         }
 
-        //Adding the Rectangle to the list
-        Map<String[][], String[]> map = new HashMap<>();
-
         //Triangle
-        String[] matrixTriangle = new String[10];
-        Arrays.fill(matrixTriangle, "0");
-        matrixTriangle[4] = "X";
+        String[][] matrixTriangle = new String[4][];
+        for (int i = 0; i < 4; i++){
+            matrixTriangle[i] = new String[i+1];
+            for (int j = 0; j <= i; j++){
+                matrixTriangle[i][j] = "0";
+            }
+        }
+        matrixTriangle[2][1] = "X";
 
-        map.put(matrixRectangle, matrixTriangle);
+        List<String[][]> list = new ArrayList<>();
+        list.add(matrixRectangle);
+        list.add(matrixTriangle);
 
-        return map;
+        return list;
     }
+
 
     /**
      * ========================US 419 & US420 =========================================
