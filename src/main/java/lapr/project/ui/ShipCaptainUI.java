@@ -18,6 +18,7 @@ public class ShipCaptainUI implements Runnable {
             options.add(new MenuItem("I want to know how many cargo manifests I have transported during a given year and the average number of containers per manifest.", new GetCargoManifestYearUI()));
             options.add(new MenuItem("The occupancy rate (percentage) of a given ship for a given cargo manifest.", new GetOccupancyRateCargoManifestUI()));
             options.add(new MenuItem("The occupancy rate (percentage) of a given ship for on a given time.", new GetShipOccupancyRateUI()));
+            options.add(new MenuItem("Access exclusively to the information of the containers that are loaded on my ship", new AccessToInfoContainersOnShipUI()));
             options.add(new MenuItem("I want to have access to audit trails for a given container of a given cargo manifest.", new AuditTrailsUI()));
             options.add(new MenuItem("n I want the determine the unladen center of mass for each vessel (if different) according to its characteristics.", new ShowCenterGravityShipUI()));
             options.add(new MenuItem("I want to know where to position, for example, one hundred (100) containers on the vessel, such that the center of mass remains at xx and yy determined in the previous point.", new ShowCenterGravityLoadedUI()));

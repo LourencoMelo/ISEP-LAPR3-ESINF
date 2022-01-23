@@ -1,5 +1,6 @@
 package lapr.project.utils.graph;
 
+import lapr.project.model.PortAndCapital;
 import lapr.project.utils.graph.matrix.MatrixGraph;
 
 import java.util.*;
@@ -308,5 +309,6 @@ public class Algorithms {
 
         return new MatrixGraph<>(g.isDirected(), g.vertices(), m);
     }
+
 
 }

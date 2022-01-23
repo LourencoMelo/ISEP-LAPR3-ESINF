@@ -68,7 +68,7 @@ public class TreeOfPorts extends KD_TREE<PortAndWareHouse> {
      * @param list list of nodes2d
      * @param divx true for x and false for y values
      */
-    public void create2TreeOfPorts(List<KD_NODE<PortAndWareHouse>> list, boolean divx) {
+        public void create2TreeOfPorts(List<KD_NODE<PortAndWareHouse>> list, boolean divx) {
 
         if (list.isEmpty()) return;
 

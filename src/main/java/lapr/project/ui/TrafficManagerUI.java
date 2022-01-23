@@ -41,6 +41,7 @@ public class TrafficManagerUI implements Runnable {
             options.add(new MenuItem("Colour the map", new ColourMapUI()));
             options.add(new MenuItem("I wish to know which ports are more critical", new ListNCentralityPortsUI()));
             options.add(new MenuItem("I wish to know the shortest path between two locals", new ShortestPahtsUI()));
+            options.add(new MenuItem("I wish to know the most efficient circuit", new MostEfficentCircuitUI()));
             int option = 0;
 
             do {

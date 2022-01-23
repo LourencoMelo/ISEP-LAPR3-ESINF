@@ -310,4 +310,8 @@ public class MatrixGraph<V,E> extends CommonGraph<V,E> {
 
         return sb.toString();
     }
+
+    public Edge<V, E>[][] getEdgeMatrix() {
+        return edgeMatrix;
+    }
 }
