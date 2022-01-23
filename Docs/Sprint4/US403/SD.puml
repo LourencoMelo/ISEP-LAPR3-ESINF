@@ -1,0 +1,40 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+actor       TrafficManager             as TM
+participant    ":MostEfficentCircuitUI"         as UI
+participant    ":MostEfficentCircuitController" as CTRL
+participant    ":Company"              as Company
+participant    ":GraphGenerator"              as GG
+
+TM ->UI: I wish to get the most efficent circuit.
+activate UI
+UI --> TM : Asks for the source location
+
+deactivate UI
+
+TM -> UI : Inserts data
+activate UI
+
+UI -> CTRL : getMostEfficientCircuit(positionData)
+activate CTRL
+
+CTRL -> Company : getMostEfficientCircuit(positionData)
+
+activate Company
+
+Company -> GG : getMostEfficientCircuit(positionData)
+
+activate GG
+deactivate GG
+
+deactivate Company
+
+deactivate CTRL
+
+deactivate UI
+
+
+@enduml

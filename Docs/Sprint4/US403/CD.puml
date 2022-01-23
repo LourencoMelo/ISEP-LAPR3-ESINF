@@ -1,0 +1,20 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class TrafficManager{
+}
+
+class Company {
+
+}
+
+class GraphGenerator{
+}
+
+TrafficManager --> Company : Get most efficent circuit
+Company --> GraphGenerator : Get most efficient circuit
+
+
+
+
+@enduml

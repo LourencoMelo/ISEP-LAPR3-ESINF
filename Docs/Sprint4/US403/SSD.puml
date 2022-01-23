@@ -1,0 +1,11 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+TrafficManager -> System : I wish to get the most efficent circuit
+System --> TrafficManager: Asks for the source location
+TrafficManager -> System : Inserts data
+System --> TrafficManager : Calculate the asked data and shows it
+
+@enduml
