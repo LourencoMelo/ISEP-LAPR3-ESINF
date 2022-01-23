@@ -464,5 +464,4 @@ class GraphGeneratorTest {
         assertTrue(actual);
     }
 
-
 }

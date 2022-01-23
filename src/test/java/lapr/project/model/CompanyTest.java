@@ -1390,4 +1390,20 @@ class CompanyTest {
         assertEquals(expected,actual);
     }
 
+    @Test
+    void getMostEfficientCircuit() {
+        ImportPortsController importPortsController = new ImportPortsController(company);
+
+        importPortsController.importPorts(new File("Files/bports.csv")); //Imports all ports from file
+
+        company.generateGraph(new File("Files/countries.csv"), new File("Files/borders.csv"), new File("Files/seadists.csv"), 5); //Generates graph
+
+        String start = "Genoa";
+
+        //assertNull(company.getGraphGenerator().getMostEfficientCircuit(company.getVerticesByName(start)));
+
+        //This next test is to confirm that the hamiltonian path is correctly found.
+        //assertEquals(HamiltonianPath, company.getGraphGenerator().getMostEfficientCircuit(company.getVerticesByName(start)));
+    }
+
 }
