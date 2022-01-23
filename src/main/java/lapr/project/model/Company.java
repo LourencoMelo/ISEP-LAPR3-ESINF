@@ -409,6 +409,48 @@ public class Company {
         graphGenerator.colourMap(countryList);
     }
 
+    /**
+     * ===========================US 418 =================================================
+     */
+
+    public Map<String[][], String[]> centerOfGravityEmptyShip(Ship ship){
+        int width = (int) ship.getWidth();
+        int length = (int) ship.getLength();
+        int defHeight = 4;
+
+        //Rectangle
+        String[][] matrixRectangle = new String[length][width];
+        for(String[] row : matrixRectangle){
+            Arrays.fill(row, "0");
+        }
+
+        //Search for Center of Rectangle
+        int whereIsX = (width/2) ;
+        int whereIsY = (length/2) ;
+
+
+        for(int i = 0; i < length; i++){
+            if(i == whereIsY){
+                for(int j = 0; j < width; j++){
+                    if(j == whereIsX){
+                        matrixRectangle[i][j] = "X";
+                    }
+                }
+            }
+        }
+
+        //Adding the Rectangle to the list
+        Map<String[][], String[]> map = new HashMap<>();
+
+        //Triangle
+        String[] matrixTriangle = new String[10];
+        Arrays.fill(matrixTriangle, "0");
+        matrixTriangle[4] = "X";
+
+        map.put(matrixRectangle, matrixTriangle);
+
+        return map;
+    }
 
     /**
      * ========================US 419 & US420 =========================================
@@ -529,9 +571,14 @@ public class Company {
             }
         }
 
-        double resultX = positionMassX/totalMass;
-        double resultY = positionMassY/totalMass;
 
+        double resultX = 0;
+        double resultY = 0;
+
+        if(totalMass != 0){
+            resultX = positionMassX/totalMass;
+            resultY = positionMassY/totalMass;
+        }
 
         List<Double> list = new ArrayList<>();
         list.add(resultX);

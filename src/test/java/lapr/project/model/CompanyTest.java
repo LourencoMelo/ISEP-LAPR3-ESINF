@@ -803,6 +803,10 @@ class CompanyTest {
         assertEquals(expected_map.toString(), company1.getGraphGenerator().listOfNPortsCentrality(4).toString());
     }
 
+    /**
+     *==================  US 418 US 419 & US 420 =====================
+     */
+
     @Test
     void fileErrorsImportingContainers(){
         String expected = "File Not Found!";
@@ -822,9 +826,36 @@ class CompanyTest {
 
     }
 
-    /**
-     *==================   US 419 & US 420 =====================
-     */
+    @Test
+    void centerOfGravityEmptyShip(){
+        Ship shipTest = new ShipByMMSI(123456788, "WarCraft", "1023456787", "Roger", 2, 5.0, 3.0, 20.9);
+
+        company.containerImport(new File("Files/containerFew.csv"), shipTest);
+
+        Map<String[][], String[]> mapCompany = company.centerOfGravityEmptyShip(shipTest);
+
+        Map<String[][], String[]> mapTest = new HashMap<>();
+
+        for(String[][] keyTest : mapTest.keySet()){
+            for(String[][] keyCompany : mapCompany.keySet()){
+                for(int i = 0; i < shipTest.getLength(); i++){
+                    for(int j = 0; j < shipTest.getWidth(); j++){
+                        assertEquals(keyTest[i][j], keyCompany[i][j]);
+                    }
+                }
+            }
+        }
+
+        String[] array = new String[10];
+        Arrays.fill(array, "0");
+        array[4] = "X";
+
+    }
+
+
+
+
+
 
     /**
      * Tests if the Containres are correctly imported
@@ -991,6 +1022,10 @@ class CompanyTest {
         assertEquals(pressure1, company.calculatePressureOnWater(shipTest,5000.0,2));
 
     }
+
+    /**
+     * =========================================================================================
+     */
 
     /////////////////////////////////// LAND SHORTEST PATHS TESTS
 
