@@ -1,0 +1,31 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+actor       ShipCaptain             as SC
+participant    ":ShowCenterGravityShipUI"         as UI
+participant    ":ShowCenterGravityShipController" as CTRL
+participant    ":Company"              as Company
+
+SC -> UI :  I want the determine the unladen center of mass for each \n vessel (if different) according to its characteristics.
+activate UI
+UI -> SC : Asks for the required data
+deactivate UI
+
+SC -> UI : Enters the required data
+activate UI
+UI -> CTRL : centerOfGravityEmptyShipController(...)
+activate CTRL
+
+CTRL -> Company : centerOfGravityEmptyShip(...)
+activate Company
+Company -> CTRL : List<String[][]> result
+deactivate Company
+
+CTRL -> UI : List<String[][]> result
+UI -> SC : List<String[][]> result
+deactivate UI
+
+
+@enduml

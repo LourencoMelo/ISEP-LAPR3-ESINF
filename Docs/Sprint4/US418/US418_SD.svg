@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="454px" preserveAspectRatio="none" style="width:945px;height:454px;background:#FFFFFF;" version="1.1" viewBox="0 0 945 454" width="945px" zoomAndPan="magnify"><defs><filter height="300%" id="frjfodjodzgt5" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><rect fill="#FFFFFF" filter="url(#frjfodjodzgt5)" height="30.3516" style="stroke:#A80036;stroke-width:1.0;" width="10" x="408.5" y="138.3125"/><rect fill="#FFFFFF" filter="url(#frjfodjodzgt5)" height="151.7578" style="stroke:#A80036;stroke-width:1.0;" width="10" x="408.5" y="199.0156"/><rect fill="#FFFFFF" filter="url(#frjfodjodzgt5)" height="130.4063" style="stroke:#A80036;stroke-width:1.0;" width="10" x="676.5" y="229.3672"/><rect fill="#FFFFFF" filter="url(#frjfodjodzgt5)" height="30.3516" style="stroke:#A80036;stroke-width:1.0;" width="10" x="889.5" y="259.7188"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:5.0,5.0;" x1="46" x2="46" y1="89.6094" y2="368.7734"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:5.0,5.0;" x1="413.5" x2="413.5" y1="89.6094" y2="368.7734"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:5.0,5.0;" x1="681.5" x2="681.5" y1="89.6094" y2="368.7734"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:5.0,5.0;" x1="894.5" x2="894.5" y1="89.6094" y2="368.7734"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="77" x="5" y="86.5332">ShipCaptain</text><ellipse cx="46.5" cy="15" fill="#FEFECE" filter="url(#frjfodjodzgt5)" rx="8" ry="8" style="stroke:#A80036;stroke-width:2.0;"/><path d="M46.5,23 L46.5,50 M33.5,31 L59.5,31 M46.5,50 L33.5,65 M46.5,50 L59.5,65 " fill="none" filter="url(#frjfodjodzgt5)" style="stroke:#A80036;stroke-width:2.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="77" x="5" y="382.3066">ShipCaptain</text><ellipse cx="46.5" cy="395.3828" fill="#FEFECE" filter="url(#frjfodjodzgt5)" rx="8" ry="8" style="stroke:#A80036;stroke-width:2.0;"/><path d="M46.5,403.3828 L46.5,430.3828 M33.5,411.3828 L59.5,411.3828 M46.5,430.3828 L33.5,445.3828 M46.5,430.3828 L59.5,445.3828 " fill="none" filter="url(#frjfodjodzgt5)" style="stroke:#A80036;stroke-width:2.0;"/><rect fill="#FEFECE" filter="url(#frjfodjodzgt5)" height="31.6094" style="stroke:#A80036;stroke-width:1.5;" width="180" x="321.5" y="53"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="166" x="328.5" y="74.5332">:ShowCenterGravityShipUI</text><rect fill="#FEFECE" filter="url(#frjfodjodzgt5)" height="31.6094" style="stroke:#A80036;stroke-width:1.5;" width="180" x="321.5" y="367.7734"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="166" x="328.5" y="389.3066">:ShowCenterGravityShipUI</text><rect fill="#FEFECE" filter="url(#frjfodjodzgt5)" height="31.6094" style="stroke:#A80036;stroke-width:1.5;" width="230" x="564.5" y="53"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="216" x="571.5" y="74.5332">:ShowCenterGravityShipController</text><rect fill="#FEFECE" filter="url(#frjfodjodzgt5)" height="31.6094" style="stroke:#A80036;stroke-width:1.5;" width="230" x="564.5" y="367.7734"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="216" x="571.5" y="389.3066">:ShowCenterGravityShipController</text><rect fill="#FEFECE" filter="url(#frjfodjodzgt5)" height="31.6094" style="stroke:#A80036;stroke-width:1.5;" width="78" x="853.5" y="53"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="64" x="860.5" y="74.5332">:Company</text><rect fill="#FEFECE" filter="url(#frjfodjodzgt5)" height="31.6094" style="stroke:#A80036;stroke-width:1.5;" width="78" x="853.5" y="367.7734"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="64" x="860.5" y="389.3066">:Company</text><rect fill="#FFFFFF" filter="url(#frjfodjodzgt5)" height="30.3516" style="stroke:#A80036;stroke-width:1.0;" width="10" x="408.5" y="138.3125"/><rect fill="#FFFFFF" filter="url(#frjfodjodzgt5)" height="151.7578" style="stroke:#A80036;stroke-width:1.0;" width="10" x="408.5" y="199.0156"/><rect fill="#FFFFFF" filter="url(#frjfodjodzgt5)" height="130.4063" style="stroke:#A80036;stroke-width:1.0;" width="10" x="676.5" y="229.3672"/><rect fill="#FFFFFF" filter="url(#frjfodjodzgt5)" height="30.3516" style="stroke:#A80036;stroke-width:1.0;" width="10" x="889.5" y="259.7188"/><polygon fill="#A80036" points="396.5,134.3125,406.5,138.3125,396.5,142.3125,400.5,138.3125" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;" x1="46.5" x2="402.5" y1="138.3125" y2="138.3125"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="53.5" y="125.2803">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="328" x="64.5" y="117.1045">I want the determine the unladen center of mass for each</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="289" x="68.5" y="133.4561">vessel (if different) according to its characteristics.</text><polygon fill="#A80036" points="57.5,164.6641,47.5,168.6641,57.5,172.6641,53.5,168.6641" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;" x1="51.5" x2="412.5" y1="168.6641" y2="168.6641"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="63.5" y="163.8076">2</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="149" x="74.5" y="163.8076">Asks for the required data</text><polygon fill="#A80036" points="396.5,195.0156,406.5,199.0156,396.5,203.0156,400.5,199.0156" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;" x1="46.5" x2="402.5" y1="199.0156" y2="199.0156"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="53.5" y="194.1592">3</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="139" x="64.5" y="194.1592">Enters the required data</text><polygon fill="#A80036" points="664.5,225.3672,674.5,229.3672,664.5,233.3672,668.5,229.3672" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;" x1="418.5" x2="670.5" y1="229.3672" y2="229.3672"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="425.5" y="224.5107">4</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="228" x="436.5" y="224.5107">centerOfGravityEmptyShipController(...)</text><polygon fill="#A80036" points="877.5,255.7188,887.5,259.7188,877.5,263.7188,881.5,259.7188" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;" x1="686.5" x2="883.5" y1="259.7188" y2="259.7188"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="693.5" y="254.8623">5</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="173" x="704.5" y="254.8623">centerOfGravityEmptyShip(...)</text><polygon fill="#A80036" points="697.5,286.0703,687.5,290.0703,697.5,294.0703,693.5,290.0703" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;" x1="691.5" x2="893.5" y1="290.0703" y2="290.0703"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="703.5" y="285.2139">6</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="123" x="714.5" y="285.2139">List&lt;String[][]&gt; result</text><polygon fill="#A80036" points="429.5,316.4219,419.5,320.4219,429.5,324.4219,425.5,320.4219" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;" x1="423.5" x2="675.5" y1="320.4219" y2="320.4219"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="435.5" y="315.5654">7</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="123" x="446.5" y="315.5654">List&lt;String[][]&gt; result</text><polygon fill="#A80036" points="57.5,346.7734,47.5,350.7734,57.5,354.7734,53.5,350.7734" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;" x1="51.5" x2="412.5" y1="350.7734" y2="350.7734"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="63.5" y="345.917">8</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="123" x="74.5" y="345.917">List&lt;String[][]&gt; result</text><!--MD5=[295492212f799eac9c55f86ccdfd5db5]
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+actor       ShipCaptain             as SC
+participant    ":ShowCenterGravityShipUI"         as UI
+participant    ":ShowCenterGravityShipController" as CTRL
+participant    ":Company"              as Company
+
+SC -> UI :  I want the determine the unladen center of mass for each \n vessel (if different) according to its characteristics.
+activate UI
+UI -> SC : Asks for the required data
+deactivate UI
+
+SC -> UI : Enters the required data
+activate UI
+UI -> CTRL : centerOfGravityEmptyShipController(...)
+activate CTRL
+
+CTRL -> Company : centerOfGravityEmptyShip(...)
+activate Company
+Company -> CTRL : List<String[][]> result
+deactivate Company
+
+CTRL -> UI : List<String[][]> result
+UI -> SC : List<String[][]> result
+deactivate UI
+
+
+@enduml
+
+@startuml
+
+autonumber
+
+actor       ShipCaptain             as SC
+participant    ":ShowCenterGravityShipUI"         as UI
+participant    ":ShowCenterGravityShipController" as CTRL
+participant    ":Company"              as Company
+
+SC -> UI :  I want the determine the unladen center of mass for each \n vessel (if different) according to its characteristics.
+activate UI
+UI -> SC : Asks for the required data
+deactivate UI
+
+SC -> UI : Enters the required data
+activate UI
+UI -> CTRL : centerOfGravityEmptyShipController(...)
+activate CTRL
+
+CTRL -> Company : centerOfGravityEmptyShip(...)
+activate Company
+Company -> CTRL : List<String[][]> result
+deactivate Company
+
+CTRL -> UI : List<String[][]> result
+UI -> SC : List<String[][]> result
+deactivate UI
+
+
+@enduml
+
+PlantUML version 1.2022.0(Tue Jan 11 16:16:42 GMT 2022)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: Cp1252
+Language: pt
+Country: PT
+--></g></svg>

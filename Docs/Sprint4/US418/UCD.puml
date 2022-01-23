@@ -1,0 +1,9 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+:Main Admin: as Admin
+:Ship Captain : as ShipCaptain
+
+Admin -> (Register new Staff)
+ShipCaptain -> (I want the determine the unladen center of mass for each \n vessel)
+@enduml

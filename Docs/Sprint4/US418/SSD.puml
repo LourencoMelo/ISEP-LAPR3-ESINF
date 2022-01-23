@@ -1,0 +1,11 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+ShipCaptain -> System : I want to determine the unladen center of mass for each \n vessel (if different) according to its characteristics.
+System --> ShipCaptain: Asks for the required data
+ShipCaptain -> System : Enters the required data
+System --> ShipCaptain : Result
+
+@enduml

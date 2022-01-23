@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="243px" preserveAspectRatio="none" style="width:454px;height:243px;background:#FFFFFF;" version="1.1" viewBox="0 0 454 243" width="454px" zoomAndPan="magnify"><defs><filter height="300%" id="f1wem55qtbo3zi" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:5.0,5.0;" x1="52" x2="52" y1="41.6094" y2="199.3672"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:5.0,5.0;" x1="412.5" x2="412.5" y1="41.6094" y2="199.3672"/><rect fill="#FEFECE" filter="url(#f1wem55qtbo3zi)" height="31.6094" style="stroke:#A80036;stroke-width:1.5;" width="91" x="5" y="5"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="77" x="12" y="26.5332">ShipCaptain</text><rect fill="#FEFECE" filter="url(#f1wem55qtbo3zi)" height="31.6094" style="stroke:#A80036;stroke-width:1.5;" width="91" x="5" y="198.3672"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="77" x="12" y="219.9004">ShipCaptain</text><rect fill="#FEFECE" filter="url(#f1wem55qtbo3zi)" height="31.6094" style="stroke:#A80036;stroke-width:1.5;" width="60" x="380.5" y="5"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="46" x="387.5" y="26.5332">System</text><rect fill="#FEFECE" filter="url(#f1wem55qtbo3zi)" height="31.6094" style="stroke:#A80036;stroke-width:1.5;" width="60" x="380.5" y="198.3672"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="46" x="387.5" y="219.9004">System</text><polygon fill="#A80036" points="400.5,86.3125,410.5,90.3125,400.5,94.3125,404.5,90.3125" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;" x1="52.5" x2="406.5" y1="90.3125" y2="90.3125"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="59.5" y="77.2803">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="321" x="70.5" y="69.1045">I want to determine the unladen center of mass for each</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="289" x="74.5" y="85.4561">vessel (if different) according to its characteristics.</text><polygon fill="#A80036" points="63.5,116.6641,53.5,120.6641,63.5,124.6641,59.5,120.6641" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="57.5" x2="411.5" y1="120.6641" y2="120.6641"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="69.5" y="115.8076">2</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="149" x="80.5" y="115.8076">Asks for the required data</text><polygon fill="#A80036" points="400.5,147.0156,410.5,151.0156,400.5,155.0156,404.5,151.0156" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;" x1="52.5" x2="406.5" y1="151.0156" y2="151.0156"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="59.5" y="146.1592">3</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="139" x="70.5" y="146.1592">Enters the required data</text><polygon fill="#A80036" points="63.5,177.3672,53.5,181.3672,63.5,185.3672,59.5,181.3672" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="57.5" x2="411.5" y1="181.3672" y2="181.3672"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="7" x="69.5" y="176.5107">4</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="37" x="80.5" y="176.5107">Result</text><!--MD5=[28c67f75b35257bc91bf0c47f94f0cc8]
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+ShipCaptain -> System : I want to determine the unladen center of mass for each \n vessel (if different) according to its characteristics.
+System - -> ShipCaptain: Asks for the required data
+ShipCaptain -> System : Enters the required data
+System - -> ShipCaptain : Result
+
+@enduml
+
+@startuml
+
+autonumber
+
+ShipCaptain -> System : I want to determine the unladen center of mass for each \n vessel (if different) according to its characteristics.
+System - -> ShipCaptain: Asks for the required data
+ShipCaptain -> System : Enters the required data
+System - -> ShipCaptain : Result
+
+@enduml
+
+PlantUML version 1.2022.0(Tue Jan 11 16:16:42 GMT 2022)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: Cp1252
+Language: pt
+Country: PT
+--></g></svg>
