@@ -1,0 +1,30 @@
+@startuml
+
+autonumber
+
+actor ShipCaptain #red
+
+System --> ShipCaptain: Authentication Request
+ShipCaptain -> System : Another authentication Response
+System --> ShipCaptain : Authentication successful
+ShipCaptain --> ShipCaptainUI : Asks to know the number of days each ship has been idle since the beginning of the current year.
+ShipCaptainUI --> HowMuchShipSinkUI : Connects
+HowMuchShipSinkUI --> GetShipByCodeController : asks for the MMSI
+GetShipByCodeController --> Company : getShipByCode()
+Company --> GetShipByCodeController : ship
+GetShipByCodeController --> HowMuchShipSinkUI : ship
+HowMuchShipSinkUI --> HowMuchShipSinkController : calculateTotalMassController(ship)
+HowMuchShipSinkController --> Company : calculateTotalMassController
+Company --> HowMuchShipSinkController : totalMass
+HowMuchShipSinkController --> HowMuchShipSinkUI : totalMass
+HowMuchShipSinkUI --> HowMuchShipSinkController : calculateDiffHeightsController(ship, totalMass, shipDeadWeight, typeOfWater)
+HowMuchShipSinkController --> Company : calculateDiffHeightsController(ship, totalMass, shipDeadWeight, typeOfWater)
+Company --> HowMuchShipSinkController : diffHeights
+HowMuchShipSinkController --> HowMuchShipSinkUI : diffHeights
+HowMuchShipSinkUI --> HowMuchShipSinkController : calculatePressureOnWaterController()
+HowMuchShipSinkController --> Company : calculatePressureOnWaterController(ship, totalMass, typeOfWater);
+Company --> HowMuchShipSinkController : pressure
+HowMuchShipSinkController --> HowMuchShipSinkUI : pressure
+HowMuchShipSinkUI --> ShipCaptain : Delivers the information asked
+
+@enduml

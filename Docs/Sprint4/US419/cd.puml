@@ -1,0 +1,57 @@
+@startuml
+
+class ShipCaptain{
+
+}
+
+class User{
+
+}
+
+class UserRole{
+
+}
+
+class Company{
+    +containerImport(File file, Ship ship)
+    +allocatingContainers(Ship ship)
+    +calculateCenterGravity(Ship ship, Map<Integer, double[][]> matrixLevels)
+}
+
+class ShowCenterGravityLoadedUI{
+    -ShowCenterGravityLoadedController showCenterGravityLoadedController
+    -GetShipByCodeController getShipByCodeController
+    +ShowCenterGravityLoadedUI()
+    +run()
+}
+
+class ShowCenterGravityLoadedController{
+    +ShowCenterGravityLoadedController(Company company)
+    +ShowCenterGravityLoadedController()
+    +showCenterOfGravityController(Ship ship, Map<Integer, double[][]> matrixLevels)
+    +containerImportController(File file, Ship ship)
+    +allocatingContainersController(Ship ship)
+    +getCompany()
+}
+
+
+class GetShipByCodeController{
+    -Company company
+    +GetShipByCodeController()
+    +GetShipByCodeController(Company company)
+    +getShipByCode(String code)
+}
+
+ShipCaptain --> ShowCenterGravityLoadedUI : Access
+ShowCenterGravityLoadedUI -down-> ShowCenterGravityLoadedController : Connects with
+ShowCenterGravityLoadedUI -right-> GetShipByCodeController : Connects with
+ShipCaptain --> User : is a
+User --> UserRole : has
+ShowCenterGravityLoadedController -up-> ShowCenterGravityLoadedUI : Returns Info
+GetShipByCodeController -up-> ShowCenterGravityLoadedUI : Returns Info
+ShowCenterGravityLoadedController --> Company : Connects with
+GetShipByCodeController --> Company : Connects with
+Company --> ShowCenterGravityLoadedController : Returns Info
+Company --> GetShipByCodeController : Returns Info
+
+@enduml

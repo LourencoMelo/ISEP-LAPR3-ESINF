@@ -1,0 +1,12 @@
+@startuml
+autonumber
+
+actor ShipCaptain #red
+
+System --> ShipCaptain: Authentication Request
+ShipCaptain -> System : Another authentication Response
+System --> ShipCaptain : Authentication successful
+ShipCaptain --> System : As the Ship Captain I want to know where to position, for example, one hundred(100) containers on the vessel, such that the center of mass remains at xx and yy, determined in the previous point.
+System --> ShipCaptain : Delivers the information asked
+
+@enduml

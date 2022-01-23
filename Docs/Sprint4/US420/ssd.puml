@@ -1,0 +1,12 @@
+@startuml
+autonumber
+
+actor ShipCaptain #red
+
+System --> ShipCaptain: Authentication Request
+ShipCaptain -> System : Another authentication Response
+System --> ShipCaptain : Authentication successful
+ShipCaptain --> System : How much did the vessel sink, assuming that each container has half a ton of mass and a pressure on water.
+System --> ShipCaptain : Delivers the information asked
+
+@enduml

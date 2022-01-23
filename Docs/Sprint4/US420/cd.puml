@@ -1,0 +1,55 @@
+@startuml
+
+class ShipCaptain{
+
+}
+
+class User{
+
+}
+
+class UserRole{
+
+}
+
+class Company{
+    +calculateTotalMass(ship);
+    +calculateDiffHeights(ship,totalMass,shipDeadWeight, typeOfWater)
+    +calculatePressureOnWater(ship, totalMass, typeOfWater)
+}
+
+class HowMuchShipSinkUI{
+    -HowMuchShipSinkController HowMuchShipSinkController
+    -GetShipByCodeController getShipByCodeController
+    +HowMuchShipSinkUI()
+    +run()
+}
+
+class GetShipByCodeController(){
+    +getShipByCodeController()
+}
+
+
+class HowMuchShipSinkController{
+    -Company company
+    +HowMuchShipSinkController()
+    +HowMuchShipSinkController(Company company)
+    +calculateTotalMassController(Ship ship)
+    +calculateDiffHeightsController(Ship ship, double totalMass, double shipDeadWeight, int typeOfWater)
+    +calculatePressureOnWaterController(Ship ship, double totalMass, int typeOfWater)
+    +getCompany()
+}
+
+ShipCaptain --> HowMuchShipSinkUI : Access
+HowMuchShipSinkUI -down-> HowMuchShipSinkController : Connects with
+HowMuchShipSinkUI -right-> GetShipByCodeController : Connects with
+ShipCaptain --> User : is a
+User --> UserRole : has
+HowMuchShipSinkController -up-> HowMuchShipSinkUI : Returns Info
+GetShipByCodeController -up-> HowMuchShipSinkUI : Returns Info
+HowMuchShipSinkController --> Company : Connects with
+GetShipByCodeController --> Company : Connects with
+Company --> HowMuchShipSinkController : Returns Info
+Company --> GetShipByCodeController : Returns Info
+
+@enduml
