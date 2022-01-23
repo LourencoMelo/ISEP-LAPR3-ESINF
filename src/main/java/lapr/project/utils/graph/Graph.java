@@ -160,4 +160,6 @@ public interface Graph<V, E> extends Cloneable {
      * @return a deep copy of graph
      */
     Graph<V, E> clone();
+
+    Edge<V, E>[][] getEdgeMatrix();
 }

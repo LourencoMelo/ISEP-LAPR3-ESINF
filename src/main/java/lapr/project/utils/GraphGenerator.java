@@ -595,12 +595,12 @@ public class GraphGenerator {
     public List<PortAndCapital> closestPathPassingThroughNPoint(PortAndCapital lc1, PortAndCapital lc2, List<PortAndCapital> list) {
         LinkedList<PortAndCapital> totalPath = new LinkedList<>();
         Graph<PortAndCapital, Double> minGraph = Algorithms.minDistGraph(graph, Double::compare, Double::sum);
-        double minWeight = getWeight(list,lc1,lc2,minGraph);
+        double minWeight = getWeight(list, lc1, lc2, minGraph);
         List<PortAndCapital> auxList = new LinkedList<>(list);
 
-        List<PortAndCapital> shortestComb = permute(list,minWeight,lc1, lc2, minGraph);
+        List<PortAndCapital> shortestComb = permute(list, minWeight, lc1, lc2, minGraph);
 
-        if(shortestComb.isEmpty()){
+        if (shortestComb.isEmpty()) {
             shortestComb = auxList;
         }
 
@@ -622,14 +622,14 @@ public class GraphGenerator {
     /**
      * Permutes the list and returns the shortest combination
      *
-     * @param str list
+     * @param str       list
      * @param minWeight minimum weight
-     * @param lc1 local 1
-     * @param lc2 local 2
-     * @param minGraph warshall graph
+     * @param lc1       local 1
+     * @param lc2       local 2
+     * @param minGraph  warshall graph
      * @return shortest combination
      */
-    private List<PortAndCapital> permute(List<PortAndCapital> str,double minWeight,PortAndCapital lc1, PortAndCapital lc2, Graph<PortAndCapital, Double> minGraph){
+    private List<PortAndCapital> permute(List<PortAndCapital> str, double minWeight, PortAndCapital lc1, PortAndCapital lc2, Graph<PortAndCapital, Double> minGraph) {
         int[] indexes = new int[str.size()];
         List<PortAndCapital> shortestComb = new LinkedList<>();
         for (int i = 0; i < str.size(); i++) {
@@ -638,16 +638,15 @@ public class GraphGenerator {
         int i = 0;
         while (i < str.size()) {
             if (indexes[i] < i) {
-                swap(str, i % 2 == 0 ?  0: indexes[i], i);
-                double peso = getWeight(str,lc1,lc2,minGraph);
-                if(peso < minWeight){
+                swap(str, i % 2 == 0 ? 0 : indexes[i], i);
+                double peso = getWeight(str, lc1, lc2, minGraph);
+                if (peso < minWeight) {
                     minWeight = peso;
                     shortestComb = str;
                 }
                 indexes[i]++;
                 i = 0;
-            }
-            else {
+            } else {
                 indexes[i] = 0;
                 i++;
             }
@@ -657,13 +656,14 @@ public class GraphGenerator {
 
     /**
      * Calculates the weight of a path
-     * @param str list
-     * @param lc1 local 1
-     * @param lc2 local 2
+     *
+     * @param str      list
+     * @param lc1      local 1
+     * @param lc2      local 2
      * @param minGraph warshall graph
      * @return
      */
-    public double getWeight(List<PortAndCapital> str,PortAndCapital lc1, PortAndCapital lc2, Graph<PortAndCapital, Double> minGraph){
+    public double getWeight(List<PortAndCapital> str, PortAndCapital lc1, PortAndCapital lc2, Graph<PortAndCapital, Double> minGraph) {
         double peso = minGraph.edge(lc1, str.get(0)).getWeight();
         for (int i = 0; i < str.size() - 1; i++) {
             peso += minGraph.edge(str.get(i), str.get(i + 1)).getWeight();
@@ -674,13 +674,93 @@ public class GraphGenerator {
 
     /**
      * Swaps elements
+     *
      * @param list list of places
-     * @param a a
-     * @param b b
+     * @param a    a
+     * @param b    b
      */
     private void swap(List<PortAndCapital> list, int a, int b) {
         PortAndCapital tmp = list.get(a);
         list.set(a, list.get(b));
         list.set(b, tmp);
     }
+
+//    /**
+//     * Recurssive method to find the hamiltonian path (goes through all the vertices)
+//     *
+//     * @param graph   graph with ports and capitals
+//     * @param start   start port or capital
+//     * @param visited Is visited or not
+//     * @param path    final path
+//     * @param n       number of vertices
+//     */
+//    private void hamiltonianPaths(Graph<PortAndCapital, Double> graph, PortAndCapital start, Map<PortAndCapital, Boolean> visited, LinkedList<PortAndCapital> path, int n) {
+//
+//        if (path.size() == n) {
+//            return;
+//        }
+//
+//        for (PortAndCapital p : graph.adjVertices(start)) {
+//            if (!visited.get(p)) {
+//                visited.put(p, true);
+//                path.add(p);
+//                //System.out.println("PASSA");
+//                hamiltonianPaths(graph, p, visited, path, n);
+//
+//                visited.put(p, false);
+//                path.remove(path.size() - 1);
+//            }
+//        }
+//    }
+//
+//    /**
+//     * Start of the hamiltonian paths finding algorithm
+//     *
+//     * @param start starting vertex
+//     * @return hamiltonian path
+//     */
+//    public LinkedList<PortAndCapital> getMostEfficientCircuit(PortAndCapital start) {
+//
+//        System.out.println(start);
+//
+//        if (start == null) {
+//            return null;
+//        } else {
+//
+//            LinkedList<PortAndCapital> path = new LinkedList<>();
+//
+//            path.add(start);
+//
+//            Map<PortAndCapital, Boolean> visited = new HashMap<>();
+//
+//            for (PortAndCapital p : graph.vertices()) {
+//                visited.put(p, false);
+//            }
+//
+//            visited.put(start, true);
+//
+//            hamiltonianPaths(graph, start, visited, path, graph.numVertices());
+//
+//            return path;
+//        }
+//    }
+
+
+    public LinkedList<PortAndCapital> getMostEfficientCircuit(PortAndCapital start){
+
+        if (start == null) {
+            return null;
+        } else {
+
+            Graph<PortAndCapital, Double> graphCloned = new MatrixGraph<>(false);
+
+            graphCloned = graph.clone();
+
+            HamiltonianCycle hamiltonianCycle = new HamiltonianCycle(graphCloned.getEdgeMatrix());
+
+            return hamiltonianCycle.findHamiltonianCycle(start);
+        }
+    }
+
 }
+
