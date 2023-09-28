@@ -1,0 +1,11 @@
+lapr.project.auth
+lapr.project.auth.mappers
+lapr.project.auth.mappers.dto
+lapr.project.auth.store
+lapr.project.controller
+lapr.project.data
+lapr.project.model
+lapr.project.ui
+lapr.project.utils
+lapr.project.utils.graph
+lapr.project.utils.graph.matrix

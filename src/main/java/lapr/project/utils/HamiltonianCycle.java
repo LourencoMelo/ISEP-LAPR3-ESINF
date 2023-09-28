@@ -52,7 +52,6 @@ public class HamiltonianCycle {
 
                 path.add(graph[vertex_index][i].getVOrig());
 
-
                 Edge<PortAndCapital, Double> aux1 = graph[vertex_index][i];
                 Edge<PortAndCapital, Double> aux2 = graph[i][vertex_index];
 
